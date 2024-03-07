@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+
+    <link href="./styles/general.css" rel="stylesheet">
+    <link href="./styles/signin.css" rel="stylesheet">
+    <link href=".styles/fonts.css" rel="stylesheet">
 </head>
+
 <body>
-    
+    <header>
+        <p>Movie Lounge</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Movies</a>
+                </li>
+                <li>
+                    <a href="#">TV shows</a>
+                </li>
+                <li>
+                    <a href="#">Actors</a>
+                </li>
+                <li>
+                    <a href="#">Directors</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#"><img src="#"></a>
+            <a href="#"><img src="#"></a>
+            <a href="#"><img src="#"></a>
+            <div>
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            <form action="#" method="post" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
 </body>
+
 </html>
