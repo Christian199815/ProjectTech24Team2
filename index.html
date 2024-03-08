@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Lounge</title>
 
     <link href="./styles/general.css" rel="stylesheet">
     <link href="./styles/signin.css" rel="stylesheet">
@@ -17,43 +17,57 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#">Movies</a>
+                    <a href="#">
+                        <p>Movies</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
                 </li>
                 <li>
-                    <a href="#">TV shows</a>
+                    <a href="#">
+                        <p>TV shows</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Actors</a>
+                    <div class="devider"></div>
                 </li>
                 <li>
-                    <a href="#">Directors</a>
+                    <a href="#">
+                        <p>Actors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Directors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
                 </li>
             </ul>
         </nav>
         <div>
-            <a href="#"><img src="#"></a>
-            <a href="#"><img src="#"></a>
-            <a href="#"><img src="#"></a>
-            <div>
-                <input type="text" class="search-input" placeholder="Search...">
-                <button class="search-button">Search</button>
-            </div>
+            <a href="#"><img src="images/header-notification.svg"></a>
+            <a href="#"><img src="images/header-favorite.svg"></a>
+            <a href="#"><img src="images/header-profile.png"></a>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
         </div>
     </header>
 
     <main>
-        <div>
+        <div class="signup-form">
+            <h1>Sign in to your account</h1>
             <form action="#" method="post" enctype="text/plain">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="E-mail adress or phone number" required>
+                <input type="text" id="email" name="email" placeholder="Password" required>
+                <div class="remember-forgot">
+                    <label for="remember-me">
+                        <input type="checkbox" id="remember-me" name="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
 
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <input type="submit" value="Submit">
+                <input class="signup-button" type="submit" value="Submit">
+                <input class="signup-google" type="submit" value="Sign in with Google">
             </form>
         </div>
     </main>
@@ -61,6 +75,7 @@
     <footer>
 
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,113 @@
+/* ******* */
+/* SIGN IN */
+/* ******* */
+
+.signup-form {
+    padding: 5em 3em;
+    background-color: var(--color-secondarybackground);
+    border: solid 1px var(--color-primary-tint3);
+    border-radius: 1em;
+    width: clamp(27em, 35%, 35em);
+    margin: 6em auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-form h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 2em;
+}
+
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+/* Email/phone + password */
+
+.signup-form form>input {
+    background-color: var(--color-defaultbackground);
+    border: solid 1px var(--color-primary-tint3);
+    padding: 1em 2em;
+    border-radius: .8em;
+    margin-bottom: 1.5em;
+    outline: none;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: var(--color-devider);
+}
+
+
+/* Remember me + Forgot password */
+
+.signup-form .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-form .remember-forgot label {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+}
+
+.signup-form .remember-forgot label input[type="checkbox"]{ 
+    /* hiding the checkbox */
+    margin: 0;
+    display: block;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: solid 1px var(--color-primary-tint3);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.signup-form .remember-forgot label input[type="checkbox"]:checked {
+    background-image: url('../images/checkmark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+}
+
+.signup-form .remember-forgot label input[type="checkbox"]::before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.signup-form .remember-forgot a {
+    font-family: 'Prompt';
+    font-weight: 500;
+    color: #fff;
+}
+
+
+/* Submit button */
+
+.signup-form .signup-button {
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    margin-top: 3em;
+    outline: none;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+}
