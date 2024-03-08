@@ -1,14 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+    <title>Movie Lounge</title>
 
-    <p>kim</p>
-    
+    <link href="css/fonts.cs" rel="stylesheet">
+    <link href="css/general.css" rel="stylesheet">
+    <link href="css/signup.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <p>Movie Lounge</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">
+                        <p>Movies</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>TV shows</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <div class="devider"></div>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Actors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Directors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#"><img src="images/header-notification.svg"></a>
+            <a href="#"><img src="images/header-favorite.svg"></a>
+            <a href="#"><img src="images/header-profile.png"></a>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+        </div>
+    </header>
+
+    <main>
+        <div class="signup-form">
+            <h1>Sign in to your account</h1>
+            <form action="#" method="post" enctype="text/plain">
+                <input type="text" id="name" name="name" placeholder="E-mail adress or phone number" required>
+                <input type="text" id="email" name="email" placeholder="Password" required>
+                <div class="remember-forgot">
+                    <label for="remember-me">
+                        <input type="checkbox" id="remember-me" name="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <input class="signup-button" type="submit" value="Submit">
+                <input class="signup-google" type="submit" value="Sign in with Google">
+                <div class=""> </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
