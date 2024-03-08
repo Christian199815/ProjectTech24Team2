@@ -108,7 +108,8 @@ header>p {
     font-family: 'Prompt';
     font-weight: 700;
     font-size: 1em;
-    color: var(--color-headerfontcolor)
+    color: var(--color-headerfontcolor);
+    white-space: nowrap;
 }
 
 /* middle */

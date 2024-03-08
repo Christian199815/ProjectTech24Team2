@@ -2,19 +2,17 @@
 /* SIGN IN */
 /* ******* */
 
-.signup-form {
-    padding: 5em 3em;
-    background-color: var(--color-secondarybackground);
-    border: solid 1px var(--color-primary-tint3);
+.signin-form {
+    border: none;
     border-radius: 1em;
     width: clamp(27em, 35%, 35em);
-    margin: 6em auto 0;
+    margin: 11em auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.signup-form h1 {
+.signin-form h1 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1em;
@@ -22,22 +20,24 @@
     margin-bottom: 2em;
 }
 
-.signup-form form {
+.signin-form form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
+    padding: 0 5em;
 }
 
 
 /* Email/phone + password */
 
-.signup-form form>input {
+.signin-form form>input {
     background-color: var(--color-defaultbackground);
     border: solid 1px var(--color-primary-tint3);
     padding: 1em 2em;
     border-radius: .8em;
     margin-bottom: 1.5em;
     outline: none;
+    width: 100%;
 
     font-family: 'Prompt';
     font-weight: 400;
@@ -47,22 +47,23 @@
 
 /* Remember me + Forgot password */
 
-.signup-form .remember-forgot {
+.signin-form .remember-forgot {
     display: flex;
     justify-content: space-between;
 }
 
-.signup-form .remember-forgot label {
+.signin-form .remember-forgot label {
     display: flex;
     gap: .5em;
     align-items: center;
 
     font-family: 'Prompt';
+    font-size: .8em;
     font-weight: 400;
     color: #fff;
 }
 
-.signup-form .remember-forgot label input[type="checkbox"]{ 
+.signin-form .remember-forgot label input[type="checkbox"] {
     /* hiding the checkbox */
     margin: 0;
     display: block;
@@ -77,14 +78,14 @@
     cursor: pointer;
 }
 
-.signup-form .remember-forgot label input[type="checkbox"]:checked {
+.signin-form .remember-forgot label input[type="checkbox"]:checked {
     background-image: url('../images/checkmark.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 90%;
 }
 
-.signup-form .remember-forgot label input[type="checkbox"]::before {
+.signin-form .remember-forgot label input[type="checkbox"]::before {
     content: "";
     display: inline-block;
     width: 0;
@@ -92,8 +93,9 @@
     visibility: hidden;
 }
 
-.signup-form .remember-forgot a {
+.signin-form .remember-forgot a {
     font-family: 'Prompt';
+    font-size: .8em;
     font-weight: 500;
     color: #fff;
 }
@@ -101,13 +103,79 @@
 
 /* Submit button */
 
-.signup-form .signup-button {
+.signin-form .signup-button {
     background-color: var(--color-secondary-tint1);
     border: none;
     margin-top: 3em;
     outline: none;
 
     font-family: 'Prompt';
+    font-size: .8em;
     font-weight: 400;
     color: #fff;
+}
+
+/* Submit google */
+
+.signin-form .signup-google {
+    background-color: var(--color-defaultbackground);
+    border: solid 1px var(--color-primary-tint3);
+    outline: none;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+
+    background-image: url('../images/google.svg');
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    background-size: 20px;
+}
+
+.signin-form .sign-up {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.signin-form .sign-up a:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.signin-form .sign-up a:nth-of-type(2) {
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+
+/* =========================================== */
+/* -----------------DESKTOP------------------- */
+/* =========================================== */
+
+@media (min-width: 700px) {
+
+    /* ******* */
+    /* SIGN IN */
+    /* ******* */
+
+    .signin-form {
+        padding: 5em 3em;
+        background-color: var(--color-secondarybackground);
+        border: solid 1px var(--color-primary-tint3);
+        border-radius: 1em;
+        width: clamp(27em, 35%, 35em);
+        margin: 6em auto 0;
+    }
+
+    .signin-form form {
+        width: 100%;
+        padding: 0;
+    }
+
 }
