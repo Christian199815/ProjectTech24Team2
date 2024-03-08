@@ -1,0 +1,26 @@
+h1{
+color: white;
+}
+
+label{
+    color: white;
+}
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+a{
+    color: white;
+}
