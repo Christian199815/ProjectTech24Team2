@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welkom
+        <%= name %>
+    </h1>
+
+    <ul>
+        <% bezoekers.forEach(user=> { %>
+            <li>Username: <%= user.username %>, Email: <%= user.email %>, Password: <%= user.password %>
+            </li>
+            <% }); %>
+    </ul>
+</body>
+</html>
