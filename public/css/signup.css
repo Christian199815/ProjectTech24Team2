@@ -1,5 +1,5 @@
 /* ******* */
-/* SIGN IN */
+/* SIGN UP */
 /* ******* */
 
 /* ****** */
@@ -10,14 +10,14 @@
     margin: 0;
 }
 
-#step-1 .signin-form-container {
+#step-1 .signup-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 11em auto;
 }
 
-#step-1 .signin-form-container h1 {
+#step-1 .signup-form-container h1 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1em;
@@ -25,7 +25,7 @@
     margin-bottom: 2em;
 }
 
-#step-1 .signin-form-container form {
+#step-1 .signup-form-container form {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -35,7 +35,7 @@
 
 /* ---------------- EMAIL + PASSWORD ------------------- */
 
-#step-1 .signin-form-container form>input {
+#step-1 .signup-form-container form>input {
     background-color: var(--color-defaultbackground);
     border: solid 1px var(--color-primary-tint3);
     padding: 1em 2em;
@@ -49,15 +49,19 @@
     color: var(--color-devider);
 }
 
+#step-1 .signup-form-container form>input:focus {
+    color: #fff;
+}
+
 
 /* ---------------- REMEMBER ME + FORGOT PASSWORD ------------------- */
 
-#step-1 .signin-form-container .remember-forgot {
+#step-1 .signup-form-container .remember-forgot {
     display: flex;
     justify-content: space-between;
 }
 
-#step-1 .signin-form-container .remember-forgot label {
+#step-1 .signup-form-container .remember-forgot label {
     display: flex;
     gap: .5em;
     align-items: center;
@@ -68,7 +72,7 @@
     color: #fff;
 }
 
-#step-1 .signin-form-container .remember-forgot label input[type="checkbox"] {
+#step-1 .signup-form-container .remember-forgot label input[type="checkbox"] {
     /* hiding the checkbox */
     margin: 0;
     display: block;
@@ -83,14 +87,14 @@
     cursor: pointer;
 }
 
-#step-1 .signin-form-container .remember-forgot label input[type="checkbox"]:checked {
-    background-image: url('../images/checkmark.svg');
+#step-1 .signup-form-container .remember-forgot label input[type="checkbox"]:checked {
+    background-image: url('/ProjectTech24Team2/images/checkmark.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 90%;
 }
 
-#step-1 .signin-form-container .remember-forgot label input[type="checkbox"]::before {
+#step-1 .signup-form-container .remember-forgot label input[type="checkbox"]::before {
     content: "";
     display: inline-block;
     width: 0;
@@ -98,7 +102,7 @@
     visibility: hidden;
 }
 
-#step-1 .signin-form-container .remember-forgot a {
+#step-1 .signup-form-container .remember-forgot a {
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 500;
@@ -108,7 +112,7 @@
 
 /* ---------------- SUBMIT ------------------- */
 
-#step-1 .signin-form-container .signup-button {
+#step-1 .signup-form-container .signup-button {
     background-color: var(--color-secondary-tint1);
     border: none;
     margin-top: 3em;
@@ -123,7 +127,7 @@
 
 /* ---------------- GOOGLE SUBMIT ------------------- */
 
-#step-1 .signin-form-container .signup-google {
+#step-1 .signup-form-container .signup-google {
     background-color: var(--color-defaultbackground);
     border: solid 1px var(--color-primary-tint3);
     outline: none;
@@ -132,26 +136,26 @@
     font-weight: 400;
     color: #fff;
 
-    background-image: url('../images/google.svg');
+    background-image: url('/ProjectTech24Team2/images/google.svg');
     background-repeat: no-repeat;
     background-position: 15px center;
     background-size: 20px;
 }
 
-#step-1 .signin-form-container .sign-up {
+#step-1 .signup-form-container .sign-up {
     display: flex;
     justify-content: center;
     gap: 1.5em;
 }
 
-#step-1 .signin-form-container .sign-up a:nth-of-type(1) {
+#step-1 .signup-form-container .sign-up a:nth-of-type(1) {
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 400;
     color: #fff;
 }
 
-#step-1 .signin-form-container .sign-up a:nth-of-type(2) {
+#step-1 .signup-form-container .sign-up a:nth-of-type(2) {
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 500;
@@ -165,7 +169,7 @@
 /* STEP 2 */
 /* ****** */
 
-#step-2 .signin-form-container {
+#step-2 .signup-form-container {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -178,7 +182,7 @@
 
 /* ---------------- PROGRESS BAR ------------------- */
 
-#step-2 .signin-form-container .line {
+#step-2 .signup-form-container .line {
     background-color: var(--color-primary-tint3);
     height: 2px;
     width: 100%;
@@ -190,7 +194,7 @@
     margin: 0 0 3em 0;
 }
 
-#step-2 .signin-form-container .line .line-progress {
+#step-2 .signup-form-container .line .line-progress {
     position: absolute;
     width: 26%;
     height: 2px;
@@ -200,7 +204,7 @@
     z-index: 1;
 }
 
-#step-2 .signin-form-container .line a {
+#step-2 .signup-form-container .line a {
     height: 12px;
     width: 12px;
     transform: translateY(-43%);
@@ -208,39 +212,39 @@
     background-color: var(--color-primary-tint3);
 }
 
-#step-2 .signin-form-container .line a:nth-of-type(1),
-#step-2 .signin-form-container .line a:nth-of-type(2) {
+#step-2 .signup-form-container .line a:nth-of-type(1),
+#step-2 .signup-form-container .line a:nth-of-type(2) {
     background-color: var(--color-secondary-tint1);
 }
 
 
 /* ---------------- GO BACK & SKIP STEP ------------------- */
 
-#step-2 .signin-form-container .back-skip {
+#step-2 .signup-form-container .back-skip {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 5em;
 }
 
-#step-2 .signin-form-container .back-skip a {
+#step-2 .signup-form-container .back-skip a {
     display: flex;
     gap: .5em;
 }
 
-#step-2 .signin-form-container .back-skip a p {
+#step-2 .signup-form-container .back-skip a p {
     font-family: 'Prompt';
     font-weight: 400;
     font-size: .8em;
     color: #fff;
 }
 
-#step-2 .signin-form-container .back-skip a:nth-of-type(1) img {
+#step-2 .signup-form-container .back-skip a:nth-of-type(1) img {
     display: block;
     transform: rotate(90deg);
 }
 
-#step-2 .signin-form-container .back-skip a:nth-of-type(2) img {
+#step-2 .signup-form-container .back-skip a:nth-of-type(2) img {
     display: block;
     transform: rotate(-90deg);
 }
@@ -248,7 +252,7 @@
 
 /* ---------------- SELECT GENRE ------------------- */
 
-#step-2 .signin-form-container h1 {
+#step-2 .signup-form-container h1 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1em;
@@ -256,14 +260,14 @@
     margin-bottom: 2em;
 }
 
-#step-2 .signin-form-container>ul {
+#step-2 .signup-form-container>ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
     gap: 2em;
 }
 
-#step-2 .signin-form-container>ul li a {
+#step-2 .signup-form-container>ul li a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -281,12 +285,23 @@
     align-items: center;
 }
 
+.genre-box.genre-selected {
+    background-color: var(--color-primary-tint1);
+    box-shadow: 0 0 0 3px var(--color-secondary-tint1);
+    border-radius: 1em;
+    width: 100%;
+    height: 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .genre-box img {
     width: 50%;
     height: 50%;
 }
 
-#step-2 .signin-form-container>ul li a p {
+#step-2 .signup-form-container>ul li a p {
     font-family: 'Prompt';
     font-weight: 400;
     font-size: .8em;
@@ -296,7 +311,7 @@
 
 /* ---------------- NEXT ------------------- */
 
-#step-2 .signin-form-container .next-button {
+#step-2 .signup-form-container .next-button {
     position: sticky;
     bottom: 2em;
 
@@ -322,10 +337,10 @@
 @media (min-width: 700px) {
 
     /* ******* */
-    /* SIGN IN */
+    /* SIGN UP */
     /* ******* */
 
-    .signin-form {
+    .signup-form {
         margin: 6em auto 3em;
         width: 35em;
         padding: 5em 3em;
@@ -338,11 +353,11 @@
     /* STEP 1 */
     /* ****** */
 
-    #step-1 .signin-form-container {
+    #step-1 .signup-form-container {
         margin: 0;
     }
 
-    #step-1 .signin-form-container form {
+    #step-1 .signup-form-container form {
         width: 100%;
         padding: 0;
     }
@@ -353,7 +368,7 @@
     /* STEP 2 */
     /* ****** */
 
-    #step-2 .signin-form-container {
+    #step-2 .signup-form-container {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -363,7 +378,7 @@
         padding: 0 2em;
     }
 
-    #step-2 .signin-form-container {
+    #step-2 .signup-form-container {
         margin: 0;
         padding: 0;
     }
@@ -371,20 +386,20 @@
 
     /* ---------------- GO BACK & SKIP STEP ------------------- */
 
-    #step-2 .signin-form-container .back-skip {
+    #step-2 .signup-form-container .back-skip {
         margin-bottom: 3em;
     }
 
 
     /* ---------------- SELECT GENRE ------------------- */
 
-    #step-2 .signin-form-container>ul {
+    #step-2 .signup-form-container>ul {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5em;
     }
 
-    #step-2 .signin-form-container>ul li a {
+    #step-2 .signup-form-container>ul li a {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -401,7 +416,7 @@
         height: 50%;
     }
 
-    #step-2 .signin-form-container>ul li a p {
+    #step-2 .signup-form-container>ul li a p {
         font-family: 'Prompt';
         font-weight: 400;
         font-size: .8em;
@@ -411,7 +426,7 @@
 
     /* ---------------- NEXT ------------------- */
 
-    #step-2 .signin-form-container .next-button {
+    #step-2 .signup-form-container .next-button {
         position: sticky;
         bottom: 2em;
 

@@ -88,17 +88,6 @@ a {
     display: block;
 }
 
-.genre-box.genre-selected {
-    background-color: var(--color-primary-tint1);
-    box-shadow: 0 0 0 3px var(--color-secondary-tint1);
-    border-radius: 1em;
-    width: 100%;
-    height: 6em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 
 /* ****** */
@@ -199,7 +188,7 @@ header>div input {
 
     /* placeholder */
     padding-left: 35px;
-    background-image: url('../images/header-search.svg');
+    background-image: url('/ProjectTech24Team2/images/header-search.svg');
     background-repeat: no-repeat;
     background-position: 15px center;
     font-family: 'Prompt';

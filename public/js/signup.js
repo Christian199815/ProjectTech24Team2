@@ -1,17 +1,3 @@
-
-document.getElementById("searchInput").addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    searchFunction();
-  }
-});
-
-function searchFunction() {
-  var searchQuery = document.getElementById("searchInput").value;
-  console.log("Search query: " + searchQuery);
-}
-
-
 function toggleGenre(event) {
   event.preventDefault(); // Prevent default link behavior
   var divElement = event.target.closest('.genre-box'); // Find the closest div element with the class 'genre-box'
