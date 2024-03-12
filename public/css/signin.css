@@ -45,6 +45,10 @@
     color: var(--color-devider);
 }
 
+.signin-form-container form>input:focus {
+    color: #fff;
+}
+
 
 /* ---------------- REMEMBER ME + FORGOT PASSWORD ------------------- */
 
@@ -80,7 +84,7 @@
 }
 
 .signin-form-container .remember-forgot label input[type="checkbox"]:checked {
-    background-image: url('../images/checkmark.svg');
+    background-image: url('/ProjectTech24Team2/images/checkmark.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 90%;
@@ -128,7 +132,7 @@
     font-weight: 400;
     color: #fff;
 
-    background-image: url('../images/google.svg');
+    background-image: url('/ProjectTech24Team2/images/google.svg');
     background-repeat: no-repeat;
     background-position: 15px center;
     background-size: 20px;
