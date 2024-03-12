@@ -71,17 +71,18 @@
                     <h1>Sign up for your account</h1>
                     <form action="#" method="post" enctype="text/plain">
         
-                        <input class="signup-google" type="submit" value="Continue with google">
+                        <input class="signup-google" type="submit" value="Sign in with Google">
                         <input type="text" id="first-name" name="name" placeholder="First name" required>
                 
                         <input type="text" id="email" name="email" placeholder="E-mail adress or phone number" required>
                         <input type="password" id="password" name="password" placeholder="password" required>
-                        <p>Please use at least: 8 characters, 1 capitalised letter, 1 lowercased letter, 1 number and 1 symbol.</p>
+                        <p class="">Please use at least: 8 characters, 1 capitalised letter, 1 lowercased letter, 1 number and 1 symbol.</p>
         
                         <label for="birthdate">Date of birth</label>
                         <input type="text" id="birthdate" name="Date of birth" placeholder="dd - mm - jjjj" required>
         
-                        <input class="signup-account" type="submit" value="Sign up" onclick="nextStep()">
+                        <input class="signup-account" type="submit" value="Next" onclick="nextStep()">
+                        <div class="line-regular"></div>
                         <p>Already have an account</p>
                         <a href="#">Sign in</a>
                     </form>

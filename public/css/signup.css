@@ -56,12 +56,12 @@
 
 /* ---------------- REMEMBER ME + FORGOT PASSWORD ------------------- */
 
-#step-1 .signup-form-container .remember-forgot {
+.signin-form-container .remember-forgot {
     display: flex;
     justify-content: space-between;
 }
 
-#step-1 .signup-form-container .remember-forgot label {
+.signin-form-container .remember-forgot label {
     display: flex;
     gap: .5em;
     align-items: center;
@@ -72,7 +72,7 @@
     color: #fff;
 }
 
-#step-1 .signup-form-container .remember-forgot label input[type="checkbox"] {
+.signin-form-container .remember-forgot label input[type="checkbox"] {
     /* hiding the checkbox */
     margin: 0;
     display: block;
@@ -87,14 +87,14 @@
     cursor: pointer;
 }
 
-#step-1 .signup-form-container .remember-forgot label input[type="checkbox"]:checked {
+.signin-form-container .remember-forgot label input[type="checkbox"]:checked {
     background-image: url('/ProjectTech24Team2/images/checkmark.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 90%;
 }
 
-#step-1 .signup-form-container .remember-forgot label input[type="checkbox"]::before {
+.signin-form-container .remember-forgot label input[type="checkbox"]::before {
     content: "";
     display: inline-block;
     width: 0;
@@ -102,27 +102,13 @@
     visibility: hidden;
 }
 
-#step-1 .signup-form-container .remember-forgot a {
+.signin-form-container .remember-forgot a {
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 500;
     color: #fff;
 }
 
-
-/* ---------------- SUBMIT ------------------- */
-
-#step-1 .signup-form-container .signup-button {
-    background-color: var(--color-secondary-tint1);
-    border: none;
-    margin-top: 3em;
-    outline: none;
-
-    font-family: 'Prompt';
-    font-size: .8em;
-    font-weight: 400;
-    color: #fff;
-}
 
 
 /* ---------------- GOOGLE SUBMIT ------------------- */
@@ -162,6 +148,56 @@
     color: #fff;
 }
 
+#step-1 .signup-form-container p:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-style: italic;
+    font-weight: 200;
+    color: var( --color-devider);
+}
+
+#step-1 .signup-form-container p:nth-of-type(2) {
+    font-family: 'Prompt';
+    font-size: 0.9em;
+    font-weight: 250;
+    color: #fff;
+}
+
+#step-1 .signup-form-container a:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #fff;
+}
+
+#step-1 .signup-form-container label:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: 0.9em;
+    font-weight: 400;
+    color: var( --color-devider);
+    margin-top: 1rem;
+}
+/* ---------------- NEXT ------------------- */
+
+#step-1 .signup-form-container .signup-account {
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    margin-top: 3em;
+    outline: none;
+
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+}
+
+/* ---------------- LINE ------------------- */
+
+#step-1 .signup-form-container .line-regular {
+   background-color: #fff;
+   width: 100%;
+   height: 0.5px;
+}
 
 
 
