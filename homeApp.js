@@ -14,4 +14,5 @@ app.get('/home', requireSession, (req, res) => {
     res.render('pages/home', { views: req.session.views, username: req.session.user });
 })
 
+
 module.exports = app;
