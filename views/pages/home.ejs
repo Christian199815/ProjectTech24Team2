@@ -6,15 +6,8 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Welkom
-        <%= name %>
-    </h1>
+    <h1>Welcome to my app, <%= username %></h1>
+    <p>Number of views: <%= views %></p>
 
-    <ul>
-        <% bezoekers.forEach(user=> { %>
-            <li>Username: <%= user.username %>, Email: <%= user.email %>, Password: <%= user.password %>
-            </li>
-            <% }); %>
-    </ul>
 </body>
 </html>
