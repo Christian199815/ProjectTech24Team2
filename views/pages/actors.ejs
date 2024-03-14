@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <h1>Details van Acteur</h1>
+    <h2><%= locals.person.name %></h2>
+    <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= locals.person.profile_path %>" width=300px alt="Image">
+    <p><%= locals.person.biography %></p>  
+    <p><%= locals.person.birthday %></p>
+    <p><%= locals.person.known_for_department %></p>
+    <p><%= locals.person.place_of_birth %></p>
+
+<!-- 
+Name
+Profile picture
+Biography    
+birthday (Age)
+known_for_department
+place of birth
+-->
+    
+
+    
+    
+
+
+
+</body>
+</html>
