@@ -198,13 +198,15 @@
     margin-top: 1rem;
 }
 
+#step-1 .signup-form-container .birthdate input {
+    text-align: center;
+    color: #fff;
+}
+
 #step-1 .signup-form-container .birthdate input::placeholder {
     text-align: center;
     line-height: normal; 
 }
-
-
-
 
 
 
@@ -237,6 +239,8 @@
     justify-content: space-around;
     margin: 2rem;
 }
+
+
 
 
 
