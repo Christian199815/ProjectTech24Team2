@@ -17,7 +17,7 @@ const client = new MongoClient(uri, {
     }
 });
 
-const userValidationRules = require('./userValidationRules');
+const userValidationRules = require('../userValidationRules');
 const session = require('express-session');
 
 const validate = (req, res, next) => {
@@ -48,6 +48,9 @@ app.post('/signup', userValidationRules, validate, async (req, res) => {
         username: username,
         email: email,
         password: await bcrypt.hash(password, 10),
+        likedActors: [],
+        likedMovies: [],
+        likedDirectors: [],
     }
 
     // Insert the defined document into the "haiku" collection
@@ -59,7 +62,6 @@ app.post('/signup', userValidationRules, validate, async (req, res) => {
 
     res.render('pages/home', { views: req.session.views, username: req.session.user });
 
-    // res.render('pages/login');
 
 })
 

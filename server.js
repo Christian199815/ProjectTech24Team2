@@ -9,11 +9,11 @@ const userValidationRules = require('./userValidationRules');
 const session = require('express-session');
 
 //load in the separate files
-const loginApp = require('./loginApp');
-const signupApp = require('./signupApp');
-const logoutApp = require('./logoutApp');
-const homeApp = require('./homeApp');
-const moveObjectApp = require('./moveObjectApp');
+const loginApp = require('./routes/loginApp');
+const signupApp = require('./routes/signupApp');
+const logoutApp = require('./routes/logoutApp');
+const homeApp = require('./routes/homeApp');
+const moveObjectApp = require('./routes/moveObjectApp');
 
 const express = require('express');
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');

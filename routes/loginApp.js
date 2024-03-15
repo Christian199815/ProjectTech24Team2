@@ -20,7 +20,6 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    console.log(req.body);
     const database = client.db(`${process.env.DB_NAME}`);
     const collection = database.collection("general");
     const { username, password } = req.body;
@@ -42,7 +41,6 @@ app.post('/login', async (req, res) => {
     req.session.user = username;
 
     res.render('pages/home', { views: req.session.views, username: req.session.user });
-    // res.send('Login successful!');
 });
 
 module.exports = app;
