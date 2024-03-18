@@ -177,6 +177,7 @@
 .comments>div:nth-of-type(1) {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1em;
 }
 
 .comments>div:nth-of-type(1) h2 {
@@ -189,6 +190,7 @@
 .comments>div:nth-of-type(1) div {
     display: flex;
     align-items: center;
+    gap: .7em;
 }
 
 .comments>div:nth-of-type(1) div img {
@@ -200,4 +202,79 @@
     font-weight: 400;
     font-size: 1em;
     color: #fff;
+}
+
+.comments>.comment-container {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 3em;
+}
+
+.comments .comment-container>div {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+
+/* profile picture */
+.comments .comment-container img {
+    width: 2em;
+    height: 2em;
+}
+
+
+/* naam + datum */
+.comments .comment-container>div>div:nth-of-type(1) {
+    display: flex;
+    gap: 1em;
+}
+
+.comments .comment-container>div>div:nth-of-type(1)>h3 {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: 1em;
+    color: #fff;
+}
+
+.comments .comment-container>div>div:nth-of-type(1) p {
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1em;
+    color: var(--color-devider);
+}
+
+
+/* de comment zelf */
+.comments .comment-container>div>p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: 1em;
+    color: #fff;
+}
+
+
+/* thumbs up/down */
+.comments .comment-container div div {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.comments .comment-container div div div {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.comments .comment-container div div div p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: 1em;
+    color: #fff;
+}
+
+.comments .comment-container div div div img {
+    display: block;
+    width: 20px;
 }
