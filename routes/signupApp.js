@@ -28,13 +28,13 @@ const validate = (req, res, next) => {
     }
     const extractedErrors = errors.array().map(err => ({ [err.param]: err.msg }));
     res.locals.errors = extractedErrors;
-    res.render('pages/form', { errors: res.locals.errors })
+    res.render('pages/signup', { errors: res.locals.errors })
     next();
 };
 
 
 app.get('/signup', async (req, res) => {
-    res.render('pages/form', { errors: [] })
+    res.render('pages/signup', { errors: [] })
 })
 
 app.post('/signup', userValidationRules, validate, async (req, res) => {
@@ -48,9 +48,9 @@ app.post('/signup', userValidationRules, validate, async (req, res) => {
         username: username,
         email: email,
         password: await bcrypt.hash(password, 10),
-        likedActors: [],
-        likedMovies: [],
-        likedDirectors: [],
+        // likedActors: [],
+        // likedMovies: [],
+        // likedDirectors: [],
     }
 
     // Insert the defined document into the "haiku" collection
@@ -60,7 +60,7 @@ app.post('/signup', userValidationRules, validate, async (req, res) => {
 
     req.session.user = username;
 
-    res.render('pages/home', { views: req.session.views, username: req.session.user });
+    // res.render('pages/home', { views: req.session.views, username: req.session.user });
 
 
 })

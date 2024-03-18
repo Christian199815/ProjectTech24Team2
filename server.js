@@ -14,6 +14,7 @@ const signupApp = require('./routes/signupApp');
 const logoutApp = require('./routes/logoutApp');
 const homeApp = require('./routes/homeApp');
 const moveObjectApp = require('./routes/moveObjectApp');
+const preferencesApp = require('./routes/preferencesApp');
 
 const express = require('express');
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
@@ -46,20 +47,14 @@ app.set('view engine', 'ejs')
 
 client.connect();
 
-const requireSession = (req, res, next) => {
-    if (!req.session || !req.session.user) {
-        return res.redirect('/login'); // Redirect to login page if session doesn't exist
-    }
-    next();
-};
-
 app.use(signupApp);
 app.use(loginApp);
 app.use(logoutApp);
 app.use(homeApp);
 app.use(moveObjectApp);
+app.use(preferencesApp);
 
 app.listen(process.env.PORT, () => {
     // console.log(`${process.env.PORT}`);
-    console.log(`Project Tech Data API listening on port ${process.env.PORT}`)
+    console.log(`Movie Lounge API listening on port ${process.env.PORT}`)
 })
