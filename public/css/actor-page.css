@@ -104,6 +104,7 @@
     height: 40%;
     background: linear-gradient(to top, rgba(16, 23, 39, 1), rgba(16, 23, 39, 0));
     z-index: 1;
+    pointer-events: none;
 }
 
 .news-about-container>h2 {
@@ -172,6 +173,18 @@
     display: flex;
     flex-direction: column;
     margin: 5em 2em 0;
+    padding: 0;
+    border-radius: none;
+    border: none;
+    background-color: transparent;
+}
+
+.comments>h2 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #fff;
+    padding-bottom: 1em;
 }
 
 .comments>div:nth-of-type(1) {
@@ -204,10 +217,15 @@
     color: #fff;
 }
 
-.comments>.comment-container {
+.comments .comment-container-parent {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.comments .comment-container {
     display: flex;
     gap: 1em;
-    margin-bottom: 3em;
 }
 
 .comments .comment-container>div {
@@ -216,6 +234,72 @@
     gap: .5em;
 }
 
+/* write a comment */
+.write-comment {
+    display: flex;
+    gap: 1em;
+    padding-bottom: 4em;
+}
+
+.write-comment img {
+    width: 2em;
+    height: 2em;
+}
+
+.write-comment div {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+.write-comment>div>div:nth-of-type(1) {
+    padding-bottom: 1em;
+    border-bottom: solid 1px var(--color-devider);
+}
+
+.write-comment>div>div:nth-of-type(1) input {
+    background-color: var(--color-defaultbackground);
+    border: solid 1px var(--color-primary-tint3);
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+}
+
+.write-comment>div>div:nth-of-type(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.write-comment>div>div:nth-of-type(2) button {
+    outline: none;
+    padding: .7em 0;
+    width: 8em;
+    border-radius: 15px;
+    cursor: pointer;
+
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.write-comment>div>div:nth-of-type(2) button:nth-of-type(1) {
+    background-color: var(--color-defaultbackground);
+    border: solid 1px var(--color-primary-tint3);
+}
+
+.write-comment>div>div:nth-of-type(2) button:nth-of-type(2) {
+    background-color: var(--color-secondary-tint1);
+    border: none;
+}
 
 /* profile picture */
 .comments .comment-container img {
@@ -277,4 +361,126 @@
 .comments .comment-container div div div img {
     display: block;
     width: 20px;
+}
+
+
+
+/* =========================================== */
+/* -----------------DESKTOP------------------- */
+/* =========================================== */
+
+@media (min-width: 700px) {
+
+    .actor-plus-news {
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+        padding: 3em 0 0;
+    }
+
+    .actor-name {
+        width: 60vw;
+        padding: 0 1em 0 4em;
+    }
+
+    /* div 1 */
+
+
+    /* div 2 */
+    .actor-name>div:nth-of-type(2) {
+        max-width: 30em;
+    }
+
+    /* div 3 */
+
+    .actor-name>div:nth-of-type(3) img {
+        height: auto;
+        object-fit: cover;
+    }
+
+    .actor-name>div:nth-of-type(3) h2 {
+        padding-top: 2em;
+    }
+
+
+    /* ---------------- NEWS ABOUT ------------------- */
+
+    .news-about-container {
+        margin: 0 4em 0 1em;
+    }
+
+    .news-about-container::before {
+        width: 100%;
+        height: 30vw;
+    }
+
+    .news-about {
+        height: 40vw;
+        width: 33vw;
+    }
+
+    .news-about>div {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        padding: 1.5em 0;
+    }
+
+    .news-about>div:first-of-type {
+        padding: 0 0 1.5em;
+    }
+
+    .news-about>div:last-of-type {
+        margin-bottom: 5em;
+    }
+
+    .news-about>div img {
+        height: auto;
+        width: 50%;
+    }
+
+
+
+    /* ---------------- COMMENTS ------------------- */
+
+    .comments {
+        display: flex;
+        flex-direction: column;
+        margin: 5em 4em 0;
+        padding: 3em 4em;
+        border-radius: 20px;
+        border: solid 1px var(--color-primary-tint3);
+        background-color: var(--color-secondarybackground);
+    }
+
+
+    .comments .comment-container-parent {
+        gap: 1em;
+    }
+
+    .comments .comment-container {
+        display: flex;
+        gap: 1em;
+        padding: 1em;
+        background-color: var(--color-defaultbackground);
+        border: solid 1px var(--color-primary-tint3);
+        border-radius: 20px;
+    }
+
+
+    /* write a comment */
+
+    .write-comment>div>div:nth-of-type(2) {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        gap: 1em;
+    }
+
+    /* naam + datum */
+
+    /* de comment zelf */
+
+    /* thumbs up/down */
+
 }
