@@ -8,6 +8,7 @@
 
     <link href="./public/css/general.css" rel="stylesheet">
     <link href="./public/css/signup.css" rel="stylesheet">
+    <link href="./public/css/slider.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -242,29 +243,57 @@
             <!-- STEP 3 -->
             <!-- ====== -->
 
-            <div id="step-3" class="hidden">
+            <div id="step-2" class="hidden">
                 <div class="signup-form-container">
-                    <h1>Sign in to your account</h1>
-                    <form action="#" method="post" enctype="text/plain">
-                        <input type="text" id="name" name="name" placeholder="E-mail adress or phone number" required>
-                        <input type="text" id="email" name="email" placeholder="Password" required>
-                        <div class="remember-forgot">
-                            <label for="remember-me">
-                                <input type="checkbox" id="remember-me" name="remember"> Remember me
-                            </label>
-                            <a href="#" class="forgot-password">Forgot password?</a>
+                    <div class="line">
+                        <div class="line-progress"></div>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                    </div>
+                    <div class="back-skip">
+                        <a href="#" onclick="prevStep()">
+                            <img src="images/header-arrow.svg">
+                            <p>Go back</p>
+                        </a>
+                        <a href="#" onclick="nextStep()">
+                            <p>Skip step</p>
+                            <img src="images/header-arrow.svg">
+                        </a>
+                    </div>
+                    <h1>Select your ideal movie/show length</h1>
+                    <div class="slider-container">
+                        <h3>Hotel Price Range (in <abbr title="United States Dollars">USD</abbr>)</h3>
+                        <div class="slider-multithumb">
+                            <svg role="none" class="slider-group" width="360" height="60">
+                                <g aria-hidden="true" class="rail">
+                                    <rect height="0" width="0"></rect>
+                                </g>
+                                <g aria-hidden="true" class="range">
+                                    <rect height="0" width="0"></rect>
+                                </g>
+                                <g class="minimum" role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="100"
+                                    aria-valuemax="250" aria-label="Hotel Minimum Price in US dollars">
+                                    <text class="value">0</text>
+                                    <rect class="focus-ring" height="0" width="0"></rect>
+                                    <polygon class="thumb" points="0,0 0,0"></polygon>
+                                </g>
+                                <g class="maximum" role="slider" tabindex="0" aria-valuemin="100" aria-valuenow="250"
+                                    aria-valuemax="400" aria-label="Hotel Maximum Price in US dollars">
+                                    <text class="value">0</text>
+                                    <rect class="focus-ring" height="0" width="0"></rect>
+                                    <polygon class="thumb" points="0,0 0,0"></polygon>
+                                </g>
+                            </svg>
                         </div>
 
-                        <input class="signup-button" type="submit" value="Submit">
-                        <input class="signup-google" type="submit" value="Sign in with Google">
-                        <div class="sign-up">
-                            <a href="#">Not a member yet?</a>
-                            <a href="#">Sign up</a>
-                        </div>
-                    </form>
+                    </div>
                     <button class="next-button" onclick="nextStep()">Next</button>
                 </div>
             </div>
+        </div>
 
         </div>
     </main>
@@ -272,6 +301,7 @@
     <footer>
 
     </footer>
+    <script src="./public/js/slider.js"></script>
     <script src="./public/js/general.js"></script>
     <script src="./public/js/signup.js"></script>
 </body>

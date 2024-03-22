@@ -60,3 +60,14 @@ document.getElementById("month").addEventListener("input", function () {
 document.getElementById("year").addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, '');
 });
+
+
+
+// JavaScript to update the value of the slider
+var slider = document.getElementById("mySlider");
+var output = document.getElementById("sliderValue");
+output.textContent = "Value: " + slider.value;
+
+slider.addEventListener("input", function () {
+  output.textContent = "Value: " + slider.value;
+});

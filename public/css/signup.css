@@ -409,6 +409,17 @@
 
 
 
+/* ****** */
+/* STEP 3 */
+/* ****** */
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 /* =========================================== */
 /* -----------------DESKTOP------------------- */
 /* =========================================== */
@@ -420,7 +431,7 @@
     /* ******* */
 
     .signup-form {
-        margin: 6em auto 3em;
+        margin: 3em auto;
         width: 35em;
         padding: 5em 3em;
         background-color: var(--color-secondarybackground);
