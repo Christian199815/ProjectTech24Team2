@@ -1,0 +1,185 @@
+/* ***************/
+/* Overview page */
+/* ***************/
+
+.overview {
+    margin: 0;
+}
+
+
+
+/* ***********************/
+/* recommendation movies */
+/* ************************/
+
+.recommendations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+
+}
+
+.recommendations h2 {
+    color: var(--color-headerfontcolor);
+    font-family: 'Prompt';
+    font-weight: 300;
+}
+
+.recommendations a img {
+    height: 100%;
+    width: 100%;
+}
+
+.movie-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.movie-banner-recommendations {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 2rem;
+}
+
+
+/* ***********************/
+/* content op de page > zonder account*/
+/* ************************/
+.content-no-account{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+
+/* ***********************/
+/* Styling buttons */
+/* ************************/
+
+/*** Styling button1 **/
+.button-icon1 {
+    display: inline-block;
+    align-content: center;
+    width: 2em;
+    height: 3em;
+    background-color: var(--color-secondary-tint1);
+    border: 1px solid white;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='m4.296 12l8.492-8.727a.75.75 0 1 0-1.075-1.046l-9 9.25a.75.75 0 0 0 0 1.046l9 9.25a.75.75 0 1 0 1.075-1.046z'/%3E%3C/svg%3E");
+}
+
+
+/*** Styling button2 **/
+.button-icon2 {
+    display: inline-block;
+    align-content: center;
+    width: 2em;
+    height: 3em;
+    background-color: var(--color-secondary-tint1);
+    border: 1px solid white;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='m4.296 12l8.492-8.727a.75.75 0 1 0-1.075-1.046l-9 9.25a.75.75 0 0 0 0 1.046l9 9.25a.75.75 0 1 0 1.075-1.046z'/%3E%3C/svg%3E");
+    transform: rotate(180deg);
+}
+
+
+/* ***********************/
+/*    Actors & crew     */
+/* ************************/
+
+
+.actors-crew {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: var(--color-headerbackground);
+    border: solid 1px var(--color-primary-tint3);
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+}
+
+
+.actors-crew>h4 {
+    color: var(--color-headerfontcolor);
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1.17rem;
+    margin: 0;
+}
+
+.act-crew-images {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
+
+.act-crew-images a img {
+    height: 100%;
+    width: 100%;
+}
+
+
+.actors-crew p{
+    color: #fff;
+    font-family: 'Prompt';
+    font-weight: 200;
+    font-size: 0.9rem;
+}
+
+
+/* ***********************/
+/*    Top 10 movies      */
+/* ************************/
+
+.top10 {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-headerbackground);
+    border: solid 1px var(--color-primary-tint3);
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+}
+
+.top10-list {
+    display: flex;
+}
+
+.top10-list a img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.top10 h3{
+    color: var(--color-headerfontcolor);
+    font-family: 'Prompt';
+    font-weight: 300;
+}
+
+.styling-button{
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    outline: none;
+    width: 5rem;
+    border-radius: 5em;
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    margin-top: 0.5rem;
+}

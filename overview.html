@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview</title>
+
+    <link href="./public/css/general.css" rel="stylesheet">
+    <link href="./public/css/overview.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <p>Movie Lounge</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">
+                        <p>Movies</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>TV shows</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <div class="devider"></div>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Actors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Directors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#"><img src="images/header-notification.svg"></a>
+            <a href="#"><img src="images/header-favorite.svg"></a>
+            <a href="#"><img src="images/header-profile.png"></a>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+        </div>
+    </header>
+
+    <main class="overview">
+        <section class="recommendations">
+            <h2>Recommendations</h2>
+
+            <div class="movie-banner">
+                <div class="button-icon1"></div>
+                <div class="movie-banner-recommendations">
+                    <a href="#"><img src="images/overview/anyonebutyou.jpg" alt="anyonebutyou"></a>
+                    <a href="#"><img src="images/overview/dune.jpg" alt="dune"></a>
+                    <a href="#"><img src="images/overview/imaginary.jpg" alt="imaginary"></a>
+                    <a href="#"><img src="images/overview/kungfu-panda-4.jpg" alt="kungfu panda 4e deel"></a>
+                    <a href="#"><img src="images/overview/onelove-bob-marley.jpg" alt="onelove over Bob Marley"></a>
+                </div>
+                <div class="button-icon2"></div>
+            </div>
+        </section>
+
+<div class="content-no-account">
+        <section class="top10">
+            <h3>Top 10 movies</h3>
+            <ul class="top10-list">
+                <!---- Hier wordt de data ingeladen van de actuele top 10 -->
+                <li><a href="#"><img src="images/overview/kungfu-panda-4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/overview/kungfu-panda-4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/overview/kungfu-panda-4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/overview/kungfu-panda-4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/overview/kungfu-panda-4.jpg" alt=""></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+            <div class="styling-button">
+             <a href="#">See more</a>
+            </div>
+        </section>
+
+
+        <section class="actors-crew">
+            <h4>Actors & crew</h4>
+            <div class="act-crew-images">
+
+                <div class="describtion">
+                    <a href="#"><img src="images/overview/denis-villeneuve.jpg"
+                            alt="profielfoto van Denis Villeneuve"></a>
+                    <p>regisseur</p>
+                </div>
+
+                <div class="describtion">
+                    <a href="#"><img src="images/overview/florence-pugh.jpg" alt="profielfoto van Florence Pugh "></a>
+                    <p>actrice</p>
+                </div>
+
+                <div class="describtion">
+                    <a href="#"><img src="images/overview/zendaya.jpg" alt="profielfoto van Zendaya "></a>
+                    <p>actrice</p>
+                </div>
+
+                <div class="describtion">
+                    <a href="#"><img src="images/overview/timothee-chalamet.jpg"
+                            alt="profielfoto van Timothee Chalamet "></a>
+                    <p>acteur</p>
+                </div>
+
+                <div class="describtion">
+                    <a href="#"><img src="images/overview/kingsely-ben-adir.jpg"
+                            alt="profielfoto van Kingsely Ben Adir"></a>
+                    <p>acteur</p>
+                </div>
+
+        </section>
+</div>
+
+
+
+        <section class="community">
+            <div class="friends">
+                <div class="message">
+                   <!---<p>Tom</p>
+                    <p>Davic</p>
+                    <p>Chris</p>
+                    <p>Kim</p>
+                    --> 
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="./public/js/general.js"></script>
+    <script src="./public/js/signup.js"></script>
+</body>
+
+</html>
