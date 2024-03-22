@@ -1,0 +1,121 @@
+.account {
+    margin: 0;
+}
+
+
+/* ACCOUNT PERSONAL */
+.account .account-block1 {
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 3px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.account-block1 h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #fff;
+    margin: 1rem;
+    align-items: flex-start;
+}
+
+.account-block1 .my-account {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+}
+
+.account-block1 .my-account .information-account {
+    display: flex;
+    flex-direction: column;
+}
+
+.information-account p:nth-of-type(1),
+.information-account p:nth-of-type(3),
+.information-account p:nth-of-type(5) {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.information-account p:nth-of-type(2),
+.information-account p:nth-of-type(4) {
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1em;
+    color: #fff;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.information-account p:nth-of-type(6) {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: var(--color-devider);
+    margin-left: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+/* ACCOUNT MOVIE LIST */
+.account .account-block2 {
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 3px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.account .account-block2 h2 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #fff;
+    margin: 1rem;
+}
+
+/* ACCOUNT FAVORITES */
+.account .account-block3 {
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 3px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+/* ACCOUNT SETTINGS */
+.account .account-block4 {
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 3px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+/* ACCOUNT ACTORS & CREW */
+.account .account-block5 {
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 3px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
