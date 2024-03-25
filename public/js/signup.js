@@ -18,26 +18,45 @@ function toggleGenre(event) {
 
 function nextStep() {
   var currentStep = document.querySelector('.current-step');
-  
+
   var nextStep = currentStep.nextElementSibling;
 
   if (nextStep) {
-      currentStep.classList.remove('current-step');
-      currentStep.classList.add('hidden');
-      nextStep.classList.remove('hidden');
-      nextStep.classList.add('current-step');
+    currentStep.classList.remove('current-step');
+    currentStep.classList.add('hidden');
+    nextStep.classList.remove('hidden');
+    nextStep.classList.add('current-step');
   }
 }
 
 function prevStep() {
   var currentStep = document.querySelector('.current-step');
-  
+
   var prevStep = currentStep.previousElementSibling;
 
   if (prevStep) {
-      currentStep.classList.remove('current-step');
-      currentStep.classList.add('hidden');
-      prevStep.classList.remove('hidden');
-      prevStep.classList.add('current-step');
+    currentStep.classList.remove('current-step');
+    currentStep.classList.add('hidden');
+    prevStep.classList.remove('hidden');
+    prevStep.classList.add('current-step');
   }
 }
+
+// Add event listeners to allow only numeric input
+document.getElementById("day").addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, '');
+  if (this.value.length >= 2) {
+    document.getElementById("month").focus();
+  }
+});
+
+document.getElementById("month").addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, '');
+  if (this.value.length >= 2) {
+    document.getElementById("year").focus();
+  }
+});
+
+document.getElementById("year").addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, '');
+});

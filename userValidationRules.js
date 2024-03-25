@@ -1,5 +1,7 @@
 const { body } = require('express-validator');
 
+const sanitizedPattern = /(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$/;
+
 // Validation schema
 const userValidationRules = [
   // Username must be alphanumeric with minimum length 3 and maximum length 20
@@ -17,8 +19,11 @@ const userValidationRules = [
 
   // Password must be at least 6 characters long
   body('password')
+    .matches(sanitizedPattern).withMessage('Password must contain only letters, numbers, and special characters @#$%^&+!=')
     .isLength({ min: 6 })
     .withMessage('Password must be at least 6 characters long')
 ];
 
 module.exports = userValidationRules;
+
+
