@@ -3,18 +3,40 @@
 }
 
 
+
+.block1-4{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.block2-5{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.block2-3-placement{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 5rem;
+}
+
+
 /* ACCOUNT PERSONAL */
 .account .account-block1 {
-    width: 100%;
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
-    margin: 1rem;
+    margin: 3rem;
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
 }
 
+/* H1 */
 .account-block1 h1 {
     font-family: 'Prompt';
     font-weight: 600;
@@ -25,19 +47,26 @@
     align-items: flex-start;
 }
 
+
 .account-block1 .my-account {
     display: flex;
     flex-direction: row;
     margin: 1rem;
-    overflow: hidden;
 }
 
+/* Img */
+.account-block1 .my-account img{
+    margin-right: 1rem;
+    width: 200px;
+    height: 250px;
+}
 
 .account-block1 .my-account .information-account {
     display: flex;
     flex-direction: column;
 }
 
+/* p styling */
 .information-account p:nth-of-type(1),
 .information-account p:nth-of-type(3),
 .information-account p:nth-of-type(5) {
@@ -48,6 +77,7 @@
     margin-left: 0.5rem;
 }
 
+/* p styling */
 .information-account p:nth-of-type(2),
 .information-account p:nth-of-type(4) {
     font-family: 'Prompt';
@@ -58,6 +88,7 @@
     margin-bottom: 1rem;
 }
 
+/* p styling */
 .information-account p:nth-of-type(6) {
     font-family: 'Prompt';
     font-weight: 600;
@@ -67,16 +98,54 @@
     margin-bottom: 0.2rem;
 }
 
-/* ACCOUNT MOVIE LIST */
-.account .account-block2 {
-    width: 100%;
+/* ACCOUNT SETTINGS */
+.account .account-block4 {
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
-    margin: 1rem;
+    margin-top: 3rem;
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 0.5rem;
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 25%;
+}
+
+/* kopje styling */
+.account-block4 h4{
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #fff;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    align-items: flex-start;
+}
+
+/* p styling */
+.account-block4 p:nth-of-type(1), .account-block4 p:nth-of-type(2){
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1em;
+    color: #fff;
+    margin-left: 1rem;
+}
+
+
+
+/* ACCOUNT MOVIE LIST */
+.account .account-block2 {
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .account .account-block2 h2 {
@@ -111,14 +180,16 @@
 
 /* ACCOUNT FAVORITES */
 .account .account-block3 {
-    width: 100%;
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
-    margin: 1rem;
     display: flex;
     flex-direction: column;
-    width: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    width: 100%;
 }
 
 .account-block3 h3{
@@ -147,48 +218,19 @@
     margin-left: 1rem;
 }
 
-/* ACCOUNT SETTINGS */
-.account .account-block4 {
-    width: 100%;
-    border: solid 1px var(--color-primary-tint3);
-    background-color: var(--color-headerbackground);
-    border-radius: 1em;
-    margin-left: 1rem;
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    width: auto;
-}
-
-.account-block4 h4{
-    font-family: 'Prompt';
-    font-weight: 600;
-    font-size: 1.2em;
-    color: #fff;
-    margin-left: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 0;
-    align-items: flex-start;
-}
-
-.account-block4 p:nth-of-type(1), .account-block4 p:nth-of-type(2){
-    font-family: 'Prompt';
-    font-weight: 300;
-    font-size: 1em;
-    color: #fff;
-    margin-left: 1rem;
-}
 
 /* ACCOUNT ACTORS & CREW */
 .account .account-block5 {
-    width: 100%;
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
-    margin: 1rem;
+    margin-top: 3rem;
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 0.5rem;
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 75%;
 }
 
 
