@@ -1,1 +1,0 @@
-# ProjectTech24Team2
