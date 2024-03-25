@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Tech - Bezoeker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <%- include ('header.ejs') %>
+
+    <main>
+        <section>
+            <h2>Log bezoeker</h2>
+                <p> <% if (locals.bericht) { %>
+                    <%= locals.bericht %>
+                    <% } %>
+                
+                    <% if (locals.errors) { %> 
+                        <% for (let i=0; i<errors.length; i++) { %>
+                            <ul>
+                                <li><i><%= locals.errors[i].msg %></i> for <i><%= locals.errors[i].path %></i></li>
+                            </ul>
+                        <% } %>
+                    <% } %>
+                
+                
+                
+                </p>
+                <p>
+                <!-- https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms -->
+                <form action="/nieuwe-bezoeker" method="post" class="formLogBezoeker" enctype="multipart/form-data">
+                    <div>
+                        <label for="bezoeker_voornaam">Voornaam</label>
+                        <input
+                        id="bezoeker_voornaam"
+                        type="text"
+                        name="voornaam"
+                        value="" 
+                        onfocus="this.value=''"/>
+                    </div>
+
+                    <div>
+                        <label for="bezoeker_achternaam">Achternaam</label>
+                        <input
+                        id="bezoeker_achternaam"
+                        type="text"
+                        name="achternaam"
+                        value="" 
+                        onfocus="this.value=''"/>
+                    </div>
+
+                    <div>
+                        <label for="bezoeker_email">E-mail</label>
+                        <input
+                        id="bezoeker_email"
+                        type="text"
+                        name="email"
+                        value="" 
+                        onfocus="this.value=''"/>
+                    </div>
+                    
+                    <div>
+                        <label for="bezoeker_wachtwoord">Wachtwoord</label>
+                        <input
+                        id="bezoeker_wachtwoord"
+                        type="password"
+                        name="wachtwoord"
+                        value="" 
+                        onfocus="this.value=''"/>
+                    </div>
+
+                    <div>
+                        <label for="bezoeker_specialisatie">Specialisatie</label>
+                        <select name="specialisatie" id="bezoeker_specialisatie">
+                        <option value="vormgeving">Vormgeving</option>
+                        <option value="tech">Tech</option>
+                        <option value="ui/ux">UI/UX</option>
+                        <option value="generalist">Generalist</option>
+                        </select> 
+                    </div>
+
+                    <div><input type="file" name="avatar"></div>
+                
+                    <div>
+                        <input type="submit" value="Sla bezoeker op" />
+                    </div>
+                </form>
+            </p>
+        </section>
+
+    </main>
+
+    <%- include ('footer.ejs') %>
+    
+</body>
