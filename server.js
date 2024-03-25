@@ -7,6 +7,18 @@ const nodemailer = require('nodemailer');
 const { body, validationResult } = require('express-validator');
 const userValidationRules = require('./userValidationRules');
 const session = require('express-session');
+const {client} = require('./connect');
+
+const express = require('express');
+const multer = require('multer'); //dont use in production
+const port = process.env.PORT;
+const app = express();
+
+app.use(express.static(__dirname + '/public'))
+app.use(express.urlencoded({ extended: true, limit: '50mb'}))
+
+
+
 
 //load in the separate files
 const loginApp = require('./routes/loginApp');
@@ -15,33 +27,19 @@ const logoutApp = require('./routes/logoutApp');
 const homeApp = require('./routes/homeApp');
 const moveObjectApp = require('./routes/moveObjectApp');
 const preferencesApp = require('./routes/preferencesApp');
+const photoApp = require('./routes/photoApp');
 
-const express = require('express');
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
-const multer = require('multer'); //dont use in production
-const upload = multer({ dest: 'public/upload/' }) //bestanden eigenlijk naar een CDN 
 
-const app = express();
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;
-const port = process.env.PORT;
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
+
 
 app.use(session({
     secret: `${process.env.SESSIONKEY}`,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 
-app.use(express.static(__dirname + '/public'))
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json({ type: "*/*" }));
+
 
 app.set('view engine', 'ejs')
 
@@ -53,8 +51,10 @@ app.use(logoutApp);
 app.use(homeApp);
 app.use(moveObjectApp);
 app.use(preferencesApp);
+app.use(photoApp);
+
+
 
 app.listen(process.env.PORT, () => {
-    // console.log(`${process.env.PORT}`);
     console.log(`Movie Lounge API listening on port ${process.env.PORT}`)
 })

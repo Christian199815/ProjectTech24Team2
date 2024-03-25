@@ -1,7 +1,5 @@
 const express = require('express');
-const app = express();
 const session = require('express-session');
-const router = express.Router();
 
 const requireSession = (req, res, next) => {
     if (!req.session || !req.session.user) {
@@ -10,9 +8,5 @@ const requireSession = (req, res, next) => {
     next();
 };
 
-router.get('/finishPrefs', requireSession, (req, res) => {
-    res.render('pages/home', { views: req.session.views, username: req.session.user });
-})
 
-
-module.exports = router;
+module.exports = requireSession;
