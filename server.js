@@ -15,6 +15,7 @@ const logoutApp = require('./logoutApp');
 const homeApp = require('./homeApp');
 const moveObjectApp = require('./moveObjectApp');
 const tmdb = require('./tmdb');
+const profile = require('./profile')
 
 const express = require('express');
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
@@ -60,6 +61,7 @@ app.use(logoutApp);
 app.use(homeApp);
 app.use(moveObjectApp);
 app.use(tmdb);
+app.use(profile);
 
 app.listen(process.env.PORT, () => {
     // console.log(`${process.env.PORT}`);

@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="/trending">Terug</a>
 
 
     <h1>Details van Acteur</h1>
-    <h2><%= locals.person.name %></h2>
-    <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= locals.person.profile_path %>" width=300px alt="Image">
-    <p><%= locals.person.biography %></p>  
-    <p><%= locals.person.birthday %></p>
-    <p><%= locals.person.known_for_department %></p>
-    <p><%= locals.person.place_of_birth %></p>    
+    <h2><%= person.name %></h2>
+    <p><%= person.id %></p>
+    <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= person.profile_path %>" width=300px alt="Image">
+    <p><%= person.biography %></p>  
+    <p><%= person.birthday %></p>
+    <p><%= person.known_for_department %></p>
+    <p><%= person.place_of_birth %></p>    
 
-    <form action="/actors" method="PATCH">
-        <input type="submit" value="submit">
+    <form action="/likeActors" method="POST">
+        <input type="submit" value="I Like">
+        <input type="hidden" name="like_button" value="<%= person.id %>"> 
     </form>
+
+    <form action="/unlikeActors" method="POST">
+        <input type="submit" value="Unlike">
+        <input type="hidden" name="unlike_button" value="<%= person.id %>"> 
+    </form>
+      
 
     
 <script src="../public/js/tmdb.js"></script>

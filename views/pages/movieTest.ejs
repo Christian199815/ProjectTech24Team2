@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/trending">Terug</a>
+
+
+    <h1>Details van Film</h1>
+    <h2><%= movie.title %></h2>
+    <p><%= movie.tagline %></p>
+    <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>" width=300px alt="Image">
+    <p><%= movie.overview %></p>  
+    <p><%= movie.release_date %></p>
+    <p><%= movie.budget %></p>
+    <p><%= movie.vote_average %></p>  
+    <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= movie.backdrop_path %>" height="300px" alt="Image">
+    
+    
+    
+    <form action="/likeMovies" method="POST">
+        <input type="submit" value="I Like">
+        <input type="hidden" name="like_button" value="<%= movie.id %>"> 
+    </form>
+
+    <form action="/unlikeMovies" method="POST">
+        <input type="submit" value="Unlike">
+        <input type="hidden" name="unlike_button" value="<%= movie.id %>"> 
+    </form>
+
+    
+<script src="../public/js/tmdb.js"></script>
+
+
+
+</body>
+</html>
