@@ -1,0 +1,195 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    /* primary colors */
+    --color-primary-tint1: #101727;
+    --color-primary-tint2: #152037;
+    --color-primary-tint3: #A2BFFF;
+
+    /* secondary colors */
+    --color-secondary-tint1: #D6211F;
+
+    /* backgrounds colors */
+    --color-defaultbackground: #101727;
+    --color-secondarybackground: #152037;
+    --color-headerbackground: #1B2B4F;
+
+    /* font colors */
+    --color-headerfontcolor: #fff;
+
+    /* miscellaneous */
+    --color-devider: rgba(255, 255, 255, 0.33);
+}
+
+
+/* *************** */
+/* GENERAL STYLING */
+/* *************** */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-defaultbackground);
+}
+
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.devider {
+    height: 20px;
+    width: 2px;
+    border-radius: 5px;
+    background-color: var(--color-devider);
+}
+
+
+/* utility classes */
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+.contact-line {
+    display: block;
+}
+
+
+
+/* ****** */
+/* HEADER */
+/* ****** */
+
+header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-headerbackground);
+    align-items: center;
+    padding: 1em 4em;
+    border-bottom: solid 1px var(--color-primary-tint3);
+    z-index: 100;
+}
+
+/* left */
+header>p {
+    font-family: 'Prompt';
+    font-weight: 700;
+    font-size: 1em;
+    color: var(--color-headerfontcolor);
+    white-space: nowrap;
+}
+
+/* middle */
+header>nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50.8%);
+}
+
+header>nav ul {
+    display: flex;
+    align-items: center;
+}
+
+header>nav ul li:nth-of-type(1),
+header>nav ul li:nth-of-type(2) {
+    margin-right: 1.5em;
+}
+
+header>nav ul li:nth-of-type(4),
+header>nav ul li:nth-of-type(5) {
+    margin-left: 1.5em;
+}
+
+header>nav ul li a {
+    display: flex;
+    gap: .7em;
+}
+
+header>nav ul li a p {
+    font-family: 'Prompt';
+    font-weight: 500;
+    font-size: 1em;
+    color: var(--color-headerfontcolor);
+    white-space: nowrap;
+}
+
+header>nav ul li a img {
+    display: block;
+    width: 13px;
+    height: auto;
+}
+
+/* right */
+header>div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+header>div img {
+    display: block;
+}
+
+header>div a:nth-of-type(1) img,
+header>div a:nth-of-type(2) img {
+    height: 18px;
+    width: auto;
+}
+
+header>div a:nth-of-type(3) img {
+    height: 30px;
+    width: auto;
+}
+
+header>div input {
+    /* field */
+    background-color: var(--color-defaultbackground);
+    border: solid 1px var(--color-primary-tint3);
+    padding: .5em 1em;
+    border-radius: 2em;
+    outline: none;
+
+    /* placeholder */
+    padding-left: 35px;
+    background-image: url('/ProjectTech24Team2/images/header-search.svg');
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: var(--color-devider);
+}

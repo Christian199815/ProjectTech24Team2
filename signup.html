@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Lounge</title>
+
+    <link href="./public/css/general.css" rel="stylesheet">
+    <link href="./public/css/signup.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <p>Movie Lounge</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">
+                        <p>Movies</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>TV shows</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <div class="devider"></div>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Actors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Directors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#"><img src="images/header-notification.svg"></a>
+            <a href="#"><img src="images/header-favorite.svg"></a>
+            <a href="#"><img src="images/header-profile.png"></a>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+        </div>
+    </header>
+
+    <main>
+        <div class="signup-form">
+
+
+            <!-- ====== -->
+            <!-- STEP 1 -->
+            <!-- ====== -->
+
+            <div id="step-1" class="current-step">
+                <div class="signup-form-container">
+                    <h1>Sign up for your account</h1>
+                    <form action="#" method="post" enctype="text/plain">
+
+                        <input class="signup-google" type="submit" value="Sign in with Google">
+                        <input type="text" id="first-name" name="name" placeholder="First name" required>
+
+                        <input type="text" id="email" name="email" placeholder="E-mail adress or phone number" required>
+                        <input type="password" id="password" name="password" placeholder="password" required>
+                        <p class="">Please use at least: 8 characters, 1 capitalised letter, 1 lowercased letter, 1
+                            number and 1 symbol.</p>
+
+                        <div class="birthdate">
+                            <input type="text" id="day" name="day" maxlength="2" size="2" placeholder="dd">
+                            <input type="text" id="month" name="month" maxlength="2" size="2" placeholder="mm">
+                            <input type="text" id="year" name="year" maxlength="4" size="4" placeholder="yyyy">
+                        </div>
+
+                        <input class="signup-account" type="submit" value="Next" onclick="nextStep()">
+                        <div class="line-regular"></div>
+
+                        <div class="placement-signin">
+                            <p>Already have an account</p>
+                            <a href="#">Sign in</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- ====== -->
+            <!-- STEP 2 -->
+            <!-- ====== -->
+
+            <div id="step-2" class="hidden">
+                <div class="signup-form-container">
+                    <div class="line">
+                        <div class="line-progress"></div>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                    </div>
+                    <div class="back-skip">
+                        <a href="#" onclick="prevStep()">
+                            <img src="images/header-arrow.svg">
+                            <p>Go back</p>
+                        </a>
+                        <a href="#" onclick="nextStep()">
+                            <p>Skip step</p>
+                            <img src="images/header-arrow.svg">
+                        </a>
+                    </div>
+                    <h1>Select genres you like</h1>
+                    <ul>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/horror.svg">
+                                    <img src="images/horror-selected.svg" class="hidden">
+                                </div>
+                                <p>Horror</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/comedy.svg">
+                                    <img src="images/comedy-selected.svg" class="hidden">
+                                </div>
+                                <p>Comedy</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/action.svg">
+                                    <img src="images/action-selected.svg" class="hidden">
+                                </div>
+                                <p>Action</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/sci-fi.svg">
+                                    <img src="images/sci-fi-selected.svg" class="hidden">
+                                </div>
+                                <p>Sci-fi</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/romance.svg">
+                                    <img src="images/romance-selected.svg" class="hidden">
+                                </div>
+                                <p>Romance</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/detective.svg">
+                                    <img src="images/detective-selected.svg" class="hidden">
+                                </div>
+                                <p>Detective</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/horror.svg">
+                                    <img src="images/horror-selected.svg" class="hidden">
+                                </div>
+                                <p>Horror</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/comedy.svg">
+                                    <img src="images/comedy-selected.svg" class="hidden">
+                                </div>
+                                <p>Comedy</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/action.svg">
+                                    <img src="images/action-selected.svg" class="hidden">
+                                </div>
+                                <p>Action</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/sci-fi.svg">
+                                    <img src="images/sci-fi-selected.svg" class="hidden">
+                                </div>
+                                <p>Sci-fi</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/romance.svg">
+                                    <img src="images/romance-selected.svg" class="hidden">
+                                </div>
+                                <p>Romance</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/detective.svg">
+                                    <img src="images/detective-selected.svg" class="hidden">
+                                </div>
+                                <p>Detective</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="next-button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+
+            <!-- ====== -->
+            <!-- STEP 3 -->
+            <!-- ====== -->
+
+            <div id="step-3" class="hidden">
+                <div class="signup-form-container">
+                    <h1>Sign in to your account</h1>
+                    <form action="#" method="post" enctype="text/plain">
+                        <input type="text" id="name" name="name" placeholder="E-mail adress or phone number" required>
+                        <input type="text" id="email" name="email" placeholder="Password" required>
+                        <div class="remember-forgot">
+                            <label for="remember-me">
+                                <input type="checkbox" id="remember-me" name="remember"> Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+
+                        <input class="signup-button" type="submit" value="Submit">
+                        <input class="signup-google" type="submit" value="Sign in with Google">
+                        <div class="sign-up">
+                            <a href="#">Not a member yet?</a>
+                            <a href="#">Sign up</a>
+                        </div>
+                    </form>
+                    <button class="next-button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="./public/js/general.js"></script>
+    <script src="./public/js/signup.js"></script>
+</body>
+
+</html>

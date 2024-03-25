@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="signUp-view">
+        <h2>Account Sign up</h2>
+
+        <% if (errors.length > 0) { %>
+            <div>
+              <p>Error(s):</p>
+              <ul>
+                <% errors.forEach(error => { %>
+                  <% Object.values(error).forEach(msg => { %>
+                    <li><%= msg %></li>
+                  <% }) %>
+                <% }) %>
+              </ul>s
+            </div>
+          <% } %>
+        <form id="sign-up-form" action="/signup" method="POST">
+            <label for="username">Choose a username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">Your e-mail adress:</label>
+            <input type="text" id="email" name="email" required> 
+
+            <label for="password">Choose a password</label>
+            <input type="password" id="password" name="password"  required>
+
+            <input type="submit" value="Make Account">
+        </form>
+    </div>
+
+    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+     
+</body>
+</html>
