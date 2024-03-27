@@ -28,6 +28,23 @@
         <% }); %>
     </ul>
 
+
+    <h2>Liked Series</h2>
+    <ul>
+        <% likedSeries.forEach(function(serie) { %>
+            <% if (serie) { %>
+                <li>
+                    <div>
+                        <h3><%= serie.name %></h3>
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>" width=100px alt="Image">
+                        <a href="/serieTest?id=<%= serie.id %>">Bekijk details</a>
+                    </div>
+                </li>
+            <% } %>
+        <% }); %>
+    </ul>
+
+
     <h2>Liked Actors</h2>
 
     <ul>

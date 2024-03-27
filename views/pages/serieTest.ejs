@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/trending">Terug</a>
+
+    <h1><%= serie.name %></h1>
+    <h2><%= serie.tagline %></h2>
+    <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>" width=300px alt="Image">
+    <p>Overview: <%= serie.overview %></p> 
+    <p>Genre: 
+        <% serie.genres.forEach(function(genre) { %>
+            <%= genre.name %>
+            <% if (genre !== serie.genres[serie.genres.length - 1]) { %>, <% } %>
+        <% }); %>
+    </p>
+    <p>Stream on: 
+        <% serie.networks.forEach(function(network) { %>
+            <%= network.name %>
+            <% if (network !== serie.networks[serie.networks.length - 1]) { %>, <% } %>
+        <% }); %>
+    </p>
+    <p>Grade: <%= serie.vote_average.toFixed(1) %></p>
+    <p>Air date: <%= serie.first_air_date %></p>
+    <p>Seasons: <%= serie.number_of_seasons %></p> 
+    <p>Episodes: <%= serie.number_of_episodes %></p>
+
+    <p>Production: 
+        <% serie.production_companies.forEach(function(production_companies) { %>
+            <%= production_companies.name %>
+            <% if (production_companies !== serie.production_companies[serie.production_companies.length - 1]) { %>, <% } %>
+        <% }); %>
+    </p>
+ 
+    <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= serie.backdrop_path %>" height="300px" alt="Image">
+    
+    <form action="/likeSeries" method="POST">
+        <input type="submit" value="I Like">
+        <input type="hidden" name="like_button" value="<%= serie.id %>"> 
+    </form>
+
+    <form action="/unlikeSeries" method="POST">
+        <input type="submit" value="Unlike">
+        <input type="hidden" name="unlike_button" value="<%= serie.id %>"> 
+    </form>
+    
+<script src="../public/js/tmdb.js"></script>
+
+
+
+</body>
+</html>

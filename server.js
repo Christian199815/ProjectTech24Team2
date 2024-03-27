@@ -28,6 +28,8 @@ const homeApp = require('./routes/homeApp');
 const moveObjectApp = require('./routes/moveObjectApp');
 const preferencesApp = require('./routes/preferencesApp');
 const photoApp = require('./routes/photoApp');
+const tmdb = require('./tmdb');
+const profile = require('./profile')
 
 
 
@@ -52,6 +54,8 @@ app.use(homeApp);
 app.use(moveObjectApp);
 app.use(preferencesApp);
 app.use(photoApp);
+app.use(tmdb);
+app.use(profile);
 
 
 

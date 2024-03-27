@@ -10,19 +10,26 @@
 
 <body>
 
-  <h1>Trending Actors</h1>
 
-    <ul>
-        <% actorsData.forEach(function(actor) { %>
-          <li>
-            <% if (actor.profilePath) { %>
-              <img src="<%= actor.profilePath %>" alt="<%= actor.name %>" width="100px">
-            <% } %>
-            <span><%= actor.name %></span>
-            <a href="/actors?id=<%= actor.id %>">Bekijk details</a>
-          </li>
-        <% }); %>
-      </ul>
+  <form action="/search" method="GET">
+    <input type="text" name="searchText"> 
+    <input type="submit" value="SEARCH">
+</form>
+
+  <h1>Trending Series</h1>
+      
+  <ul>
+    <% seriesData.forEach(function(serie) { %>
+      <li>
+        <% if (serie.posterPath) { %>
+          <img src="<%= serie.posterPath %>" alt="<%= serie.name %>" width="100px">
+        <% } %>
+        <span><%= serie.name %></span>
+        <br>
+        <a href="/serieTest?id=<%= serie.id %>">Bekijk details</a>
+      </li>
+    <% }); %>
+  </ul>
       
       <h1>Trending movies</h1>
       
@@ -33,11 +40,28 @@
               <img src="<%= movie.posterPath %>" alt="<%= movie.title %>" width="100px">
             <% } %>
             <span><%= movie.title %></span>
-            <span><%= movie.release %></span>
+            <br>
             <a href="/movieTest?id=<%= movie.id %>">Bekijk details</a>
           </li>
         <% }); %>
       </ul>
+
+
+  <h1>Trending Actors</h1>
+
+  <ul>
+      <% actorsData.forEach(function(actor) { %>
+        <li>
+          <% if (actor.profilePath) { %>
+            <img src="<%= actor.profilePath %>" alt="<%= actor.name %>" width="100px">
+          <% } %>
+          <span><%= actor.name %></span>
+          <br>
+          <a href="/actors?id=<%= actor.id %>">Bekijk details</a>
+        </li>
+      <% }); %>
+    </ul>
+
 
 
 

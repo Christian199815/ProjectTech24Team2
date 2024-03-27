@@ -9,15 +9,19 @@
 <body>
     <a href="/trending">Terug</a>
 
-
-    <h1>Details van Film</h1>
-    <h2><%= movie.title %></h2>
+    <h1><%= movie.title %></h1>
     <p><%= movie.tagline %></p>
     <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>" width=300px alt="Image">
     <p><%= movie.overview %></p>  
-    <p><%= movie.release_date %></p>
-    <p><%= movie.budget %></p>
-    <p><%= movie.vote_average %></p>  
+    <p>Genre: 
+        <% movie.genres.forEach(function(genre) { %>
+            <%= genre.name %>
+            <% if (genre !== movie.genres[movie.genres.length - 1]) { %>, <% } %>
+        <% }); %>
+    </p>
+    <p>Release date: <%= movie.release_date %></p>
+    <p>Budget: <%= movie.budget %></p>
+    <p>Grade: <%= movie.vote_average.toFixed(1) %></p>  
     <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= movie.backdrop_path %>" height="300px" alt="Image">
     
     
