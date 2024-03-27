@@ -1,137 +1,211 @@
+/* *************** */
+/* MAIN ACCOUNT */
+/* *************** */
+
 .account {
     margin: 0;
 }
 
 
 
-.block1-4{
+/* *************** */
+/* BLOCK TOGETHER PLACEMENT */
+/* *************** */
+
+.account .block1-4,
+.block2-5 {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
 
-.block2-5{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-}
 
-.block2-3-placement{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-right: 5rem;
-}
+/* *************** */
+/* BLOCK 1 & 4 */
+/* *************** */
 
 
-/* ACCOUNT PERSONAL */
+/* BLOCK 1 */
 .account .account-block1 {
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
-    margin: 3rem;
+
     display: flex;
     flex-direction: column;
-    width: 100%;
+
+    margin: 3rem;
+    width: 75%;
 }
 
-/* H1 */
-.account-block1 h1 {
-    font-family: 'Prompt';
-    font-weight: 600;
-    font-size: 1.2em;
-    color: #fff;
-    margin-left: 1rem;
-    margin-top: 1rem;
-    align-items: flex-start;
-}
-
-
-.account-block1 .my-account {
+.account .account-block1 .my-account {
     display: flex;
     flex-direction: row;
     margin: 1rem;
 }
 
-/* Img */
-.account-block1 .my-account img{
+
+.account .account-block1 h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #fff;
+    align-items: flex-start;
+
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+}
+
+/* PROFILE PICTURE */
+.account .account-block1 .my-account img {
     margin-right: 1rem;
-    width: 200px;
+
+    width: 250px;
     height: 250px;
 }
 
-.account-block1 .my-account .information-account {
+.account .account-block1 .my-account .information-account {
     display: flex;
     flex-direction: column;
 }
 
-/* p styling */
-.information-account p:nth-of-type(1),
+/* INFORMATION ACCOUNT  */
 .information-account p:nth-of-type(3),
-.information-account p:nth-of-type(5) {
-    font-family: 'Prompt';
-    font-weight: 600;
-    font-size: 1em;
-    color: #fff;
-    margin-left: 0.5rem;
-}
+.information-account p:nth-of-type(5){
+        font-family: 'Prompt';
+        font-weight: 600;
+        font-size: 0.8em;
+        color: #fff;
+        background-color: var(--color-secondary-tint1);
+        padding: 0.3rem;
+        border-radius: 3rem;
+        text-align: center;
+        width: 98%;
+    
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.2rem;
+        margin-top: 0.5rem;
+    }
 
-/* p styling */
 .information-account p:nth-of-type(2),
 .information-account p:nth-of-type(4) {
     font-family: 'Prompt';
     font-weight: 300;
-    font-size: 1em;
+    font-size: 1.1em;
     color: #fff;
     margin-left: 0.5rem;
     margin-bottom: 1rem;
 }
 
-/* p styling */
+
 .information-account p:nth-of-type(6) {
     font-family: 'Prompt';
     font-weight: 600;
-    font-size: 0.8em;
+    font-size: 1em;
     color: var(--color-devider);
     margin-left: 0.5rem;
     margin-bottom: 0.2rem;
 }
+
+.account .account-block1 p:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: var(--color-secondary-tint1);
+    padding: 0.3rem;
+    border-radius: 3rem;
+    text-align: center;
+    width: 98%;
+
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+}
+
+
+/* =========================================== */
+/* -----------------MOBILE BLOCK1 ------------------- */
+/* =========================================== */
+@media (max-width: 600px){
+
+    .account .block1-4,
+.block2-5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5%;
+  width: auto;
+}
+    .account .account-block1 {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 
 /* ACCOUNT SETTINGS */
 .account .account-block4 {
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
+
+
     margin-top: 3rem;
     margin-right: 3rem;
     margin-bottom: 3rem;
     margin-left: 0.5rem;
+    
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 25%;}
+
+/* =========================================== */
+/* -----------------MOBILE BLOCK1 ------------------- */
+/* =========================================== */
+@media (max-width: 600px){
+    .account .account-block4{
+        width: 100%;
+        margin: 1rem;
+    }
 }
 
-/* kopje styling */
-.account-block4 h4{
+.account-block4 h4 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1.2em;
     color: #fff;
+
     margin-left: 1rem;
     margin-top: 1rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     align-items: flex-start;
 }
 
 /* p styling */
-.account-block4 p:nth-of-type(1), .account-block4 p:nth-of-type(2){
+.account-block4 p:nth-of-type(1),
+.account-block4 p:nth-of-type(2) {
     font-family: 'Prompt';
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1em;
     color: #fff;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
+
+
+
+
+.block2-3-placement {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 5rem;
+}
+
 
 
 
@@ -158,15 +232,15 @@
     align-items: flex-start;
 }
 
-.account-block2 .movies-list-row{
+.account-block2 .movies-list-row {
     display: flex;
     flex-direction: row;
     margin: 1rem;
     overflow: hidden;
 }
 
-.account-block2 a:nth-of-type(1){
-    background-color:red;
+.account-block2 a:nth-of-type(1) {
+    background-color: red;
     color: white;
     width: 5rem;
     border-radius: 0.9rem;
@@ -192,7 +266,7 @@
     width: 100%;
 }
 
-.account-block3 h3{
+.account-block3 h3 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1.2em;
@@ -202,7 +276,7 @@
     align-items: flex-start;
 }
 
-.movies-block3 p{
+.movies-block3 p {
     font-family: 'Prompt';
     font-weight: 300;
     font-size: 1em;
@@ -210,7 +284,7 @@
     margin-left: 1rem;
 }
 
-.actor-crew-block3 p{
+.actor-crew-block3 p {
     font-family: 'Prompt';
     font-weight: 300;
     font-size: 1em;
@@ -239,8 +313,10 @@
     width: 45%;
     height: 2px;
     margin: 1rem;
- }
+}
 
- .personal-infromation{
+.personal-infromation {
     align-items: flex-start;
- }
+}
+
+
