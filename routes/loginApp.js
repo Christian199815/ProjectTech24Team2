@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
         req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000;
         console.log('long cookie');
     } else {
-        req.session.cookie.maxAge = 60 * 1000;
+        req.session.cookie.maxAge =  30 * 60 * 1000;
         console.log('short cookie');
 
     }

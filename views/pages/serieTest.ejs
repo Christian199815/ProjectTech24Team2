@@ -20,20 +20,25 @@
         <% }); %>
     </p>
     <p>Stream on: 
-        <% serie.networks.forEach(function(network) { %>
-            <%= network.name %>
-            <% if (network !== serie.networks[serie.networks.length - 1]) { %>, <% } %>
+        <% serie.networks.forEach(function(network, index) { %>
+            <% if (network.logo_path) { %>
+                <img src="https://image.tmdb.org/t/p/h60<%= network.logo_path %>" height="30px" alt="Image">
+            <% } %>
+            <% if (index !== serie.networks.length - 1) { %>, <% } %>
         <% }); %>
     </p>
+    
     <p>Grade: <%= serie.vote_average.toFixed(1) %></p>
     <p>Air date: <%= serie.first_air_date %></p>
     <p>Seasons: <%= serie.number_of_seasons %></p> 
     <p>Episodes: <%= serie.number_of_episodes %></p>
 
     <p>Production: 
-        <% serie.production_companies.forEach(function(production_companies) { %>
-            <%= production_companies.name %>
-            <% if (production_companies !== serie.production_companies[serie.production_companies.length - 1]) { %>, <% } %>
+        <% serie.production_companies.forEach(function(production_company) { %>
+            <% if (production_company.logo_path) { %>
+                <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" height="30px" alt="Image">
+            <% } %>
+            <% if (production_company !== serie.production_companies[serie.production_companies.length - 1]) { %>, <% } %>
         <% }); %>
     </p>
  
