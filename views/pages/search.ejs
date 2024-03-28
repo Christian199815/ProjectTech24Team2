@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/trending">Terug</a>
+
+    <form action="/search" method="GET">
+        <input type="text" name="searchText"> 
+        <input type="submit" value="SEARCH">
+    </form>
+
+<h1> ZOEKRESULTATEN </h1>
+
+<% searchResult.results.forEach(function(result) { %>
+    <div>
+        <% if (result.media_type === 'movie') { %>
+            <h2><a href="/movieTest?id=<%= result.id %>"><%= result.title %></a></h2>
+        <% } else if (result.media_type === 'tv') { %>
+            <h2><a href="/serieTest?id=<%= result.id %>"><%= result.name %></a></h2>
+        <% } else if (result.media_type === 'person') { %>
+            <h2><a href="/actors?id=<%= result.id %>"><%= result.name %></a></h2>
+        <% } %>
+        <img src="https://image.tmdb.org/t/p/w200<%= result.poster_path || result.profile_path %>" alt="Image" height="150px">
+        <p><%= result.overview %></p>
+        <hr>
+    </div>
+<% }); %>
+    
+<script src="../public/js/tmdb.js"></script>
+
+
+
+</body>
+</html>
