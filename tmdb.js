@@ -1,30 +1,13 @@
 require('dotenv').config()
 
 const express = require('express')
-const app = express();
+const router = express.Router();
 const session = require('express-session');
-app.use(express.json());
 
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
-
-
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;
-
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+const {client} = require('./connect');
+const requireSession = require('./reqSession');
 
 
-const requireSession = (req, res, next) => {
-  if (!req.session || !req.session.user) {
-    return res.redirect('/login'); // Redirect to login page if session doesn't exist
-  }
-  next();
-};
 
 const options = {
   method: 'GET',
@@ -35,7 +18,7 @@ const options = {
 };
 
 
-app.post('/likeActors', requireSession, async (req, res) => {
+router.post('/likeActors', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user });
@@ -55,7 +38,7 @@ app.post('/likeActors', requireSession, async (req, res) => {
   }
 });
 
-app.post('/unlikeActors', requireSession, async (req, res) => {
+router.post('/unlikeActors', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user });
@@ -76,7 +59,7 @@ app.post('/unlikeActors', requireSession, async (req, res) => {
 });
 
 
-app.post('/likeMovies', requireSession, async (req, res) => {
+router.post('/likeMovies', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user });
@@ -97,7 +80,7 @@ app.post('/likeMovies', requireSession, async (req, res) => {
 });
 
 
-app.get('/actors', requireSession, async (req, res) => {
+router.get('/actors', requireSession, async (req, res) => {
   let actorID = req.query.id;
   const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
   const person = await result.json();
@@ -106,7 +89,7 @@ app.get('/actors', requireSession, async (req, res) => {
 });
 
 
-app.get('/movieTest', requireSession, async (req, res) => {
+router.get('/movieTest', requireSession, async (req, res) => {
   let movieID = req.query.id;
   const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
   const movie = await result.json();
@@ -114,7 +97,7 @@ app.get('/movieTest', requireSession, async (req, res) => {
 });
 
 
-app.get('/trending', async (req, res) => {
+router.get('/trending', async (req, res) => {
   const result = await fetch(`https://api.themoviedb.org/3/trending/person/day`, options);
   const trendingPersons = await result.json();
   const actorsData = trendingPersons.results.map(actor => ({
@@ -136,4 +119,4 @@ app.get('/trending', async (req, res) => {
 });
 
 
-module.exports = app;
+module.exports = router;
