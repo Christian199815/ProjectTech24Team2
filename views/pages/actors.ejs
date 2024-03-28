@@ -25,7 +25,6 @@
     <p>Birthday: <%= person.birthday %></p>
     <p>Born: <%= person.place_of_birth %></p>  
 
-
     <form action="/likeActors" method="POST">
         <input type="submit" value="I Like">
         <input type="hidden" name="like_button" value="<%= person.id %>"> 

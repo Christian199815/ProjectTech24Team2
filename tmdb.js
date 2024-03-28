@@ -128,7 +128,6 @@ app.post('/unlikeMovies', requireSession, async (req, res) => {
 });
 
 
-
 app.post('/likeSeries', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
@@ -218,11 +217,6 @@ app.get('/search', requireSession, async (req, res) => {
   
   res.render('pages/search', { searchResult });
 });
-
-
-
-
-
 
 
 module.exports = app;

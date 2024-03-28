@@ -52,6 +52,7 @@ app.get('/profile-test', requireSession, async (req, res) => {
       return result.json();
     }));
 
+
     const fetchedSeries = await Promise.all(user.likedSeries.map(async (serieID) => {
       const result = await fetch(`https://api.themoviedb.org/3/tv/${serieID}`, options);
       return result.json();
@@ -62,6 +63,7 @@ app.get('/profile-test', requireSession, async (req, res) => {
       likedActors: fetchedActors, 
       likedMovies: fetchedMovies, 
       likedSeries: fetchedSeries
+
     });
   } catch (error) {
     console.error('Er is een fout opgetreden bij het ophalen van gegevens:', error);

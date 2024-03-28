@@ -50,10 +50,10 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
         isAdult: age >= 18 ? true : false,
         likedActors: [null],
         likedMovies: [null],
-        likedDirectors: [null],
+        likedSeries: [null],
     }
 
-    // Insert the defined document into the "haiku" collection
+    
     const result = await users.insertOne(newUser);
     // Print the ID of the inserted document
     console.log(`A document was inserted with the _id: ${result.insertedId}`);
