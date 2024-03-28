@@ -132,9 +132,9 @@
 /* =========================================== */
 @media (max-width: 890px) {
 
-    .account .account-block1{
-      margin-top: 3rem;
-      margin-bottom: 1rem;
+    .account .account-block1 {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
     }
 
     .account .block1-4,
@@ -249,7 +249,7 @@
 /* -----------------BLOCK 2, 3 & 5 ------------------- */
 /* =========================================== */
 
-.block2-5{
+.block2-5 {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -265,7 +265,7 @@
 
 
 /* ACCOUNT MOVIE LIST */
-.account .account-block2 , 
+.account .account-block2,
 .account .account-block3 {
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
@@ -280,20 +280,73 @@
     width: 100%;
 }
 
-.account .account-block5{
+/* ACCOUNT BLOCK 5 */
+.account .account-block5 {
     border: solid 1px var(--color-primary-tint3);
-    background-color: var(--color-secondary-tint1);
+    background-color: var(--color-headerbackground);
     border-radius: 1em;
 
     margin-top: 0rem;
     margin-right: 1rem;
     margin-bottom: 3rem;
-
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    width: 25%;
+    align-items: center;
+}
+
+.account .account-block5 .friends-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.account .account-block5 .friends-list .friends {
+    display: flex;
+    flex-direction: row;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-primary-tint2);
+    border-radius: 1em;
+    margin: 0 0.5rem 0.5rem;
+
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    place-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.friends p:nth-of-type(1) {
+    color: #fff;
+    font-family: 'Prompt';
+    font-weight: 200;
+    font-size: 1.2em;
+    margin: 1rem 1rem 0.5rem 1.5rem;
+
+}
+
+.friends p:nth-of-type(2) {
+    color: #fff;
+    font-family: 'Prompt';
+    font-weight: 100;
+    font-size: 1em;
+    margin: 0.75rem 1rem 0 1.5rem;
+}
+
+
+
+.account .account-block5 h5 {
+    color: #fff;
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.2em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.account .account-block5 img {
+    height: 200px;
+    width: 100px;
 }
 
 .account .account-block2 h2 {
@@ -306,22 +359,24 @@
     align-items: flex-start;
 }
 
-.account .account-block2 .movies-block2{
+.account .account-block2 .movies-block2 {
     width: 100%;
 
 }
+
 .account-block2 .movies-list-row {
     display: flex;
     flex-direction: row;
     margin: 1rem;
-;}
+    ;
+}
 
-.account .account-block2 .movies-list-row img{
+.account .account-block2 .movies-list-row img {
     width: 100%;
-    max-width: 100px;
-    max-height: 100px;
     margin-right: 1rem;
 }
+
+/* ----------------- LINK STYLING ------------------- */
 
 .account-block2 a:nth-of-type(1) {
     background-color: red;
@@ -336,11 +391,19 @@
     margin-bottom: 1rem;
 }
 
+
+
+
+/* =========================================== */
+/* ----------------- BLOCK 3 ------------------- */
+/* =========================================== */
 .account-block3 h3 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1.2em;
     color: #fff;
+    margin-top: 1rem;
+    margin-left: 1rem;
     align-items: flex-start;
 }
 
@@ -349,6 +412,10 @@
     font-weight: 300;
     font-size: 1em;
     color: #fff;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    align-items: flex-start;
+
 }
 
 .actor-crew-block3 p {
@@ -356,4 +423,7 @@
     font-weight: 300;
     font-size: 1em;
     color: #fff;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    align-items: flex-start;
 }
