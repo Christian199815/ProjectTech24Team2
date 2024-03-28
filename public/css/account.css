@@ -1,24 +1,136 @@
 .top-block {
     display: flex;
     justify-content: space-between;
-    background-color: red;
     gap: 2rem;
     margin: 3rem 4rem;
 }
 
 .account-block {
-    background-color: green;
-    width: 75%;
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+}
+
+
+.account-block .my-account{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.account-block>div{
+    margin: 2rem;
+}
+
+.account-block>div h1{
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.account-block .information-account p:nth-of-type(1),
+.account-block .information-account p:nth-of-type(3),
+.account-block .information-account p:nth-of-type(5){
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: var(--color-secondary-tint1);
+    padding: 0.5rem;
+    border-radius: 3rem;
+    text-align: center;
+    width: 10rem;
+}
+
+.account-block .information-account p:nth-of-type(2),
+.account-block .information-account p:nth-of-type(4){
+    font-family: 'Prompt';
+    font-weight: 200;
+    font-size: 1 rem;
+    color: #fff;
+    padding: 0.7rem;
+    border-radius: 3rem;
+    text-align: center;
+    width: 10rem;
+}
+
+.account-block .information-account p:nth-of-type(6){
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0.7rem;
+    color: var(--color-devider);
+}
+
+.account-block>div p:nth-of-type(1){
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: var(--color-secondary-tint1);
+    padding: 0.3rem;
+    border-radius: 3rem;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .settings-block {
-    background-color: blue;
-    width: 20rem;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-secondary-tint1);
+    border-radius: 1em;
+    width: 55rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
+
+.settings-block>div{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.settings-block>div h2{
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.settings-block .personal-information{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.settings-block .personal-information p{
+    font-family: 'Prompt';
+    font-weight: 400;
+    padding: 0.4rem;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.settings-block .line-progress {
+    background-color: var(--color-devider);
+    height: 1px;
+    color: #fff;
+    width: 100%;
+    margin: 0.4rem 0rem;
+    
+}
+
 
 .bottom-block {
     display: flex;
-    background-color: red;
+    justify-content: space-between;
     gap: 2rem;
     margin: 3rem 4rem;
 }
@@ -26,14 +138,31 @@
 .bottom-left {
     display: flex;
     flex-direction: column;
-    background-color: green;
     gap: 2em;
-    width: 75%;
+    width: 100%;
+}
+
+.movie-list-block{
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+}
+
+.favorites-block{
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+}
+
+.bottom-left .movie-list-block>div{
+    margin: 2rem;
 }
 
 .friends-block {
-    background-color: blue;
-    width: 20rem;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+    width: 55rem;
 }
 
 
