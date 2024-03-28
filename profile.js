@@ -1,11 +1,30 @@
 require('dotenv').config()
 
 const express = require('express')
-const router = express.Router();
+const app = express();
 const session = require('express-session');
-const {client} = require('./connect');
-const requireSession = require('./reqSession');
+app.use(express.json());
 
+const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
+
+
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;
+
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+
+const requireSession = (req, res, next) => {
+  if (!req.session || !req.session.user) {
+    return res.redirect('/login'); // Redirect to login page if session doesn't exist
+  }
+  next();
+};
 
 
 
@@ -17,7 +36,7 @@ const options = {
   }
 };
 
-router.get('/profile-test', requireSession, async (req, res) => {
+app.get('/profile-test', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user });
@@ -55,4 +74,4 @@ router.get('/profile-test', requireSession, async (req, res) => {
 
   
   
-  module.exports = router;
+  module.exports = app;

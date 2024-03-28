@@ -29,7 +29,8 @@ const moveObjectApp = require('./routes/moveObjectApp');
 const preferencesApp = require('./routes/preferencesApp');
 const photoApp = require('./routes/photoApp');
 const tmdb = require('./tmdb');
-const profile = require('./profile');
+const profile = require('./profile')
+
 
 
 
