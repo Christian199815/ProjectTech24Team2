@@ -517,7 +517,7 @@
 
 .wrapper {
     position: relative;
-    width: 80%;
+    width: 70%;
     height: 70px;
 }
 
@@ -537,12 +537,22 @@
     color: #fff;
 }
 
-.container .minimum-value {
-    left: -2em;
+.min1,
+.min2,
+.min3 {
+    left: -5.4em;
 }
 
-.container .maximum-value {
-    right: -3em;
+.max1 {
+    right: -5em;
+}
+
+.max2 {
+    right: -5em;
+}
+
+.max3 {
+    right: -5em;
 }
 
 input[type="range"] {

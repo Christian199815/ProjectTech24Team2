@@ -61,25 +61,64 @@ document.getElementById("year").addEventListener("input", function () {
 
 
 
+
+
+
+
+
+
+
 // -------------------------------------
 // -------------- slider ---------------
 // -------------------------------------
 window.onload = function () {
   slideOne();
   slideTwo();
-  slideThree()
+  slideThree();
   slideFour();
-  slideFive()
+  slideFive();
   slideSix();
   setInitialPositions();
+  setDynamicValueIndicator();
 };
+
+// Define the function to set the dynamic value indicator
+function setDynamicValueIndicator() {
+  const slider5 = document.getElementById("slider-5");
+  const valueSpan5 = document.getElementById("range5");
+
+  slider5.addEventListener("input", function() {
+    const value = parseInt(this.value);
+    valueSpan5.textContent = value + " seasons";
+  });
+
+  const slider6 = document.getElementById("slider-6");
+  const valueSpan6 = document.getElementById("range6");
+
+  slider6.addEventListener("input", function() {
+    const value = parseInt(this.value);
+    valueSpan6.textContent = value + " seasons";
+  });
+
+  // Set initial values for the indicators
+  const initialValue5 = parseInt(slider5.value);
+  valueSpan5.textContent = initialValue5 + " seasons";
+
+  const initialValue6 = parseInt(slider6.value);
+  valueSpan6.textContent = initialValue6 + " seasons";
+}
+
+// Call the function to set the dynamic value indicators
+setDynamicValueIndicator();
+
+
 
 
 function setInitialPositions() {
-  document.getElementById("value1").style.left = "31%";
-  document.getElementById("value2").style.left = "69%";
-  document.getElementById("value3").style.left = "31%";
-  document.getElementById("value4").style.left = "69%";
+  document.getElementById("value1").style.left = "26%";
+  document.getElementById("value2").style.left = "74%";
+  document.getElementById("value3").style.left = "26%";
+  document.getElementById("value4").style.left = "50%";
   document.getElementById("value5").style.left = "31%";
   document.getElementById("value6").style.left = "69%";
 }
@@ -147,7 +186,7 @@ function slideOne() {
   const availableWidth = containerWidth * rangePercentage; // Calculate available width
   const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
   
-  displayValOne.textContent = value;
+  displayValOne.textContent = convertToTime(value); // Update display with time value
   displayValOne.parentElement.style.left = thumbOffset + 'px';
   fillColor();
 }
@@ -167,7 +206,7 @@ function slideTwo() {
   const availableWidth = containerWidth * rangePercentage; // Calculate available width
   const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
   
-  displayValTwo.textContent = value;
+  displayValTwo.textContent = convertToTime(value); // Update display with time value
   displayValTwo.parentElement.style.left = thumbOffset + 'px';
   fillColor();
 }
@@ -187,7 +226,7 @@ function slideThree() {
   const availableWidth = containerWidth * rangePercentage; // Calculate available width
   const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
   
-  displayValThree.textContent = value;
+  displayValThree.textContent = convertToTime(value); // Update display with time value
   displayValThree.parentElement.style.left = thumbOffset + 'px';
   fillColorTwo();
 }
@@ -207,7 +246,7 @@ function slideFour() {
   const availableWidth = containerWidth * rangePercentage; // Calculate available width
   const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
   
-  displayValFour.textContent = value;
+  displayValFour.textContent = convertToTime(value); // Update display with time value
   displayValFour.parentElement.style.left = thumbOffset + 'px';
   fillColorTwo();
 }
@@ -227,7 +266,7 @@ function slideFive() {
   const availableWidth = containerWidth * rangePercentage; // Calculate available width
   const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
   
-  displayValFive.textContent = value;
+  displayValFive.textContent = convertToTime(value); // Update display with time value
   displayValFive.parentElement.style.left = thumbOffset + 'px';
   fillColorThree();
 }
@@ -247,7 +286,7 @@ function slideSix() {
   const availableWidth = containerWidth * rangePercentage; // Calculate available width
   const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
   
-  displayValSix.textContent = value;
+  displayValSix.textContent = convertToTime(value); // Update display with time value
   displayValSix.parentElement.style.left = thumbOffset + 'px';
   fillColorThree();
 }
@@ -269,3 +308,55 @@ function fillColorThree() {
   const percent4 = (sliderSix.value / sliderMaxValueThree) * 100;
   sliderTrackThree.style.background = `linear-gradient(to right, #A2BFFF ${percent3}% , #D6211F ${percent3}% , #D6211F ${percent4}%, #A2BFFF ${percent4}%)`;
 }
+
+function convertToTime(value) {
+  // Convert value to hours and minutes
+  const hours = Math.floor(value / 60);
+  const minutes = value % 60;
+
+  // Format the time display
+  let formattedTime = '';
+  if (hours > 0) {
+    formattedTime += hours + ' hrs';
+    if (minutes > 0) {
+      formattedTime += ' ' + minutes + ' min';
+    }
+  } else {
+    formattedTime = minutes + ' min';
+  }
+
+  return formattedTime;
+}
+
+
+// Function to convert slider value to time format for the second slider
+function convertSliderValueToTimeTwo(value) {
+  const minutes = value;
+  return `${minutes} mins`;
+}
+
+// Update slideFour function to use the new conversion function for the second slider
+function slideFour() {
+  let value = parseInt(sliderFour.value);
+  let value2 = parseInt(sliderThree.value);
+
+  // Ensure sliderFour is greater than sliderThree
+  if (value <= value2) {
+      value = value2 + 1;
+      sliderFour.value = value;
+  }
+
+  const percent = value / sliderMaxValueTwo;
+  const containerWidth = parseFloat(window.getComputedStyle(sliderFour.parentElement).getPropertyValue('width'));
+  const availableWidth = containerWidth * rangePercentage; // Calculate available width
+  const thumbOffset = percent * availableWidth + (containerWidth - availableWidth) / 2; // Adjust for equal reduction on both sides
+
+  displayValFour.textContent = convertSliderValueToTimeTwo(value); // Use the new conversion function
+  displayValFour.parentElement.style.left = thumbOffset + 'px';
+  fillColorTwo();
+}
+
+
+
+
+
