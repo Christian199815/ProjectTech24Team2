@@ -243,7 +243,7 @@
             <!-- STEP 3 -->
             <!-- ====== -->
 
-            <div id="step-2" class="hidden">
+            <div id="step-3" class="hidden">
                 <div class="signup-form-container">
                     <div class="line">
                         <div class="line-progress"></div>
@@ -264,28 +264,50 @@
                         </a>
                     </div>
                     <h1>Select your ideal movie/show length</h1>
-                    <div class="slider-container">
-                        <div class="wrapper">
-                            <div class="price-input">
-                                <div class="field">
-                                    <span>Min</span>
-                                    <input type="number" class="input-min" value="2500">
-                                </div>
-                                <div class="separator">-</div>
-                                <div class="field">
-                                    <span>Max</span>
-                                    <input type="number" class="input-max" value="7500">
-                                </div>
-                            </div>
-                            <div class="slider">
-                                <div class="progress"></div>
-                            </div>
-                            <div class="range-input">
-                                <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
-                                <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
-                            </div>
+
+                    <h2>Movie length</h2>
+                    <div class="wrapper" id="wrapper-1">
+                        <div class="container">
+
+                            <div class="slider-track"></div>
+                            <input type="range" min="0" max="240" value="90" id="slider-1" class="slider">
+                            <input type="range" min="0" max="240" value="210" id="slider-2" class="slider">
+                            <p class="minimum-value">0</p>
+                            <div class="values" id="value1"><span id="range1"></span></div>
+                            <div class="values" id="value2"><span id="range2"></span></div>
+                            <p class="maximum-value">100</p>
                         </div>
                     </div>
+
+                    <div class="line-regular"></div>
+                
+
+                    <h2>TV show episode length</h2>
+                    <div class="wrapper" id="wrapper-2">
+                        <div class="container">
+                            <div class="slider-track slider-track-2"></div>
+                            <input type="range" min="0" max="100" value="30" id="slider-3" class="slider slider-3">
+                            <input type="range" min="0" max="100" value="70" id="slider-4" class="slider slider-4">
+                            <p class="minimum-value">0</p>
+                            <div class="values" id="value3"><span id="range3"></span></div>
+                            <div class="values" id="value4"><span id="range4"></span></div>
+                            <p class="maximum-value">100</p>
+                        </div>
+                    </div>
+
+                    <h2>TV show runtime</h2>
+                    <div class="wrapper" id="wrapper-3">
+                        <div class="container">
+                            <div class="slider-track slider-track-3"></div>
+                            <input type="range" min="0" max="100" value="30" id="slider-5" class="slider slider-5">
+                            <input type="range" min="0" max="100" value="70" id="slider-6" class="slider slider-6">
+                            <p class="minimum-value">0</p>
+                            <div class="values" id="value5"><span id="range5"></span></div>
+                            <div class="values" id="value6"><span id="range6"></span></div>
+                            <p class="maximum-value">100</p>
+                        </div>
+                    </div>
+
                     <button class="next-button" onclick="nextStep()">Next</button>
                 </div>
             </div>
