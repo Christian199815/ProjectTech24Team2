@@ -73,6 +73,7 @@
                     <form action="#" method="post" enctype="text/plain">
 
                         <input class="signup-google" type="submit" value="Sign in with Google">
+                        <div class="line-regular"></div>
                         <input type="text" id="first-name" name="name" placeholder="First name" required>
 
                         <input type="text" id="email" name="email" placeholder="E-mail adress or phone number" required>
@@ -85,10 +86,8 @@
                             <input type="text" id="month" name="month" maxlength="2" size="2" placeholder="mm">
                             <input type="text" id="year" name="year" maxlength="4" size="4" placeholder="yyyy">
                         </div>
-
-                        <input class="signup-account" type="submit" value="Next" onclick="nextStep()">
                         <div class="line-regular"></div>
-
+                        <input class="signup-account" type="submit" value="Next" onclick="nextStep()">
                         <div class="placement-signin">
                             <p>Already have an account</p>
                             <a href="#">Sign in</a>
@@ -107,7 +106,6 @@
                 <div class="signup-form-container">
                     <div class="line">
                         <div class="line-progress"></div>
-                        <a href="#"></a>
                         <a href="#"></a>
                         <a href="#"></a>
                         <a href="#"></a>
@@ -251,7 +249,6 @@
                         <a href="#"></a>
                         <a href="#"></a>
                         <a href="#"></a>
-                        <a href="#"></a>
                     </div>
                     <div class="back-skip">
                         <a href="#" onclick="prevStep()">
@@ -279,7 +276,7 @@
                     </div>
 
                     <div class="line-regular"></div>
-                
+
 
                     <h2>TV show episode length</h2>
                     <div class="wrapper" id="wrapper-2">
@@ -310,8 +307,83 @@
                     <button class="next-button" onclick="nextStep()">Next</button>
                 </div>
             </div>
-        </div>
 
+
+            <!-- ====== -->
+            <!-- STEP 4 -->
+            <!-- ====== -->
+
+            <div id="step-4" class="hidden">
+                <div class="signup-form-container">
+                    <div class="line">
+                        <div class="line-progress"></div>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                    </div>
+                    <div class="back-skip">
+                        <a href="#" onclick="prevStep()">
+                            <img src="images/header-arrow.svg">
+                            <p>Go back</p>
+                        </a>
+                        <a href="#" onclick="nextStep()">
+                            <p>Skip step</p>
+                            <img src="images/header-arrow.svg">
+                        </a>
+                    </div>
+                    <h1>Select what languages you like to watch</h1>
+                    <ul>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/english.png">
+                                    <img src="images/english.png" class="hidden">
+                                </div>
+                                <p>English</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/dutch.png">
+                                    <img src="images/dutch.png" class="hidden">
+                                </div>
+                                <p>Dutch</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/spanish.png">
+                                    <img src="images/spanish.png" class="hidden">
+                                </div>
+                                <p>Spanish</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/japanese.png">
+                                    <img src="images/japanese.png" class="hidden">
+                                </div>
+                                <p>Japanese</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleGenre(event)">
+                                <div class="genre-box">
+                                    <img src="images/korean.png">
+                                    <img src="images/korean.png" class="hidden">
+                                </div>
+                                <p>Korean</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <button class="next-button" onclick="nextStep()">Complete account creation</button>
+                </div>
+            </div>
         </div>
     </main>
 

@@ -6,7 +6,7 @@
 /* STEP 1 */
 /* ****** */
 
-.signin-form {
+.signup-form {
     margin: 0;
 }
 
@@ -33,7 +33,7 @@
 }
 
 
-/* ---------------- EMAIL + PASSWORD ------------------- */
+/* ---------------- INPUT FIELDS ------------------- */
 
 #step-1 .signup-form-container form>input {
     background-color: var(--color-defaultbackground);
@@ -47,6 +47,22 @@
     font-family: 'Prompt';
     font-weight: 400;
     color: var(--color-devider);
+}
+
+#step-1 .signup-form-container form>input:nth-of-type(4) {
+    margin-bottom: .7em;
+}
+
+#step-1 .signup-form-container form>p {
+    color: rgba(255, 255, 255, .7);
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-style: italic;
+    font-weight: 200;
+}
+
+#step-1 .signup-form-container form .line-regular {
+margin-bottom: 1.25em;
 }
 
 #step-1 .signup-form-container form>input:focus {
@@ -122,7 +138,7 @@
     font-weight: 400;
     color: #fff;
 
-    background-image: url('/ProjectTech24Team2/images/google.svg');
+    background-image: url('/images/google.svg');
     background-repeat: no-repeat;
     background-position: 15px center;
     background-size: 20px;
@@ -145,14 +161,6 @@
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 500;
-    color: #fff;
-}
-
-#step-1 .signup-form-container p:nth-of-type(1) {
-    font-family: 'Prompt';
-    font-size: .8em;
-    font-style: italic;
-    font-weight: 200;
     color: #fff;
 }
 
@@ -217,7 +225,6 @@
 #step-1 .signup-form-container .signup-account {
     background-color: var(--color-secondary-tint1);
     border: none;
-    margin-top: 1em;
     outline: none;
 
     font-family: 'Prompt';
@@ -229,8 +236,9 @@
 /*---------------- SIGN IN BUTTON + P  PLACEMENT ----- */
 .placement-signin {
     display: flex;
-    justify-content: space-around;
-    margin: 2rem;
+    justify-content: center;
+    gap: 2em;
+    margin-top: .5em;
 }
 
 
@@ -268,7 +276,7 @@
 
 #step-2 .signup-form-container .line .line-progress {
     position: absolute;
-    width: 26%;
+    width: 34%;
     height: 2px;
     background-color: var(--color-secondary-tint1);
     border-radius: 4px;
@@ -346,7 +354,7 @@
     gap: .5em;
 }
 
-.genre-box {
+#step-2 .genre-box {
     background-color: var(--color-primary-tint1);
     box-shadow: 0 0 0 1px var(--color-primary-tint3);
     border-radius: 1em;
@@ -357,7 +365,7 @@
     align-items: center;
 }
 
-.genre-box.genre-selected {
+#step-2 .genre-box.genre-selected {
     background-color: var(--color-primary-tint1);
     box-shadow: 0 0 0 3px var(--color-secondary-tint1);
     border-radius: 1em;
@@ -368,7 +376,7 @@
     align-items: center;
 }
 
-.genre-box img {
+#step-2 .genre-box img {
     width: 50%;
     height: 50%;
 }
@@ -386,6 +394,7 @@
 #step-2 .signup-form-container .next-button {
     position: sticky;
     bottom: 2em;
+    cursor: pointer;
 
     background-color: var(--color-secondary-tint1);
     border: none;
@@ -433,7 +442,7 @@
 
 #step-3 .signup-form-container .line .line-progress {
     position: absolute;
-    width: 26%;
+    width: 66%;
     height: 2px;
     background-color: var(--color-secondary-tint1);
     border-radius: 4px;
@@ -450,7 +459,8 @@
 }
 
 #step-3 .signup-form-container .line a:nth-of-type(1),
-#step-3 .signup-form-container .line a:nth-of-type(2) {
+#step-3 .signup-form-container .line a:nth-of-type(2),
+#step-3 .signup-form-container .line a:nth-of-type(3) {
     background-color: var(--color-secondary-tint1);
 }
 
@@ -508,7 +518,7 @@
 
 #step-3 .signup-form-container .line-regular {
     margin: .5em 0 3em;
- }
+}
 
 .slider-container {
     display: flex;
@@ -543,14 +553,8 @@
     left: -5.4em;
 }
 
-.max1 {
-    right: -5em;
-}
-
-.max2 {
-    right: -5em;
-}
-
+.max1,
+.max2,
 .max3 {
     right: -5em;
 }
@@ -669,6 +673,196 @@ input[type="range"]::-ms-thumb {
     background-color: var(--color-secondary-tint1);
     border: 2px solid #fff;
     pointer-events: auto;
+}
+
+
+/* ---------------- NEXT BUTTON ------------------- */
+
+#step-3 .signup-form-container .next-button {
+    position: sticky;
+    bottom: 2em;
+    cursor: pointer;
+
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    margin-top: 3em;
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+}
+
+
+
+/* ****** */
+/* STEP 4 */
+/* ****** */
+
+#step-4 .signup-form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 8em auto 3em;
+    width: 100%;
+    height: auto;
+    padding: 0 2em;
+}
+
+
+/* ---------------- PROGRESS BAR ------------------- */
+
+#step-4 .signup-form-container .line {
+    background-color: var(--color-primary-tint3);
+    height: 2px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5em;
+    position: relative;
+    margin: 0 0 3em 0;
+}
+
+#step-4 .signup-form-container .line .line-progress {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-secondary-tint1);
+    border-radius: 4px;
+    margin-left: -.5em;
+    z-index: 1;
+}
+
+#step-4 .signup-form-container .line a {
+    height: 12px;
+    width: 12px;
+    transform: translateY(-43%);
+    border-radius: 50%;
+    background-color: var(--color-primary-tint3);
+    z-index: 3;
+}
+
+#step-4 .signup-form-container .line a:nth-of-type(1),
+#step-4 .signup-form-container .line a:nth-of-type(2),
+#step-4 .signup-form-container .line a:nth-of-type(3),
+#step-4 .signup-form-container .line a:nth-of-type(4) {
+    background-color: var(--color-secondary-tint1);
+}
+
+
+/* ---------------- GO BACK & SKIP STEP ------------------- */
+
+#step-4 .signup-form-container .back-skip {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5em;
+}
+
+#step-4 .signup-form-container .back-skip a {
+    display: flex;
+    gap: .5em;
+}
+
+#step-4 .signup-form-container .back-skip a p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
+
+#step-4 .signup-form-container .back-skip a:nth-of-type(1) img {
+    display: block;
+    transform: rotate(90deg);
+}
+
+#step-4 .signup-form-container .back-skip a:nth-of-type(2) img {
+    display: block;
+    transform: rotate(-90deg);
+}
+
+
+/* ---------------- LANGUAGES ------------------- */
+
+#step-4 .signup-form-container h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 2em;
+}
+
+#step-4 .signup-form-container ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#step-4 .signup-form-container ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+}
+
+#step-4 .genre-box {
+    background-color: var(--color-primary-tint1);
+    box-shadow: 0 0 0 1px var(--color-primary-tint3);
+    border-radius: 10px;
+    width: 4.5em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#step-4 .genre-box.genre-selected {
+    background-color: var(--color-primary-tint1);
+    box-shadow: 0 0 0 3px var(--color-secondary-tint1);
+    border-radius: 10px;
+    width: 4.5em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#step-4 .genre-box img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+#step-4 .signup-form-container>ul li a p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
+
+
+/* ---------------- NEXT BUTTON ------------------- */
+
+#step-4 .signup-form-container .next-button {
+    position: sticky;
+    bottom: 2em;
+    cursor: pointer;
+
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    margin-top: 3em;
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
 }
 
 
@@ -815,13 +1009,58 @@ input[type="range"]::-ms-thumb {
     }
 
 
-    /* ---------------- SELECT GENRE ------------------- */
+    /* ---------------- NEXT ------------------- */
+
+    #step-3 .signup-form-container .next-button {
+        position: sticky;
+        bottom: 2em;
+
+        background-color: var(--color-secondary-tint1);
+        border: none;
+        margin-top: 3em;
+        padding: 1em 2em;
+        border-radius: .8em;
+        outline: none;
+        width: 100%;
+
+        font-family: 'Prompt';
+        font-weight: 400;
+        color: #fff;
+    }
+
+
+
+    /* ****** */
+    /* STEP 4 */
+    /* ****** */
+
+    #step-4 .signup-form-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 8em auto 3em;
+        width: 100%;
+        height: auto;
+        padding: 0 2em;
+    }
+
+    #step-4 .signup-form-container {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ---------------- GO BACK & SKIP STEP ------------------- */
+
+    #step-4 .signup-form-container .back-skip {
+        margin-bottom: 3em;
+    }
 
 
 
     /* ---------------- NEXT ------------------- */
 
-    #step-3 .signup-form-container .next-button {
+    #step-4 .signup-form-container .next-button {
         position: sticky;
         bottom: 2em;
 
