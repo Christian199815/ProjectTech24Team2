@@ -89,25 +89,30 @@ app.get('/trending', async (req, res) => {
 });
 
 
-
 app.post('/likeMovies', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user });
-  const movieID = req.body.like_button; // Haal het ID van de persoon op uit het formulier
+  const movieID = req.body.like_button;
   
   try {
-    // Update het document door het nieuwe item in de array te pushen
-    const result = await users.updateOne(
-      { _id: new ObjectId(user._id) },
-      { $push: { likedMovies: movieID } } // Gebruik personID in plaats van likedActors
-    );
-    res.redirect('/profile-test'); // Na het toevoegen, redirect naar de trending pagina
+    const alreadyLiked = user.likedMovies.includes(movieID);
+    
+    if (alreadyLiked) {
+      return res.redirect('/profile-test');
+    } else {
+      const result = await users.updateOne(
+        { _id: new ObjectId(user._id) },
+        { $push: { likedMovies: movieID } }
+      );
+      return res.redirect('/profile-test');
+    }
   } catch (error) {
-    console.error('Fout bij het toevoegen van item:', error);
-    res.status(500).send('Interne serverfout');
+    console.error('Fout bij het toevoegen van film:', error);
+    return res.status(500).send('Interne serverfout');
   }
 });
+
 
 app.post('/unlikeMovies', requireSession, async (req, res) => {
   const database = client.db("Communities");
@@ -135,16 +140,23 @@ app.post('/likeSeries', requireSession, async (req, res) => {
   const serieID = req.body.like_button;
   
   try {
-    const result = await users.updateOne(
-      { _id: new ObjectId(user._id) },
-      { $push: { likedSeries: serieID } }
-    );
-    res.redirect('/profile-test');
+    const alreadyLiked = user.likedSeries.includes(serieID);
+    
+    if (alreadyLiked) {
+      return res.redirect('/profile-test');
+    } else {
+      const result = await users.updateOne(
+        { _id: new ObjectId(user._id) },
+        { $push: { likedSeries: serieID } }
+      );
+      return res.redirect('/profile-test');
+    }
   } catch (error) {
-    console.error('Fout bij het toevoegen van item:', error);
-    res.status(500).send('Interne serverfout');
+    console.error('Fout bij het toevoegen van serie:', error);
+    return res.status(500).send('Interne serverfout');
   }
 });
+
 
 app.post('/unlikeSeries', requireSession, async (req, res) => {
   const database = client.db("Communities");
@@ -169,18 +181,25 @@ app.post('/likeActors', requireSession, async (req, res) => {
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user });
   const personID = req.body.like_button; 
-
+  
   try {
-    const result = await users.updateOne(
-      { _id: new ObjectId(user._id) },
-      { $push: { likedActors: personID } } 
-    );
-    res.redirect('/profile-test'); 
+    const alreadyLiked = user.likedActors.includes(personID);
+    
+    if (alreadyLiked) {
+      return res.redirect('/profile-test');
+    } else {
+      const result = await users.updateOne(
+        { _id: new ObjectId(user._id) },
+        { $push: { likedActors: personID } }
+      );
+      return res.redirect('/profile-test');
+    }
   } catch (error) {
-    console.error('Fout bij het toevoegen van item:', error);
-    res.status(500).send('Interne serverfout');
+    console.error('Fout bij het toevoegen van acteur:', error);
+    return res.status(500).send('Interne serverfout');
   }
 });
+
 
 app.post('/unlikeActors', requireSession, async (req, res) => {
   const database = client.db("Communities");
@@ -201,14 +220,14 @@ app.post('/unlikeActors', requireSession, async (req, res) => {
 });
 
 
-app.get('/search', requireSession, async (req, res) => {
+app.get('/search', async (req, res) => {
   let searchText = req.query.searchText;
   const result = await fetch(`https://api.themoviedb.org/3/search/multi?query=${searchText}`, options);
   const searchResult = await result.json();
   res.render('pages/search', { searchResult });
 });
 
-app.get('/search', requireSession, async (req, res) => {
+app.get('/search', async (req, res) => {
   let query = req.query.query || req.session.lastQuery || 'star wars';
   req.session.lastQuery = query;
 
