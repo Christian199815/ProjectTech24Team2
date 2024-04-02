@@ -1,155 +1,136 @@
 /* ********** */
-/* ACTOR-PAGE */
+/* MOVIE-PAGE */
 /* ********** */
 
+/* ---------------- MOVIE NAME ------------------- */
 
-
-/* ---------------- ACTOR NAME ------------------- */
-
-.actor-name {
-    display: flex;
-    flex-direction: column;
-    padding: 3em 2em 0;
+.movie-banner {
+    width: 100vw;
 }
 
-/* div 1 */
-.actor-name>div:nth-of-type(1) {
+.movie-banner-inner {
+    margin: 3em 12vw;
+    position: relative;
+}
+
+.movie-banner-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(60deg, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+.movie-banner img {
+    width: 100%;
+    display: block;
+}
+
+.movie-banner-content {
+    position: absolute;
+    left: 3em;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.movie-banner-content div {
     display: flex;
     align-items: center;
     gap: 1em;
 }
 
-.actor-name>div:nth-of-type(1) h1 {
+.movie-banner-content h1 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1.2em;
     color: #fff;
 }
 
-.actor-name>div:nth-of-type(1) a img {
-    display: block;
-    height: 16px;
-    width: 16px;
-}
-
-/* div 2 */
-.actor-name>div:nth-of-type(2) {
+.movie-banner-content button {
+    border: none;
+    background: none;
     display: flex;
-    flex-wrap: wrap;
-    max-width: 80%;
-    gap: .5em;
-    padding-top: .5em;
+    justify-content: center;
 }
 
-.actor-name>div:nth-of-type(2) .information-snippet p span {
-    font-weight: 200;
+.movie-banner-content p {
+    max-width: 40%;
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: .8em;
+    color: #fff;
 }
 
-/* div 3 */
-.actor-name>div:nth-of-type(3) {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1em;
+/* ---------------- INFO ------------------- */
+
+.movie-info {
+    margin: 0 12vw;
 }
 
-.actor-name>div:nth-of-type(3) img {
-    height: 40vw;
-    object-fit: cover;
-}
-
-.actor-name>div:nth-of-type(3) h2 {
+.movie-info h2 {
     font-family: 'Prompt';
     font-weight: 600;
-    font-size: 1em;
+    font-size: 1.2em;
     color: #fff;
-    padding-top: 1em;
+    margin-bottom: 1em;
 }
 
-.actor-name>div:nth-of-type(3) p {
+.movie-info-inner {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 3em;
+}
+
+.movie-info .info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.movie-info .info-column h3 {
     font-family: 'Prompt';
     font-weight: 300;
     font-size: 1em;
-    color: #fff;
-    padding-top: .3em;
+    color: var(--color-devider);
+    margin-bottom: .2em;
 }
 
-
-/* ---------------- NEWS ABOUT ------------------- */
-
-.news-about-container {
-    position: relative;
-    margin: 5em 2em 0;
+/* column 1 */
+.movie-info .info-column1>div:nth-of-type(1) img {
+    width: 9vw;
 }
 
-.news-about-container::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(to top, rgba(16, 23, 39, 1), rgba(16, 23, 39, 0));
-    z-index: 1;
-    pointer-events: none;
-}
-
-.news-about-container>h2 {
-    font-family: 'Prompt';
-    font-weight: 600;
-    font-size: 1.2em;
-    color: #fff;
-    padding-bottom: 1em;
-}
-
-.news-about {
+.movie-info .info-column1>div:nth-of-type(2) div {
     display: flex;
-    flex-direction: column;
-    height: 70vh;
-    overflow: auto;
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
+    gap: 1em;
 }
 
-.news-about::-webkit-scrollbar {
-    display: none;
-    /* chrome */
+.movie-info .info-column1>div:nth-of-type(2) img {
+    width: 5vw;
 }
 
-.news-about>div {
-    display: flex;
-    flex-direction: column;
-    padding: 2em 0;
-    border-bottom: solid 1px var(--color-devider);
-}
-
-.news-about>div:first-of-type {
-    padding: 0 0 1.5em;
-}
-
-.news-about>div:last-of-type {
-    border: none;
-}
-
-.news-about>div img {
-    height: 45vw;
-    object-fit: cover;
-}
-
-.news-about>div h3 {
+/* column 2 */
+.movie-info .info-column2 p {
     font-family: 'Prompt';
     font-weight: 400;
     font-size: 1em;
     color: #fff;
-    padding-top: 1em;
+    margin-bottom: .5em;
 }
 
-.news-about>div p {
-    font-family: 'Prompt';
-    font-weight: 300;
-    font-size: .8em;
-    color: var(--color-devider);
+/* column 3 */
+.movie-info .info-column3 {
+    transform: translateY(-7em);
+}
+
+.movie-info .info-column3 div div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
 }
 
 
@@ -357,75 +338,19 @@
 
 @media (min-width: 700px) {
 
-    .actor-plus-news {
-        display: flex;
-        justify-content: space-between;
-        width: 100vw;
-        padding: 3em 0 0;
+
+    /* ---------------- INFO ------------------- */
+
+
+
+    .movie-info-inner {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
     }
 
-    .actor-name {
-        width: 60vw;
-        padding: 0 1em 0 4em;
+    .movie-info .info-column3 {
+        transform: translateY(0);
     }
-
-    /* div 1 */
-
-
-    /* div 2 */
-    .actor-name>div:nth-of-type(2) {
-        max-width: 30em;
-    }
-
-    /* div 3 */
-
-    .actor-name>div:nth-of-type(3) img {
-        height: auto;
-        object-fit: cover;
-    }
-
-    .actor-name>div:nth-of-type(3) h2 {
-        padding-top: 2em;
-    }
-
-
-    /* ---------------- NEWS ABOUT ------------------- */
-
-    .news-about-container {
-        margin: 0 4em 0 1em;
-    }
-
-    .news-about-container::before {
-        width: 100%;
-        height: 30vw;
-    }
-
-    .news-about {
-        height: 40vw;
-        width: 33vw;
-    }
-
-    .news-about>div {
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-        padding: 1.5em 0;
-    }
-
-    .news-about>div:first-of-type {
-        padding: 0 0 1.5em;
-    }
-
-    .news-about>div:last-of-type {
-        margin-bottom: 5em;
-    }
-
-    .news-about>div img {
-        height: auto;
-        width: 50%;
-    }
-
-
 
     /* ---------------- COMMENTS ------------------- */
 
