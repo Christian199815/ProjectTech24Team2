@@ -18,19 +18,12 @@
 </head>
 
 <body>
+  <!-- partial -->
+  <%- include('../partials/header.ejs') %>
+
+  
 
   <main>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Slider Example</title>
-      <link rel="stylesheet" href="styles.css">
-    </head>
-
-    <body>
       <!-- ============================================== -->
       <!-- ------------- FEATURED MOVIES ---------------- -->
       <!-- ============================================== -->
@@ -47,7 +40,11 @@
                   <div>
                     <div>
                       <h2><%= npMovie.title %></h2>
-                      <a href="#"><img src="images/header-favorite.svg" alt="Favorite"></a>
+                      <form action="/likeMovies" method="POST">
+                        <input type="image" src="images/header-favorite.svg" alt="I Like">
+                        <input type="hidden" name="like_button" value="<%= npMovie.id %>"> 
+                    </form>
+                      <!-- <a href="#"><img src="images/header-favorite.svg" alt="Favorite"></a> -->
                     </div>
                     <p><%= npMovie.overview %></p>
                     <a href="/movieTest?id=<%= npMovie.id %>">Bekijk details</a>

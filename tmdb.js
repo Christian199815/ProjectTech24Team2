@@ -89,6 +89,8 @@ app.get('/trending', async (req, res) => {
 });
 
 
+
+
 app.post('/likeMovies', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
@@ -99,13 +101,13 @@ app.post('/likeMovies', requireSession, async (req, res) => {
     const alreadyLiked = user.likedMovies.includes(movieID);
     
     if (alreadyLiked) {
-      return res.redirect('/profile-test');
+      console.log("Deze staat al in de lijst")
     } else {
       const result = await users.updateOne(
         { _id: new ObjectId(user._id) },
         { $push: { likedMovies: movieID } }
       );
-      return res.redirect('/profile-test');
+      
     }
   } catch (error) {
     console.error('Fout bij het toevoegen van film:', error);
@@ -131,6 +133,20 @@ app.post('/unlikeMovies', requireSession, async (req, res) => {
     res.status(500).send('Interne serverfout');
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.post('/likeSeries', requireSession, async (req, res) => {

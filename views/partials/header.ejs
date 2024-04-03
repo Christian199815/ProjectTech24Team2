@@ -1,5 +1,5 @@
 <header>
-    <a href="index.html">
+    <a href="/home">
         <p>Movie Lounge</p>
     </a>
     <div class="hamburger">
@@ -47,7 +47,10 @@
                     <a href="#"><img src="images/header-favorite.svg"></a>
                     <a href="#"><img src="images/header-profile.png"></a>
                 </div>
-                <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+
+                <form action="/search" method="GET">
+                    <input type="text" name="searchText" placeholder="Search..."> 
+                </form>
             </div>
         </div>
     </nav>

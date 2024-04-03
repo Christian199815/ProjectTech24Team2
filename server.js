@@ -56,7 +56,7 @@ app.use(logoutApp);
 app.use(homeApp);
 app.use(preferencesApp);
 app.use(photoApp);
-// app.use(tmdb);
+app.use(tmdb);
 app.use(profile);
 app.use(actorApp);
 
