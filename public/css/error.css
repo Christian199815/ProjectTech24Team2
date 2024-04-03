@@ -1,19 +1,9 @@
-
-@font-face {
-  font-family: "Eraser";
-  src: url("https://assets.codepen.io/8841541/eraser.regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
 @keyframes rotateUp {
   0% {
     transform: rotate(0deg);
   }
   96% {
     transform: rotate(-35deg);
-  }
-  100% {
   }
 }
 
@@ -23,9 +13,7 @@
 }
 
 html {
-  background: linear-gradient(rgba(50, 50, 50, 0.9), rgba(50, 50, 50, 0.5)),
-    url("https://assets.codepen.io/8841541/set.jpeg");
-  background-size: cover;
+  background-color: blue;
 }
 
 .text {
@@ -34,17 +22,15 @@ html {
   font-style: italic;
   display: inline;
   margin: 0;
+}
 
-  &--padded {
-    padding-left: 4px;
-    padding-top: 2px;
-  }
+.text--padded {
+  padding-left: 4px;
+  padding-top: 2px;
 }
 
 .outercontainer {
-  width: 100%;
-  height: 100vh;
-  padding-top: 20%;
+  height: 950px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,26 +47,30 @@ html {
   left: 0;
   top: 100px;
   border-radius: 10px;
-  &__rivet {
-    display: block;
-    font-size: 0.6rem;
-    margin: 0;
-    &--top {
-      position: relative;
-      left: 10px;
-      top: 10px;
-    }
-    &--bottomleft {
-      position: relative;
-      left: 10px;
-      top: 50px;
-    }
-    &--bottomright {
-      position: relative;
-      left: 60px;
-      top: 33px;
-    }
-  }
+}
+
+.hinge__rivet {
+  display: block;
+  font-size: 0.6rem;
+  margin: 0;
+}
+
+.hinge__rivet--top {
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+.hinge__rivet--bottomleft {
+  position: relative;
+  left: 10px;
+  top: 50px;
+}
+
+.hinge__rivet--bottomright {
+  position: relative;
+  left: 60px;
+  top: 33px;
 }
 
 .container {
@@ -95,44 +85,46 @@ html {
 }
 
 .clapper {
-  &container {
-    width: 500px;
-    height: 100%;
-  }
-  &__top {
-    width: 100%;
-    height: 50px;
-    background-color: #151515;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #000;
-    overflow: hidden;
-    border-radius: 10px 0 0 0 ;
-    &--white {
-      width: 15%;
-      height: 100%;
-      background-color: #f1f1f1;
-      transform: skew(20deg);
-      &:first-child {
-        visibility: hidden;
-      }
-    }
-  }
+  width: 500px;
+  height: 100%;
+}
 
-  &__bottom {
-    width: 100%;
-    height: 50px;
-    background-color: #151515;
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    &--white {
-      width: 15%;
-      height: 100%;
-      background-color: #f1f1f1;
-      transform: skew(-20deg);
-    }
-  }
+.clapper__top {
+  width: 100%;
+  height: 50px;
+  background-color: #151515;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+  border-radius: 10px 0 0 0 ;
+}
+
+.clapper__top--white {
+  width: 15%;
+  height: 100%;
+  background-color: #f1f1f1;
+  transform: skew(20deg);
+}
+
+.clapper__top--white:first-child {
+  visibility: hidden;
+}
+
+.clapper__bottom {
+  width: 100%;
+  height: 50px;
+  background-color: #151515;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.clapper__bottom--white {
+  width: 15%;
+  height: 100%;
+  background-color: #f1f1f1;
+  transform: skew(-20deg);
 }
 
 .info-container {
@@ -165,11 +157,14 @@ html {
   align-items: center;
   align-content: flex-start;
   padding: 0;
-  &__text {
-    font-family: "Eraser";
-    color: white;
-    font-size: 1.5rem;
-  }
+}
+
+.scene__text,
+.take__text,
+.roll__text {
+  font-family: "Eraser";
+  color: white;
+  font-size: 1.5rem;
 }
 
 .scene {
@@ -205,18 +200,13 @@ html {
 .date {
   border-bottom: 4px solid #f1f1f1;
 }
+
 .sound {
   background: #151515;
   width: 40%;
 }
 
-.director {
-  width: 95%;
-  height: 15%;
-  border-bottom: 4px solid #f1f1f1;
-  background: #151515;
-}
-
+.director,
 .cinematographer {
   width: 95%;
   height: 15%;
@@ -226,9 +216,7 @@ html {
 
 .rotateUp {
   transform-origin: left center;
-  animation-name: rotateUp 4s;
+  animation: rotateUp 4s;
   animation-iteration-count: 6;
 }
-  
-
 
