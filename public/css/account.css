@@ -235,6 +235,7 @@
     font-weight: 600;
     font-size: 1.5em;
     color: #fff;
+    margin-bottom: 1rem;
 }
 
 .friends-block .friends-list{
@@ -248,21 +249,54 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     gap: 1.5rem;
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-secondarybackground);
     border-radius: 1em;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.friends>div{
+    margin: 1rem;
+    display: flex;
+}
+
+.friends>div .friends-request{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 1rem;
+    gap: 1rem;
+
+}
+
+.friends>div .friends-request .requests{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+}
+
+.friends button{
+    background-color: red;
+    color: #fff;
+    font-family: 'Prompt';
+    font-size: 0.8rem;
+
+    border-radius: 0.9rem;
+    text-align: center;
+    padding: 0.3rem 2rem 0.3rem;
+    border: none;
+    width: 150px;
+
 }
 
 .friends img{
     height: 125px;
-    width: 75px;
-    border-radius: 1em;
-    margin-left: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    width: 85px;
+    border-radius: 0.9rem;
 }
 
 .friends p:nth-of-type(1){
@@ -272,12 +306,6 @@
     color: #fff;
 }
 
-.friends p:nth-of-type(2){
-    font-family: 'Prompt';
-    font-weight: 300;
-    font-size: 1.3rem;
-    color: #1B2B4F;
-}
 
 
 
