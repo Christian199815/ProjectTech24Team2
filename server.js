@@ -32,7 +32,7 @@ const photoApp = require('./routes/photoApp');
 const homeApp = require('./routes/homeApp');
 const tmdb = require('./tmdb');
 const profile = require('./profile')
-const actorApp = require('./routes/actorApp');
+const actorApp = require('./routes/actorWThreadsApp');
 
 
 

@@ -4,12 +4,12 @@ const bcrypt = require('bcrypt');
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
 const cookieParser = require('cookie-parser');
 const router = express.Router();
-const {client} = require('../connect')
+const { client } = require('../connect')
 
 
 
 router.get('/login', (req, res) => {
-    res.render('pages/signin');
+    res.render('pages/signin', { user: req.session.user });
 })
 
 router.post('/login', async (req, res) => {
@@ -31,18 +31,22 @@ router.post('/login', async (req, res) => {
         return;
     }
     //start session here
-    req.session.user = username;
+    req.session.user = user;
 
-    if(remember) {
+    if (remember) {
         req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000;
         console.log('long cookie');
     } else {
-        req.session.cookie.maxAge =  30 * 60 * 1000;
+        req.session.cookie.maxAge = 30 * 60 * 1000;
         console.log('short cookie');
 
     }
 
-    res.render('pages/home', { views: req.session.views, username: req.session.user });
+    const returnTo = req.session.returnTo || '/';
+    delete req.session.returnTo; // Remove stored returnTo URL
+    res.redirect(returnTo);
+
+    // res.render('pages/home', { views: req.session.views, user: req.session.user });
 });
 
 module.exports = router;

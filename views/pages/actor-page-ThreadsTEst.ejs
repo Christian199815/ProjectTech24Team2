@@ -17,6 +17,9 @@
   </head>
 
   <body>
+
+    <%- include ('../partials/header')  %>
+
     <main>
       <div class="actor-plus-news">
         <div class="actor-name">
@@ -24,15 +27,12 @@
           <div>
             <h1><%= person.name %></h1>
             <a href="#">
-              <img src="./images/header-favorite.svg" />
+              <img src="/images/header-favorite.svg" />
             </a>
           </div>
 
           <!-- div 2 -->
           <div>
-            <div class="information-snippet">
-              <p>Full name: <span><%= person.also_known_as[0] %></span></p>
-            </div>
             <div class="information-snippet">
               <% if (person.known_for_department === 'Acting') { %>
               <p>Role: Actor</p>
@@ -48,7 +48,14 @@
               <p>Age: <span><%= age %></span></p>
             </div>
             <div class="information-snippet">
-                <p>Born: <%= person.place_of_birth %></p>  
+              <% if(person.gender === 2){ %>
+                <p>Gender: <span>Male</span></p>
+                <% } else if(person.gender === 1) {  %>
+                <p>Gender: <span>Female</span></p>
+                <%} %>
+            </div>
+            <div class="information-snippet">
+              <p>Born: <%= person.place_of_birth %></p>
             </div>
           </div>
 
@@ -63,194 +70,100 @@
             <p><%= person.biography %></p>
           </div>
         </div>
-
-        <!-- <div class="news-about-container">
-          <h2>News about Timothee</h2>
-          <div class="news-about">
-            <div>
-              <img src="./images/dune2.png" />
-              <div>
-                <h3>
-                  'Dune 2' spices up the box office after a months-long dry
-                  spell
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images//kylie.png" />
-              <div>
-                <h3>
-                  Kylie Jenner and Timothée Chalamet’s Full Relationship
-                  Timeline
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images/timnkylie.png" />
-              <div>
-                <h3>
-                  'Dune 2' spices up the box office after a months-long dry
-                  spell
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images/timnstudent.jpg" />
-              <div>
-                <h3>
-                  'Dune 2' spices up the box office after a months-long dry
-                  spell
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images/dune2.png" />
-              <div>
-                <h3>
-                  'Dune 2' spices up the box office after a months-long dry
-                  spell
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images//kylie.png" />
-              <div>
-                <h3>
-                  Kylie Jenner and Timothée Chalamet’s Full Relationship
-                  Timeline
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images/timnkylie.png" />
-              <div>
-                <h3>
-                  'Dune 2' spices up the box office after a months-long dry
-                  spell
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-            <div>
-              <img src="./images/timnstudent.jpg" />
-              <div>
-                <h3>
-                  'Dune 2' spices up the box office after a months-long dry
-                  spell
-                </h3>
-                <p>3rd of March • 20:53</p>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
 
       <div class="comments">
         <h2>Comments about <%= person.name%></h2>
         <div>
-          <h2>3</h2>
+          <h2><%= posts.length %></h2>
           <div>
-            <img src="./images/filter.svg" />
+            <img src="/images/filter.svg" />
             <p>Sort by</p>
           </div>
         </div>
+
+        
+
+        <!-- comments writing form -->
         <div class="write-comment">
-          <img src="./images/profileplaceholder.png" />
+          <img src="<%= user.profilePhoto %>"/>
           <div>
-            <div>
-              <input
-                type="text"
-                id="comment"
-                name="comment"
-                placeholder="Add a comment"
-                required
-              />
-            </div>
-            <div>
-              <button>Cancel</button>
-              <button>Comment</button>
-            </div>
+            <form id="comment-form" action="/post-thread" method="post">
+              <div>
+                <input
+                  type="text"
+                  id="comment"
+                  name="comment"
+                  placeholder="Add a comment"
+                  required
+                />
+              </div>
+              <div>
+                <button type="reset">Cancel</button>
+                <button type="submit">Comment</button>
+              </div>
+            </form>
           </div>
         </div>
+
+
+       
+
         <div class="comment-container-parent">
-          <!-- first comment -->
-          <div class="comment-container">
-            <img src="./images/profileplaceholder.png" />
-            <div>
-              <div>
-                <h3>@NAAMUSER</h3>
-                <p>4 months ago</p>
-              </div>
-              <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM</p>
-              <div>
-                <div>
-                  <img src="./images/thumbsup.svg" />
-                  <p>10K</p>
-                </div>
-                <div>
-                  <img src="./images/thumbsdown.svg" />
-                  <p>200</p>
-                </div>
-              </div>
-              <p>Reply</p>
-            </div>
-          </div>
-          <!-- second comment -->
-          <div class="comment-container">
-            <img src="./images/profileplaceholder.png" />
-            <div>
-              <div>
-                <h3>@NAAMUSER</h3>
-                <p>4 months ago</p>
-              </div>
-              <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM</p>
-              <div>
-                <div>
-                  <img src="./images/thumbsup.svg" />
-                  <p>10K</p>
-                </div>
-                <div>
-                  <img src="./images/thumbsdown.svg" />
-                  <p>200</p>
-                </div>
-              </div>
-              <p>Reply</p>
-            </div>
-          </div>
-          <!-- third comment -->
-          <div class="comment-container">
-            <img src="./images/profileplaceholder.png" />
-            <div>
-              <div>
-                <h3>@NAAMUSER</h3>
-                <p>4 months ago</p>
-              </div>
-              <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM</p>
-              <div>
-                <div>
-                  <img src="./images/thumbsup.svg" />
-                  <p>10K</p>
-                </div>
-                <div>
-                  <img src="./images/thumbsdown.svg" />
-                  <p>200</p>
-                </div>
-              </div>
-              <p>Reply</p>
-            </div>
-          </div>
+
+          <% if (posts && posts.length > 0) { %>
+            <ul>
+                <% posts.forEach(post => { %>
+                    <li class="comment-container">
+                      <img src="<%= post.pf %>">
+                      <div>
+                        <div>
+                          <h3><%= post.username %></h3>
+                          <p><%= post.datetime %></p>
+                        </div>
+                        <p><%= post.body %></p>
+                        <div>
+                          <div>
+                            <form action="/like-post" method="post">
+                              <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
+                              <input type="hidden" name="postUsername" value="<%= post.username %>">
+                              <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
+                            </form>
+                            <!-- <img src="/images/thumbsup.svg" /> -->
+                            <p><%= post.upvotes === 0 ? '' : post.upvotes %></p>
+                          </div>
+                          <div>
+                            <form action="/dislike-post" method="post">
+                              <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
+                              <input type="hidden" name="postUsername" value="<%= post.username %>">
+                              <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
+                            </form>
+                            <p><%= post.downvotes === 0 ? '' : post.downvotes %></p>
+                          </div>
+                        </div>
+                      </div>
+                      <form action="/add-friend" method="post">
+                        <input type="hidden" name="postUsername" value="<%= post.username%>">
+                        <input type="submit" value="Add <%= post.username %> to your friendlist">
+                      </form>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No posts found.</p>
+        <% } %>
+
+      
+
         </div>
       </div>
     </main>
 
     <footer></footer>
-    <script src="./public/js/actor-page.js"></script>
-    <script src="./public/js/general.js"></script>
+    <script src="/public/js/actor-page.js"></script>
+    <script src="/public/js/general.js"></script>
+
+    
+
   </body>
 </html>
