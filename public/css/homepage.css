@@ -141,8 +141,8 @@
 .fm-slider-container .fm-navigation-indicators {
     position: absolute;
     bottom: 1em;
-    right: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 15px;
     opacity: 0;
@@ -193,7 +193,7 @@
 .ts-slider,
 .tm-slider {
     display: flex;
-    width: 100%;
+    min-width: 100%;
     overflow: auto;
     gap: .5em;
 
@@ -213,6 +213,7 @@
 .tm-group {
     display: flex;
     gap: .5em;
+    overflow: visible;
 }
 
 .ts-group>div,
@@ -245,7 +246,6 @@
 .tm-group>div div {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     position: absolute;
     padding: .5em;
     top: 0;
@@ -414,41 +414,42 @@
     min-width: 100vw;
 }
 
-.trending-actor {
-    width: 20vw;
-    height: fit-content;
+.trending-actor:nth-of-type(1) {
+    margin-left: -3vw;
 }
 
 .trending-actor>div {
-    width: 18vw;
+    width: 20vw;
     height: 100%;
     position: relative;
-    padding-left: 4vw;
+    padding-left: 6vw;
     overflow: hidden;
 }
 
 .trending-actor>div h2 {
     position: absolute;
-    bottom: 50%;
+    bottom: 30%;
     transform: translateY(50%);
     left: 0;
 
     font-family: 'Prompt';
     font-weight: 600;
-    font-size: 12vw;
+    font-size: 10vw;
     height: fit-content;
     color: transparent;
-    -webkit-text-stroke: .7vw var(--color-primary-tint3);
-    text-stroke: .7vw var(--color-primary-tint3);
+    -webkit-text-stroke: .6vw var(--color-primary-tint3);
+    text-stroke: .6vw var(--color-primary-tint3);
     display: block;
     z-index: 2;
+
+    padding-left: .3em;
 }
 
 .trending-actor div div {
     position: relative;
 }
 
-.trending-actor div div::after {
+.trending-actor>div>div:after {
     content: '';
     position: absolute;
     top: 0;
@@ -465,4 +466,22 @@
     aspect-ratio: 9 / 12;
     object-fit: cover;
     display: block;
+}
+
+.trending-actor div div div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.trending-actor div div div a {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .9em;
+    color: #fff;
 }
