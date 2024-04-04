@@ -1,5 +1,6 @@
 <header>
     <a href="/home">
+
         <% if(user) { %>
         <p><%= user.username%>'s Movie Lounge</p>
         <% }  else { %>
@@ -49,6 +50,7 @@
                 <div>
                     <a href="#"><img src="images/header-notification.svg"></a>
                     <a href="#"><img src="images/header-favorite.svg"></a>
+
                     <% if (user) { %>
                     <% if (user.profilePhoto) { %>
                         <a href="/profile"></a><img src="<%= user.profilePhoto %>" alt="Profile Picture"></a>
@@ -56,10 +58,6 @@
                         <img src="images/header-profile.png">
                       <% } %>
                       <% } %>
-
-
-
-                      
 
 
                 </div>
