@@ -3,45 +3,51 @@
 /* ********** */
 
 
-.actor-plus-comments {
+/* ---------------- ACTOR ------------------- */
+
+.actor-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100vw;
-    padding: 3em 2em 3em;
-    gap: 2em;
+    gap: 3em;
+    margin: 3em 2em;
 }
 
-
-/* ---------------- ACTOR NAME ------------------- */
-
-.actor-name {
+.actor-right {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+.actor-left {
+    width: 100%;
+}
+
+.actor-left img {
+    width: 100%;
 }
 
 /* div 1 */
-.actor-name>div:nth-of-type(1) {
+.actor-right>div:nth-of-type(1) {
     display: flex;
     align-items: center;
     gap: 1em;
 }
 
-.actor-name>div:nth-of-type(1) h1 {
+.actor-right>div:nth-of-type(1) h1 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1.2em;
     color: #fff;
 }
 
-.actor-name>div:nth-of-type(1) a img {
+.actor-right>div:nth-of-type(1) a img {
     display: block;
     height: 16px;
     width: 16px;
 }
 
 /* div 2 */
-.actor-name>div:nth-of-type(2) {
+.actor-right>div:nth-of-type(2) {
     display: flex;
     flex-wrap: wrap;
     max-width: 80%;
@@ -49,13 +55,13 @@
     padding-top: .5em;
 }
 
-.actor-name>div:nth-of-type(2) .information-snippet {
+.actor-right>div:nth-of-type(2) .information-snippet {
     background-color: var(--color-secondary-tint1);
     padding: .25em .5em;
     border-radius: 5px;
 }
 
-.actor-name>div:nth-of-type(2) .information-snippet p {
+.actor-right>div:nth-of-type(2) .information-snippet p {
     white-space: nowrap;
     font-family: 'Prompt';
     font-weight: 400;
@@ -63,23 +69,23 @@
     color: #fff;
 }
 
-.actor-name>div:nth-of-type(2) .information-snippet p span {
+.actor-right>div:nth-of-type(2) .information-snippet p span {
     font-weight: 200;
 }
 
 /* div 3 */
-.actor-name>div:nth-of-type(3) {
+.actor-right>div:nth-of-type(3) {
     display: flex;
     flex-direction: column;
     padding-top: 1em;
 }
 
-.actor-name>div:nth-of-type(3) img {
+.actor-right>div:nth-of-type(3) img {
     height: 40vw;
     object-fit: cover;
 }
 
-.actor-name>div:nth-of-type(3) h2 {
+.actor-right>div:nth-of-type(3) h2 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1em;
@@ -87,7 +93,7 @@
     padding-top: 1em;
 }
 
-.actor-name>div:nth-of-type(3) p {
+.actor-right>div:nth-of-type(3) p {
     font-family: 'Prompt';
     font-weight: 300;
     font-size: 1em;
@@ -105,6 +111,7 @@
     border-radius: none;
     border: none;
     background-color: transparent;
+    margin: 0 2em 3em;
 }
 
 .comments>h2 {
@@ -230,6 +237,7 @@
 }
 
 /* profile picture */
+
 .comments .comment-container img {
     width: 2em;
     height: 2em;
@@ -291,6 +299,34 @@
     width: 20px;
 }
 
+.comments .comment-container>button {
+    margin: 0 0 auto auto;
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    white-space: nowrap;
+
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    padding: .7em 1.2em;
+    border-radius: 15px;
+}
+
+.comments .comment-container>button p{
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.comments .comment-container>button img{
+    height: 12px;
+    width: 12px;
+}
+
+
+
+
 
 
 /* =========================================== */
@@ -299,33 +335,34 @@
 
 @media (min-width: 700px) {
 
-    .actor-plus-comments {
-        flex-direction: row;
-        padding: 3em 3em 3em;
-        gap: 2em;
-    }
-
-    .actor-name {
-        width: 50%;
-    }
-
     /* div 1 */
-
+    .actor-container {
+        flex-direction: row;
+        margin: 3em 4em;
+    }
+    
+    .actor-right {
+        width: 67%;
+    }
+    
+    .actor-left {
+        width: 33%;
+    }
+    
+    .actor-left img {
+        width: 100%;
+    }
 
     /* div 2 */
-    .actor-name>div:nth-of-type(2) {
+    .actor-right>div:nth-of-type(2) {
         max-width: 30em;
     }
 
     /* div 3 */
 
-    .actor-name>div:nth-of-type(3) img {
+    .actor-right>div:nth-of-type(3) img {
         height: auto;
         object-fit: cover;
-    }
-
-    .actor-name>div:nth-of-type(3) h2 {
-        padding-top: 2em;
     }
 
 
@@ -334,9 +371,9 @@
     .comments {
         display: flex;
         flex-direction: column;
-        width: 50%;
+        max-width: 100%;
         padding: 3em 4em;
-        /* margin-top: 7em; */
+        margin: 0 4em 3em;
         border-radius: 20px;
         border: solid 1px var(--color-primary-tint3);
         background-color: var(--color-secondarybackground);
