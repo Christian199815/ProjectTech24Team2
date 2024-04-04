@@ -1,6 +1,11 @@
 <header>
     <a href="/home">
+
+        <% if(user) { %>
+        <p><%= user.username%>'s Movie Lounge</p>
+        <% }  else { %>
         <p>Movie Lounge</p>
+        <% } %>
     </a>
     <div class="hamburger">
         <a id="hamburger-toggle" class="hamburger-toggle">
@@ -45,12 +50,18 @@
                 <div>
                     <a href="#"><img src="images/header-notification.svg"></a>
                     <a href="#"><img src="images/header-favorite.svg"></a>
-                    <a href="/profile-test"><img src="images/header-profile.png"></a>
-                </div>
 
-                <form action="/search" method="GET">
-                    <input type="text" name="searchText" placeholder="Search..."> 
-                </form>
+                    <% if (user) { %>
+                    <% if (user.profilePhoto) { %>
+                        <a href="/profile"></a><img src="<%= user.profilePhoto %>" alt="Profile Picture"></a>
+                      <% } else { %>
+                        <img src="images/header-profile.png">
+                      <% } %>
+                      <% } %>
+
+
+                </div>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search...">
             </div>
         </div>
     </nav>
