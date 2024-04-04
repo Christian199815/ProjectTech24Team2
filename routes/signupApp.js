@@ -23,8 +23,24 @@ const validate = (req, res, next) => {
 };
 
 
+const pfImages = [
+   '/images/profile-photos/pf-blue.png',
+   '/images/profile-photos/pf-yellow.png',
+   '/images/profile-photos/pf-red.png',
+   '/images/profile-photos/pf-pink.png',
+];
+
+
+
+function getRandomImg(){
+    const randomIndex = Math.floor(Math.random() * pfImages.length);
+    return pfImages[randomIndex];
+}
+
+
+
 router.get('/signup', async (req, res) => {
-    res.render('pages/signup', { errors: [] })
+    res.render('pages/signup', { errors: [], user: req.session.user })
 })
 
 router.post('/signup',validate, userValidationRules, async (req, res) => {
@@ -48,9 +64,9 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
         email: email,
         password: await bcrypt.hash(password, 10),
         isAdult: age >= 18 ? true : false,
-        likedActors: [null],
-        likedMovies: [null],
-        likedSeries: [null],
+        // likedActors: [null],
+        // likedMovies: [null],
+        // likedSeries: [null],
     }
 
     
@@ -58,7 +74,7 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
     // Print the ID of the inserted document
     console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
-    req.session.user = username;
+    req.session.user = user;
 
     // res.render('pages/home', { views: req.session.views, username: req.session.user });
 

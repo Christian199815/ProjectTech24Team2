@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <a href="/trending">Terug</a>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <!-- partial -->
+      <%- include('../partials/header.ejs') %>
+    </header>
+    <main>
+      <a href="/home">Terug</a>
 
-    <h1><%= person.name %></h1>
-    <% if (person.known_for_department === 'Acting') { %>
-        <h2>Actor</h2>
-    <% } else if (person.known_for_department === 'Directing') { %>
-        <h2>Director</h2>
-    <% } else if (person.known_for_department === 'Production') { %>
-        <h2>Producer</h2>
-    <% } else { %>
-        <h2><%= person.known_for_department %></h2>
-    <% } %>
-    <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= person.profile_path %>" width=300px alt="Image">
+      <h1><%= person.name %></h1>
+      <% if (person.known_for_department === 'Acting') { %>
+      <h2>Actor</h2>
+      <% } else if (person.known_for_department === 'Directing') { %>
+      <h2>Director</h2>
+      <% } else if (person.known_for_department === 'Production') { %>
+      <h2>Producer</h2>
+      <% } else { %>
+      <h2><%= person.known_for_department %></h2>
+      <% } %>
+      <img
+        src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= person.profile_path %>"
+        width="300px"
+        alt="Image"
+      />
 
-    <p><%= person.biography %></p>  
-    <p>Birthday: <%= person.birthday %></p>
-    <p>Born: <%= person.place_of_birth %></p>  
+      <p><%= person.biography %></p>
+      <p>Birthday: <%= person.birthday %></p>
 
-    <form action="/likeActors" method="POST">
-        <input type="submit" value="I Like">
+      <form action="/likeActors" method="POST">
+        <input type="image" name="like" alt="I Like">
         <input type="hidden" name="like_button" value="<%= person.id %>"> 
     </form>
 
-    <form action="/unlikeActors" method="POST">
-        <input type="submit" value="Unlike">
-        <input type="hidden" name="unlike_button" value="<%= person.id %>"> 
-    </form>
-      
-
-    
-<script src="../public/js/tmdb.js"></script>
-
-
-
-</body>
+    <script src="../public/js/tmdb.js"></script>
+  </body>
 </html>

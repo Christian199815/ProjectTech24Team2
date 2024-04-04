@@ -22,14 +22,18 @@ app.use(express.urlencoded({ extended: true, limit: '50mb'}))
 
 //load in the separate files
 const loginApp = require('./routes/loginApp');
-const signupApp = require('./routes/signupApp');
 const logoutApp = require('./routes/logoutApp');
-const homeApp = require('./routes/homeApp');
-const moveObjectApp = require('./routes/moveObjectApp');
+
+const signupApp = require('./routes/signupApp');
 const preferencesApp = require('./routes/preferencesApp');
 const photoApp = require('./routes/photoApp');
+
+
+const homeApp = require('./routes/homeApp');
 const tmdb = require('./tmdb');
-const profile = require('./profile')
+const profile = require('./profile');
+const actorApp = require('./routes/actorApp');
+
 
 
 
@@ -51,11 +55,11 @@ app.use(signupApp);
 app.use(loginApp);
 app.use(logoutApp);
 app.use(homeApp);
-app.use(moveObjectApp);
 app.use(preferencesApp);
 app.use(photoApp);
 app.use(tmdb);
 app.use(profile);
+app.use(actorApp);
 
 
 
