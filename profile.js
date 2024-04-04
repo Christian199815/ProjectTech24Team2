@@ -4,70 +4,76 @@ const express = require('express')
 const app = express();
 const session = require('express-session');
 app.use(express.json());
-
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
-
-
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;
-
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-
-const requireSession = (req, res, next) => {
-  if (!req.session || !req.session.user) {
-    return res.redirect('/login'); // Redirect to login page if session doesn't exist
-  }
-  next();
-};
+const { client, ObjectId } = require('./js-modules/connect');
+const requireSession = require('./js-modules/reqSession');
+const options = require('./js-modules/tmdbOptions');
 
 let fetchedActors = null;
 let fetchedMovies = null;
 let fetchedSeries = null;
+let fetchedFRequests = null;
+let fetchedFriends = null;
 
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${process.env.TMDB_TOKEN}` // Vervang <JOUW_AUTH_TOKEN> door je eigen bearer token
-  }
-};
+
+let user = null;
+const database = client.db("Communities");
+const users = database.collection("general");
+
+
 
 app.get('/profile-test', requireSession, async (req, res) => {
-  const database = client.db("Communities");
-  const users = database.collection("general");
-  const user = await users.findOne({ username: req.session.user });
+  
+  user = await users.findOne({ username: req.session.user.username });
 
   try {
-    if (user.likedActors){
+    if (user.likedActors) {
       fetchedActors = await Promise.all(user.likedActors.map(async (actorID) => {
-      const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
-      return result.json();
-    }));}
+        const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
+        return result.json();
+      }));
+    }
 
-    if (user.likedMovies){
-    fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
-      const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
-      return result.json();
-    }));}
+    if (user.likedMovies) {
+      fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
+        const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
+        return result.json();
+      }));
+    }
 
-    if (user.likedSeries){
-    fetchedSeries = await Promise.all(user.likedSeries.map(async (serieID) => {
-      const result = await fetch(`https://api.themoviedb.org/3/tv/${serieID}`, options);
-      return result.json();
-    }));}
+    if (user.likedSeries) {
+      fetchedSeries = await Promise.all(user.likedSeries.map(async (serieID) => {
+        const result = await fetch(`https://api.themoviedb.org/3/tv/${serieID}`, options);
+        return result.json();
+      }));
+    }
 
-    res.render('pages/profile-test', { 
-      username: req.session.user, 
-      likedActors: fetchedActors, 
-      likedMovies: fetchedMovies, 
-      likedSeries: fetchedSeries
+    if (user.friendRequests) {
+      const allUsers = await users.find().toArray();
 
+      // Array of usernames to check
+      const usernamesToCheck = user.friendRequests;
+      // Array to store matching objects
+      fetchedFRequests = allUsers.filter(obj => usernamesToCheck.includes(obj.username));
+      console.log(fetchedFRequests);
+
+    }
+
+    if (user.friends) {
+      const allUsers = await users.find().toArray();
+
+      // Array of usernames to check
+      const usernamesToCheck = user.friends;
+      // Array to store matching objects
+      fetchedFriends = allUsers.filter(obj => usernamesToCheck.includes(obj.username));
+    }
+    res.render('pages/profile', {
+      username: req.session.user,
+      likedActors: fetchedActors,
+      likedMovies: fetchedMovies,
+      likedSeries: fetchedSeries,
+      friendRequests: fetchedFRequests,
+      friends: fetchedFriends,
+      user,
     });
   } catch (error) {
     console.error('Er is een fout opgetreden bij het ophalen van gegevens:', error);
@@ -75,7 +81,29 @@ app.get('/profile-test', requireSession, async (req, res) => {
   }
 });
 
+app.post('/remove-fRequest', async (req, res) => {
+  // let array = user.friendRequests;
+  let valueToRemove = req.body.removeName; 
 
+//   let indexToRemove = array.indexOf(valueToRemove);
+// if (indexToRemove !== -1) {
+//     array.splice(indexToRemove, 1);
+// }
+
+const result = await users.updateOne(
+  { _id: new ObjectId(user._id) },
+  { $pull: { friendRequests: valueToRemove } }
+);
+
+res.send("succes");
+// res.redirect('back');
+})
+
+app.post('/accept-fRequest', async (req, res) => {
   
-  
-  module.exports = app;
+})
+
+
+
+
+module.exports = app;
