@@ -34,15 +34,9 @@
       <p>Birthday: <%= person.birthday %></p>
 
       <form action="/likeActors" method="POST">
-        <input type="submit" value="I Like" />
-        <input type="hidden" name="like_button" value="<%= person.id %>" />
-      </form>
-
-      <form action="/unlikeActors" method="POST">
-        <input type="submit" value="Unlike" />
-        <input type="hidden" name="unlike_button" value="<%= person.id %>" />
-      </form>
-    </main>
+        <input type="image" name="like" alt="I Like">
+        <input type="hidden" name="like_button" value="<%= person.id %>"> 
+    </form>
 
     <script src="../public/js/tmdb.js"></script>
   </body>

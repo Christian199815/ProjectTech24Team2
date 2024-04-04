@@ -41,8 +41,11 @@ router.post('/login', async (req, res) => {
         console.log('short cookie');
 
     }
+    // const returnTo = req.session.returnTo || '/';
+    // delete req.session.returnTo;
+    // res.redirect(returnTo);
 
-    res.render('pages/home', { views: req.session.views, username: req.session.user });
+        res.render('pages/home', { views: req.session.views, username: req.session.user });
 });
 
 module.exports = router;

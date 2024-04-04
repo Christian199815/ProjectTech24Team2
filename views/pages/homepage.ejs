@@ -44,7 +44,6 @@
                         <input type="image" src="images/header-favorite.svg" alt="I Like">
                         <input type="hidden" name="like_button" value="<%= npMovie.id %>"> 
                     </form>
-                      <!-- <a href="#"><img src="images/header-favorite.svg" alt="Favorite"></a> -->
                     </div>
                     <p><%= npMovie.overview %></p>
                     <a href="/movieTest?id=<%= npMovie.id %>">Bekijk details</a>
@@ -85,9 +84,10 @@
                   <% } %>
                   <div>
                     <a href="/serieTest?id=<%= serie.id %>"> <p><%= serie.name %></p></a>
-                    <a href="#">
-                      <img src="/images/header-favorite.svg" alt="Favorite"> <!-- Sluit de img-tag af met een '>' -->
-                    </a>
+                    <form action="/likeSeries" method="POST">
+                      <input type="image" src="images/header-favorite.svg" alt="I Like">
+                      <input type="hidden" name="like_button" value="<%= serie.id %>"> 
+                  </form>
                   </div>
                 </div>
               <% }); %>
@@ -124,9 +124,10 @@
                   <% } %>
                   <div>
                     <a href="/movieTest?id=<%= movie.id %>"><p><%= movie.title %></p>></a>
-                    <a href="#">
-                      <img src="/images/header-favorite.svg" alt="Favorite"> <!-- Sluit de img-tag af met een '>' -->
-                    </a>
+                    <form action="/likeMovies" method="POST">
+                      <input type="image" src="images/header-favorite.svg" alt="I Like">
+                      <input type="hidden" name="like_button" value="<%= movie.id %>"> 
+                  </form>
                   </div>
                 </div>
               <% }); %>
@@ -153,23 +154,27 @@
           <div class="ta-slider">
 
             <% let counter = 1; %> <!-- Voeg een variabele toe om het nummer bij te houden -->
-            <% actorsData.forEach(function(actor) { %>
+            <% actorsData.slice(0, 10).forEach(function(actor) { %> <!-- Slicing the array to include only the first 10 elements -->
               <div class="trending-actor">
                 <div>
                   <h2><%= counter %></h2> <!-- Gebruik de teller hier -->
-                  <a href="/actors?id=<%= actor.id %>">
                     <div>
                       <% if (actor.profilePath) { %>
                         <img src="<%= actor.profilePath %>" alt="<%= actor.name %>" width="100px">
                       <% } %>
                     </div>
-                  </a>
+                    <a href="/actors?id=<%= actor.id %>"><%= actor.name %> </a>
+                    <form action="/likeActors" method="POST">
+                      <input type="image" src="images/header-favorite.svg" alt="I Like">
+                      <input type="hidden" name="like_button" value="<%= actor.id %>"> 
+                  </form>
                 </div>
               </div>
-              <% counter++; %> <!-- Verhoog de teller na elke iteratie -->
-            <% }); %>
-
-          </div>
+              <% counter++; %>
+            <% }); %> 
+        
+        </div>
+        
         </div>
       </div>
 
@@ -183,6 +188,7 @@
   <script src="/js/general.js"></script>
   <script src="/js/homepage.js"></script>
   <script src="/js/homeApp.js"></script>
+  <script src="/js/tmdb.js"></script>
 </body>
 
 </html>
