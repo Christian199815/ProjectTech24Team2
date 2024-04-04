@@ -113,18 +113,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let currentStep = 0;
     const stepWidth = slider.offsetWidth; // Width of each step
+    const stepSize = stepWidth * 0.8; // 80% of the slider width as step size
 
     // Function to update arrows and indicators
     function updateNavigation() {
-        const numSteps = Math.ceil(slider.scrollWidth / stepWidth); // Calculate total number of steps
-        const maxStep = numSteps - 1; // Maximum step index
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1; // Maximum step index
         currentStep = Math.min(currentStep, maxStep); // Ensure currentStep does not exceed maxStep
         leftArrow.style.visibility = currentStep > 0 ? 'visible' : 'hidden';
         rightArrow.style.visibility = currentStep < maxStep ? 'visible' : 'hidden';
         // Clear existing indicators
         indicatorsContainer.innerHTML = '';
         // Create new indicators
-        for (let i = 0; i < numSteps; i++) {
+        for (let i = 0; i <= maxStep; i++) {
             const indicator = document.createElement('span');
             indicator.classList.add('ts-indicator');
             indicator.classList.toggle('active', i === currentStep);
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to scroll to a specific step
     function scrollToStep(step) {
-        const scrollLeft = step * stepWidth;
+        const scrollLeft = step * stepSize;
         slider.scrollTo({ left: scrollLeft, behavior: 'smooth' });
     }
 
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Click event for right arrow
     rightArrow.addEventListener('click', function() {
-        const maxStep = Math.ceil(slider.scrollWidth / stepWidth) - 1;
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1;
         if (currentStep < maxStep) {
             currentStep++;
             updateNavigation();
@@ -162,9 +162,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Scroll event to handle navigation when scrolling with touchpad or similar devices
+    slider.addEventListener('scroll', function() {
+        currentStep = Math.round(slider.scrollLeft / stepSize);
+        updateNavigation();
+    });
+
     // Initial update of arrows and indicators
     updateNavigation();
 });
+
+
 
 
 
@@ -183,18 +191,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let currentStep = 0;
     const stepWidth = slider.offsetWidth; // Width of each step
+    const stepSize = stepWidth * 0.8; // 80% of the slider width as step size
 
     // Function to update arrows and indicators
     function updateNavigation() {
-        const numSteps = Math.ceil(slider.scrollWidth / stepWidth); // Calculate total number of steps
-        const maxStep = numSteps - 1; // Maximum step index
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1; // Maximum step index
         currentStep = Math.min(currentStep, maxStep); // Ensure currentStep does not exceed maxStep
         leftArrow.style.visibility = currentStep > 0 ? 'visible' : 'hidden';
         rightArrow.style.visibility = currentStep < maxStep ? 'visible' : 'hidden';
         // Clear existing indicators
         indicatorsContainer.innerHTML = '';
         // Create new indicators
-        for (let i = 0; i < numSteps; i++) {
+        for (let i = 0; i <= maxStep; i++) {
             const indicator = document.createElement('span');
             indicator.classList.add('tm-indicator');
             indicator.classList.toggle('active', i === currentStep);
@@ -209,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to scroll to a specific step
     function scrollToStep(step) {
-        const scrollLeft = step * stepWidth;
+        const scrollLeft = step * stepSize;
         slider.scrollTo({ left: scrollLeft, behavior: 'smooth' });
     }
 
@@ -224,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Click event for right arrow
     rightArrow.addEventListener('click', function() {
-        const maxStep = Math.ceil(slider.scrollWidth / stepWidth) - 1;
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1;
         if (currentStep < maxStep) {
             currentStep++;
             updateNavigation();
@@ -232,9 +240,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Scroll event to handle navigation when scrolling with touchpad or similar devices
+    slider.addEventListener('scroll', function() {
+        currentStep = Math.round(slider.scrollLeft / stepSize);
+        updateNavigation();
+    });
+
     // Initial update of arrows and indicators
     updateNavigation();
 });
+
 
 
 
