@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/trending">Terug</a>
+
+    <h1>Hoi <%= username %></h1>
+
+
+
+    <h2>Liked Movies</h2>
+    <ul>
+        <% likedMovies.forEach(function(movie) { %>
+            <% if (movie) { %>
+                <li>
+                    <div>
+                        <h3><%= movie.title %></h3>
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>" width=100px alt="Image">
+                        <a href="/movieTest?id=<%= movie.id %>">Bekijk details</a>
+                    </div>
+                </li>
+            <% } %>
+        <% }); %>
+    </ul>
+
+
+    <h2>Liked Series</h2>
+    <ul>
+        <% likedSeries.forEach(function(serie) { %>
+            <% if (serie) { %>
+                <li>
+                    <div>
+                        <h3><%= serie.name %></h3>
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>" width=100px alt="Image">
+                        <a href="/serieTest?id=<%= serie.id %>">Bekijk details</a>
+                    </div>
+                </li>
+            <% } %>
+        <% }); %>
+    </ul>
+
+    <h2>Liked Actors</h2>
+
+    <ul>
+        <% likedActors.forEach(function(actor) { %>
+            <% if (actor) { %>
+                <li>
+                    <div>
+                        <h3><%= actor.name %></h3>
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= actor.profile_path %>" width=100px alt="Image">
+                        <a href="/actors?id=<%= actor.id %>">Bekijk details</a>
+                    </div>
+                </li>
+            <% } %>
+        <% }); %>
+    </ul>
+
+
+
+    
+
+    
+<script src="../public/js/profile.js"></script>
+
+<style>
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    li {
+      list-style: none;
+        margin-right: 30px;
+    }
+  </style>
+
+
+
+</body>
+</html>

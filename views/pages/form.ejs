@@ -10,6 +10,19 @@
 <body>
     <div id="signUp-view">
         <h2>Account Sign up</h2>
+
+        <% if (errors.length > 0) { %>
+            <div>
+              <p>Error(s):</p>
+              <ul>
+                <% errors.forEach(error => { %>
+                  <% Object.values(error).forEach(msg => { %>
+                    <li><%= msg %></li>
+                  <% }) %>
+                <% }) %>
+              </ul>s
+            </div>
+          <% } %>
         <form id="sign-up-form" action="/signup" method="POST">
             <label for="username">Choose a username:</label>
             <input type="text" id="username" name="username" required>
