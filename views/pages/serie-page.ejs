@@ -23,17 +23,17 @@
     <main>
         <div class="movie-banner">
             <div class="movie-banner-inner">
-                <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= movie.backdrop_path %>" alt="Image">
+                <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= serie.backdrop_path %>"  alt="Image">
     
                 <div class="movie-banner-content">
                     <div>
-                        <h1><%= movie.title %></h1>
-                        <form action="/likeMovies" method="POST">
+                        <h1><%= serie.name %></h1>
+                        <form action="/likeSeries" method="POST">
                             <input type="image" src="images/header-favorite.svg" alt="I Like">
-                            <input type="hidden" name="like_button" value="<%= movie.id %>"> 
-                        </form>
+                            <input type="hidden" name="like_button" value="<%= serie.id %>"> 
+                        </form> 
                     </div>
-                    <p><%= movie.overview %></p>
+                    <p><%= serie.overview %></p>
                 </div>
             </div>
         </div>
@@ -45,38 +45,40 @@
                     <div class="info-column info-column1">
                         <div>
                             <h3>Tagline</h3>
-                            <p><%= movie.tagline %></p>
+                            <p><%= serie.tagline %></p>
                         </div>
                         <div>
                             <h3>Production company</h3>
-                            <% movie.production_companies.forEach(function(production_company) { %>
+                            <% serie.production_companies.forEach(function(production_company) { %>
                                 <% if (production_company.logo_path) { %>
-                                    <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" alt="Image">
+                                    <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" height="30px" alt="Image">
                                 <% } %>
-                                <% if (production_company !== movie.production_companies[movie.production_companies.length - 1]) { %>, <% } %>
+                                <% if (production_company !== serie.production_companies[serie.production_companies.length - 1]) { %>, <% } %>
                             <% }); %>
                         </div>
-                        <!-- <div>
+                        <div>
                             <h3>Stream this movie on</h3>
-                            <div>
-                                <img src="/images/LOGO.png">
-                                <img src="/images/LOGO.png">
-                            </div>
-                        </div> -->
+                            <% serie.networks.forEach(function(network, index) { %>
+                                <% if (network.logo_path) { %>
+                                    <img src="https://image.tmdb.org/t/p/h60<%= network.logo_path %>" height="30px" alt="Image">
+                                <% } %>
+                                <% if (index !== serie.networks.length - 1) { %>, <% } %>
+                            <% }); %>
+                        </div>
 
                     </div>
                     <div class="info-column info-column2">
                         <div>
-                            <h3>Release year</h3>
-                            <p><%= movie.release_date %></p>
+                            <h3>Air date</h3>
+                            <p><%= serie.first_air_date %></p>
                         </div>
                         <div>
-                            <h3>Production value</h3>
-                            <p>$<%= movie.budget %></p>
+                            <h3>Seasons</h3>
+                            <p><%= serie.number_of_seasons %></p>
                         </div>
                         <div>
-                            <h3>Director</h3>
-                            <p>-</p>
+                            <h3>Episodes</h3>
+                            <p><%= serie.number_of_episodes %></p>
                         </div>
                     </div>
                 </div>
@@ -86,11 +88,11 @@
                         <div>
                             <h3>Genre</h3>
                             <div>
-                                <% movie.genres.forEach(function(genre) { %>
+                                <% serie.genres.forEach(function(genre) { %>
                                     <div class="information-snippet">
                                         <p><%= genre.name %></p>
                                     </div>
-                                    <% if (genre !== movie.genres[movie.genres.length - 1]) { %>, <% } %>
+                                    <% if (genre !== serie.genres[serie.genres.length - 1]) { %>, <% } %>
                                 <% }); %>
                             </div>
                         </div>
@@ -98,7 +100,7 @@
                             <h3>Original language</h3>
                             <div>
                                 <div class="information-snippet">
-                                    <p><%= movie.original_language %></p>
+                                    <p><%= serie.original_language %></p>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +109,7 @@
                         <div>
                             <h3>Rating</h3>
                             <div class="information-snippet">
-                                <p>Rated: <%= movie.vote_average.toFixed(1) %>/10</p>
+                                <p>Rated: <%= serie.vote_average.toFixed(1) %>/10</p>
                             </div>
                         </div>
                     </div>
@@ -218,7 +220,7 @@
     <script src="/js/movie-page.js"></script>
     <script src="/js/general.js"></script>
     <script src="/tmdb.js"></script>
-    <script src="/likeApp"></script>
+    <script src="/likeApp.js"></script>
 </body>
 
 </html>

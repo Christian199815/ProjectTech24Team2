@@ -41,7 +41,7 @@ const options = {
 app.get('/profile-test', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
-  const user = await users.findOne({ username: req.session.user });
+  const user = await users.findOne({ username: req.session.user.username });
 
   try {
     if (user.likedActors){
@@ -66,7 +66,8 @@ app.get('/profile-test', requireSession, async (req, res) => {
       username: req.session.user, 
       likedActors: fetchedActors, 
       likedMovies: fetchedMovies, 
-      likedSeries: fetchedSeries
+      likedSeries: fetchedSeries,
+      user
 
     });
   } catch (error) {

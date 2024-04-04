@@ -11,7 +11,8 @@ const requireSession = (req, res, next) => {
 };
 
 router.get('/finishPrefs', requireSession, (req, res) => {
-    res.render('pages/home', { views: req.session.views, username: req.session.user });
+    // res.render('pages/home', { views: req.session.views, username: req.session.user });
+    res.redirect('/login');
 })
 
 
