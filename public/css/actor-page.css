@@ -231,7 +231,7 @@
 .comments .comment-container>div {
     display: flex;
     flex-direction: column;
-    gap: .5em;
+    gap: .2em;
 }
 
 /* write a comment */
@@ -317,14 +317,14 @@
 .comments .comment-container>div>div:nth-of-type(1)>h3 {
     font-family: 'Prompt';
     font-weight: 400;
-    font-size: 1em;
+    font-size: .8em;
     color: #fff;
 }
 
 .comments .comment-container>div>div:nth-of-type(1) p {
     font-family: 'Prompt';
     font-weight: 300;
-    font-size: 1em;
+    font-size: .8em;
     color: var(--color-devider);
 }
 
@@ -333,7 +333,7 @@
 .comments .comment-container>div>p {
     font-family: 'Prompt';
     font-weight: 400;
-    font-size: 1em;
+    font-size: .8em;
     color: #fff;
 }
 
@@ -354,7 +354,7 @@
 .comments .comment-container div div div p {
     font-family: 'Prompt';
     font-weight: 400;
-    font-size: 1em;
+    font-size: .8em;
     color: #fff;
 }
 

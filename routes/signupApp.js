@@ -2,20 +2,10 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
+const {client} = require('../connect');
+const router = express.Router();
 
-
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
-
-
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;
-
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
+ 
 
 const userValidationRules = require('../userValidationRules');
 const session = require('express-session');
@@ -28,41 +18,67 @@ const validate = (req, res, next) => {
     }
     const extractedErrors = errors.array().map(err => ({ [err.param]: err.msg }));
     res.locals.errors = extractedErrors;
-    res.render('pages/form', { errors: res.locals.errors })
+    res.render('pages/signup', { errors: res.locals.errors })
     next();
 };
 
 
-app.get('/signup', async (req, res) => {
-    res.render('pages/form', { errors: [] })
+const pfImages = [
+   '/images/profile-photos/pf-blue.png',
+   '/images/profile-photos/pf-yellow.png',
+   '/images/profile-photos/pf-red.png',
+   '/images/profile-photos/pf-pink.png',
+];
+
+
+
+function getRandomImg(){
+    const randomIndex = Math.floor(Math.random() * pfImages.length);
+    return pfImages[randomIndex];
+}
+
+
+
+router.get('/signup', async (req, res) => {
+    res.render('pages/signup', { errors: [], user: req.session.user })
 })
 
-app.post('/signup', userValidationRules, validate, async (req, res) => {
+router.post('/signup',validate, userValidationRules, async (req, res) => {
     const database = client.db("Communities");
     const users = database.collection("general");
 
-    const { username, email, password } = req.body;
+    const { username, email, password, DateOfBirth } = req.body;
+
+    console.log(typeof(DateOfBirth));
+
+    const birthDate = new Date(DateOfBirth);
+  
+    // Calculate age
+    const ageDiffMilliseconds = Date.now() - birthDate.getTime();
+    const ageDate = new Date(ageDiffMilliseconds);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
     // Create a document to insert
     const newUser = {
         username: username,
         email: email,
         password: await bcrypt.hash(password, 10),
-        likedActors: [],
-        likedMovies: [],
-        likedDirectors: [],
+        isAdult: age >= 18 ? true : false,
+        // likedActors: [null],
+        // likedMovies: [null],
+        // likedSeries: [null],
     }
 
-    // Insert the defined document into the "haiku" collection
+    
     const result = await users.insertOne(newUser);
     // Print the ID of the inserted document
     console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
-    req.session.user = username;
+    req.session.user = user;
 
-    res.render('pages/home', { views: req.session.views, username: req.session.user });
+    // res.render('pages/home', { views: req.session.views, username: req.session.user });
 
 
 })
 
-module.exports = app;
+module.exports = router;
