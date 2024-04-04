@@ -4,9 +4,16 @@ const express = require('express')
 const app = express();
 const session = require('express-session');
 app.use(express.json());
-const { client, ObjectId } = require('./js-modules/connect');
-const requireSession = require('./js-modules/reqSession');
-const options = require('./js-modules/tmdbOptions');
+const { client, ObjectId } = require('./connect');
+const requireSession = require('./reqSession');
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: `Bearer ${process.env.TMDB_TOKEN}` // Vervang <JOUW_AUTH_TOKEN> door je eigen bearer token
+  }
+};
 
 let fetchedActors = null;
 let fetchedMovies = null;
