@@ -20,10 +20,12 @@
 
 .actor-left {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .actor-left img {
-    width: 100%;
+    width: 50%;
 }
 
 /* div 1 */
@@ -42,8 +44,9 @@
 
 .actor-right>div:nth-of-type(1) a img {
     display: block;
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 4px;
 }
 
 /* div 2 */
@@ -155,12 +158,14 @@
 .comments .comment-container-parent {
     display: flex;
     flex-direction: column;
-    gap: 3em;
+    gap: 0;
 }
 
 .comments .comment-container {
     display: flex;
     gap: 1em;
+    padding: 1em 0;
+    border-bottom: .5px solid var(--color-devider);
 }
 
 .comments .comment-container>div {
@@ -173,27 +178,27 @@
 .write-comment {
     display: flex;
     gap: 1em;
-    padding-bottom: 4em;
+    padding-bottom: 3em;
 }
 
 .write-comment img {
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
 }
 
-.write-comment div {
+.write-comment form {
     display: flex;
     flex-direction: column;
     gap: 1em;
     width: 100%;
 }
 
-.write-comment>div>div:nth-of-type(1) {
+.write-comment>form>div:nth-of-type(1) {
     padding-bottom: 1em;
     border-bottom: solid 1px var(--color-devider);
 }
 
-.write-comment>div>div:nth-of-type(1) input {
+.write-comment>form div:nth-of-type(1) input {
     background-color: var(--color-defaultbackground);
     border: solid 1px var(--color-primary-tint3);
     padding: 1em 2em;
@@ -206,14 +211,14 @@
     color: #fff;
 }
 
-.write-comment>div>div:nth-of-type(2) {
+.write-comment>form div:nth-of-type(2) {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: end;
     gap: 1em;
 }
 
-.write-comment>div>div:nth-of-type(2) button {
+.write-comment>form div:nth-of-type(2) button {
     outline: none;
     padding: .7em 0;
     width: 8em;
@@ -226,18 +231,17 @@
     color: #fff;
 }
 
-.write-comment>div>div:nth-of-type(2) button:nth-of-type(1) {
+.write-comment>form div:nth-of-type(2) button:nth-of-type(1) {
     background-color: var(--color-defaultbackground);
     border: solid 1px var(--color-primary-tint3);
 }
 
-.write-comment>div>div:nth-of-type(2) button:nth-of-type(2) {
+.write-comment>form div:nth-of-type(2) button:nth-of-type(2) {
     background-color: var(--color-secondary-tint1);
     border: none;
 }
 
 /* profile picture */
-
 .comments .comment-container img {
     width: 2em;
     height: 2em;
@@ -294,13 +298,23 @@
     color: #fff;
 }
 
-.comments .comment-container div div div img {
+.comments .comment-container div div div form button {
+    background: none;
+    border: none;
+}
+
+.comments .comment-container div div div form button img {
     display: block;
     width: 20px;
 }
 
-.comments .comment-container>button {
+
+/* add friend */
+.comments .comment-container>form {
     margin: 0 0 auto auto;
+}
+
+.comments .comment-container>form button {
     display: flex;
     align-items: center;
     gap: .6em;
@@ -312,14 +326,14 @@
     border-radius: 15px;
 }
 
-.comments .comment-container>button p{
+.comments .comment-container>form button p{
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 400;
     color: #fff;
 }
 
-.comments .comment-container>button img{
+.comments .comment-container>form button img{
     height: 12px;
     width: 12px;
 }
@@ -342,15 +356,15 @@
     }
     
     .actor-right {
-        width: 67%;
+        width: 75%;
     }
     
     .actor-left {
-        width: 33%;
+        width: 25%;
     }
     
     .actor-left img {
-        width: 100%;
+        min-width: 100%;
     }
 
     /* div 2 */
