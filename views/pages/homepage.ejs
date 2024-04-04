@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Lounge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+
+  <link href="/css/general.css" rel="stylesheet">
+  <link href="/css/homepage.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- partial -->
+  <%- include('../partials/header.ejs') %>
+
+  
+
+  <main>
+      <!-- ============================================== -->
+      <!-- ------------- FEATURED MOVIES ---------------- -->
+      <!-- ============================================== -->
+      <div class="featured-movies">
+        <div class="fm-slider-container">
+  
+            
+            <div class="fm-slider">    
+              <% npMoviesData.forEach(function(npMovie) { %>
+                <div class="featured-movie">
+                  <% if (npMovie.posterBackdrop) { %>
+                    <img src="<%= npMovie.posterBackdrop %>" alt="<%= npMovie.title %>" width="100px">
+                  <% } %>
+                  <div>
+                    <div>
+                      <h2><%= npMovie.title %></h2>
+                      <form action="/likeMovies" method="POST">
+                        <input type="image" src="images/header-favorite.svg" alt="I Like">
+                        <input type="hidden" name="like_button" value="<%= npMovie.id %>"> 
+                    </form>
+                    </div>
+                    <p><%= npMovie.overview %></p>
+                    <a href="/movieTest?id=<%= npMovie.id %>">Bekijk details</a>
+                  </div>
+                </div>
+              <% }); %>
+                
+          </div>
+
+
+
+          <div class="fm-arrow-container fm-left-arrow-container">
+            <img src="/images/header-arrow.svg">
+          </div>
+          <div class="fm-arrow-container fm-right-arrow-container">
+            <img src="/images/header-arrow.svg">
+          </div>
+          <div class="fm-navigation-indicators">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- ------------- TRENDING SHOWS ----------------- -->
+      <!-- ============================================== -->
+      <div class="trending-shows">
+        <h2>Trending TV shows</h2>
+        <div class="ts-slider-container">
+          <div class="ts-slider">
+
+            
+            <div class="ts-group">
+              <% seriesData.forEach(function(serie) { %>
+                <div>
+                  <% if (serie.posterBackdrop) { %>
+                    <img  src="<%= serie.posterBackdrop %>" alt="<%= serie.name %>" width="100px"> <!-- 'posterBackdrop' in plaats van 'posterPath' -->
+                  <% } %>
+                  <div>
+                    <a href="/serieTest?id=<%= serie.id %>"> <p><%= serie.name %></p></a>
+                    <form action="/likeSeries" method="POST">
+                      <input type="image" src="images/header-favorite.svg" alt="I Like">
+                      <input type="hidden" name="like_button" value="<%= serie.id %>"> 
+                  </form>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+            
+
+          </div>
+          <div class="ts-arrow-container ts-left-arrow-container">
+            <img src="/images/header-arrow.svg">
+          </div>
+          <div class="ts-arrow-container ts-right-arrow-container">
+            <img src="/images/header-arrow.svg">
+          </div>
+          <div class="ts-navigation-indicators">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============================================== -->
+      <!-- ------------- TRENDING MOVIES ---------------- -->
+      <!-- ============================================== -->
+      <div class="trending-movies">
+        <h2>Trending Movies</h2>
+        <div class="tm-slider-container">
+          <div class="tm-slider">
+
+
+            <div class="ts-group">
+              <% moviesData.forEach(function(movie) { %>
+                <div>
+                  <% if (movie.posterBackdrop) { %>
+                    <img src="<%= movie.posterBackdrop %>" alt="<%= movie.title %>" width="100px"> <!-- 'posterBackdrop' in plaats van 'posterPath' -->
+                  <% } %>
+                  <div>
+                    <a href="/movieTest?id=<%= movie.id %>"><p><%= movie.title %></p>></a>
+                    <form action="/likeMovies" method="POST">
+                      <input type="image" src="images/header-favorite.svg" alt="I Like">
+                      <input type="hidden" name="like_button" value="<%= movie.id %>"> 
+                  </form>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+
+          </div>
+          <div class="tm-arrow-container tm-left-arrow-container">
+            <img src="/images/header-arrow.svg">
+          </div>
+          <div class="tm-arrow-container tm-right-arrow-container">
+            <img src="/images/header-arrow.svg">
+          </div>
+          <div class="tm-navigation-indicators">
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- ------------- TRENDING ACTORS ---------------- -->
+      <!-- ============================================== -->
+      <div class="trending-actors">
+        <h2>Trending Actors</h2>
+        <div class="ta-slider-container">
+          <div class="ta-slider">
+
+            <% let counter = 1; %> <!-- Voeg een variabele toe om het nummer bij te houden -->
+            <% actorsData.slice(0, 10).forEach(function(actor) { %> <!-- Slicing the array to include only the first 10 elements -->
+              <div class="trending-actor">
+                <div>
+                  <h2><%= counter %></h2> <!-- Gebruik de teller hier -->
+                    <div>
+                      <% if (actor.profilePath) { %>
+                        <img src="<%= actor.profilePath %>" alt="<%= actor.name %>" width="100px">
+                      <% } %>
+                    </div>
+                    <a href="/actors?id=<%= actor.id %>"><%= actor.name %> </a>
+                    <form action="/likeActors" method="POST">
+                      <input type="image" src="images/header-favorite.svg" alt="I Like">
+                      <input type="hidden" name="like_button" value="<%= actor.id %>"> 
+                  </form>
+                </div>
+              </div>
+              <% counter++; %>
+            <% }); %> 
+        
+        </div>
+        
+        </div>
+      </div>
+
+
+
+  </main>
+
+  <footer>
+
+  </footer>
+  <script src="/js/general.js"></script>
+  <script src="/js/homepage.js"></script>
+  <script src="/js/homeApp.js"></script>
+  <script src="/js/tmdb.js"></script>
+</body>
+
+</html>
