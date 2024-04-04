@@ -76,7 +76,7 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
 
     req.session.user = user;
 
-    // res.render('pages/home', { views: req.session.views, username: req.session.user });
+    res.redirect('/login');
 
 
 })
