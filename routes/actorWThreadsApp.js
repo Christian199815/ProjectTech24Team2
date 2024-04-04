@@ -50,7 +50,7 @@ router.get('/actors', requireSession, async (req, res) => {
 
 
     // console.log(Object.keys(person));
-    res.render('pages/actor-page-ThreadsTest', { person, age, posts, user });
+    res.render('pages/actor-page', { person, age, posts, user });
 
 
 });

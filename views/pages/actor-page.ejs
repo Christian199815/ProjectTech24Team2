@@ -12,51 +12,63 @@
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <link href="./public/css/general.css" rel="stylesheet">
-    <link href="./public/css/actor-page.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/actor-page.css" rel="stylesheet">
 </head>
 
 <body>
 
+    <%- include ('../partials/header')  %>
     <main>
         <div class="actor-container">
             <div class="actor-left">
-                <img src="images/timothee.png">
+                <img
+                src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= person.profile_path %>"
+                alt="Image"
+              />
             </div>
             <div class="actor-right">
                 <!-- div 1 -->
                 <div>
-                    <h1>Timothée Chalame • Actor</h1>
+                    <h1><%= person.name %></h1>
                     <a href="#">
-                        <img src="./images/header-favorite.svg">
+                        <img src="/images/header-favorite.svg">
                     </a>
                 </div>
 
                 <!-- div 2 -->
                 <div>
                     <div class="information-snippet">
-                        <p>Height: <span>1.78m</span></p>
+                      <% if (person.known_for_department === 'Acting') { %>
+                      <p>Role: Actor</p>
+                      <% } else if (person.known_for_department === 'Directing') { %>
+                      <p>Role: Director</p>
+                      <% } else if (person.known_for_department === 'Production') { %>
+                      <p>Role: Producer</p>
+                      <% } else { %>
+                      <p><%= person.known_for_department %></p>
+                      <% } %>
                     </div>
                     <div class="information-snippet">
-                        <p>Ethnicity: <span>French/Canadian</span></p>
+                      <p>Age: <span><%= age %></span></p>
                     </div>
                     <div class="information-snippet">
-                        <p>Age: <span>28</span></p>
+                      <% if(person.gender === 2){ %>
+                        <p>Gender: <span>Male</span></p>
+                        <% } else if(person.gender === 1) {  %>
+                        <p>Gender: <span>Female</span></p>
+                        <%} %>
                     </div>
                     <div class="information-snippet">
-                        <p>Relation status: <span>Dating</span></p>
+                      <p>Born: <%= person.place_of_birth %></p>
                     </div>
-                </div>
+                  </div>
 
                 <!-- div 3 -->
                 <div>
-                    <h2>Titel about Timothee</h2>
+                    <h2>Biography of <%= person.name %></h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit ut labore et dolona
-                        aliqua. Ut
-                        ea aliqua. Ut enim ad minim veniam, quis nostrud exercit ut labore et dolona aliqua. Ut e
+                        <%= person.biography %>
                     </p>
                 </div>
             </div>
@@ -64,110 +76,91 @@
 
 
         <div class="comments">
-            <h2>Comments about Timothee</h2>
+            <h2>Comments about <%= person.name %></h2>
             <div>
-                <h2>15.932 comments</h2>
+                <h2><%= posts.length %></h2>
                 <div>
-                    <img src="./images/filter.svg">
+                    <img src="/images/filter.svg">
                     <p>Sort by</p>
                 </div>
             </div>
             <div class="write-comment">
-                <img src="./images/profileplaceholder.png">
+                <img src="<%= user.profilePhoto %>">
                 <div>
-                    <div>
-                        <input type="text" id="comment" name="comment" placeholder="Add a comment" required>
-                    </div>
-                    <div>
-                        <button>Cancel</button>
-                        <button>Comment</button>
-                    </div>
+                    <form id="comment-form" action="/post-thread" method="post">
+                        <div>
+                          <input
+                            type="text"
+                            id="comment"
+                            name="comment"
+                            placeholder="Add a comment"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <button type="reset">Cancel</button>
+                          <button type="submit">Comment</button>
+                        </div>
+                      </form>
                 </div>
             </div>
+
             <div class="comment-container-parent">
+
+                <% if (posts && posts.length > 0) { %>
+                  <ul>
+                      <% posts.forEach(post => { %>
                 <div class="comment-container">
-                    <img src="./images/profileplaceholder.png">
+                    <img src='<%= post.pf %>'>
                     <div>
                         <div>
-                            <h3>@NAAMUSER</h3>
-                            <p>4 months ago</p>
+                            <h3><%= post.username %></h3>
+                            <p><%= post.datetime %></p>
                         </div>
-                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
+                        <p><%= post.body %></p>
                         <div>
                             <div>
-                                <img src="./images/thumbsup.svg">
-                                <p>10K</p>
+                                <form action="/like-post" method="post">
+                                    <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
+                                    <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                    <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
+                                  </form>
+                                  <p><%= post.upvotes === 0 ? '' : post.upvotes %></p>
                             </div>
                             <div>
-                                <img src="./images/thumbsdown.svg">
-                                <p>200</p>
+                                <form action="/dislike-post" method="post">
+                                    <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
+                                    <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                    <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
+                                  </form>
+                                  <p><%= post.downvotes === 0 ? '' : post.downvotes %></p>
                             </div>
                         </div>
-                        <p>Reply</p>
                     </div>
-                    <button>
-                        <img src="/images/add-friend.svg">
-                        <p>Add @name</p>
-                    </button>
+                    <form action="/add-friend" method="post">
+                        <input type="hidden" name="postUsername" value="<%= post.username%>">
+                        <button type="submit">
+                            <img src="/images/add-friends.svg">
+                            <p>Add <%= post.username %> </p>
+                        </button>
+                      </form>
                 </div>
-                <div class="comment-container">
-                    <img src="./images/profileplaceholder.png">
-                    <div>
-                        <div>
-                            <h3>@NAAMUSER</h3>
-                            <p>4 months ago</p>
-                        </div>
-                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
-                        <div>
-                            <div>
-                                <img src="./images/thumbsup.svg">
-                                <p>10K</p>
-                            </div>
-                            <div>
-                                <img src="./images/thumbsdown.svg">
-                                <p>200</p>
-                            </div>
-                        </div>
-                        <p>Reply</p>
-                    </div>
-                    <button>
-                        <img src="/images/add-friend.svg">
-                        <p>Add @name</p>
-                    </button>
-                </div>
-                <div class="comment-container">
-                    <img src="./images/profileplaceholder.png">
-                    <div>
-                        <div>
-                            <h3>@NAAMUSER</h3>
-                            <p>4 months ago</p>
-                        </div>
-                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
-                        <div>
-                            <div>
-                                <img src="./images/thumbsup.svg">
-                                <p>10K</p>
-                            </div>
-                            <div>
-                                <img src="./images/thumbsdown.svg">
-                                <p>200</p>
-                            </div>
-                        </div>
-                        <p>Reply</p>
-                    </div>
-                    <button>
-                        <img src="/images/add-friend.svg">
-                        <p>Add @name</p>
-                    </button>
-                </div>
+            </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No posts found.</p>
+    <% } %>
+
+
             </div>
         </div>
 
 
 
     </main>
-    <script src="./public/js/actor-page.js"></script>
-    <script src="./public/js/general.js"></script>
+    <script src="/js/actor-page.js"></script>
+    <script src="/js/general.js"></script>
 </body>
 
 </html>
