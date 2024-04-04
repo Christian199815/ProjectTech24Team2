@@ -334,6 +334,33 @@
 }
 
 
+/* add friend */
+.comments .comment-container>button {
+    margin: 0 0 auto auto;
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    white-space: nowrap;
+
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    padding: .7em 1.2em;
+    border-radius: 15px;
+}
+
+.comments .comment-container>button p{
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.comments .comment-container>button img{
+    height: 12px;
+    width: 12px;
+}
+
+
 
 /* =========================================== */
 /* -----------------DESKTOP------------------- */
