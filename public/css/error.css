@@ -12,9 +12,6 @@
   box-sizing: border-box;
 }
 
-html {
-  background-color: blue;
-}
 
 .text {
   color: #f1f1f1;
@@ -220,3 +217,58 @@ html {
   animation-iteration-count: 6;
 }
 
+/****** de melding ****/
+
+
+
+.error h1{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  font-family: 'Prompt';
+  font-weight: 500;
+  font-size: 3em;
+  margin-bottom: 1rem;
+  width: 100%
+}
+
+.error h2{
+  color: var(--color-secondary-tint1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Prompt';
+  font-weight: 400;
+  font-size: 2.5em;
+  width: 100%;
+}
+
+.border-error{
+  margin: 3rem;
+  padding: 5em 3em;
+  background-color: var(--color-secondarybackground);
+  border: solid 1px var(--color-primary-tint3);
+  border-radius: 1em;
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .error h1{
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .error h2{
+    font-size: 1.2em;
+    text-align: center;
+  }
+}
