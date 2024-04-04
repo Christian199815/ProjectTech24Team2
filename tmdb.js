@@ -16,14 +16,6 @@ const options = {
 };
 
 
-app.get('/actors', requireSession, async (req, res) => {
-  let actorID = req.query.id;
-  const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
-  const person = await result.json();
-  // console.log(Object.keys(person));
-  res.render('pages/actors', { person });
-});
-
 
 app.get('/movieTest', requireSession, async (req, res) => {
   let movieID = req.query.id;
