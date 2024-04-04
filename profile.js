@@ -26,7 +26,9 @@ const requireSession = (req, res, next) => {
   next();
 };
 
-
+let fetchedActors = null;
+let fetchedMovies = null;
+let fetchedSeries = null;
 
 const options = {
   method: 'GET',
@@ -42,21 +44,23 @@ app.get('/profile-test', requireSession, async (req, res) => {
   const user = await users.findOne({ username: req.session.user });
 
   try {
-    const fetchedActors = await Promise.all(user.likedActors.map(async (actorID) => {
+    if (user.likedActors){
+      fetchedActors = await Promise.all(user.likedActors.map(async (actorID) => {
       const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
       return result.json();
-    }));
+    }));}
 
-    const fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
+    if (user.likedMovies){
+    fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
       const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
       return result.json();
-    }));
+    }));}
 
-
-    const fetchedSeries = await Promise.all(user.likedSeries.map(async (serieID) => {
+    if (user.likedSeries){
+    fetchedSeries = await Promise.all(user.likedSeries.map(async (serieID) => {
       const result = await fetch(`https://api.themoviedb.org/3/tv/${serieID}`, options);
       return result.json();
-    }));
+    }));}
 
     res.render('pages/profile-test', { 
       username: req.session.user, 

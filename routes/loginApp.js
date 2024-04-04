@@ -41,6 +41,9 @@ router.post('/login', async (req, res) => {
         console.log('short cookie');
 
     }
+    // const returnTo = req.session.returnTo || '/';
+    // delete req.session.returnTo;
+    // res.redirect(returnTo);
 
     const returnTo = req.session.returnTo || '/';
     delete req.session.returnTo; // Remove stored returnTo URL

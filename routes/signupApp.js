@@ -64,10 +64,9 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
         email: email,
         password: await bcrypt.hash(password, 10),
         isAdult: age >= 18 ? true : false,
-        profilePhoto: getRandomImg(),
-        likedActors: [null],
-        likedMovies: [null],
-        likedSeries: [null],
+        // likedActors: [null],
+        // likedMovies: [null],
+        // likedSeries: [null],
     }
 
     
