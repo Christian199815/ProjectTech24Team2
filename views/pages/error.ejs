@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Lounge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link href="./public/css/general.css" rel="stylesheet">
+    <link href="./public/css/error.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include ('../partials/header')  %>
+    
+    <main class="error">
+        <div class="border-error">
+
+        <h1>"Looks like our website's director shouted 'cut' a bit too soon."</h1>
+        <h2>We're editing out the errors now. Please be patient!</h2>
+        <button class="error-button">Refresh</button>
+
+        <!-- Clipper movie board-->
+        <div class="outercontainer">
+
+            <div class="clappercontainer">
+              <div class="hinge">
+                <p class="hinge__rivet hinge__rivet--top">⚪️</p>
+                <p class="hinge__rivet hinge__rivet--bottomleft">⚪️</p>
+                <p class="hinge__rivet hinge__rivet--bottomright">⚪️</p>
+              </div>
+              <div class=" clapper__top rotateUp rotateDown">
+                <div class="clapper__top--white"></div>
+                <div class="clapper__top--white"></div>
+                <div class="clapper__top--white"></div>
+                <div class="clapper__top--white"></div>
+                <div class="clapper__top--white"></div>
+              </div>
+          
+              <div class="container">
+                <div class="clapper__bottom">
+                  <div class="clapper__bottom--white"></div>
+                  <div class="clapper__bottom--white"></div>
+                  <div class="clapper__bottom--white"></div>
+                  <div class="clapper__bottom--white"></div>
+                  <div class="clapper__bottom--white"></div>
+                </div>
+          
+                <div class="info-container">
+                  <div class="scene-take-roll">
+                    <div class="scene">
+                      <p class="text">Scene:</p>
+                      <p class="scene__text"></p>
+                    </div>
+                    <div class="take">
+                      <p class="text">Take:</p>
+                      <p class="take__text"></p>
+                    </div>
+                    <div class="roll">
+                      <p class="text">Roll:</p>
+                      <p class="roll__text"></p>
+                    </div>
+                  </div><!-- scene-take-roll-->
+          
+                  <div class="date-prod-sound">
+                    <div class="date-prod">
+                      <div class="date">
+                        <p class="text text--padded">Date:</p>
+                        <p class="date__text"></p>
+                      </div>
+                      <div class="prod">
+                        <p class="text text--padded">Prod.</p>
+                      </div>
+                    </div>
+                    <div class="sound">
+                      <p class="text text--padded">Sound:</p>
+                    </div>
+          
+                  </div>
+          
+                  <div class="director">
+                    <p class="text text--padded">Director:</p>
+                  </div>
+                  <div class="cinematographer">
+                    <p class="text text--padded">Cinematographer:</p>
+                  </div>
+          
+                </div><!-- info container -->
+              </div>
+            </div>
+         
+        </div>
+    </div>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="./public/js/error.js"></script>
+    <script src="./public/js/general.js"></script>
+</body>
+
+</html>
