@@ -15,7 +15,7 @@ let posts = [];
 
 async function fetchPosts(db) {
   try {
-      const posts = await threadDatabase.collection(movie.name).find().toArray();
+      const posts = await threadDatabase.collection(movie.title).find().toArray();
       return posts;
   } catch (error) {
       console.error('Error fetching posts:', error);
@@ -46,15 +46,15 @@ router.get('/movie-page', requireSession, async (req, res) => {
 
     console.log(profilePicture);
 
-    const collectionExists = await threadDatabase.listCollections({ name: movie.name }).hasNext();
+    const collectionExists = await threadDatabase.listCollections({ name: movie.title }).hasNext();
 
     if (!collectionExists) {
         // If collection does not exist, create a new collection
-        currCollection = await threadDatabase.createCollection(movie.name);
-        console.log(`Collection '${movie.name}' created successfully`);
+        currCollection = await threadDatabase.createCollection(movie.title);
+        console.log(`Collection '${movie.title}' created successfully`);
     } else {
-        currCollection = threadDatabase.collection(movie.name);
-        console.log(`Collection '${movie.name}' already exists`);
+        currCollection = threadDatabase.collection(movie.title);
+        console.log(`Collection '${movie.title}' already exists`);
     }
 
     const newPost = {
