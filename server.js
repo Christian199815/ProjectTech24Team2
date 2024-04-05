@@ -30,10 +30,12 @@ const photoApp = require('./routes/photoApp');
 
 
 const homeApp = require('./routes/homeApp');
-const tmdb = require('./tmdb');
 const profile = require('./profile');
 const actorApp = require('./routes/actorWThreadsApp');
 const likeApp = require('./routes/likeApp');
+
+const movieRoute = require('./routes/movieRoute');
+const serieRoute = require('./routes/serieRoute');
 
 
 
@@ -59,10 +61,11 @@ app.use(logoutApp);
 app.use(homeApp);
 app.use(preferencesApp);
 app.use(photoApp);
-app.use(tmdb);
 app.use(profile);
 app.use(actorApp);
 app.use(likeApp);
+app.use(movieRoute);
+app.use(serieRoute);
 
 
 
