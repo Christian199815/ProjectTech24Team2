@@ -1,19 +1,23 @@
 /* ********** */
-/* MOVIE-PAGE */
+/* SERIE-PAGE */
 /* ********** */
 
-/* ---------------- MOVIE NAME ------------------- */
+.information-snippet {
+    width: fit-content;
+}
 
-.movie-banner {
+/* ---------------- SERIE NAME ------------------- */
+
+.serie-banner {
     width: 100vw;
 }
 
-.movie-banner-inner {
+.serie-banner-inner {
     margin: 3em 12vw;
     position: relative;
 }
 
-.movie-banner-inner::after {
+.serie-banner-inner::after {
     content: '';
     position: absolute;
     top: 0;
@@ -24,12 +28,12 @@
     z-index: 1;
 }
 
-.movie-banner img {
+.serie-banner img {
     width: 100%;
     display: block;
 }
 
-.movie-banner-content {
+.serie-banner-content {
     position: absolute;
     left: 3em;
     top: 50%;
@@ -37,27 +41,27 @@
     z-index: 2;
 }
 
-.movie-banner-content div {
+.serie-banner-content div {
     display: flex;
     align-items: center;
     gap: 1em;
 }
 
-.movie-banner-content h1 {
+.serie-banner-content h1 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: clamp(.8em, 1.2vw, 1.5em);
     color: #fff;
 }
 
-.movie-banner-content button {
+.serie-banner-content button {
     border: none;
     background: none;
     display: flex;
     justify-content: center;
 }
 
-.movie-banner-content p {
+.serie-banner-content p {
     max-width: 40%;
     font-family: 'Prompt';
     font-weight: 300;
@@ -67,13 +71,13 @@
 
 /* ---------------- INFO ------------------- */
 
-.movie-info {
+.serie-info {
     margin: 0 12vw;
     border-top: .5px solid var(--color-devider);
     padding-top: 1em;
 }
 
-.movie-info h2 {
+.serie-info h2 {
     font-family: 'Prompt';
     font-weight: 600;
     font-size: 1.2em;
@@ -81,25 +85,25 @@
     margin-bottom: 1em;
 }
 
-.movie-info-inner {
+.serie-info-inner {
     display: flex;
     gap: 3em;
 }
 
-.movie-info-inner>div:nth-of-type(1),
-.movie-info-inner>div:nth-of-type(2) {
+.serie-info-inner>div:nth-of-type(1),
+.serie-info-inner>div:nth-of-type(2) {
     display: flex;
     flex-direction: column;
     gap: 3em;
 }
 
-.movie-info .info-column {
+.serie-info .info-column {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-.movie-info .info-column h3 {
+.serie-info .info-column h3 {
     font-family: 'Prompt';
     font-weight: 300;
     font-size: 1em;
@@ -108,13 +112,21 @@
 }
 
 /* column 1 */
-.movie-info .info-column1 div div {
+
+.serie-info .info-column1>div:nth-of-type(3) p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: 1em;
+    color: #fff;
+}
+
+.serie-info .info-column1 div div {
     display: flex;
     gap: 1em;
     flex-wrap: wrap;
 }
 
-.movie-info .info-column1 div div div {
+.serie-info .info-column1 div div div {
     margin-top: .3em;
     background-color: var(--color-headerbackground);
     padding: 1em;
@@ -122,20 +134,17 @@
     border-radius: .9vw;
 }
 
-.movie-info .info-column1 div div div img {
-    height: clamp(1.5em, 1.9vw, 2.5em);
+.serie-info .info-column1 div div div img {
+    height: clamp(1em, 1.4vw, 2em);
     width: auto;
 }
 
-.movie-info .info-column1>div:nth-of-type(2) p {
-    font-family: 'Prompt';
-    font-weight: 400;
-    font-size: 1em;
-    color: #fff;
+/* column 2 */
+.serie-info .info-column2 {
+    min-width: fit-content;
 }
 
-/* column 2 */
-.movie-info .info-column2 p {
+.serie-info .info-column2 p {
     font-family: 'Prompt';
     font-weight: 400;
     font-size: 1em;
@@ -145,7 +154,7 @@
 
 /* column 3 */
 
-.movie-info .info-column3 div div {
+.serie-info .info-column3 div div {
     display: flex;
     flex-wrap: wrap;
     gap: .5em;
@@ -363,14 +372,14 @@
     border-radius: 15px;
 }
 
-.comments .comment-container>button p{
+.comments .comment-container>button p {
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 400;
     color: #fff;
 }
 
-.comments .comment-container>button img{
+.comments .comment-container>button img {
     height: 12px;
     width: 12px;
 }
@@ -388,14 +397,14 @@
 
 
 
-    .movie-info-inner {
+    .serie-info-inner {
         display: flex;
         justify-content: space-between;
         gap: 10vw;
     }
-    
-    .movie-info-inner>div:nth-of-type(1),
-    .movie-info-inner>div:nth-of-type(2) {
+
+    .serie-info-inner>div:nth-of-type(1),
+    .serie-info-inner>div:nth-of-type(2) {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
