@@ -1,0 +1,453 @@
+/**************/
+/* CSS ACCOUNT */
+/**************/
+
+
+/*************************/
+
+/**************/
+/* TOP BLOCK */
+/**************/
+
+.top-block {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 3rem 4rem;
+}
+
+/* MY ACCOUNT */
+.account-block {
+    width: 100%;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+}
+
+.account-block>div {
+    margin: 2rem;
+}
+
+.account-block>div h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.account-block .my-account {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.account-block>div p:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: var(--color-secondary-tint1);
+    padding: 0.3rem;
+    border-radius: 3rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+
+.account-block .information-account p:nth-of-type(1),
+.account-block .information-account p:nth-of-type(3),
+.account-block .information-account p:nth-of-type(5) {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #fff;
+
+    background-color: var(--color-secondary-tint1);
+    padding: 0.5rem;
+    border-radius: 3rem;
+    text-align: center;
+    width: 10rem;
+}
+
+.account-block .information-account p:nth-of-type(2),
+.account-block .information-account p:nth-of-type(4) {
+    font-family: 'Prompt';
+    font-weight: 200;
+    font-size: 1em;
+    color: #fff;
+
+    padding: 0.7rem;
+    border-radius: 3rem;
+    text-align: center;
+    width: fit-content;
+}
+
+.account-block .information-account button {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 0.8em;
+    padding: 0.7em 0.7em 0.7em 1.5em;
+
+    color: var(--color-devider);
+    background-color: var(--color-headerbackground);
+    border-style: none;
+}
+
+/* SETTINGS */
+
+.settings-block {
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-secondary-tint1);
+    border-radius: 1em;
+    width: 55rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.settings-block>div {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings-block>div h2 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.settings-block .personal-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.settings-block .personal-information p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    padding: 0.4rem;
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* Line decoration */
+.settings-block .line-progress {
+    background-color: var(--color-devider);
+    height: 1px;
+    color: #fff;
+    width: 100%;
+    margin: 0.4rem 0rem;
+}
+
+
+/*****************/
+/* BOTTOM BLOCK */
+/*****************/
+
+.bottom-block {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 3rem 4rem;
+}
+
+.titles-style {
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 0.75em;
+    color: #fff;
+    max-width: 100px;
+}
+
+.bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    width: 100%;
+}
+
+
+.bottom-left .movie-list-block>div {
+    margin: 2rem;
+}
+
+.movie-list-block {
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+}
+
+.movie-list-block>div h3 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.movie-list-block .more-info,
+.series .more-info,
+.actor-crew-block3 .more-info{
+    background-color: var(--color-secondary-tint1);
+    color: #fff;
+    font-family: 'Prompt';
+    font-size: 0.7rem;
+    width: 125px;
+    margin-top: 0.4em;
+
+    border-radius: 0.9rem;
+    text-align: center;
+    padding: 0.5rem 2rem 0.3rem;
+}
+
+
+
+.movies-list-row {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 4em;
+}
+
+.movies-list-row img {
+    height: 200px;
+    width: 125px;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.see-more {
+    color: #fff;
+    font-family: 'Prompt';
+    font-size: 0.7rem;
+    width: 150px;
+    margin-top: 0.4em;
+
+    border-radius: 0.9rem;
+    text-align: center;
+}
+
+.favorites-block {
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+}
+
+.favorites-block>div {
+    margin: 2rem;
+}
+
+.favorites-block>div h4 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.fav-heading {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--color-secondary-tint1);
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+
+ .tv-shows-favs{
+    display: flex;
+    flex-direction: row;
+}
+
+.series{
+    display: flex;
+    flex-direction: column;
+}
+
+.movies-row {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.actors-crews{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.actor-crew-row{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+
+.movies-row img,
+.actor-crew-block3 img {
+    height: 200px;
+    width: 125px;
+}
+
+
+
+.friends-block {
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-headerbackground);
+    border-radius: 1em;
+    width: 55rem;
+}
+
+.friends-block>div {
+    margin: 2rem;
+}
+
+.friends-block>div h5 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.friends-block .friends-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.friends-block .friends-list .friends {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.5rem;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-secondarybackground);
+    border-radius: 1em;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.friends>div {
+    margin: 1rem;
+    display: flex;
+}
+
+.friends>div .friends-request {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 1rem;
+    gap: 1rem;
+
+}
+
+.friends>div .friends-request .requests {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.friends button {
+    background-color: red;
+    color: #fff;
+    font-family: 'Prompt';
+    font-size: 0.8rem;
+
+    border-radius: 0.9rem;
+    text-align: center;
+    padding: 0.3rem 2rem 0.3rem;
+    border: none;
+    width: 150px;
+
+}
+
+.friends img {
+    height: 125px;
+    width: 85px;
+    border-radius: 0.9rem;
+}
+
+.friends-block p{
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 0.3em;
+}
+
+.friends p:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-weight: 200;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.not-yet-friends{
+    display: flex;
+    flex-direction: column;
+}
+
+.already-friends{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+
+
+/* =========================================== */
+/* -----------------DESKTOP------------------- */
+/* =========================================== */
+
+@media (max-width: 700px) {
+
+
+    /* ******* */
+    /* BLOCK */
+    /* ******* */
+
+
+    .top-block {
+        flex-direction: column;
+    }
+
+    .account-block {
+        width: 100%;
+    }
+
+    .settings-block {
+        width: 100%;
+    }
+
+
+    .bottom-block {
+        flex-direction: column;
+    }
+
+    .bottom-left {
+        width: 100%;
+    }
+
+    .friends-block {
+        width: 100%;
+    }
+
+
+}

@@ -12,6 +12,7 @@ const logInRoute = require('./routes/logInRoute');
 const logOutRoute = require('./routes/logOutRoute');
 const signUpRoute = require('./routes/signUpRoute');
 
+
 const preferencesRoute = require('./routes/preferencesRoute');
 const errorRoute = require('./routes/errorRoute');
 const searchRoute = require('./routes/searchRoute');
