@@ -47,16 +47,16 @@ const options = {
 
   console.log("tom is een plopkoek")
 
-  const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
-  const searchResult = await everything.json();
-  const movieArray = searchResult.results;
+  // const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
+  // const searchResult = await everything.json();
+  // const movieArray = searchResult.results;
 
 
   
-  const fetchedMovies = user.likedMovies;
+  // const fetchedMovies = user.likedMovies;
 
-  const likedMovies = fetchedMovies.filter(obj => movieArray.includes(obj.id));
-  console.log(likedMovies);
+  // const likedMovies = fetchedMovies.filter(obj => movieArray.includes(obj.id));
+  // console.log(likedMovies);
 
 
   
