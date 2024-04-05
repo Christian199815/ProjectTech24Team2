@@ -147,6 +147,7 @@
     font-size: 1em;
     color: #fff;
     margin-bottom: 0.5rem;
+    max-width: 100px;
 }
 
 .bottom-left {
@@ -257,9 +258,18 @@
     flex-direction: column;
 }
 
-.movies-row,
-.actor-crew-block3 {
-    margin-bottom: 1rem;
+.movies-row {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+}
+
+.actors-crews{
+    display: flex;
+    flex-direction: column;
+}
+
+.actor-crew-row{
     display: flex;
     flex-direction: row;
 }

@@ -70,9 +70,6 @@
                       <% if (movie) { %>
                         <li>
                           <div class="movie-info">
-                            <p class="titles-style">
-                              <%= movie.title %>
-                            </p>
                             <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>"
                               width="100px" alt="Image" />
                             <a href="/movieTest?id=<%= movie.id %>" class="more-info">More info</a>
@@ -122,7 +119,7 @@
                     <% likedActors.forEach(function(actor) { %>
                       <% if (actor) { %>
                         <li>
-                          <div>
+                          <div class="actors-crews">
                             <p class="titles-style">
                               <%= actor.name %>
                             </p>
