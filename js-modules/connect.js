@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;

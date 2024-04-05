@@ -1,44 +1,19 @@
 require('dotenv').config()
 
 const express = require('express')
-const app = express();
+const router = express.Router();
 const session = require('express-session');
-app.use(express.json());
 
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
-
-
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority&appName=CMD`;
-
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-
-const requireSession = (req, res, next) => {
-  if (!req.session || !req.session.user) {
-    return res.redirect('/login'); // Redirect to login page if session doesn't exist
-  }
-  next();
-};
+const {client} = require('../js-modules/connect');
+const requireSession = require('../js-modules/reqSession');
+const options = require('../js-modules/tmdbOptions');
 
 let fetchedActors = null;
 let fetchedMovies = null;
 let fetchedSeries = null;
 
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${process.env.TMDB_TOKEN}` // Vervang <JOUW_AUTH_TOKEN> door je eigen bearer token
-  }
-};
 
-app.get('/profile-test', requireSession, async (req, res) => {
+router.get('/profile', requireSession, async (req, res) => {
   const database = client.db("Communities");
   const users = database.collection("general");
   const user = await users.findOne({ username: req.session.user.username });
@@ -71,12 +46,9 @@ app.get('/profile-test', requireSession, async (req, res) => {
 
     });
   } catch (error) {
-    console.error('Er is een fout opgetreden bij het ophalen van gegevens:', error);
-    res.status(500).send('Interne serverfout');
+    res.status(500).render('pages/error', { error, user});
   }
 });
 
 
-  
-  
-  module.exports = app;
+  module.exports = router;

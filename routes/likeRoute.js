@@ -1,17 +1,9 @@
-require("dotenv").config();
-
 const express = require("express");
 const router = express.Router();
-const requireSession = require("../reqSession");
-const { client, ObjectId } = require("../connect");
+const requireSession = require("../js-modules/reqSession.js");
+const { client, ObjectId } = require("../js-modules/connect");
+const options = require('../js-modules/tmdbOptions.js');
 
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${process.env.TMDB_TOKEN}`,
-  },
-};
 
 router.post("/likeMovies", requireSession, async (req, res) => {
   const database = client.db("Communities");
@@ -128,26 +120,17 @@ router.post("/likeActors", requireSession, async (req, res) => {
   }
 });
 
-router.get("/home", async (req, res) => {
-  console.log("tom is een plopkoek")
+// router.get("/home", async (req, res) => {
 
-  const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
-  const searchResult = await everything.json();
-  console.log(searchResult);
+//   const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
+//   const searchResult = await everything.json();
+//   console.log(searchResult);
   
-  let fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
-  const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
-  return result.json();
-  }));
-});
-
-
-
-
-
-
-
-
+//   let fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
+//   const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
+//   return result.json();
+//   }));
+// });
 
 
 module.exports = router;

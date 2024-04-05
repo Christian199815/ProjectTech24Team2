@@ -1,21 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const requireSession = require("../reqSession");
-const { client, ObjectId } = require('../connect');
-const handleLikeUnlike = require("../handleLike");
+const requireSession = require("../js-modules/reqSession.js");
+const { client, ObjectId } = require('../js-modules/connect');
+const options = require('../js-modules/tmdbOptions.js');
 
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${process.env.TMDB_TOKEN}` // Vervang <JOUW_AUTH_TOKEN> door je eigen bearer token
-    }
-};
 const threadDatabase = client.db(`${"Threads"}`);
 const communityDatabase = client.db(`${"Communities"}`);
 
 let currCollection = null;
-
 
 let actorID = 0;
 let person = null;
@@ -54,12 +46,6 @@ router.get('/actors', requireSession, async (req, res) => {
 
 
 });
-
-
-// we hebben een post en een get
-
-// de post geeft verschillende data mee
-// Title, username, profile picture (feature), upload date and time, amoount of upvotes, amount of downvotes
 
 router.post('/post-thread', async (req, res) => {
 

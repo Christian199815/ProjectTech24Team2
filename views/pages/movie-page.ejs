@@ -117,104 +117,90 @@
         </div>
 
         <div class="comments">
-            <h2>Comments about Timothee</h2>
+            <h2>Comments about <%= movie.name%></h2>
             <div>
-                <h2>15.932 comments</h2>
-                <div>
-                    <img src="/images/filter.svg">
-                    <p>Sort by</p>
-                </div>
+              <h2><%= posts.length %></h2>
+              <div>
+                <img src="/images/filter.svg" />
+                <p>Sort by</p>
+              </div>
             </div>
+    
+            
+    
+            <!-- comments writing form -->
             <div class="write-comment">
-                <img src="/images/profileplaceholder.png">
-                <div>
-                    <div>
-                        <input type="text" id="comment" name="comment" placeholder="Add a comment" required>
-                    </div>
-                    <div>
-                        <button>Cancel</button>
-                        <button>Comment</button>
-                    </div>
-                </div>
+              <img src="<%= user.profilePhoto %>"/>
+              <div>
+                <form id="comment-form" action="/post-thread" method="post">
+                  <div>
+                    <input
+                      type="text"
+                      id="comment"
+                      name="comment"
+                      placeholder="Add a comment"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <button type="reset">Cancel</button>
+                    <button type="submit">Comment</button>
+                  </div>
+                </form>
+              </div>
             </div>
+    
+    
+           
+    
             <div class="comment-container-parent">
-                <div class="comment-container">
-                    <img src="/images/profileplaceholder.png">
-                    <div>
-                        <div>
-                            <h3>@NAAMUSER</h3>
-                            <p>4 months ago</p>
-                        </div>
-                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
-                        <div>
+    
+              <% if (posts && posts.length > 0) { %>
+                <ul>
+                    <% posts.forEach(post => { %>
+                        <li class="comment-container">
+                          <img src="<%= post.pf %>">
+                          <div>
                             <div>
-                                <img src="/images/thumbsup.svg">
-                                <p>10K</p>
+                              <h3><%= post.username %></h3>
+                              <p><%= post.datetime %></p>
                             </div>
+                            <p><%= post.body %></p>
                             <div>
-                                <img src="/images/thumbsdown.svg">
-                                <p>200</p>
+                              <div>
+                                <form action="/like-post" method="post">
+                                  <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
+                                  <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                  <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
+                                </form>
+                                <!-- <img src="/images/thumbsup.svg" /> -->
+                                <p><%= post.upvotes === 0 ? '' : post.upvotes %></p>
+                              </div>
+                              <div>
+                                <form action="/dislike-post" method="post">
+                                  <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
+                                  <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                  <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
+                                </form>
+                                <p><%= post.downvotes === 0 ? '' : post.downvotes %></p>
+                              </div>
                             </div>
-                        </div>
-                        <p>Reply</p>
-                    </div>
-                    <button>
-                        <img src="/images/add-friend.svg">
-                        <p>Add @name</p>
-                    </button>
-                </div>
-                <div class="comment-container">
-                    <img src="/images/profileplaceholder.png">
-                    <div>
-                        <div>
-                            <h3>@NAAMUSER</h3>
-                            <p>4 months ago</p>
-                        </div>
-                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
-                        <div>
-                            <div>
-                                <img src="/images/thumbsup.svg">
-                                <p>10K</p>
-                            </div>
-                            <div>
-                                <img src="/images/thumbsdown.svg">
-                                <p>200</p>
-                            </div>
-                        </div>
-                        <p>Reply</p>
-                    </div>
-                    <button>
-                        <img src="/images/add-friend.svg">
-                        <p>Add @name</p>
-                    </button>
-                </div>
-                <div class="comment-container">
-                    <img src="/images/profileplaceholder.png">
-                    <div>
-                        <div>
-                            <h3>@NAAMUSER</h3>
-                            <p>4 months ago</p>
-                        </div>
-                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
-                        <div>
-                            <div>
-                                <img src="/images/thumbsup.svg">
-                                <p>10K</p>
-                            </div>
-                            <div>
-                                <img src="/images/thumbsdown.svg">
-                                <p>200</p>
-                            </div>
-                        </div>
-                        <p>Reply</p>
-                    </div>
-                    <button>
-                        <img src="/images/add-friend.svg">
-                        <p>Add @name</p>
-                    </button>
-                </div>
+                          </div>
+                          <form action="/add-friend" method="post">
+                            <input type="hidden" name="postUsername" value="<%= post.username%>">
+                            <input type="submit" value="Add <%= post.username %> to your friendlist">
+                          </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>No posts found.</p>
+            <% } %>
+    
+          
+    
             </div>
-        </div>
+          </div>
     </main>
     <script src="/js/movie-page.js"></script>
     <script src="/js/general.js"></script>

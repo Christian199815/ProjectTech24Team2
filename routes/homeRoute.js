@@ -3,65 +3,16 @@ require('dotenv').config();
 
 const express = require("express");
 const router = express.Router();
-const {client} = require("../connect");
-const requireSession = require("../reqSession");
+const {client} = require("../js-modules/connect");
+const requireSession = require("../js-modules/reqSession");
 
 const database = client.db('Communities');
 const collection = database.collection('general');
 
-// let movieAlreadyLiked = null; 
-
-
-
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.TMDB_TOKEN}` // Vervang <JOUW_AUTH_TOKEN> door je eigen bearer token
-    }
-  };
-  
-  
-
-
+const options = require('../js-modules/tmdbOptions');
 
   router.get('/home', requireSession, async (req, res) => {
     const user = req.session.user;
-
-  //   try {
-  //     // Assuming collection is being populated asynchronously
-  //     // Ensure that it's populated before accessing its properties
-  //     if (collection) {
-  //       console.log("MovieID", movieID);
-  //       console.log("likedMovies:", collection.likedMovies);
-  //         movieAlreadyLiked = collection.likedMovies && collection.likedMovies.includes(movieID);
-  //         // Logging for debugging
-  //         console.log("movieAlreadyLiked:", movieAlreadyLiked);
-  //     } else {
-  //         console.error("Collection is undefined or null.");
-  //     }
-  // } catch (error) {
-  //     console.error("An error occurred:", error);
-
-
-  // }
-
-  console.log("tom is een plopkoek")
-
-  // const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
-  // const searchResult = await everything.json();
-  // const movieArray = searchResult.results;
-
-
-  
-  // const fetchedMovies = user.likedMovies;
-
-  // const likedMovies = fetchedMovies.filter(obj => movieArray.includes(obj.id));
-  // console.log(likedMovies);
-
-
-  
-// ------------------------------------------------------------------------
 
     const result = await fetch(`https://api.themoviedb.org/3/trending/person/week`, options);
     const trendingPersons = await result.json();
@@ -100,30 +51,8 @@ const options = {
       overview: npMovie.overview,
     }));
     
-
-
     res.render('pages/homepage', { actorsData, moviesData, seriesData, npMoviesData, user }); 
 
   });
-  
-  router.get('/search', requireSession, async (req, res) => {
-    let searchText = req.query.searchText;
-    const result = await fetch(`https://api.themoviedb.org/3/search/multi?query=${searchText}`, options);
-    const searchResult = await result.json();
-    res.render('pages/search', { searchResult });
-  });
-  
-  router.get('/search', requireSession, async (req, res) => {
-    let query = req.query.query || req.session.lastQuery || 'star wars';
-    req.session.lastQuery = query;
-  
-    const result = await fetch(`https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(query)}`, options);
-    const searchResult = await result.json();
-    
-    res.render('pages/search', { searchResult });
-  });
-
-  
-  
   
   module.exports = router;

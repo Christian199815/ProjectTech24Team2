@@ -1,18 +1,16 @@
 const express = require('express');
+const router = express.Router();
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
 const cookieParser = require('cookie-parser');
-const router = express.Router();
-const { client } = require('../connect')
+const { client } = require('../js-modules/connect')
 
 
 
-router.get('/login', (err, req, res) => {
+router.get('/login', (req, res) => {
     const user = req.session.user;
-
-
-    res.render('pages/signin');
+    // res.render('pages/actor-page-ThreadsTest', { person, age, posts, user });
+    res.render('pages/signin', {user});
 })
 
 router.post('/login', async (req, res) => {
@@ -22,17 +20,18 @@ router.post('/login', async (req, res) => {
 
     const user = await collection.findOne({ username });
     if (!user) {
-        res.status(500).render('error', { error: "User not found" });
-        // res.send('User not found');
+        res.send('User not found');
         return;
     }
     if (!user.password) {
-        res.status(500).render('error', { error: "Password field is missing in the database" });
-        // res.send('Password field is missing in the database');
+        // res.status(500).render('error', { error: "Password field is missing in the database" });
+        res.send('Password field is missing in the database');
         return;
     }
     if (!(await bcrypt.compare(password, user.password))) {
-        res.status(500).render('error', { error: "Invalid password" });
+        // res.status(500).render('error', { error: "Invalid password" });
+        res.send('invalid pwwrd');
+
         return;
     }
     //start session here
