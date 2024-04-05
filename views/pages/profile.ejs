@@ -74,7 +74,7 @@
                         width="100px"
                         alt="Image"
                       />
-                      <a href="/movieTest?id=<%= movie.id %>">More info</a>
+                      <a href="/movieTest?id=<%= movie.id %>" class="more-info">More info</a>
                     </div>
                   </li>
                   <% } %> <% }); %> <% } %>
@@ -88,19 +88,19 @@
             <div>
               <h4>My favorites</h4>
               <section class="movies-block3">
-                <p>Tv-shows</p>
+                <p class="tv-heading">Tv-shows</p>
                 <ul class="movies-row">
                   <% if (likedSeries) { %> <%
                   likedSeries.forEach(function(serie) { %> <% if (serie) { %>
                   <li>
                     <div>
-                      <p class="titels-style"><%= serie.name %></p>
+                      <p class="titles-style"><%= serie.name %></p>
                       <img
                         src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>"
                         width="100px"
                         alt="Image"
                       />
-                      <a href="/serieTest?id=<%= serie.id %>">Bekijk details</a>
+                      <a href="/serieTest?id=<%= serie.id %>" class="">Bekijk details</a>
                     </div>
                   </li>
                   <% } %> <% }); %> <% } %>
@@ -115,7 +115,7 @@
                   likedActors.forEach(function(actor) { %> <% if (actor) { %>
                   <li>
                     <div>
-                      <p class="titels-style"><%= actor.name %></p>
+                      <p class="titles-style"><%= actor.name %></p>
                       <img
                         src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= actor.profile_path %>"
                         width="100px"
