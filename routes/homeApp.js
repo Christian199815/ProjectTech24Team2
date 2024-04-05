@@ -24,6 +24,7 @@ const options = {
   
 
 
+
   router.get('/home', requireSession, async (req, res) => {
     const user = req.session.user;
 
@@ -100,7 +101,9 @@ const options = {
     }));
     
 
+
     res.render('pages/homepage', { actorsData, moviesData, seriesData, npMoviesData, user }); 
+
   });
   
   router.get('/search', requireSession, async (req, res) => {

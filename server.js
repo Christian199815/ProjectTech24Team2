@@ -38,6 +38,8 @@ const movieRoute = require('./routes/movieRoute');
 const serieRoute = require('./routes/serieRoute');
 
 
+const errorRoute = require('./routes/errorRoute');
+
 
 
 
@@ -63,6 +65,7 @@ app.use(preferencesApp);
 app.use(photoApp);
 app.use(profile);
 app.use(actorApp);
+app.use(errorRoute);
 app.use(likeApp);
 app.use(movieRoute);
 app.use(serieRoute);
