@@ -107,97 +107,74 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const slider = document.querySelector('.ts-slider');
-    const groups = document.querySelectorAll('.ts-group');
     const leftArrow = document.querySelector('.ts-left-arrow-container');
     const rightArrow = document.querySelector('.ts-right-arrow-container');
     const indicatorsContainer = document.querySelector('.ts-navigation-indicators');
 
-    let currentGroupIndex = 0;
-    let indicators; // Define indicators variable
+    let currentStep = 0;
+    const stepWidth = slider.offsetWidth; // Width of each step
+    const stepSize = stepWidth * 0.8; // 80% of the slider width as step size
 
-    // Options for the Intersection Observer
-    const options = {
-        threshold: 0.5 // Trigger when at least 50% of the element is visible
-    };
-
-    // Callback function for the Intersection Observer
-    const callback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const groupIndex = Array.from(groups).indexOf(entry.target);
-                currentGroupIndex = groupIndex;
-                updateArrows();
-                updateIndicator(groupIndex);
-            }
-        });
-    };
-
-    // Create Intersection Observer
-    const observer = new IntersectionObserver(callback, options);
-
-    // Observe each group
-    groups.forEach(group => {
-        observer.observe(group);
-    });
-
-    // Function to update indicators based on the current group index
-    function updateIndicator(groupIndex) {
-        indicators.forEach((indicator, index) => {
-            if (index === groupIndex) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
+    // Function to update arrows and indicators
+    function updateNavigation() {
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1; // Maximum step index
+        currentStep = Math.min(currentStep, maxStep); // Ensure currentStep does not exceed maxStep
+        leftArrow.style.visibility = currentStep > 0 ? 'visible' : 'hidden';
+        rightArrow.style.visibility = currentStep < maxStep ? 'visible' : 'hidden';
+        // Clear existing indicators
+        indicatorsContainer.innerHTML = '';
+        // Create new indicators
+        for (let i = 0; i <= maxStep; i++) {
+            const indicator = document.createElement('span');
+            indicator.classList.add('ts-indicator');
+            indicator.classList.toggle('active', i === currentStep);
+            indicator.addEventListener('click', () => {
+                currentStep = i;
+                updateNavigation();
+                scrollToStep(currentStep);
+            });
+            indicatorsContainer.appendChild(indicator);
+        }
     }
 
-    // Function to handle indicator click
-    function indicatorClickHandler(index) {
-        groups[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    // Function to scroll to a specific step
+    function scrollToStep(step) {
+        const scrollLeft = step * stepSize;
+        slider.scrollTo({ left: scrollLeft, behavior: 'smooth' });
     }
 
     // Click event for left arrow
     leftArrow.addEventListener('click', function() {
-        if (currentGroupIndex > 0) {
-            currentGroupIndex--;
-            groups[currentGroupIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        if (currentStep > 0) {
+            currentStep--;
+            updateNavigation();
+            scrollToStep(currentStep);
         }
     });
 
     // Click event for right arrow
     rightArrow.addEventListener('click', function() {
-        if (currentGroupIndex < groups.length - 1) {
-            currentGroupIndex++;
-            groups[currentGroupIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1;
+        if (currentStep < maxStep) {
+            currentStep++;
+            updateNavigation();
+            scrollToStep(currentStep);
         }
     });
 
-    // Function to add navigation indicators dynamically
-    function addIndicators() {
-        for (let i = 0; i < groups.length; i++) {
-            const indicator = document.createElement('span');
-            indicator.classList.add('ts-indicator');
-            indicator.addEventListener('click', () => {
-                indicatorClickHandler(i);
-            });
-            indicatorsContainer.appendChild(indicator);
-        }
-        // Redefine indicators after adding dynamically generated indicators
-        indicators = document.querySelectorAll('.ts-indicator');
-    }
+    // Scroll event to handle navigation when scrolling with touchpad or similar devices
+    slider.addEventListener('scroll', function() {
+        currentStep = Math.round(slider.scrollLeft / stepSize);
+        updateNavigation();
+    });
 
-    // Call the function to add indicators initially
-    addIndicators();
-
-    // Function to update arrows based on current group index
-    function updateArrows() {
-        leftArrow.style.visibility = currentGroupIndex === 0 ? 'hidden' : 'visible';
-        rightArrow.style.visibility = currentGroupIndex === groups.length - 1 ? 'hidden' : 'visible';
-    }
-
-    // Initially update arrows
-    updateArrows();
+    // Initial update of arrows and indicators
+    updateNavigation();
 });
+
+
+
+
 
 
 
@@ -208,97 +185,72 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const slider = document.querySelector('.tm-slider');
-    const groups = document.querySelectorAll('.tm-group');
     const leftArrow = document.querySelector('.tm-left-arrow-container');
     const rightArrow = document.querySelector('.tm-right-arrow-container');
     const indicatorsContainer = document.querySelector('.tm-navigation-indicators');
 
-    let currentGroupIndex = 0;
-    let indicators; // Define indicators variable
+    let currentStep = 0;
+    const stepWidth = slider.offsetWidth; // Width of each step
+    const stepSize = stepWidth * 0.8; // 80% of the slider width as step size
 
-    // Options for the Intersection Observer
-    const options = {
-        threshold: 0.5 // Trigger when at least 50% of the element is visible
-    };
-
-    // Callback function for the Intersection Observer
-    const callback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const groupIndex = Array.from(groups).indexOf(entry.target);
-                currentGroupIndex = groupIndex;
-                updateArrows();
-                updateIndicator(groupIndex);
-            }
-        });
-    };
-
-    // Create Intersection Observer
-    const observer = new IntersectionObserver(callback, options);
-
-    // Observe each group
-    groups.forEach(group => {
-        observer.observe(group);
-    });
-
-    // Function to update indicators based on the current group index
-    function updateIndicator(groupIndex) {
-        indicators.forEach((indicator, index) => {
-            if (index === groupIndex) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
+    // Function to update arrows and indicators
+    function updateNavigation() {
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1; // Maximum step index
+        currentStep = Math.min(currentStep, maxStep); // Ensure currentStep does not exceed maxStep
+        leftArrow.style.visibility = currentStep > 0 ? 'visible' : 'hidden';
+        rightArrow.style.visibility = currentStep < maxStep ? 'visible' : 'hidden';
+        // Clear existing indicators
+        indicatorsContainer.innerHTML = '';
+        // Create new indicators
+        for (let i = 0; i <= maxStep; i++) {
+            const indicator = document.createElement('span');
+            indicator.classList.add('tm-indicator');
+            indicator.classList.toggle('active', i === currentStep);
+            indicator.addEventListener('click', () => {
+                currentStep = i;
+                updateNavigation();
+                scrollToStep(currentStep);
+            });
+            indicatorsContainer.appendChild(indicator);
+        }
     }
 
-    // Function to handle indicator click
-    function indicatorClickHandler(index) {
-        groups[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    // Function to scroll to a specific step
+    function scrollToStep(step) {
+        const scrollLeft = step * stepSize;
+        slider.scrollTo({ left: scrollLeft, behavior: 'smooth' });
     }
 
     // Click event for left arrow
     leftArrow.addEventListener('click', function() {
-        if (currentGroupIndex > 0) {
-            currentGroupIndex--;
-            groups[currentGroupIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        if (currentStep > 0) {
+            currentStep--;
+            updateNavigation();
+            scrollToStep(currentStep);
         }
     });
 
     // Click event for right arrow
     rightArrow.addEventListener('click', function() {
-        if (currentGroupIndex < groups.length - 1) {
-            currentGroupIndex++;
-            groups[currentGroupIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        const maxStep = Math.floor(slider.scrollWidth / stepSize) - 1;
+        if (currentStep < maxStep) {
+            currentStep++;
+            updateNavigation();
+            scrollToStep(currentStep);
         }
     });
 
-    // Function to add navigation indicators dynamically
-    function addIndicators() {
-        for (let i = 0; i < groups.length; i++) {
-            const indicator = document.createElement('span');
-            indicator.classList.add('tm-indicator');
-            indicator.addEventListener('click', () => {
-                indicatorClickHandler(i);
-            });
-            indicatorsContainer.appendChild(indicator);
-        }
-        // Redefine indicators after adding dynamically generated indicators
-        indicators = document.querySelectorAll('.tm-indicator');
-    }
+    // Scroll event to handle navigation when scrolling with touchpad or similar devices
+    slider.addEventListener('scroll', function() {
+        currentStep = Math.round(slider.scrollLeft / stepSize);
+        updateNavigation();
+    });
 
-    // Call the function to add indicators initially
-    addIndicators();
-
-    // Function to update arrows based on current group index
-    function updateArrows() {
-        leftArrow.style.visibility = currentGroupIndex === 0 ? 'hidden' : 'visible';
-        rightArrow.style.visibility = currentGroupIndex === groups.length - 1 ? 'hidden' : 'visible';
-    }
-
-    // Initially update arrows
-    updateArrows();
+    // Initial update of arrows and indicators
+    updateNavigation();
 });
+
+
 
 
 

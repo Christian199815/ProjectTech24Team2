@@ -21,36 +21,40 @@
   <!-- partial -->
   <%- include('../partials/header.ejs') %>
 
-  
 
-  <main>
+
+    <main>
       <!-- ============================================== -->
       <!-- ------------- FEATURED MOVIES ---------------- -->
       <!-- ============================================== -->
       <div class="featured-movies">
         <div class="fm-slider-container">
-  
-            
-            <div class="fm-slider">    
-              <% npMoviesData.forEach(function(npMovie) { %>
-                <div class="featured-movie">
-                  <% if (npMovie.posterBackdrop) { %>
-                    <img src="<%= npMovie.posterBackdrop %>" alt="<%= npMovie.title %>" width="100px">
+
+
+          <div class="fm-slider">
+            <% npMoviesData.forEach(function(npMovie) { %>
+              <div class="featured-movie">
+                <% if (npMovie.posterBackdrop) { %>
+                  <img src="<%= npMovie.posterBackdrop %>" alt="<%= npMovie.title %>" width="100px">
                   <% } %>
-                  <div>
                     <div>
-                      <h2><%= npMovie.title %></h2>
-                      <form action="/likeMovies" method="POST">
-                        <input type="image" src="images/header-favorite.svg" alt="I Like">
-                        <input type="hidden" name="like_button" value="<%= npMovie.id %>"> 
-                    </form>
+                      <div>
+                        <h2>
+                          <%= npMovie.title %>
+                        </h2>
+                        <form action="/likeMovies" method="POST">
+                          <input type="image" src="images/header-favorite.svg" alt="I Like">
+                          <input type="hidden" name="like_button" value="<%= npMovie.id %>">
+                        </form>
+                      </div>
+                      <p>
+                        <%= npMovie.overview %>
+                      </p>
+                      <a href="/movie-page?id=<%= npMovie.id %>">Bekijk details</a>
                     </div>
-                    <p><%= npMovie.overview %></p>
-                    <a href="/movieTest?id=<%= npMovie.id %>">Bekijk details</a>
-                  </div>
                 </div>
               <% }); %>
-                
+
           </div>
 
 
@@ -75,24 +79,30 @@
         <div class="ts-slider-container">
           <div class="ts-slider">
 
-            
+
             <div class="ts-group">
               <% seriesData.forEach(function(serie) { %>
                 <div>
                   <% if (serie.posterBackdrop) { %>
-                    <img  src="<%= serie.posterBackdrop %>" alt="<%= serie.name %>" width="100px"> <!-- 'posterBackdrop' in plaats van 'posterPath' -->
-                  <% } %>
-                  <div>
-                    <a href="/serieTest?id=<%= serie.id %>"> <p><%= serie.name %></p></a>
-                    <form action="/likeSeries" method="POST">
-                      <input type="image" src="images/header-favorite.svg" alt="I Like">
-                      <input type="hidden" name="like_button" value="<%= serie.id %>"> 
-                  </form>
-                  </div>
+
+                    <img src="<%= serie.posterBackdrop %>" alt="<%= serie.name %>" width="100px">
+                    <!-- 'posterBackdrop' in plaats van 'posterPath' -->
+                    <% } %>
+                      <div>
+                        <a href="/serie-page?id=<%= serie.id %>">
+                          <p>
+                            <%= serie.name %>
+                          </p>
+                        </a>
+                        <form action="/likeSeries" method="POST">
+                          <input type="image" src="images/header-favorite.svg" alt="I Like">
+                          <input type="hidden" name="like_button" value="<%= serie.id %>">
+                        </form>
+                      </div>
                 </div>
-              <% }); %>
+                <% }); %>
             </div>
-            
+
 
           </div>
           <div class="ts-arrow-container ts-left-arrow-container">
@@ -120,17 +130,22 @@
               <% moviesData.forEach(function(movie) { %>
                 <div>
                   <% if (movie.posterBackdrop) { %>
-                    <img src="<%= movie.posterBackdrop %>" alt="<%= movie.title %>" width="100px"> <!-- 'posterBackdrop' in plaats van 'posterPath' -->
-                  <% } %>
-                  <div>
-                    <a href="/movieTest?id=<%= movie.id %>"><p><%= movie.title %></p>></a>
-                    <form action="/likeMovies" method="POST">
-                      <input type="image" src="images/header-favorite.svg" alt="I Like">
-                      <input type="hidden" name="like_button" value="<%= movie.id %>"> 
-                  </form>
-                  </div>
+                    <img src="<%= movie.posterBackdrop %>" alt="<%= movie.title %>" width="100px">
+                    <!-- 'posterBackdrop' in plaats van 'posterPath' -->
+                    <% } %>
+                      <div>
+                        <a href="/movie-page?id=<%= movie.id %>">
+                          <p>
+                            <%= movie.title %>
+                          </p>
+                        </a>
+                        <form action="/likeMovies" method="POST">
+                          <input type="image" src="images/header-favorite.svg" alt="I Like">
+                          <input type="hidden" name="like_button" value="<%= movie.id %>">
+                        </form>
+                      </div>
                 </div>
-              <% }); %>
+                <% }); %>
             </div>
 
           </div>
@@ -153,42 +168,49 @@
         <div class="ta-slider-container">
           <div class="ta-slider">
 
-            <% let counter = 1; %> <!-- Voeg een variabele toe om het nummer bij te houden -->
-            <% actorsData.slice(0, 10).forEach(function(actor) { %> <!-- Slicing the array to include only the first 10 elements -->
-              <div class="trending-actor">
-                <div>
-                  <h2><%= counter %></h2> <!-- Gebruik de teller hier -->
+            <% let counter=1; %>
+              <!-- Voeg een variabele toe om het nummer bij te houden -->
+              <% actorsData.slice(0, 9).forEach(function(actor) { %>
+                <!-- Slicing the array to include only the first 10 elements -->
+                <div class="trending-actor">
+                  <div>
+                    <h2>
+                      <%= counter %>
+                    </h2> <!-- Gebruik de teller hier -->
                     <div>
                       <% if (actor.profilePath) { %>
                         <img src="<%= actor.profilePath %>" alt="<%= actor.name %>" width="100px">
-                      <% } %>
+                        <% } %>
+                          <div>
+                            <a href="/actors?id=<%= actor.id %>">
+                              <%= actor.name %>
+                            </a>
+                            <form action="/likeActors" method="POST">
+                              <input type="image" src="images/header-favorite.svg" alt="I Like">
+                              <input type="hidden" name="like_button" value="<%= actor.id %>">
+                            </form>
+                          </div>
                     </div>
-                    <a href="/actors?id=<%= actor.id %>"><%= actor.name %> </a>
-                    <form action="/likeActors" method="POST">
-                      <input type="image" src="images/header-favorite.svg" alt="I Like">
-                      <input type="hidden" name="like_button" value="<%= actor.id %>"> 
-                  </form>
+                  </div>
                 </div>
-              </div>
-              <% counter++; %>
-            <% }); %> 
-        
-        </div>
-        
+                <% counter++; %>
+                  <% }); %>
+
+          </div>
+
         </div>
       </div>
 
 
 
-  </main>
+    </main>
 
-  <footer>
+    <footer>
+
 
   </footer>
   <script src="/js/general.js"></script>
   <script src="/js/homepage.js"></script>
-  <script src="/js/homeApp.js"></script>
-  <script src="/js/tmdb.js"></script>
 </body>
 
 </html>

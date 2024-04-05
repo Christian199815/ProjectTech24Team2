@@ -1,15 +1,16 @@
 const express = require('express');
+const router = express.Router();
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
 const cookieParser = require('cookie-parser');
-const router = express.Router();
-const { client } = require('../connect')
+const { client } = require('../js-modules/connect')
 
 
 
 router.get('/login', (req, res) => {
-    res.render('pages/signin', { user: req.session.user });
+    const user = req.session.user;
+    // res.render('pages/actor-page-ThreadsTest', { person, age, posts, user });
+    res.render('pages/signin', {user});
 })
 
 router.post('/login', async (req, res) => {
@@ -23,11 +24,14 @@ router.post('/login', async (req, res) => {
         return;
     }
     if (!user.password) {
+        // res.status(500).render('error', { error: "Password field is missing in the database" });
         res.send('Password field is missing in the database');
         return;
     }
     if (!(await bcrypt.compare(password, user.password))) {
-        res.send('Invalid password');
+        // res.status(500).render('error', { error: "Invalid password" });
+        res.send('invalid pwwrd');
+
         return;
     }
     //start session here
@@ -41,7 +45,10 @@ router.post('/login', async (req, res) => {
         console.log('short cookie');
 
     }
-   res.redirect('/home');
+
+    res.redirect('/home');
 });
 
 module.exports = router;
+
+

@@ -53,7 +53,7 @@
 
                     <% if (user) { %>
                     <% if (user.profilePhoto) { %>
-                        <a href="/profile"></a><img src="<%= user.profilePhoto %>" alt="Profile Picture"></a>
+                        <a href="/profile"></a><img src="<%= user.profilePhoto %>" alt="Profile Picture" width="40px"></a>
                       <% } else { %>
                         <img src="images/header-profile.png">
                       <% } %>
@@ -61,7 +61,9 @@
 
 
                 </div>
-                <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+                <form action="/search" method="GET">
+                <input type="text" class="search-input" name="searchText" placeholder="Search...">
+            </form>
             </div>
         </div>
     </nav>

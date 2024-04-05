@@ -12,21 +12,58 @@
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <link href="/css/general.css" rel="stylesheet">
-    <link href="/css/error.css" rel="stylesheet">
+    <link href="./public/css/general.css" rel="stylesheet">
+    <link href="./public/css/error.css" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+        <p>Movie Lounge</p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">
+                        <p>Movies</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>TV shows</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <div class="devider"></div>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Actors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Directors</p>
+                        <img src="images/header-arrow.svg">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <a href="#"><img src="images/header-notification.svg"></a>
+            <a href="#"><img src="images/header-favorite.svg"></a>
+            <a href="#"><img src="images/header-profile.png"></a>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+        </div>
+    </header>
 
-   
-    
     <main class="error">
         <div class="border-error">
 
         <h1>"Looks like our website's director shouted 'cut' a bit too soon."</h1>
-        <h2>It look like you encountered an <%= error %> error. Please be patient!</h2>
-        <a href="/home" class="error-button">Return to home</a>
-        
+        <h2>We're editing out the errors now. Please be patient!</h2>
+        <button class="error-button">Refresh</button>
 
         <!-- Clipper movie board-->
         <div class="outercontainer">

@@ -1,41 +1,30 @@
-require('dotenv').config();
-
-const xss = require('xss')
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
-const { body, validationResult } = require('express-validator');
-const userValidationRules = require('./userValidationRules');
 const session = require('express-session');
-const {client} = require('./connect');
-
 const express = require('express');
-const multer = require('multer'); //dont use in production
 const port = process.env.PORT;
 const app = express();
+const {client} = require('./js-modules/connect');
 
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true, limit: '50mb'}))
 
-
-
 //load in the separate files
-const loginApp = require('./routes/loginApp');
-const logoutApp = require('./routes/logoutApp');
-
-const signupApp = require('./routes/signupApp');
-const preferencesApp = require('./routes/preferencesApp');
-const photoApp = require('./routes/photoApp');
+const logInRoute = require('./routes/logInRoute');
+const logOutRoute = require('./routes/logOutRoute');
+const signUpRoute = require('./routes/signUpRoute');
 
 
-const homeApp = require('./routes/homeApp');
-const tmdb = require('./tmdb');
-const profile = require('./routes/profileRoute');
-const actorApp = require('./routes/actorWThreadsApp');
+const preferencesRoute = require('./routes/preferencesRoute');
+const errorRoute = require('./routes/errorRoute');
+const searchRoute = require('./routes/searchRoute');
 
 
+const homeRoute = require('./routes/homeRoute');
+const profileRoute = require('./routes/profileRoute');
+const likeApp = require('./routes/likeRoute');
 
-
+const movieRoute = require('./routes/movieRoute');
+const serieRoute = require('./routes/serieRoute');
+const actorRoute = require('./routes/actorRoute');
 
 app.use(session({
     secret: `${process.env.SESSIONKEY}`,
@@ -44,21 +33,24 @@ app.use(session({
     cookie: { secure: false }
 }));
 
-
-
 app.set('view engine', 'ejs')
 
 client.connect();
 
-app.use(signupApp);
-app.use(loginApp);
-app.use(logoutApp);
-app.use(homeApp);
-app.use(preferencesApp);
-app.use(photoApp);
-app.use(tmdb);
-app.use(profile);
-app.use(actorApp);
+app.use(signUpRoute);
+app.use(logInRoute);
+app.use(logOutRoute);
+app.use(homeRoute);
+app.use(preferencesRoute);
+app.use(profileRoute);
+
+app.use(errorRoute);
+app.use(likeApp);
+app.use(searchRoute);
+
+app.use(movieRoute);
+app.use(serieRoute);
+app.use(actorRoute);
 
 
 

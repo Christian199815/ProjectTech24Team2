@@ -1,0 +1,291 @@
+
+/* Styling van clipboard */
+/* code modified van : https://codepen.io/matthewcsimpson/pen/bGMjOMm */
+
+@keyframes rotateUp {
+  0% {
+    transform: rotate(0deg);
+  }
+  96% {
+    transform: rotate(-35deg);
+  }
+}
+
+* {
+  font-family: 'Prompt';
+  box-sizing: border-box;
+}
+
+
+.text {
+  color: #f1f1f1;
+  text-transform: uppercase;
+  font-style: italic;
+  display: inline;
+  margin: 0;
+}
+
+.text--padded {
+  padding-left: 4px;
+  padding-top: 2px;
+}
+
+.outercontainer {
+  height: 950px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hinge {
+  clip-path: polygon(0% 0%, 47% 0%, 100% 100%, 0% 100%);
+  height: 100px;
+  width: 100px;
+  border: 0.1rem solid grey;
+  z-index: 2;
+  position: relative;
+  background-color: #010101;
+  left: 0;
+  top: 100px;
+  border-radius: 10px;
+}
+
+.hinge__rivet {
+  display: block;
+  font-size: 0.6rem;
+  margin: 0;
+}
+
+.hinge__rivet--top {
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+.hinge__rivet--bottomleft {
+  position: relative;
+  left: 10px;
+  top: 50px;
+}
+
+.hinge__rivet--bottomright {
+  position: relative;
+  left: 60px;
+  top: 33px;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  background-color: #000000;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 0 0 10px 10px;
+}
+
+.clapper {
+  width: 500px;
+  height: 100%;
+}
+
+.clapper__top {
+  width: 100%;
+  height: 50px;
+  background-color: #151515;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+  border-radius: 10px 0 0 0 ;
+}
+
+.clapper__top--white {
+  width: 15%;
+  height: 100%;
+  background-color: #f1f1f1;
+  transform: skew(20deg);
+}
+
+.clapper__top--white:first-child {
+  visibility: hidden;
+}
+
+.clapper__bottom {
+  width: 100%;
+  height: 50px;
+  background-color: #151515;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.clapper__bottom--white {
+  width: 15%;
+  height: 100%;
+  background-color: #f1f1f1;
+  transform: skew(-20deg);
+}
+
+.info-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-take-roll {
+  width: 95%;
+  height: 25%;
+  display: flex;
+  justify-content: space-around;
+  border-top: 4px solid #f1f1f1;
+  border-bottom: 4px solid #f1f1f1;
+}
+
+.scene,
+.take,
+.roll {
+  width: 33%;
+  height: 100%;
+  background: #151515;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  padding: 0;
+}
+
+.scene__text,
+.take__text,
+.roll__text {
+  font-family: "Eraser";
+  color: white;
+  font-size: 1.5rem;
+}
+
+.scene {
+  border-right: 4px solid #f1f1f1;
+}
+
+.take {
+  border-right: 4px solid #f1f1f1;
+}
+
+.date-prod-sound {
+  width: 95%;
+  height: 25%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 4px solid #f1f1f1;
+}
+
+.date-prod {
+  width: 60%;
+  height: 100%;
+}
+
+.date,
+.prod {
+  background: #151515;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  border-right: 4px solid #f1f1f1;
+}
+
+.date {
+  border-bottom: 4px solid #f1f1f1;
+}
+
+.sound {
+  background: #151515;
+  width: 40%;
+}
+
+.director,
+.cinematographer {
+  width: 95%;
+  height: 15%;
+  border-bottom: 4px solid #f1f1f1;
+  background: #151515;
+}
+
+.rotateUp {
+  transform-origin: left center;
+  animation: rotateUp 4s;
+  animation-iteration-count: 6;
+}
+
+/****** de melding ****/
+
+
+
+.error h1{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  font-family: 'Prompt';
+  font-weight: 500;
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+  width: 100%
+}
+
+.error h2{
+  color: var(--color-secondary-tint1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Prompt';
+  font-weight: 400;
+  font-size: 2.2em;
+  width: 100%;
+}
+
+.error button{
+  background-color: var(--color-secondary-tint1);
+  color: #fff;
+  margin-top: 1em;
+  font-size: 1.5em;
+  border-radius: 0.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  border-style: none;
+
+}
+
+.border-error{
+  margin: 3rem;
+  padding: 5em 3em;
+  background-color: var(--color-secondarybackground);
+  border: solid 1px var(--color-primary-tint3);
+  border-radius: 1em;
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .error h1{
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .error h2{
+    font-size: 1.2em;
+    text-align: center;
+  }
+}
+
