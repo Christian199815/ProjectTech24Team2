@@ -78,11 +78,6 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
     // Print the ID of the inserted document
     console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
-    req.session.user = user;
-
-    res.redirect('/login');
-
-
 })
 
 module.exports = router;

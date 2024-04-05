@@ -92,6 +92,19 @@ body.scroll-lock {
     overflow: hidden;
 }
 
+.information-snippet {
+    background-color: var(--color-secondary-tint1);
+    padding: .25em .5em;
+    border-radius: 5px;
+}
+
+.information-snippet p {
+    white-space: nowrap;
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
 
 
 /* ****** */

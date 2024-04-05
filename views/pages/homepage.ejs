@@ -46,7 +46,7 @@
                     </form>
                     </div>
                     <p><%= npMovie.overview %></p>
-                    <a href="/movieTest?id=<%= npMovie.id %>">Bekijk details</a>
+                    <a href="/movie-page?id=<%= npMovie.id %>">Bekijk details</a>
                   </div>
                 </div>
               <% }); %>
@@ -83,7 +83,7 @@
                     <img  src="<%= serie.posterBackdrop %>" alt="<%= serie.name %>" width="100px"> <!-- 'posterBackdrop' in plaats van 'posterPath' -->
                   <% } %>
                   <div>
-                    <a href="/serieTest?id=<%= serie.id %>"> <p><%= serie.name %></p></a>
+                    <a href="/serie-page?id=<%= serie.id %>"> <p><%= serie.name %></p></a>
                     <form action="/likeSeries" method="POST">
                       <input type="image" src="images/header-favorite.svg" alt="I Like">
                       <input type="hidden" name="like_button" value="<%= serie.id %>"> 
@@ -189,6 +189,7 @@
   <script src="/js/homepage.js"></script>
   <script src="/js/homeApp.js"></script>
   <script src="/js/tmdb.js"></script>
+  <script src="/js/likeApp.js"></script>
 </body>
 
 </html>
