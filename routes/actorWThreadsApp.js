@@ -116,10 +116,12 @@ router.get('/thread-reverse', async (req, res) => {
 router.post('/add-friend', async (req, res) => {
     try {
         const friendReqUsername = req.body.postUsername;
-        console.log(friendReqUsername);
+
         const users = communityDatabase.collection("general");
 
         const user = await users.findOne({ username: friendReqUsername });
+
+        let alreadyFriends = null;
 
         if (!user) {
             console.log("User not found");
@@ -133,7 +135,10 @@ router.post('/add-friend', async (req, res) => {
             );
             user.friendRequests = [];
         }
-        const alreadyFriends = users.friends.includes(friendReqUsername);
+        if (user.friends) {
+            alreadyFriends = user.friends.includes(friendReqUsername);
+        }
+        console.log("AlreadyFriends: " + alreadyFriends);
         const alreadySent = user.friendRequests.includes(friendReqUsername);
 
         if (alreadySent || alreadyFriends) {
@@ -152,6 +157,8 @@ router.post('/add-friend', async (req, res) => {
         return res.status(500).send("Internal Server Error");
     }
 
+    res.redirect('back');
+
 
 })
 
@@ -160,11 +167,11 @@ router.post('/like-post', async (req, res) => {
     const postUser = req.body.postUsername;
     upvoteAmount = upvoteAmount + 1;
     if (currCollection) {
-    const post = await currCollection.findOne({ username: postUser });
-    const result = await currCollection.updateOne(
-        { _id: post._id },
-        { upvotes: upvoteAmount }
-    );
+        const post = await currCollection.findOne({ username: postUser });
+        const result = await currCollection.updateOne(
+            { _id: post._id },
+            { upvotes: upvoteAmount }
+        );
     }
 
 })
