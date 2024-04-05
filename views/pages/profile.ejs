@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account</title>
 
-    <link href="/css/general.css" rel="stylesheet" />
-    <link href="/css/account.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <%- include ('../partials/header') %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account</title>
+
+  <link href="/css/general.css" rel="stylesheet" />
+  <link href="/css/account.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <%- include ('../partials/header') %>
 
     <main class="account">
       <div class="top-block">
@@ -23,19 +24,19 @@
           <div>
             <h1>My account</h1>
             <section class="my-account">
-              <img src="<%= user.profilePhoto%>" alt=""  width="300px"/>
+              <img src="<%= user.profilePhoto%>" alt="" width="300px" />
               <div class="information-account">
                 <p>Name</p>
-                <p><%=user.username%></p>
+                <p>
+                  <%=user.username%>
+                </p>
                 <p>Email</p>
-                <p><%= user.email%></p>
+                <p>
+                  <%= user.email%>
+                </p>
                 <p>Password</p>
                 <form action="/change-password" method="post">
-                  <input
-                    type="hidden"
-                    name="person-name"
-                    value="<%= user.username%>"
-                  />
+                  <input type="hidden" name="person-name" value="<%= user.username%>" />
                   <button type="submit">change Password</button>
                 </form>
               </div>
@@ -64,20 +65,22 @@
               <h3>Movie List</h3>
               <section class="movies-block2">
                 <ul class="movies-list-row">
-                  <% if (likedMovies) { %> <%
-                  likedMovies.forEach(function(movie) { %> <% if (movie) { %>
-                  <li>
-                    <div class="movie-info">
-                      <p class="titles-style"><%= movie.title %></p>
-                      <img
-                        src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>"
-                        width="100px"
-                        alt="Image"
-                      />
-                      <a href="/movieTest?id=<%= movie.id %>" class="more-info">More info</a>
-                    </div>
-                  </li>
-                  <% } %> <% }); %> <% } %>
+                  <% if (likedMovies) { %>
+                    <% likedMovies.forEach(function(movie) { %>
+                      <% if (movie) { %>
+                        <li>
+                          <div class="movie-info">
+                            <p class="titles-style">
+                              <%= movie.title %>
+                            </p>
+                            <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>"
+                              width="100px" alt="Image" />
+                            <a href="/movieTest?id=<%= movie.id %>" class="more-info">More info</a>
+                          </div>
+                        </li>
+                        <% } %>
+                          <% }); %>
+                            <% } %>
                 </ul>
               </section>
               <a href="/home" class="see-more">See more</a>
@@ -88,43 +91,49 @@
             <div>
               <h4>My favorites</h4>
               <section class="movies-block3">
-                <p class="tv-heading">Tv-shows</p>
-                <ul class="movies-row">
-                  <% if (likedSeries) { %> <%
-                  likedSeries.forEach(function(serie) { %> <% if (serie) { %>
-                  <li>
-                    <div>
-                      <p class="titles-style"><%= serie.name %></p>
-                      <img
-                        src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>"
-                        width="100px"
-                        alt="Image"
-                      />
-                      <a href="/serieTest?id=<%= serie.id %>" class="">Bekijk details</a>
-                    </div>
-                  </li>
-                  <% } %> <% }); %> <% } %>
-                </ul>
+                <p class="fav-heading">Tv-shows</p>
+                <div class="tv-shows-favs">
+                  <ul class="movies-row">
+                    <% if (likedSeries) { %>
+                      <% likedSeries.forEach(function(serie) { %>
+                        <% if (serie) { %>
+                          <li>
+                            <div class="series">
+                              <p class="titles-style">
+                                <%= serie.name %>
+                              </p>
+                              <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>"
+                                width="100px" alt="Image" />
+                              <a href="/serieTest?id=<%= serie.id %>" class="more-info">Bekijk details</a>
+                            </div>
+                          </li>
+                          <% } %>
+                            <% }); %>
+                              <% } %>
+                  </ul>
+                </div>
 
               </section>
 
               <section class="actor-crew-block3">
-                <p>Actors & crews</p>
+                <p class="fav-heading">Actors & crews</p>
                 <ul class="actor-crew-row">
-                  <% if (likedActors) { %> <%
-                  likedActors.forEach(function(actor) { %> <% if (actor) { %>
-                  <li>
-                    <div>
-                      <p class="titles-style"><%= actor.name %></p>
-                      <img
-                        src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= actor.profile_path %>"
-                        width="100px"
-                        alt="Image"
-                      />
-                      <a href="/actors?id=<%= actor.id %>">Bekijk details</a>
-                    </div>
-                  </li>
-                  <% } %> <% }); %> <% } %>
+                  <% if (likedActors) { %>
+                    <% likedActors.forEach(function(actor) { %>
+                      <% if (actor) { %>
+                        <li>
+                          <div>
+                            <p class="titles-style">
+                              <%= actor.name %>
+                            </p>
+                            <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= actor.profile_path %>"
+                              width="100px" alt="Image" />
+                            <a href="/actors?id=<%= actor.id %>" class="more-info">Bekijk details</a>
+                          </div>
+                        </li>
+                        <% } %>
+                          <% }); %>
+                            <% } %>
                 </ul>
               </section>
             </div>
@@ -135,60 +144,66 @@
           <div>
             <h5>Friends</h5>
             <div class="friends-list">
-              <ul>
-                <% if (friendRequests) { %> <%
-                friendRequests.forEach(function(request) { %> <% if (request) {
-                %>
-                <li class="friends">
-                  <div>
-                    <img src="<%= request.profilePhoto%>" alt=""/>
-                    <div class="friends-request">
-                      <p><%= request.username%></p>
-                      <div class="requests">
-                        <form action="/remove-fRequest" method="post">
-                          <input
-                            type="hidden"
-                            name="removeName"
-                            value="request.username"
-                          />
-                          <button type="submit" class="reject-button">
-                            Reject
-                          </button>
-                        </form>
-                        <form action="/accept-fRequest" method="post">
-                          <input
-                            type="hidden"
-                            name="addName"
-                            value="request.username"
-                          />
-                          <button type="submit" class="accept-button">
-                            Accept
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <% } %> <% }); %> <% } %>
-              </ul>
+              <!---  Friends requests-->
+              <div class="not-yet-friends">
+                <p>Friends requests</p>
+                <ul>
+                  <% if (friendRequests) { %>
+                    <% friendRequests.forEach(function(request) { %>
+                      <% if (request) { %>
+                        <li class="friends">
+                          <div>
+                            <img src="<%= request.profilePhoto%>" alt="" />
+                            <div class="friends-request">
+                              <p>
+                                <%= request.username%>
+                              </p>
+                              <div class="requests">
+                                <form action="/remove-fRequest" method="post">
+                                  <input type="hidden" name="removeName" value="request.username" />
+                                  <button type="submit" class="reject-button">
+                                    Reject
+                                  </button>
+                                </form>
+                                <form action="/accept-fRequest" method="post">
+                                  <input type="hidden" name="addName" value="request.username" />
+                                  <button type="submit" class="accept-button">
+                                    Accept
+                                  </button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <% } %>
+                          <% }); %>
+                            <% } %>
+                </ul>
+                <p>Friends</p>
+              </div>
 
-              <ul>
-                <% if (friends) { %> 
-                <% friends.forEach(function(request) { %>
-                <% if (request) { %>
-                <li class="friends">
-                  <div>
-                    <img src="<%= request.profilePhoto%>" alt=""/>
-                    <div class="friends-request">
-                      <p><%= request.username%></p>
+              <!---  Friends-->
+              <div class="already-friends">
+                <ul>
+                  <% if (friends) { %>
+                    <% friends.forEach(function(request) { %>
+                      <% if (request) { %>
+                        <li class="friends">
+                          <div>
+                            <img src="<%= request.profilePhoto%>" alt="" />
+                            <div class="friends-request">
+                              <p>
+                                <%= request.username%>
+                              </p>
 
-                    </div>
-                  </div>
-                </li>
-                <% } %>
-                <% }); %> 
-                <% } %>
-              </ul>
+                            </div>
+                          </div>
+                        </li>
+                        <% } %>
+                          <% }); %>
+                            <% } %>
+                </ul>
+              </div>
 
 
             </div>
@@ -199,5 +214,6 @@
 
     <script src="/js/general.js"></script>
     <script src="/js/signup.js"></script>
-  </body>
+</body>
+
 </html>
