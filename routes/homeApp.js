@@ -9,7 +9,7 @@ const requireSession = require("../reqSession");
 const database = client.db('Communities');
 const collection = database.collection('general');
 
-let movieAlreadyLiked = null; 
+// let movieAlreadyLiked = null; 
 
 
 
@@ -22,9 +22,12 @@ const options = {
   };
   
   
-  router.get('/home', requireSession, async (req, res) => {
 
+
+
+  router.get('/home', requireSession, async (req, res) => {
     const user = req.session.user;
+
   //   try {
   //     // Assuming collection is being populated asynchronously
   //     // Ensure that it's populated before accessing its properties
@@ -39,9 +42,26 @@ const options = {
   //     }
   // } catch (error) {
   //     console.error("An error occurred:", error);
-  // }
-  
 
+
+  // }
+
+  console.log("tom is een plopkoek")
+
+  // const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
+  // const searchResult = await everything.json();
+  // const movieArray = searchResult.results;
+
+
+  
+  // const fetchedMovies = user.likedMovies;
+
+  // const likedMovies = fetchedMovies.filter(obj => movieArray.includes(obj.id));
+  // console.log(likedMovies);
+
+
+  
+// ------------------------------------------------------------------------
 
     const result = await fetch(`https://api.themoviedb.org/3/trending/person/week`, options);
     const trendingPersons = await result.json();
@@ -78,14 +98,12 @@ const options = {
       posterBackdrop: npMovie.backdrop_path ? `https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${npMovie.backdrop_path}` : null,
       id: npMovie.id,
       overview: npMovie.overview,
-      // alreadyLiked: collection.likedMovies?.includes(npMovie.id) || false, // Default to false if collection.likedMovies is undefined
     }));
     
-    // if (collection) {
-    //   movieAlreadyLiked = ;
-    // };
 
-    res.render('pages/homepage', { actorsData, moviesData, seriesData, npMoviesData, movieAlreadyLiked, user }); 
+
+    res.render('pages/homepage', { actorsData, moviesData, seriesData, npMoviesData, user }); 
+
   });
   
   router.get('/search', requireSession, async (req, res) => {
@@ -102,8 +120,10 @@ const options = {
     const result = await fetch(`https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(query)}`, options);
     const searchResult = await result.json();
     
-    res.render('pages/search', { searchResult});
+    res.render('pages/search', { searchResult });
   });
+
+  
   
   
   module.exports = router;

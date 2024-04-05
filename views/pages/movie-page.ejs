@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Lounge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/movie-page.css" rel="stylesheet">
+</head>
+
+<body>
+      <!-- partial -->
+  <%- include('../partials/header.ejs') %>
+    
+    <main>
+        <div class="movie-banner">
+            <div class="movie-banner-inner">
+                <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= movie.backdrop_path %>" alt="Image">
+    
+                <div class="movie-banner-content">
+                    <div>
+                        <h1><%= movie.title %></h1>
+                        <form action="/likeMovies" method="POST">
+                            <input type="image" src="images/header-favorite.svg" alt="I Like">
+                            <input type="hidden" name="like_button" value="<%= movie.id %>"> 
+                        </form>
+                    </div>
+                    <p><%= movie.overview %></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="movie-info">
+            <h2>Info</h2>
+            <div class="movie-info-inner">
+                <div>
+                    <div class="info-column info-column1">
+                        <div>
+                            <h3>Production company</h3>
+                            <% if (movie.production_companies) { %>
+                                <div>
+                                    <% movie.production_companies.forEach(function(production_company) { %>
+                                        <% if (production_company.logo_path) { %>
+                                            <div>
+                                                <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" alt="Image">
+                                            </div>
+                                        <% } %>
+                                        <% if (production_company !== movie.production_companies[movie.production_companies.length - 1]) { %>, <% } %>
+                                    <% }); %>
+                                </div>
+                            <% } %>
+                        </div>
+                        
+                        <div>
+                            <h3>Tagline</h3>
+                            <p><%= movie.tagline %></p>
+                        </div>
+
+                    </div>
+                    <div class="info-column info-column2">
+                        <div>
+                            <h3>Release year</h3>
+                            <p><%= movie.release_date %></p>
+                        </div>
+                        <div>
+                            <h3>Production value</h3>
+                            <p>$<%= movie.budget %></p>
+                        </div>
+                        <div>
+                            <h3>Director</h3>
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="info-column info-column3">
+
+                        <div>
+                            <h3>Genre</h3>
+                            <div>
+                                <% movie.genres.forEach(function(genre) { %>
+                                    <div class="information-snippet">
+                                        <p><%= genre.name %></p>
+                                    </div>
+                                    <% if (genre !== movie.genres[movie.genres.length - 1]) { %> <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Rating</h3>
+                            <div class="information-snippet">
+                                <p>Rated: <%= movie.vote_average.toFixed(1) %>/10</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Original language</h3>
+                            <div>
+                                <div class="information-snippet">
+                                    <p><%= movie.original_language %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-column info-column4">
+                        <!-- deze is even leeg -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments">
+            <h2>Comments about Timothee</h2>
+            <div>
+                <h2>15.932 comments</h2>
+                <div>
+                    <img src="/images/filter.svg">
+                    <p>Sort by</p>
+                </div>
+            </div>
+            <div class="write-comment">
+                <img src="/images/profileplaceholder.png">
+                <div>
+                    <div>
+                        <input type="text" id="comment" name="comment" placeholder="Add a comment" required>
+                    </div>
+                    <div>
+                        <button>Cancel</button>
+                        <button>Comment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-container-parent">
+                <div class="comment-container">
+                    <img src="/images/profileplaceholder.png">
+                    <div>
+                        <div>
+                            <h3>@NAAMUSER</h3>
+                            <p>4 months ago</p>
+                        </div>
+                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
+                        <div>
+                            <div>
+                                <img src="/images/thumbsup.svg">
+                                <p>10K</p>
+                            </div>
+                            <div>
+                                <img src="/images/thumbsdown.svg">
+                                <p>200</p>
+                            </div>
+                        </div>
+                        <p>Reply</p>
+                    </div>
+                    <button>
+                        <img src="/images/add-friend.svg">
+                        <p>Add @name</p>
+                    </button>
+                </div>
+                <div class="comment-container">
+                    <img src="/images/profileplaceholder.png">
+                    <div>
+                        <div>
+                            <h3>@NAAMUSER</h3>
+                            <p>4 months ago</p>
+                        </div>
+                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
+                        <div>
+                            <div>
+                                <img src="/images/thumbsup.svg">
+                                <p>10K</p>
+                            </div>
+                            <div>
+                                <img src="/images/thumbsdown.svg">
+                                <p>200</p>
+                            </div>
+                        </div>
+                        <p>Reply</p>
+                    </div>
+                    <button>
+                        <img src="/images/add-friend.svg">
+                        <p>Add @name</p>
+                    </button>
+                </div>
+                <div class="comment-container">
+                    <img src="/images/profileplaceholder.png">
+                    <div>
+                        <div>
+                            <h3>@NAAMUSER</h3>
+                            <p>4 months ago</p>
+                        </div>
+                        <p>Wow.. I knew Timotee was hot but... I LOVE HIM SM </p>
+                        <div>
+                            <div>
+                                <img src="/images/thumbsup.svg">
+                                <p>10K</p>
+                            </div>
+                            <div>
+                                <img src="/images/thumbsdown.svg">
+                                <p>200</p>
+                            </div>
+                        </div>
+                        <p>Reply</p>
+                    </div>
+                    <button>
+                        <img src="/images/add-friend.svg">
+                        <p>Add @name</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/js/movie-page.js"></script>
+    <script src="/js/general.js"></script>
+</body>
+
+</html>

@@ -55,17 +55,6 @@ router.get('/actors', requireSession, async (req, res) => {
 
 });
 
-// Route for liking actors
-router.post('/likeActors', requireSession, async (req, res) => {
-    await handleLikeUnlike(req, res, 'likedActors', 'like');
-});
-
-// Route for unliking actors
-router.post('/unlikeActors', requireSession, async (req, res) => {
-    await handleLikeUnlike(req, res, 'likedActors', 'unlike');
-});
-
-
 
 // we hebben een post en een get
 
