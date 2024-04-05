@@ -50,21 +50,10 @@ router.get('/actors', requireSession, async (req, res) => {
 
 
     // console.log(Object.keys(person));
-    res.render('pages/actor-page', { person, age, posts, user });
+    res.render('pages/actor-page-ThreadsTest', { person, age, posts, user });
 
 
 });
-
-// Route for liking actors
-router.post('/likeActors', requireSession, async (req, res) => {
-    await handleLikeUnlike(req, res, 'likedActors', 'like');
-});
-
-// Route for unliking actors
-router.post('/unlikeActors', requireSession, async (req, res) => {
-    await handleLikeUnlike(req, res, 'likedActors', 'unlike');
-});
-
 
 
 // we hebben een post en een get

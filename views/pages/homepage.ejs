@@ -52,7 +52,11 @@
                       </p>
                       <a href="/movieTest?id=<%= npMovie.id %>">Bekijk details</a>
                     </div>
-              </div>
+
+                    <p><%= npMovie.overview %></p>
+                    <a href="/movie-page?id=<%= npMovie.id %>">Bekijk details</a>
+                  </div>
+                </div>
               <% }); %>
 
           </div>
@@ -84,6 +88,7 @@
               <% seriesData.forEach(function(serie) { %>
                 <div>
                   <% if (serie.posterBackdrop) { %>
+
                     <img src="<%= serie.posterBackdrop %>" alt="<%= serie.name %>" width="100px">
                     <!-- 'posterBackdrop' in plaats van 'posterPath' -->
                     <% } %>
@@ -206,11 +211,13 @@
 
     <footer>
 
-    </footer>
-    <script src="/js/general.js"></script>
-    <script src="/js/homepage.js"></script>
-    <script src="/js/homeApp.js"></script>
-    <script src="/js/tmdb.js"></script>
+
+  </footer>
+  <script src="/js/general.js"></script>
+  <script src="/js/homepage.js"></script>
+  <script src="/js/homeApp.js"></script>
+  <script src="/js/tmdb.js"></script>
+  <script src="/js/likeApp.js"></script>
 </body>
 
 </html>

@@ -41,7 +41,8 @@ router.post('/login', async (req, res) => {
         console.log('short cookie');
 
     }
-   res.redirect('/home');
+
+    res.redirect('/home');
 });
 
 module.exports = router;

@@ -7,6 +7,8 @@ app.use(express.json());
 const requireSession = require('./reqSession');
 const {client, ObjectId} = require('./connect');
 
+let user = null;
+
 const options = {
   method: 'GET',
   headers: {
@@ -16,50 +18,59 @@ const options = {
 };
 
 
+app.get('/actors', requireSession, async (req, res) => {
+  let actorID = req.query.id;
+  const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
+  const person = await result.json();
+  res.render('pages/actors', { person });
+});
 
-app.get('/movieTest', requireSession, async (req, res) => {
+
+app.get('/movie-page', requireSession, async (req, res) => {
+  user = req.session.user;
   let movieID = req.query.id;
   const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
   const movie = await result.json();
-  res.render('pages/movieTest', { movie });
+  res.render('pages/movie-page', { movie, user });
 });
 
-app.get('/serieTest', requireSession, async (req, res) => {
+app.get('/serie-page', requireSession, async (req, res) => {
+  user = req.session.user;
   let serieID = req.query.id;
   const result = await fetch(`https://api.themoviedb.org/3/tv/${serieID}`, options);
   const serie = await result.json();
-  res.render('pages/serieTest', { serie });
+  res.render('pages/serie-page', { serie, user });
 });
 
 
-app.get('/trending', async (req, res) => {
-  const result = await fetch(`https://api.themoviedb.org/3/trending/person/week`, options);
-  const trendingPersons = await result.json();
-  const actorsData = trendingPersons.results.map(actor => ({
-    name: actor.name,
-    profilePath: actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : null,
-    id: actor.id
-  }));
+// app.get('/trending', async (req, res) => {
+//   const result = await fetch(`https://api.themoviedb.org/3/trending/person/week`, options);
+//   const trendingPersons = await result.json();
+//   const actorsData = trendingPersons.results.map(actor => ({
+//     name: actor.name,
+//     profilePath: actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : null,
+//     id: actor.id
+//   }));
 
-  const moviesResult = await fetch(`https://api.themoviedb.org/3/trending/movie/week`, options);
-  const trendingMovies = await moviesResult.json();
-  const moviesData = trendingMovies.results.map(movie => ({
-    title: movie.title,
-    posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : null,
-    id: movie.id,
-    release: movie.release_date
-  }));
+//   const moviesResult = await fetch(`https://api.themoviedb.org/3/trending/movie/week`, options);
+//   const trendingMovies = await moviesResult.json();
+//   const moviesData = trendingMovies.results.map(movie => ({
+//     title: movie.title,
+//     posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : null,
+//     id: movie.id,
+//     release: movie.release_date
+//   }));
 
-  const seriesResult = await fetch(`https://api.themoviedb.org/3/trending/tv/week`, options);
-  const trendingSeries = await seriesResult.json(); 
-  const seriesData = trendingSeries.results.map(serie => ({ 
-    name: serie.name,
-    posterPath: serie.poster_path ? `https://image.tmdb.org/t/p/w200${serie.poster_path}` : null,
-    id: serie.id,
-  }));
+//   const seriesResult = await fetch(`https://api.themoviedb.org/3/trending/tv/week`, options);
+//   const trendingSeries = await seriesResult.json(); 
+//   const seriesData = trendingSeries.results.map(serie => ({ 
+//     name: serie.name,
+//     posterPath: serie.poster_path ? `https://image.tmdb.org/t/p/w200${serie.poster_path}` : null,
+//     id: serie.id,
+//   }));
   
-  res.render('pages/trending', { actorsData, moviesData, seriesData }); 
-});
+//   res.render('pages/trending', { actorsData, moviesData, seriesData }); 
+// });
 
 
 
@@ -88,121 +99,121 @@ app.get('/trending', async (req, res) => {
 //   }
 // });
 
-app.post('/likeMovies', requireSession, async (req, res) => {
-  const database = client.db("Communities");
-  const users = database.collection("general");
-  const user = await users.findOne({ username: req.session.user });
-  const movieID = req.body.like_button;
+// app.post('/likeMovies', requireSession, async (req, res) => {
+//   const database = client.db("Communities");
+//   const users = database.collection("general");
+//   const user = await users.findOne({ username: req.session.user });
+//   const movieID = req.body.like_button;
   
-  try {
-    // Checken of likedMovies bestaat, zo niet, aanmaken
-    if (!user.likedMovies) {
-      await users.updateOne(
-        { _id: new ObjectId(user._id) },
-        { $set: { likedMovies: [] } }
-      );
-      // Opnieuw ophalen van de gebruiker na de update
-      user.likedMovies = [];
-    }
+//   try {
+//     // Checken of likedMovies bestaat, zo niet, aanmaken
+//     if (!user.likedMovies) {
+//       await users.updateOne(
+//         { _id: new ObjectId(user._id) },
+//         { $set: { likedMovies: [] } }
+//       );
+//       // Opnieuw ophalen van de gebruiker na de update
+//       user.likedMovies = [];
+//     }
 
-    const alreadyLiked = user.likedMovies.includes(movieID);
+//     const alreadyLiked = user.likedMovies.includes(movieID);
     
-    if (alreadyLiked) {
-      const result = await users.updateOne(
-        { _id: user._id }, 
-        { $pull: { likedMovies: movieID } }
-      );
-      console.log("film unliked")
-    } else {
-      const result = await users.updateOne(
-        { _id: new ObjectId(user._id) },
-        { $push: { likedMovies: movieID } }
-      );
-      console.log("film liked")
-    }
+//     if (alreadyLiked) {
+//       const result = await users.updateOne(
+//         { _id: user._id }, 
+//         { $pull: { likedMovies: movieID } }
+//       );
+//       console.log("film unliked")
+//     } else {
+//       const result = await users.updateOne(
+//         { _id: new ObjectId(user._id) },
+//         { $push: { likedMovies: movieID } }
+//       );
+//       console.log("film liked")
+//     }
 
-  } catch (error) {
-    console.error('Fout bij het toevoegen van film:', error);
-    return res.status(500).send('Interne serverfout');
-  }
-});
+//   } catch (error) {
+//     console.error('Fout bij het toevoegen van film:', error);
+//     return res.status(500).send('Interne serverfout');
+//   }
+// });
 
-app.post('/likeSeries', requireSession, async (req, res) => {
-  const database = client.db("Communities");
-  const users = database.collection("general");
-  const user = await users.findOne({ username: req.session.user });
-  const serieID = req.body.like_button;
+// app.post('/likeSeries', requireSession, async (req, res) => {
+//   const database = client.db("Communities");
+//   const users = database.collection("general");
+//   const user = await users.findOne({ username: req.session.user });
+//   const serieID = req.body.like_button;
   
-  try {
-    // Checken of likedSeries bestaat, zo niet, aanmaken
-    if (!user.likedSeries) {
-      await users.updateOne(
-        { _id: new ObjectId(user._id) },
-        { $set: { likedSeries: [] } }
-      );
-      // Opnieuw ophalen van de gebruiker na de update
-      user.likedSeries = [];
-    }
+//   try {
+//     // Checken of likedSeries bestaat, zo niet, aanmaken
+//     if (!user.likedSeries) {
+//       await users.updateOne(
+//         { _id: new ObjectId(user._id) },
+//         { $set: { likedSeries: [] } }
+//       );
+//       // Opnieuw ophalen van de gebruiker na de update
+//       user.likedSeries = [];
+//     }
 
-    const alreadyLiked = user.likedSeries.includes(serieID);
+//     const alreadyLiked = user.likedSeries.includes(serieID);
     
-    if (alreadyLiked) {
-      const result = await users.updateOne(
-        { _id: user._id }, 
-        { $pull: { likedSeries: serieID } }
-      );
-      console.log("serie unliked")
-    } else {
-      const result = await users.updateOne(
-        { _id: new ObjectId(user._id) },
-        { $push: { likedSeries: serieID } }
-      );
-      console.log("serie liked")
-    }
-  } catch (error) {
-    console.error('Fout bij het toevoegen van serie:', error);
-    return res.status(500).send('Interne serverfout');
-  }
-});
+//     if (alreadyLiked) {
+//       const result = await users.updateOne(
+//         { _id: user._id }, 
+//         { $pull: { likedSeries: serieID } }
+//       );
+//       console.log("serie unliked")
+//     } else {
+//       const result = await users.updateOne(
+//         { _id: new ObjectId(user._id) },
+//         { $push: { likedSeries: serieID } }
+//       );
+//       console.log("serie liked")
+//     }
+//   } catch (error) {
+//     console.error('Fout bij het toevoegen van serie:', error);
+//     return res.status(500).send('Interne serverfout');
+//   }
+// });
 
-app.post('/likeActors', requireSession, async (req, res) => {
-  const database = client.db("Communities");
-  const users = database.collection("general");
-  const user = await users.findOne({ username: req.session.user });
-  const personID = req.body.like_button; 
+// app.post('/likeActors', requireSession, async (req, res) => {
+//   const database = client.db("Communities");
+//   const users = database.collection("general");
+//   const user = await users.findOne({ username: req.session.user });
+//   const personID = req.body.like_button; 
 
-  try {
-    // Checken of likedSeries bestaat, zo niet, aanmaken
-    if (!user.likedActors) {
-      await users.updateOne(
-        { _id: new ObjectId(user._id) },
-        { $set: { likedActors: [] } }
-      );
-      // Opnieuw ophalen van de gebruiker na de update
-      user.likedActors = [];
-    }
+//   try {
+//     // Checken of likedSeries bestaat, zo niet, aanmaken
+//     if (!user.likedActors) {
+//       await users.updateOne(
+//         { _id: new ObjectId(user._id) },
+//         { $set: { likedActors: [] } }
+//       );
+//       // Opnieuw ophalen van de gebruiker na de update
+//       user.likedActors = [];
+//     }
 
-    const alreadyLiked = user.likedActors.includes(personID);
+//     const alreadyLiked = user.likedActors.includes(personID);
     
-    if (alreadyLiked) {
-      const result = await users.updateOne(
-        { _id: user._id }, 
-        { $pull: { likedActors: personID } }
-      );
-      console.log("actor unliked")
-    } else {
-      const result = await users.updateOne(
-        { _id: new ObjectId(user._id) },
-        { $push: { likedActors: personID } }
-      );
-      console.log("actor liked")
-    }
-  } catch (error) {
-    console.error('Fout bij het toevoegen van acteur:', error);
-    return res.status(500).send('Interne serverfout');
-  }
-  res.redirect('back');
-});
+//     if (alreadyLiked) {
+//       const result = await users.updateOne(
+//         { _id: user._id }, 
+//         { $pull: { likedActors: personID } }
+//       );
+//       console.log("actor unliked")
+//     } else {
+//       const result = await users.updateOne(
+//         { _id: new ObjectId(user._id) },
+//         { $push: { likedActors: personID } }
+//       );
+//       console.log("actor liked")
+//     }
+//   } catch (error) {
+//     console.error('Fout bij het toevoegen van acteur:', error);
+//     return res.status(500).send('Interne serverfout');
+//   }
+//   res.redirect('back');
+// });
 
 
 

@@ -33,6 +33,8 @@ const homeApp = require('./routes/homeApp');
 const tmdb = require('./tmdb');
 const profile = require('./profile');
 const actorApp = require('./routes/actorWThreadsApp');
+const likeApp = require('./routes/likeApp');
+
 
 
 
@@ -60,6 +62,7 @@ app.use(photoApp);
 app.use(tmdb);
 app.use(profile);
 app.use(actorApp);
+app.use(likeApp);
 
 
 
