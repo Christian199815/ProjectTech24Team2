@@ -47,7 +47,7 @@ router.get('/actors', requireSession, async (req, res) => {
 
 });
 
-router.post('/post-thread', async (req, res) => {
+router.post('/post-actor-thread', async (req, res) => {
 
     const username = req.session.user.username;
     const profilePicture = req.session.user.profilePhoto;

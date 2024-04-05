@@ -85,77 +85,89 @@
         
 
         <!-- comments writing form -->
-        <div class="write-comment">
-          <img src="<%= user.profilePhoto %>"/>
+        <div class="comments">
+          <h2>Comments about <%= movie.name %>
+          </h2>
           <div>
-            <form id="comment-form" action="/post-thread" method="post">
+              <h2>
+                  <%= posts.length %>
+              </h2>
               <div>
-                <input
-                  type="text"
-                  id="comment"
-                  name="comment"
-                  placeholder="Add a comment"
-                  required
-                />
+                  <img src="/images/filter.svg">
+                  <p>Sort by</p>
               </div>
-              <div>
-                <button type="reset">Cancel</button>
-                <button type="submit">Comment</button>
-              </div>
-            </form>
           </div>
-        </div>
+          <div class="write-comment">
+              <img src="<%= user.profilePhoto %>">
+              <form id="comment-form" action="/post-actor-thread" method="post">
+                  <div>
+                      <input type="text" id="comment" name="comment" placeholder="Add a comment" required />
+                  </div>
+                  <div>
+                      <button type="reset">Cancel</button>
+                      <button type="submit">Comment</button>
+                  </div>
+              </form>
+          </div>
 
 
        
 
-        <div class="comment-container-parent">
-
-          <% if (posts && posts.length > 0) { %>
-            <ul>
-                <% posts.forEach(post => { %>
-                    <li class="comment-container">
-                      <img src="<%= post.pf %>">
-                      <div>
+          <% if (posts && posts.length> 0) { %>
+            <ul class="comment-container-parent">
+                <% posts.forEach(post=> { %>
+                    <div class="comment-container">
+                        <img src='<%= post.pf %>'>
                         <div>
-                          <h3><%= post.username %></h3>
-                          <p><%= post.datetime %></p>
+                            <div>
+                                <h3>
+                                    <%= post.username %>
+                                </h3>
+                                <p>
+                                    <%= post.datetime %>
+                                </p>
+                            </div>
+                            <p>
+                                <%= post.body %>
+                            </p>
+                            <div>
+                                <div>
+                                    <form action="/like-post" method="post">
+                                        <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
+                                        <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                        <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
+                                    </form>
+                                    <p>
+                                        <%= post.upvotes===0 ? '' : post.upvotes %>
+                                    </p>
+                                </div>
+                                <div>
+                                    <form action="/dislike-post" method="post">
+                                        <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
+                                        <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                        <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
+                                    </form>
+                                    <p>
+                                        <%= post.downvotes===0 ? '' : post.downvotes %>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <p><%= post.body %></p>
-                        <div>
-                          <div>
-                            <form action="/like-post" method="post">
-                              <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
-                              <input type="hidden" name="postUsername" value="<%= post.username %>">
-                              <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
-                            </form>
-                            <!-- <img src="/images/thumbsup.svg" /> -->
-                            <p><%= post.upvotes === 0 ? '' : post.upvotes %></p>
-                          </div>
-                          <div>
-                            <form action="/dislike-post" method="post">
-                              <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
-                              <input type="hidden" name="postUsername" value="<%= post.username %>">
-                              <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
-                            </form>
-                            <p><%= post.downvotes === 0 ? '' : post.downvotes %></p>
-                          </div>
-                        </div>
-                      </div>
-                      <form action="/add-friend" method="post">
-                        <input type="hidden" name="postUsername" value="<%= post.username%>">
-                        <input type="submit" value="Add <%= post.username %> to your friendlist">
-                      </form>
+                        <form action="/add-friend" method="post">
+                            <input type="hidden" name="postUsername" value="<%= post.username%>">
+                            <button type="submit">
+                                <img src="/images/add-friends.svg">
+                                <p>Add <%= post.username %>
+                                </p>
+                            </button>
+                        </form>
+                    </div>
                     </li>
-                <% }) %>
+                    <% }) %>
             </ul>
-        <% } else { %>
-            <p>No posts found.</p>
-        <% } %>
-
-      
-
-        </div>
+            <% } else { %>
+                <p>No posts found.</p>
+                <% } %>
       </div>
     </main>
 
@@ -167,3 +179,6 @@
 
   </body>
 </html>
+
+
+

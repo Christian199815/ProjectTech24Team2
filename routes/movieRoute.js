@@ -5,12 +5,17 @@ const requireSession = require("../js-modules/reqSession.js");
 const { client, ObjectId } = require('../js-modules/connect');
 const options = require('../js-modules/tmdbOptions.js');
 
+const threadDatabase = client.db(`${"Threads"}`);
+const communityDatabase = client.db(`${"Communities"}`);
+
+let currCollection = null;
+let movie = null;
 let user = null;
 let posts = [];
 
 async function fetchPosts(db) {
   try {
-      const posts = await threadDatabase.collection(person.name).find().toArray();
+      const posts = await threadDatabase.collection(movie.name).find().toArray();
       return posts;
   } catch (error) {
       console.error('Error fetching posts:', error);
@@ -20,14 +25,19 @@ async function fetchPosts(db) {
 
 router.get('/movie-page', requireSession, async (req, res) => {
     user = req.session.user;
+
+
     let movieID = req.query.id;
     const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
-    const movie = await result.json();
+    movie = await result.json();
+
+    posts = await fetchPosts(threadDatabase);
+
     res.render('pages/movie-page', { movie, user, posts });
   });
 
 
-  router.post('/post-thread', async (req, res) => {
+  router.post('/post-movie-thread', async (req, res) => {
 
     const username = req.session.user.username;
     const profilePicture = req.session.user.profilePhoto;
@@ -36,15 +46,15 @@ router.get('/movie-page', requireSession, async (req, res) => {
 
     console.log(profilePicture);
 
-    const collectionExists = await threadDatabase.listCollections({ name: person.name }).hasNext();
+    const collectionExists = await threadDatabase.listCollections({ name: movie.name }).hasNext();
 
     if (!collectionExists) {
         // If collection does not exist, create a new collection
-        currCollection = await threadDatabase.createCollection(person.name);
-        console.log(`Collection '${person.name}' created successfully`);
+        currCollection = await threadDatabase.createCollection(movie.name);
+        console.log(`Collection '${movie.name}' created successfully`);
     } else {
-        currCollection = threadDatabase.collection(person.name);
-        console.log(`Collection '${person.name}' already exists`);
+        currCollection = threadDatabase.collection(movie.name);
+        console.log(`Collection '${movie.name}' already exists`);
     }
 
     const newPost = {
