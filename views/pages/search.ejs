@@ -4,30 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet">
+  
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/search.css" rel="stylesheet">
 </head>
-<body>
-    <a href="/home">Terug</a>
 
-    <form action="/search" method="GET">
-        <input type="text" name="searchText"> 
-        <input type="submit" value="SEARCH">
-    </form>
+
+<body>
+      <!-- partial -->
+  <%- include('../partials/header.ejs') %>
 
 <h1> ZOEKRESULTATEN </h1>
 
 <% searchResult.results.forEach(function(result) { %>
     <div>
         <% if (result.media_type === 'movie') { %>
-            <h2><a href="/movieTest?id=<%= result.id %>"><%= result.title %></a></h2>
+            <h2><a href="/movie-page?id=<%= result.id %>"><%= result.title %></a></h2>
         <% } else if (result.media_type === 'tv') { %>
-            <h2><a href="/serieTest?id=<%= result.id %>"><%= result.name %></a></h2>
-        <% } else if (result.media_type === 'person') { %>
+            <h2><a href="/serie-page?id=<%= result.id %>"><%= result.name %></a></h2>
+        <% } else if (result.media_type === 'person') { %>  
             <h2><a href="/actors?id=<%= result.id %>"><%= result.name %></a></h2>
         <% } %>
         <img src="https://image.tmdb.org/t/p/w200<%= result.poster_path || result.profile_path %>" alt="Image" height="150px">
-        <p><%= result.overview %></p>
-        <hr>
     </div>
 <% }); %>
     

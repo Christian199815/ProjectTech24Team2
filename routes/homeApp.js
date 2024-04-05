@@ -104,21 +104,13 @@ const options = {
   });
   
   router.get('/search', requireSession, async (req, res) => {
+    user = req.session.user;
     let searchText = req.query.searchText;
     const result = await fetch(`https://api.themoviedb.org/3/search/multi?query=${searchText}`, options);
     const searchResult = await result.json();
-    res.render('pages/search', { searchResult });
+    res.render('pages/search', { searchResult, user });
   });
   
-  router.get('/search', requireSession, async (req, res) => {
-    let query = req.query.query || req.session.lastQuery || 'star wars';
-    req.session.lastQuery = query;
-  
-    const result = await fetch(`https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(query)}`, options);
-    const searchResult = await result.json();
-    
-    res.render('pages/search', { searchResult });
-  });
 
   
   
