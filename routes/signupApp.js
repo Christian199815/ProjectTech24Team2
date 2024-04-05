@@ -24,10 +24,14 @@ const validate = (req, res, next) => {
 
 
 const pfImages = [
-   '/images/profile-photos/pf-blue.png',
-   '/images/profile-photos/pf-yellow.png',
-   '/images/profile-photos/pf-red.png',
-   '/images/profile-photos/pf-pink.png',
+   '/images/profile-photos/profilepicture1.png',
+   '/images/profile-photos/profilepicture2.png',
+   '/images/profile-photos/profilepicture3.png',
+   '/images/profile-photos/profilepicture4.png',
+   '/images/profile-photos/profilepicture5.png',
+   '/images/profile-photos/profilepicture6.png',
+   '/images/profile-photos/profilepicture7.png',
+   '/images/profile-photos/profilepicture8.png',
 ];
 
 
@@ -76,7 +80,7 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
 
     req.session.user = user;
 
-    // res.render('pages/home', { views: req.session.views, username: req.session.user });
+    res.redirect('/login');
 
 
 })
