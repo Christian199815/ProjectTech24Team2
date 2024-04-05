@@ -19,7 +19,6 @@ app.use(express.urlencoded({ extended: true, limit: '50mb'}))
 
 
 
-
 //load in the separate files
 const loginApp = require('./routes/loginApp');
 const logoutApp = require('./routes/logoutApp');
@@ -31,7 +30,7 @@ const photoApp = require('./routes/photoApp');
 
 const homeApp = require('./routes/homeApp');
 const tmdb = require('./tmdb');
-const profile = require('./profile');
+const profile = require('./routes/profileRoute');
 const actorApp = require('./routes/actorWThreadsApp');
 
 

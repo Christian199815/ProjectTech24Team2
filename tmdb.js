@@ -78,7 +78,6 @@ app.get('/trending', async (req, res) => {
 //     } else {
 //       const result = await users.updateOne(
 //         { _id: new ObjectId(user._id) },
-//         { $push: { likedMovies: movieID } }
 //       );
       
 //     }
