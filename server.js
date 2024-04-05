@@ -34,6 +34,8 @@ const tmdb = require('./tmdb');
 const profile = require('./profile');
 const actorApp = require('./routes/actorApp');
 
+const errorRoute = require('./routes/errorRoute');
+
 
 
 
@@ -60,6 +62,7 @@ app.use(photoApp);
 app.use(tmdb);
 app.use(profile);
 app.use(actorApp);
+app.use(errorRoute);
 
 
 

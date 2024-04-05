@@ -8,8 +8,11 @@ const { client } = require('../connect')
 
 
 
-router.get('/login', (req, res) => {
-    res.render('pages/signin', { user: req.session.user });
+router.get('/login', (err, req, res) => {
+    const user = req.session.user;
+
+
+    res.render('pages/signin');
 })
 
 router.post('/login', async (req, res) => {
@@ -19,15 +22,17 @@ router.post('/login', async (req, res) => {
 
     const user = await collection.findOne({ username });
     if (!user) {
-        res.send('User not found');
+        res.status(500).render('error', { error: "User not found" });
+        // res.send('User not found');
         return;
     }
     if (!user.password) {
-        res.send('Password field is missing in the database');
+        res.status(500).render('error', { error: "Password field is missing in the database" });
+        // res.send('Password field is missing in the database');
         return;
     }
     if (!(await bcrypt.compare(password, user.password))) {
-        res.send('Invalid password');
+        res.status(500).render('error', { error: "Invalid password" });
         return;
     }
     //start session here
@@ -53,3 +58,5 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+
