@@ -36,11 +36,11 @@
                     name="person-name"
                     value="<%= user.username%>"
                   />
-                  <button type="submit"><p>change Password</p></button>
+                  <button type="submit">change Password</button>
                 </form>
               </div>
             </section>
-            <p>To update</p>
+            <p>To update</=p>
           </div>
         </div>
 
@@ -67,20 +67,20 @@
                   <% if (likedMovies) { %> <%
                   likedMovies.forEach(function(movie) { %> <% if (movie) { %>
                   <li>
-                    <div>
-                      <h3><%= movie.title %></h3>
+                    <div class="movie-info">
+                      <p class="titles-style"><%= movie.title %></p>
                       <img
                         src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>"
                         width="100px"
                         alt="Image"
                       />
-                      <a href="/movieTest?id=<%= movie.id %>">Bekijk details</a>
+                      <a href="/movieTest?id=<%= movie.id %>">More info</a>
                     </div>
                   </li>
                   <% } %> <% }); %> <% } %>
                 </ul>
               </section>
-              <a href="/home">See more</a>
+              <a href="/home" class="see-more">See more</a>
             </div>
           </div>
 
@@ -94,7 +94,7 @@
                   likedSeries.forEach(function(serie) { %> <% if (serie) { %>
                   <li>
                     <div>
-                      <h3><%= serie.name %></h3>
+                      <p class="titels-style"><%= serie.name %></p>
                       <img
                         src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>"
                         width="100px"
@@ -115,7 +115,7 @@
                   likedActors.forEach(function(actor) { %> <% if (actor) { %>
                   <li>
                     <div>
-                      <h3><%= actor.name %></h3>
+                      <p class="titels-style"><%= actor.name %></p>
                       <img
                         src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= actor.profile_path %>"
                         width="100px"

@@ -55,15 +55,18 @@
     padding: 0.7rem;
     border-radius: 3rem;
     text-align: center;
-    width: 10rem;
+    width: fit-content;
 }
 
-.account-block .information-account p:nth-of-type(6) {
+.account-block .information-account button {
     font-family: 'Prompt';
     font-weight: 600;
-    font-size: 1em;
-    padding: 0.7rem;
+    font-size: 0.8em;
+    padding: 0.7em 0.7em 0.7em 1.5em;
     color: var(--color-devider);
+    background-color: var( --color-headerbackground);
+    border-style: none;
+
 }
 
 .account-block>div p:nth-of-type(1) {
@@ -138,12 +141,21 @@
     margin: 3rem 4rem;
 }
 
+.bottom-block .titles-style{
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
 .bottom-left {
     display: flex;
     flex-direction: column;
     gap: 2em;
     width: 100%;
 }
+
 
 .bottom-left .movie-list-block>div {
     margin: 2rem;
@@ -164,23 +176,47 @@
 }
 
 .movie-list-block>div a {
-    background-color: red;
+    background-color: var(--color-secondary-tint1);
     color: #fff;
     font-family: 'Prompt';
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    width: 125px;
+    margin-top: 0.4em;
 
     border-radius: 0.9rem;
     text-align: center;
-    padding: 0.3rem 2rem 0.3rem;
+    padding: 0.5rem 2rem 0.3rem;
 }
 
 .movies-list-row {
     margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
 }
 
 .movies-list-row img {
     height: 200px;
     width: 125px;
+}
+
+.movie-info{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.movie-info .see-more{
+    background-color: var(--color-secondary-tint1);
+    color: #fff;
+    font-family: 'Prompt';
+    font-size: 0.7rem;
+    width: 150px;
+    margin-top: 0.4em;
+
+    border-radius: 0.9rem;
+    text-align: center;
+    padding: 0.5rem 2rem 0.3rem;
 }
 
 .favorites-block {
