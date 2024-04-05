@@ -26,7 +26,6 @@ const options = {
 
   router.get('/home', requireSession, async (req, res) => {
     const user = req.session.user;
-
   //   try {
   //     // Assuming collection is being populated asynchronously
   //     // Ensure that it's populated before accessing its properties
@@ -100,7 +99,7 @@ const options = {
     }));
     
 
-    res.render('pages/homepage', { actorsData, moviesData, seriesData, npMoviesData, user }); 
+    res.render('pages/homepage', { actorsData, moviesData, seriesData, npMoviesData, movieAlreadyLiked, user }); 
   });
   
   router.get('/search', requireSession, async (req, res) => {
