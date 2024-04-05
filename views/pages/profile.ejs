@@ -96,12 +96,9 @@
                         <% if (serie) { %>
                           <li>
                             <div class="series">
-                              <p class="titles-style">
-                                <%= serie.name %>
-                              </p>
                               <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>"
                                 width="100px" alt="Image" />
-                              <a href="/serieTest?id=<%= serie.id %>" class="more-info">Bekijk details</a>
+                              <a href="/serieTest?id=<%= serie.id %>" class="more-info">More info</a>
                             </div>
                           </li>
                           <% } %>
@@ -125,7 +122,7 @@
                             </p>
                             <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= actor.profile_path %>"
                               width="100px" alt="Image" />
-                            <a href="/actors?id=<%= actor.id %>" class="more-info">Bekijk details</a>
+                            <a href="/actors?id=<%= actor.id %>" class="more-info">More info</a>
                           </div>
                         </li>
                         <% } %>

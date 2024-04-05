@@ -144,9 +144,8 @@
 .titles-style {
     font-family: 'Prompt';
     font-weight: 300;
-    font-size: 1em;
+    font-size: 0.75em;
     color: #fff;
-    margin-bottom: 0.5rem;
     max-width: 100px;
 }
 
@@ -242,9 +241,10 @@
 .fav-heading {
     font-family: 'Prompt';
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: var(--color-secondary-tint1);
     margin-top: 1em;
+    margin-bottom: 1em;
 
 }
 
@@ -262,17 +262,23 @@
     margin-bottom: 1em;
     display: flex;
     flex-direction: row;
+    gap: 2em;
 }
 
 .actors-crews{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items:center;
 }
 
 .actor-crew-row{
     display: flex;
     flex-direction: row;
+    gap: 2em;
 }
+
+
 
 .movies-row img,
 .actor-crew-block3 img {
@@ -339,7 +345,6 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-
 }
 
 .friends button {
