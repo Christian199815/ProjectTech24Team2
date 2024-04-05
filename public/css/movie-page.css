@@ -46,7 +46,7 @@
 .movie-banner-content h1 {
     font-family: 'Prompt';
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: clamp(.8em, 1.2vw, 1.5em);
     color: #fff;
 }
 
@@ -61,7 +61,7 @@
     max-width: 40%;
     font-family: 'Prompt';
     font-weight: 300;
-    font-size: .8em;
+    font-size: clamp(.5em, .8vw, 1.2em);
     color: #fff;
 }
 
@@ -69,6 +69,8 @@
 
 .movie-info {
     margin: 0 12vw;
+    border-top: .5px solid var(--color-devider);
+    padding-top: 1em;
 }
 
 .movie-info h2 {
@@ -107,16 +109,20 @@
 
 /* column 1 */
 .movie-info .info-column1>div:nth-of-type(1) img {
-    width: clamp(6em, 9vw, 10em)
+    width: clamp(8em, 11vw, 13em);
+    background-color: var(--color-secondarybackground);
+    padding: 1em;
+    border: solid 1px var(--color-primary-tint3);
+    border-radius: 15px;
+
+    margin-top: .5em;
 }
 
-.movie-info .info-column1>div:nth-of-type(2) div {
-    display: flex;
-    gap: 1em;
-}
-
-.movie-info .info-column1>div:nth-of-type(2) img {
-    width: clamp(3em, 5vw, 6em)
+.movie-info .info-column1>div:nth-of-type(2) p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: 1em;
+    color: #fff;
 }
 
 /* column 2 */

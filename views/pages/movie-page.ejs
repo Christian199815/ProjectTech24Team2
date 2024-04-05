@@ -44,10 +44,6 @@
                 <div>
                     <div class="info-column info-column1">
                         <div>
-                            <h3>Tagline</h3>
-                            <p><%= movie.tagline %></p>
-                        </div>
-                        <div>
                             <h3>Production company</h3>
                            <% if(movie.production_companies) { %>
                             <% movie.production_companies.forEach(function(production_company) { %>
@@ -57,6 +53,10 @@
                                 <% if (production_company !== movie.production_companies[movie.production_companies.length - 1]) { %>, <% } %>
                             <% }); %>
                                <% } %>
+                        </div>
+                        <div>
+                            <h3>Tagline</h3>
+                            <p><%= movie.tagline %></p>
                         </div>
                         <!-- <div>
                             <h3>Stream this movie on</h3>
@@ -92,8 +92,14 @@
                                     <div class="information-snippet">
                                         <p><%= genre.name %></p>
                                     </div>
-                                    <% if (genre !== movie.genres[movie.genres.length - 1]) { %>, <% } %>
+                                    <% if (genre !== movie.genres[movie.genres.length - 1]) { %> <% } %>
                                 <% }); %>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Rating</h3>
+                            <div class="information-snippet">
+                                <p>Rated: <%= movie.vote_average.toFixed(1) %>/10</p>
                             </div>
                         </div>
                         <div>
@@ -106,12 +112,7 @@
                         </div>
                     </div>
                     <div class="info-column info-column4">
-                        <div>
-                            <h3>Rating</h3>
-                            <div class="information-snippet">
-                                <p>Rated: <%= movie.vote_average.toFixed(1) %>/10</p>
-                            </div>
-                        </div>
+                        <!-- deze is even leeg -->
                     </div>
                 </div>
             </div>
