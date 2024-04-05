@@ -87,7 +87,7 @@
                           <div class="movie-info">
                             <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= movie.poster_path %>"
                               width="100px" alt="Image" />
-                            <a href="/movieTest?id=<%= movie.id %>" class="more-info">More info</a>
+                            <a href="/movie-page?id=<%= movie.id %>" class="more-info">More info</a>
                           </div>
                         </li>
                         <% } %>
@@ -115,7 +115,7 @@
                             <div class="series">
                               <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>"
                                 width="100px" alt="Image" />
-                              <a href="/serieTest?id=<%= serie.id %>" class="more-info">More info</a>
+                              <a href="/serie-page?id=<%= serie.id %>" class="more-info">More info</a>
                             </div>
                           </li>
                           <% } %>
@@ -172,13 +172,13 @@
                               </p>
                               <div class="requests">
                                 <form action="/remove-fRequest" method="post">
-                                  <input type="hidden" name="removeName" value="request.username" />
+                                  <input type="hidden" name="removeName" value="<%= request.username%>" />
                                   <button type="submit" class="reject-button">
                                     Reject
                                   </button>
                                 </form>
                                 <form action="/accept-fRequest" method="post">
-                                  <input type="hidden" name="addName" value="request.username" />
+                                  <input type="hidden" name="addName" value="<%=request.username%>" />
                                   <button type="submit" class="accept-button">
                                     Accept
                                   </button>

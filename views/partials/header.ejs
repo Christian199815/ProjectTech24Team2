@@ -48,12 +48,12 @@
             </div>
             <div class="right">
                 <div>
-                    <a href="#"><img src="images/header-notification.svg"></a>
-                    <a href="#"><img src="images/header-favorite.svg"></a>
+                    <a href="#"><img src="/images/header-notification.svg"></a>
+                    <a href="#"><img src="/images/header-favorite.svg"></a>
 
                     <% if (user) { %>
                     <% if (user.profilePhoto) { %>
-                        <a href="/profile"></a><img src="<%= user.profilePhoto %>" alt="Profile Picture" width="40px"></a>
+                        <a href="/profile"><img src="<%= user.profilePhoto %>" alt="Profile Picture" width="40px"></a>
                       <% } else { %>
                         <img src="images/header-profile.png">
                       <% } %>

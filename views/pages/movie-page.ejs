@@ -186,10 +186,14 @@
                               </div>
                             </div>
                           </div>
+                         <% if(user.username !== post.username){ %> 
+
                           <form action="/add-friend" method="post">
                             <input type="hidden" name="postUsername" value="<%= post.username%>">
                             <input type="submit" value="Add <%= post.username %> to your friendlist">
                           </form>
+                       <% } %>
+
                         </li>
                     <% }) %>
                 </ul>

@@ -13,6 +13,8 @@ let movie = null;
 let user = null;
 let posts = [];
 
+let alreadyFriends = null;
+
 async function fetchPosts(db) {
   try {
       const posts = await threadDatabase.collection(movie.title).find().toArray();
@@ -98,7 +100,9 @@ router.post('/add-friend', async (req, res) => {
             );
             user.friendRequests = [];
         }
-        const alreadyFriends = users.friends.includes(friendReqUsername);
+        if(user.friends){
+          alreadyFriends = user.friends.includes(friendReqUsername);
+        }
         const alreadySent = user.friendRequests.includes(friendReqUsername);
 
         if (alreadySent || alreadyFriends) {
@@ -117,6 +121,8 @@ router.post('/add-friend', async (req, res) => {
         return res.status(500).send("Internal Server Error");
     }
 
+
+    res.redirect('back');
 
 })
 
