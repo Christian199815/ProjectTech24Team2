@@ -4,8 +4,8 @@ const express = require('express')
 const app = express();
 const session = require('express-session');
 app.use(express.json());
-const requireSession = require('./reqSession');
-const {client, ObjectId} = require('./connect');
+const requireSession = require('./js-modules/reqSession');
+const {client, ObjectId} = require('./js-modules/connect');
 
 const options = {
   method: 'GET',

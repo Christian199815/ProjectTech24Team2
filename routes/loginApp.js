@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb');
 const cookieParser = require('cookie-parser');
 const router = express.Router();
-const { client } = require('../connect')
+const { client } = require('../js-modules/connect')
 
 
 

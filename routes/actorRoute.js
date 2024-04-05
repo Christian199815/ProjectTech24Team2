@@ -1,22 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const requireSession = require("../reqSession");
-const { client, ObjectId } = require('../connect');
-const handleLikeUnlike = require("../handleLike");
+const requireSession = require("../js-modules/reqSession");
+const { client, ObjectId } = require('../js-modules/connect');
+const options = require('../js-modules/tmdbOptions');
 
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${process.env.TMDB_TOKEN}` // Vervang <JOUW_AUTH_TOKEN> door je eigen bearer token
-    }
-};
 const threadDatabase = client.db(`${"Threads"}`);
 const communityDatabase = client.db(`${"Communities"}`);
 
 let currCollection = null;
-
-
 let actorID = 0;
 let person = null;
 let posts = [];

@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const { body, validationResult } = require('express-validator');
-const userValidationRules = require('./userValidationRules');
+const userValidationRules = require('./js-modules/userValidationRules');
 const session = require('express-session');
-const {client} = require('./connect');
+const {client} = require('./js-modules/connect');
 
 const express = require('express');
 const multer = require('multer'); //dont use in production
@@ -24,15 +24,15 @@ app.use(express.urlencoded({ extended: true, limit: '50mb'}))
 const loginApp = require('./routes/loginApp');
 const logoutApp = require('./routes/logoutApp');
 
-const signupApp = require('./routes/signupApp');
+const signupApp = require('./routes/signUpRoute');
 const preferencesApp = require('./routes/preferencesApp');
 const photoApp = require('./routes/photoApp');
 
 
-const homeApp = require('./routes/homeApp');
+const homeApp = require('./routes/homeRoute');
 const tmdb = require('./tmdb');
 const profile = require('./profile');
-const actorApp = require('./routes/actorWThreadsApp');
+const actorApp = require('./routes/actorRoute');
 
 
 
