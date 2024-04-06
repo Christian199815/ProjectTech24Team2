@@ -13,6 +13,8 @@ let actorID = 0;
 let person = null;
 let posts = [];
 
+let sessionUser = null;
+
 async function fetchPosts(db) {
     try {
         const posts = await threadDatabase.collection(person.name).find().toArray();
@@ -26,7 +28,8 @@ async function fetchPosts(db) {
 
 
 router.get('/actors', requireSession, async (req, res) => {
-    const user = req.session.user;
+    sessionUser = req.session.user;
+    user = sessionUser;
 
     actorID = req.query.id;
     const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
@@ -42,7 +45,7 @@ router.get('/actors', requireSession, async (req, res) => {
 
 
     // console.log(Object.keys(person));
-    res.render('pages/actor-page', { person, age, posts, user });
+    res.render('pages/actor-page', { person, age, posts, user});
 
 
 });
@@ -88,7 +91,7 @@ router.get('/thread-reverse', async (req, res) => {
     res.redirect('back');
 })
 
-router.post('/add-friend', async (req, res) => {
+router.post('/add-friend-actorPage', async (req, res) => {
     try {
         const friendReqUsername = req.body.postUsername;
         console.log(friendReqUsername);
@@ -108,8 +111,8 @@ router.post('/add-friend', async (req, res) => {
             );
             user.friendRequests = [];
         }
-        const alreadyFriends = users.friends.includes(friendReqUsername);
-        const alreadySent = user.friendRequests.includes(friendReqUsername);
+        const alreadyFriends = user.friends.includes(sessionUser.username);
+        const alreadySent = user.friendRequests.includes(sessionUser.username);
 
         if (alreadySent || alreadyFriends) {
             console.log("Request already sent");
@@ -117,7 +120,7 @@ router.post('/add-friend', async (req, res) => {
         } else {
             const result = await users.updateOne(
                 { _id: user._id },
-                { $push: { friendRequests: friendReqUsername } }
+                { $push: { friendRequests: sessionUser.username } }
             );
             console.log("Friend request sent");
             // return res.status(200).send("Friend request sent successfully");
@@ -126,8 +129,6 @@ router.post('/add-friend', async (req, res) => {
         console.error("Error:", error);
         return res.status(500).send("Internal Server Error");
     }
-
-
 })
 
 router.post('/like-post', async (req, res) => {

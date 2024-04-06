@@ -16,9 +16,9 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const database = client.db(`${"Communities"}`);
     const collection = database.collection("general");
-    const { username, password, remember } = req.body;
+    const { email, password, remember } = req.body;
 
-    const user = await collection.findOne({ username });
+    const user = await collection.findOne({ email });
     if (!user) {
         res.send('User not found');
         return;
