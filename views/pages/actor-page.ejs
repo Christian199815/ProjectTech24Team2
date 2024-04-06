@@ -26,8 +26,10 @@
           <!-- div 1 -->
           <div>
             <h1><%= person.name %></h1>
-            <a href="#">
-              <img src="/images/header-favorite.svg" />
+            <form action="/likeActors" method="POST">
+              <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
+              <input type="hidden" name="like_button" value="<%= person.id %>">
+            </form>
             </a>
           </div>
 
@@ -68,9 +70,33 @@
             />
             <h2>Biography</h2>
             <p><%= person.biography %></p>
+
+            <h2>Known for</h2>
+            <div class="movie-info-inner">
+              <div>
+                  <h3>Top 10 Populaire Films</h3>
+                  <div>
+                      <% 
+                      movieCrew.cast.sort(function(a, b) {
+                          return b.popularity - a.popularity;
+                      }).slice(0, 10).forEach(function(movie) { 
+                      %>
+                          <a href="/movie-page?id=<%= movie.id %>">
+                              <div>
+                                  <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.title %>" class="actor-image">
+                                  <p><%= movie.title %></p>
+                              </div>
+                          </a>
+                      <% }); %>
+
+                  </div>
+              </div>
+          </div>
+          
           </div>
         </div>
       </div>
+
 
       <div class="comments">
         <h2>Comments about <%= person.name%></h2>
@@ -81,8 +107,6 @@
             <p>Sort by</p>
           </div>
         </div>
-
-        
 
         <!-- comments writing form -->
         <div class="comments">
@@ -172,8 +196,8 @@
     </main>
 
     <footer></footer>
-    <script src="/public/js/actor-page.js"></script>
-    <script src="/public/js/general.js"></script>
+    <script src="/js/actor-page.js"></script>
+    <script src="/js/general.js"></script>
 
     
 

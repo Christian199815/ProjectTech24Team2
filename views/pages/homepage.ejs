@@ -43,14 +43,14 @@
                           <%= npMovie.title %>
                         </h2>
                         <form action="/likeMovies" method="POST">
-                          <input type="image" src="images/header-favorite.svg" alt="I Like">
+                          <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
                           <input type="hidden" name="like_button" value="<%= npMovie.id %>">
                         </form>
                       </div>
                       <p>
                         <%= npMovie.overview %>
                       </p>
-                      <a href="/movie-page?id=<%= npMovie.id %>">Bekijk details</a>
+                      <a href="/movie-page?id=<%= npMovie.id %>">More info</a>
                     </div>
                 </div>
               <% }); %>
@@ -95,7 +95,7 @@
                           </p>
                         </a>
                         <form action="/likeSeries" method="POST">
-                          <input type="image" src="images/header-favorite.svg" alt="I Like">
+                          <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
                           <input type="hidden" name="like_button" value="<%= serie.id %>">
                         </form>
                       </div>
@@ -140,7 +140,7 @@
                           </p>
                         </a>
                         <form action="/likeMovies" method="POST">
-                          <input type="image" src="images/header-favorite.svg" alt="I Like">
+                          <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
                           <input type="hidden" name="like_button" value="<%= movie.id %>">
                         </form>
                       </div>
@@ -186,7 +186,7 @@
                               <%= actor.name %>
                             </a>
                             <form action="/likeActors" method="POST">
-                              <input type="image" src="images/header-favorite.svg" alt="I Like">
+                              <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
                               <input type="hidden" name="like_button" value="<%= actor.id %>">
                             </form>
                           </div>

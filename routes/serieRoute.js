@@ -34,10 +34,14 @@ router.get('/serie-page', requireSession, async (req, res) => {
   const result = await fetch(`https://api.themoviedb.org/3/tv/${serieID}`, options);
   serie = await result.json();
 
-  posts = await fetchPosts(threadDatabase);
 
-  res.render('pages/serie-page', { serie, user, posts });
-});
+    const castResult = await fetch(`https://api.themoviedb.org/3/tv/${serieID}/credits`, options);
+    cast = await castResult.json();
+
+    posts = await fetchPosts(threadDatabase);
+
+    res.render('pages/serie-page', { serie, user, posts, cast });
+  });
 
 
 router.post('/post-serie-thread', async (req, res) => {

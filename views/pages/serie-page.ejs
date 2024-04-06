@@ -45,15 +45,19 @@
                     <div class="info-column info-column1">
                         <div>
                             <h3>Production company</h3>
-                            <div>
-                                <% serie.production_companies.forEach(function(production_company) { %>
+                                <% if (serie.production_companies) { %>
                                     <div>
-                                        <% if (production_company.logo_path) { %>
-                                            <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" height="30px" alt="Image">
-                                        <% } %>
+                                        <% serie.production_companies.forEach(function(production_company) { %>
+                                            <% if (production_company.logo_path) { %>
+                                                <div>
+                                                    <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" alt="Image">
+                                                </div>
+                                            <% } %>
+                                            <% if (production_company !== serie.production_companies[serie.production_companies.length - 1]) { %>, <% } %>
+                                        <% }); %>
                                     </div>
-                                <% }); %>
-                            </div>
+                                <% } %>
+
                         </div>
                         <div>
                             <h3>Stream this movie on</h3>
@@ -119,6 +123,23 @@
                     </div>
                     <div class="info-column info-column4">
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="movie-info-inner">
+            <div>
+                <h3>Top Cast</h3>
+                <div>
+                    <% cast.cast.slice(0, 10).forEach(function(cast) { %>
+                        <a href="/actors?id=<%= cast.id %>">
+                        <div>
+                            <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= cast.profile_path %>" height=100px alt="<%= cast.name %>" class="actor-image">
+                            <p><%= cast.name %> as <%= cast.character %></p>
+                        </div>
+                      </a>
+                    <% }); %>
                 </div>
             </div>
         </div>

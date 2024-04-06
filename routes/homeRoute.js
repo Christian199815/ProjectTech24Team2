@@ -14,7 +14,7 @@ const options = require('../js-modules/tmdbOptions');
   router.get('/home', requireSession, async (req, res) => {
     const user = req.session.user;
 
-    const result = await fetch(`https://api.themoviedb.org/3/trending/person/week`, options);
+    const result = await fetch(`https://api.themoviedb.org/3/trending/person/day`, options);
     const trendingPersons = await result.json();
     const actorsData = trendingPersons.results.map(actor => ({
       name: actor.name,
