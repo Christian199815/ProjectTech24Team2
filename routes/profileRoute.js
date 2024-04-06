@@ -18,9 +18,6 @@ let fetchedFriends = null;
 let user = null;
 
 
-
-
-
 router.get('/profile', requireSession, async (req, res) => {
   
   const user = await users.findOne({ email: req.session.user.email });
@@ -76,7 +73,7 @@ router.get('/profile', requireSession, async (req, res) => {
 router.post('/remove-fRequest', async (req, res) => {
   const user = await users.findOne({ username: req.session.user.username });
   let valueToRemove = req.body.removeName;
-  const result = await gebruikers.updateOne(
+  const result = await users.updateOne(
     { _id: user._id },
     { $pull: { friendRequests: valueToRemove } } 
   );
@@ -84,14 +81,20 @@ router.post('/remove-fRequest', async (req, res) => {
 });
 
 router.post('/accept-fRequest', async (req, res) => {
-  const user = await users.findOne({ username: req.session.user.username });
+  const profileUser = await users.findOne({ username: req.session.user.username });
   let value = req.body.addName;
-  const pushResult = await users.updateOne(
-    { _id: user._id }, 
+  const requestUser = await users.findOne({username: value});
+
+  const profilePushResult = await users.updateOne(
+    { _id: profileUser._id }, 
     { $push: { friends: value } } 
   );
-  const pullResult = await users.updateOne(
-    { _id: user._id }, 
+  const requestPushResult = await users.updateOne(
+    { _id: requestUser._id }, 
+    { $push: { friends: profileUser.username } } 
+  );
+  const profilePullResult = await users.updateOne(
+    { _id: profileUser._id }, 
     { $pull: { friendRequests: value } } 
   );
   res.redirect('back');

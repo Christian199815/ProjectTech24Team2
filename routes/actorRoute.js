@@ -88,8 +88,7 @@ router.post('/add-friend-actorPage', async (req, res) => {
         const buttonUser = await users.findOne({ username: friendReqUsername });
     
         if (!buttonUser) {
-            console.log("User not found");
-            return res.status(404).send("User not found");
+            return res.render('pages/error', { error: "User not found", user});
         }
         if (!buttonUser.friendRequests) {
             await users.updateOne(
