@@ -55,17 +55,17 @@
                 placeholder="password"
                 required
               />
-                 <%if(!errors) { %>
-                   <p><%=errors%> </p>
-                <%} else {%>
-                    <p>Please use at least: 8 characters, 1 capitalised letter, 1
-                    lowercased letter, 1 number and 1 symbol. </p>
-                <%}%>
+                 <%if(errors[0] !== "none") { %>
+                  <% if (!errors.isEmpty()) { %>
+                    <% errors.array().forEach(function(error) { %>
+                      <p><%= error.msg %></p>
+                    <% }) %>
+                  <% }  %>
+                  <%}else { %>
+                    <p>Please use at least: 8 characters, 1 capitalised letter, 1 lowercased letter, 1 number and 1 symbol.</p>
+                  <% } %>
 
-              <!-- <p class="">
-                Please use at least: 8 characters, 1 capitalised letter, 1
-                lowercased letter, 1 number and 1 symbol.
-              </p> -->
+
 
               <label for="birthdate">Date of birthdate</label>
               <input

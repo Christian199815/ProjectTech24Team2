@@ -41,10 +41,17 @@ function getRandomImg(){
 
 
 router.get('/signup', async (req, res) => {
-    res.render('pages/signup', { errors: [], user: req.session.user })
+    res.render('pages/signup', { errors: ['none'], user: req.session.user })
 })
 
 router.post('/signup',validate, userValidationRules, async (req, res) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.render('pages/signup', { errors, user: req.session.user })
+        // return res.status(400).json({ errors: errors.array() });
+    }
+
     const database = client.db("Communities");
     const users = database.collection("general");
 
