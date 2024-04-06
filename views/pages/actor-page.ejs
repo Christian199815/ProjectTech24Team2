@@ -27,7 +27,7 @@
           <div>
             <h1><%= person.name %></h1>
             <form action="/likeActors" method="POST">
-              <input type="image" src="images/header-favorite.svg" alt="I Like">
+              <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
               <input type="hidden" name="like_button" value="<%= person.id %>">
             </form>
             </a>
@@ -196,8 +196,8 @@
     </main>
 
     <footer></footer>
-    <script src="/public/js/actor-page.js"></script>
-    <script src="/public/js/general.js"></script>
+    <script src="/js/actor-page.js"></script>
+    <script src="/js/general.js"></script>
 
     
 
