@@ -84,25 +84,14 @@
                     // Toon alleen de top 10
                     movieCrew.cast.slice(0, 10).forEach(function(movie) { 
                     %>
-                        <a href="/movie-page?id=<%= movie.id %>">
+                        <a href="/<%= movie.media_type === 'movie' ? 'movie' : 'serie' %>-page?id=<%= movie.id %>">
                             <div>
-                                <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.title %>" class="actor-image">
-                                <p><%= movie.title %></p>
+                                <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.media_type === 'movie' ? movie.title : movie.name %>" class="actor-image">
+                                <p><%= movie.media_type === 'movie' ? movie.title : movie.name %></p>
                             </div>
                         </a>
                     <% }); %>
-                    
-                    
-            
-                    
-
-                    
-                    
-                    
-                    
-                    
-                    
-
+  
                   </div>
               </div>
           </div>
