@@ -23,13 +23,13 @@
             <div class="signin-form-container">
                 <h1>Sign in to your account</h1>
                 <form action="/login" method="POST">
-                    <input type="text" id="username" name="email" placeholder="E-mail adress or phone number" required>
+                    <input type="text" id="username" name="email" placeholder="E-mail adress" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <div class="remember-forgot">
                         <label for="remember-me">
                             <input type="checkbox" id="remember-me" name="remember">Remember me
                         </label>
-                        <a href="#" class="forgot-password">Forgot password?</a>
+                        <a href="/signup" class="forgot-password">Forgot password?</a>
                     </div>
                     <% if(errors !== "none"){ %>
                         <p style="color: white; padding: 1rem;"><%=errors%></p>

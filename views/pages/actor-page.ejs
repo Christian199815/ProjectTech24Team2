@@ -74,20 +74,34 @@
             <h2>Known for</h2>
             <div class="movie-info-inner">
               <div>
-                  <h3>Top 10 Populaire Films</h3>
                   <div>
-                      <% 
-                      movieCrew.cast.sort(function(a, b) {
-                          return b.popularity - a.popularity;
-                      }).slice(0, 10).forEach(function(movie) { 
-                      %>
-                          <a href="/movie-page?id=<%= movie.id %>">
-                              <div>
-                                  <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.title %>" class="actor-image">
-                                  <p><%= movie.title %></p>
-                              </div>
-                          </a>
-                      <% }); %>
+                    <% 
+                    // Sorteer de films/series op basis van vote_count
+                    movieCrew.cast.sort(function(a, b) {
+                        return b.vote_count - a.vote_count;
+                    });
+                    
+                    // Toon alleen de top 10
+                    movieCrew.cast.slice(0, 10).forEach(function(movie) { 
+                    %>
+                        <a href="/movie-page?id=<%= movie.id %>">
+                            <div>
+                                <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.title %>" class="actor-image">
+                                <p><%= movie.title %></p>
+                            </div>
+                        </a>
+                    <% }); %>
+                    
+                    
+            
+                    
+
+                    
+                    
+                    
+                    
+                    
+                    
 
                   </div>
               </div>
