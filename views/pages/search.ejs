@@ -27,6 +27,7 @@
 
                     <% searchResult.results.forEach(function(result) { %>
                         <div>
+                            
                             <div>
                                 <img src="https://image.tmdb.org/t/p/w200<%= result.poster_path || result.profile_path %>"
                                     alt="Image">
@@ -47,10 +48,6 @@
                                             <% } %>
                             </div>
                             <!-- hardcoded elements for now -->
-                            <div>
-                                <div><p>Dit dat</p></div>
-                                <div><p>Zus zo</p></div>
-                            </div>
 
                         </div>
                         <% }); %>

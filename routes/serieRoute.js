@@ -38,9 +38,12 @@ router.get('/serie-page', requireSession, async (req, res) => {
     const castResult = await fetch(`https://api.themoviedb.org/3/tv/${serieID}/credits`, options);
     cast = await castResult.json();
 
+    const trailerResult = await fetch(`https://api.themoviedb.org/3/tv/${serieID}/videos`, options);
+    trailer = await trailerResult.json();
+
     posts = await fetchPosts(threadDatabase);
 
-    res.render('pages/serie-page', { serie, user, posts, cast });
+    res.render('pages/serie-page', { serie, user, posts, cast, trailer });
   });
 
 
