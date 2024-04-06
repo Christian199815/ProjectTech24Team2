@@ -19,7 +19,7 @@ const userValidationRules = [
 
   // Password must be at least 6 characters long
   body('password')
-    .matches(sanitizedPattern).withMessage('Password must contain only letters, numbers, and special characters @#$%^&+!=')
+    .matches(sanitizedPattern).withMessage('Please use at least: 8 characters, 1 capitalised letter, 1 lowercased letter, 1 number and 1 symbol.')
     .isLength({ min: 6 })
     .withMessage('Password must be at least 6 characters long')
 ];

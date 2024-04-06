@@ -10,7 +10,7 @@ const { client } = require('../js-modules/connect')
 router.get('/login', (req, res) => {
     const user = req.session.user;
     // res.render('pages/actor-page-ThreadsTest', { person, age, posts, user });
-    res.render('pages/signin', {user});
+    res.render('pages/signin', {errors: "none",user});
 })
 
 router.post('/login', async (req, res) => {
@@ -20,18 +20,15 @@ router.post('/login', async (req, res) => {
 
     const user = await collection.findOne({ email });
     if (!user) {
-        res.send('User not found');
+        res.render('pages/signin', { errors: 'User not found', user: req.session.user })
         return;
     }
     if (!user.password) {
-        // res.status(500).render('error', { error: "Password field is missing in the database" });
-        res.send('Password field is missing in the database');
+        res.render('pages/signin', { errors: 'Password field is missing in the database', user: req.session.user })
         return;
     }
     if (!(await bcrypt.compare(password, user.password))) {
-        // res.status(500).render('error', { error: "Invalid password" });
-        res.send('invalid pwwrd');
-
+        res.render('pages/signin', { errors: 'Invalid password', user: req.session.user })
         return;
     }
     //start session here
@@ -45,7 +42,6 @@ router.post('/login', async (req, res) => {
         console.log('short cookie');
 
     }
-
     res.redirect('/home');
 });
 
