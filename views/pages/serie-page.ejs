@@ -29,7 +29,7 @@
                     <div>
                         <h1><%= serie.name %></h1>
                         <form action="/likeSeries" method="POST">
-                            <input type="image" src="images/header-favorite.svg" alt="I Like">
+                            <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
                             <input type="hidden" name="like_button" value="<%= serie.id %>"> 
                         </form> 
                     </div>
