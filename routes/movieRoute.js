@@ -12,6 +12,7 @@ let currCollection = null;
 let movie = null;
 let user = null;
 let posts = [];
+let sessionUser = null;
 
 let alreadyFriends = null;
 
@@ -26,8 +27,8 @@ async function fetchPosts(db) {
 }
 
 router.get('/movie-page', requireSession, async (req, res) => {
-    user = req.session.user;
-
+    sessionUser = req.session.user;
+  user = sessionUser;
 
     let movieID = req.query.id;
     const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
@@ -80,50 +81,49 @@ router.get('/thread-reverse', async (req, res) => {
     res.redirect('back');
 })
 
-router.post('/add-friend', async (req, res) => {
-    try {
-        const friendReqUsername = req.body.postUsername;
-        console.log(friendReqUsername);
-        const users = communityDatabase.collection("general");
+router.post('/add-friend-moviePage', async (req, res) => {
+  try {
+    const friendReqUsername = req.body.postUsername;
+    console.log(friendReqUsername);
+    const users = communityDatabase.collection("general");
 
-        const user = await users.findOne({ username: friendReqUsername });
-
-        if (!user) {
-            console.log("User not found");
-            return res.status(404).send("User not found");
-        }
-
-        if (!user.friendRequests) {
-            await users.updateOne(
-                { _id: user._id },
-                { $set: { friendRequests: [] } }
-            );
-            user.friendRequests = [];
-        }
-        if(user.friends){
-          alreadyFriends = user.friends.includes(friendReqUsername);
-        }
-        const alreadySent = user.friendRequests.includes(friendReqUsername);
-
-        if (alreadySent || alreadyFriends) {
-            console.log("Request already sent");
-            // return res.status(400).send("Friend request already sent");
-        } else {
-            const result = await users.updateOne(
-                { _id: user._id },
-                { $push: { friendRequests: friendReqUsername } }
-            );
-            console.log("Friend request sent");
-            // return res.status(200).send("Friend request sent successfully");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        return res.status(500).send("Internal Server Error");
+    const buttonUser = await users.findOne({ username: friendReqUsername });
+    console.log(buttonUser);
+    if (!user) {
+        console.log("User not found");
+        return res.status(404).send("User not found");
     }
 
+    if (!user.friendRequests) {
+        await users.updateOne(
+            { _id: user._id },
+            { $set: { friendRequests: [] } }
+        );
+        user.friendRequests = [];
+    }
+    if(buttonUser.friends){
 
+    
+    const alreadyFriends = buttonUser.friends.includes(sessionUser.username);
+    }
+    const alreadySent = buttonUser.friendRequests.includes(sessionUser.username);
+
+    if (alreadySent || alreadyFriends) {
+        console.log("Request already sent");
+        // return res.status(400).send("Friend request already sent");
+    } else {
+        const result = await users.updateOne(
+            { _id: user._id },
+            { $push: { friendRequests: sessionUser.username } }
+        );
+        console.log("Friend request sent");
+        // return res.status(200).send("Friend request sent successfully");
+    }
+} catch (error) {
+    console.error("Error:", error);
+    return res.status(500).send("Internal Server Error");
+}
     res.redirect('back');
-
 })
 
 router.post('/like-post', async (req, res) => {
