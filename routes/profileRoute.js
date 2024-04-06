@@ -21,7 +21,7 @@ const users = database.collection("general");
 
 router.get('/profile', requireSession, async (req, res) => {
   
-  const user = await users.findOne({ username: req.session.user.username });
+  const user = await users.findOne({ email: req.session.user.email });
 
   try {
     if (user.likedActors) {
