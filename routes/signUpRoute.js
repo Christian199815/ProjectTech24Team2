@@ -49,16 +49,11 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.render('pages/signup', { errors, user: req.session.user })
-        // return res.status(400).json({ errors: errors.array() });
     }
 
     const database = client.db("Communities");
     const users = database.collection("general");
-
     const { username, email, password, DateOfBirth } = req.body;
-
-    console.log(typeof(DateOfBirth));
-
     const birthDate = new Date(DateOfBirth);
   
     const ageDiffMilliseconds = Date.now() - birthDate.getTime();

@@ -39,8 +39,7 @@ router.post("/likeMovies", requireSession, async (req, res) => {
       console.log("film liked");
     }
   } catch (error) {
-    console.error("Fout bij het toevoegen van film:", error);
-    return res.status(500).send("Interne serverfout");
+    return res.render('pages/error', { error, user});
   }
 });
 
@@ -77,8 +76,7 @@ router.post("/likeSeries", requireSession, async (req, res) => {
       console.log("serie liked");
     }
   } catch (error) {
-    console.error("Fout bij het toevoegen van serie:", error);
-    return res.status(500).send("Interne serverfout");
+    return res.render('pages/error', { error, user});
   }
 });
 
@@ -115,22 +113,9 @@ router.post("/likeActors", requireSession, async (req, res) => {
       console.log("actor liked");
     }
   } catch (error) {
-    console.error("Fout bij het toevoegen van acteur:", error);
-    return res.status(500).send("Interne serverfout");
+    return res.render('pages/error', { error, user});
   }
 });
-
-// router.get("/home", async (req, res) => {
-
-//   const everything = await fetch(`https://api.themoviedb.org/3/discover/movie`, options);
-//   const searchResult = await everything.json();
-//   console.log(searchResult);
-  
-//   let fetchedMovies = await Promise.all(user.likedMovies.map(async (movieID) => {
-//   const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
-//   return result.json();
-//   }));
-// });
 
 
 module.exports = router;

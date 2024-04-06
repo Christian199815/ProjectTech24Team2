@@ -7,53 +7,45 @@ const options = require('../js-modules/tmdbOptions.js');
 const threadDatabase = client.db(`${"Threads"}`);
 const communityDatabase = client.db(`${"Communities"}`);
 
-let currCollection = null;
-
 let actorID = 0;
+let movieCrew = null;
 let person = null;
 let posts = [];
 
+let currCollection = null;
+let user = null;
 let sessionUser = null;
+let alreadyFriends = null;
 
-async function fetchPosts(db) {
+
+async function fetchPosts(db, res) {
     try {
         const posts = await threadDatabase.collection(person.name).find().toArray();
         return posts;
     } catch (error) {
-        console.error('Error fetching posts:', error);
-        throw new Error('Unable to fetch posts');
+      return res.render('pages/error', { error, user});
     }
-}
+  }
 
 
 
 router.get('/actors', requireSession, async (req, res) => {
     sessionUser = req.session.user;
     user = sessionUser;
-
     actorID = req.query.id;
+
     const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
-    person = await result.json();
-
-
     const mCredits = await fetch(`https://api.themoviedb.org/3/person/${actorID}/combined_credits`, options);
-    movieCrew = await mCredits.json();
-
-
-
     const birthDate = new Date(person.birthday);
     const ageDiffMilliseconds = Date.now() - birthDate.getTime();
     const ageDate = new Date(ageDiffMilliseconds);
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    posts = await fetchPosts(threadDatabase);
+    movieCrew = await mCredits.json();
+    person = await result.json();
+    posts = await fetchPosts(threadDatabase, res);
 
-
-    // console.log(Object.keys(person));
     res.render('pages/actor-page', { person, age, posts, user, movieCrew });
-
-
-
 });
 
 router.post('/post-actor-thread', async (req, res) => {
@@ -62,18 +54,12 @@ router.post('/post-actor-thread', async (req, res) => {
     const profilePicture = req.session.user.profilePhoto;
     const { comment } = req.body;
     const currDateTime = new Date().toLocaleString();
-
-    console.log(profilePicture);
-
     const collectionExists = await threadDatabase.listCollections({ name: person.name }).hasNext();
 
     if (!collectionExists) {
-        // If collection does not exist, create a new collection
         currCollection = await threadDatabase.createCollection(person.name);
-        console.log(`Collection '${person.name}' created successfully`);
     } else {
         currCollection = threadDatabase.collection(person.name);
-        console.log(`Collection '${person.name}' already exists`);
     }
 
     const newPost = {
@@ -84,9 +70,7 @@ router.post('/post-actor-thread', async (req, res) => {
         upvotes: 100,
         downvotes: 0,
     }
-
     const result = await currCollection.insertOne(newPost);
-    console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
     res.redirect('back');
 })
@@ -100,43 +84,39 @@ router.get('/thread-reverse', async (req, res) => {
 router.post('/add-friend-actorPage', async (req, res) => {
     try {
         const friendReqUsername = req.body.postUsername;
-        console.log(friendReqUsername);
         const users = communityDatabase.collection("general");
-
-        const user = await users.findOne({ username: friendReqUsername });
-
-        if (!user) {
+        const buttonUser = await users.findOne({ username: friendReqUsername });
+    
+        if (!buttonUser) {
             console.log("User not found");
             return res.status(404).send("User not found");
         }
-
-        if (!user.friendRequests) {
+        if (!buttonUser.friendRequests) {
             await users.updateOne(
-                { _id: user._id },
+                { _id: buttonUser._id },
                 { $set: { friendRequests: [] } }
             );
-            user.friendRequests = [];
+            buttonUser.friendRequests = [];
         }
-        if(user.friends){
-        const alreadyFriends = user.friends.includes(sessionUser.username);
+        if(buttonUser.friends){
+        alreadyFriends = buttonUser.friends.includes(sessionUser.username);
         }
-        const alreadySent = user.friendRequests.includes(sessionUser.username);
-
+        const alreadySent = buttonUser.friendRequests.includes(sessionUser.username);
+    
         if (alreadySent || alreadyFriends) {
             console.log("Request already sent");
-            // return res.status(400).send("Friend request already sent");
         } else {
             const result = await users.updateOne(
-                { _id: user._id },
+                { _id: buttonUser._id },
                 { $push: { friendRequests: sessionUser.username } }
             );
             console.log("Friend request sent");
-            // return res.status(200).send("Friend request sent successfully");
         }
     } catch (error) {
-        console.error("Error:", error);
-        return res.status(500).send("Internal Server Error");
+        return res.render('pages/error', { error, user});
     }
+        res.redirect('back');
+
 })
 
 router.post('/like-post', async (req, res) => {

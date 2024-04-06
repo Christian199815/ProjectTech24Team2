@@ -8,53 +8,47 @@ const options = require('../js-modules/tmdbOptions.js');
 const threadDatabase = client.db(`${"Threads"}`);
 const communityDatabase = client.db(`${"Communities"}`);
 
-let currCollection = null;
 let movie = null;
-let user = null;
 let posts = [];
-let sessionUser = null;
 
+let currCollection = null;
+let user = null;
+let sessionUser = null;
 let alreadyFriends = null;
 
-async function fetchPosts(db) {
+async function fetchPosts(db, res) {
   try {
       const posts = await threadDatabase.collection(movie.title).find().toArray();
       return posts;
   } catch (error) {
-      console.error('Error fetching posts:', error);
-      throw new Error('Unable to fetch posts');
+    return res.render('pages/error', { error, user});
   }
 }
 
 router.get('/movie-page', requireSession, async (req, res) => {
     sessionUser = req.session.user;
-  user = sessionUser;
-
+    user = sessionUser;
     let movieID = req.query.id;
+
     const result = await fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options);
-    movie = await result.json();
-
-
     const castResult = await fetch(`https://api.themoviedb.org/3/movie/${movieID}/credits`, options);
-    cast = await castResult.json();
-
     const trailerResult = await fetch(`https://api.themoviedb.org/3/movie/${movieID}/videos`, options);
+    
+    cast = await castResult.json();
+    movie = await result.json();
     trailer = await trailerResult.json();
-
-    posts = await fetchPosts(threadDatabase);
+    posts = await fetchPosts(threadDatabase, res);
 
     res.render('pages/movie-page', { movie, user, posts, cast, trailer });
   });
 
 
   router.post('/post-movie-thread', async (req, res) => {
-
     const username = req.session.user.username;
     const profilePicture = req.session.user.profilePhoto;
     const { comment } = req.body;
     const currDateTime = new Date().toLocaleString();
 
-    console.log(profilePicture);
 
     const collectionExists = await threadDatabase.listCollections({ name: movie.title }).hasNext();
 
@@ -75,10 +69,7 @@ router.get('/movie-page', requireSession, async (req, res) => {
         upvotes: 100,
         downvotes: 0,
     }
-
     const result = await currCollection.insertOne(newPost);
-    console.log(`A document was inserted with the _id: ${result.insertedId}`);
-
     res.redirect('back');
 })
 
@@ -91,44 +82,36 @@ router.get('/thread-reverse', async (req, res) => {
 router.post('/add-friend-moviePage', async (req, res) => {
   try {
     const friendReqUsername = req.body.postUsername;
-    console.log(friendReqUsername);
     const users = communityDatabase.collection("general");
-
     const buttonUser = await users.findOne({ username: friendReqUsername });
-    console.log(buttonUser);
-    if (!user) {
+
+    if (!buttonUser) {
         console.log("User not found");
         return res.status(404).send("User not found");
     }
-
-    if (!user.friendRequests) {
+    if (!buttonUser.friendRequests) {
         await users.updateOne(
-            { _id: user._id },
+            { _id: buttonUser._id },
             { $set: { friendRequests: [] } }
         );
-        user.friendRequests = [];
+        buttonUser.friendRequests = [];
     }
     if(buttonUser.friends){
-
-    
-    const alreadyFriends = buttonUser.friends.includes(sessionUser.username);
+    alreadyFriends = buttonUser.friends.includes(sessionUser.username);
     }
     const alreadySent = buttonUser.friendRequests.includes(sessionUser.username);
 
     if (alreadySent || alreadyFriends) {
         console.log("Request already sent");
-        // return res.status(400).send("Friend request already sent");
     } else {
         const result = await users.updateOne(
-            { _id: user._id },
+            { _id: buttonUser._id },
             { $push: { friendRequests: sessionUser.username } }
         );
         console.log("Friend request sent");
-        // return res.status(200).send("Friend request sent successfully");
     }
 } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).send("Internal Server Error");
+    return res.render('pages/error', { error, user});
 }
     res.redirect('back');
 })
