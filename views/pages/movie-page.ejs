@@ -76,7 +76,13 @@
                         </div>
                         <div>
                             <h3>Director</h3>
-                            <p>-</p>
+                            <% cast.crew.forEach(function(member) { %>
+                                <% if (member.job === "Director") { %>
+                                    <a href="/actors?id=<%= member.id %>"> 
+                                            <p><%= member.name %></p>
+                                    </a>
+                                <% } %>
+                            <% }); %>
                         </div>
                     </div>
                 </div>
@@ -110,11 +116,29 @@
                         </div>
                     </div>
                     <div class="info-column info-column4">
-                        <!-- deze is even leeg -->
+                        <!-- deze is even leeg -->          
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="movie-info-inner">
+            <div>
+                <h3>Top Cast</h3>
+                <div>
+                    <% cast.cast.slice(0, 10).forEach(function(cast) { %>
+                        <a href="/actors?id=<%= cast.id %>">
+                        <div>
+                            <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= cast.profile_path %>" height=100px alt="<%= cast.name %>" class="actor-image">
+                            <p><%= cast.name %> as <%= cast.character %></p>
+                        </div>
+                      </a>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+
+        
 
         <div class="comments">
             <h2>Comments about <%= movie.name%></h2>
