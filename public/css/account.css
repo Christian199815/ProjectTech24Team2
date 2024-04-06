@@ -5,8 +5,12 @@
 
 /*************************/
 
+
+
+/**************/
 /**************/
 /* TOP BLOCK */
+/**************/
 /**************/
 
 .top-block {
@@ -16,7 +20,12 @@
     margin: 3rem 4rem;
 }
 
-/* MY ACCOUNT */
+
+
+/**************/
+/* MY ACCOUNT*/
+/**************/
+
 .account-block {
     width: 100%;
     border: solid 1px var(--color-primary-tint3);
@@ -94,7 +103,9 @@
     border-style: none;
 }
 
-/* SETTINGS */
+/**************/
+/* SETTINGS*/
+/**************/
 
 .settings-block {
     border: solid 1px var(--color-primary-tint3);
@@ -146,24 +157,19 @@
     margin: 0.4rem 0rem;
 }
 
-
+/******************/
 /*****************/
 /* BOTTOM BLOCK */
 /*****************/
+/******************/
 
-.bottom-block {
+/*  STYLING BLOCK */
+
+.bottom-block { 
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     margin: 3rem 4rem;
-}
-
-.titles-style {
-    font-family: 'Prompt';
-    font-weight: 300;
-    font-size: 0.75em;
-    color: #fff;
-    max-width: 100px;
 }
 
 .bottom-left {
@@ -174,14 +180,19 @@
 }
 
 
-.bottom-left .movie-list-block>div {
-    margin: 2rem;
-}
+
+/***************************/
+/* BLOCK 3 MOVIES LIST */
+/**************************/
 
 .movie-list-block {
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
+}
+
+.bottom-left .movie-list-block>div {
+    margin: 2rem;
 }
 
 .movie-list-block>div h3 {
@@ -192,6 +203,26 @@
     margin-bottom: 0.5rem;
 }
 
+.movies-list-row {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 4em;
+}
+
+
+.movies-list-row img {
+    height: 200px;
+    width: 125px;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+/* STYLING LINKS */
 .movie-list-block .more-info,
 .series .more-info,
 .actor-crew-block3 .more-info{
@@ -207,26 +238,6 @@
     padding: 0.5rem 2rem 0.3rem;
 }
 
-
-
-.movies-list-row {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: row;
-    gap: 4em;
-}
-
-.movies-list-row img {
-    height: 200px;
-    width: 125px;
-}
-
-.movie-info {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-}
-
 .see-more {
     color: #fff;
     font-family: 'Prompt';
@@ -237,6 +248,10 @@
     border-radius: 0.9rem;
     text-align: center;
 }
+
+/***************************/
+/* PART ONE :  TV SHOWS */
+/**************************/
 
 .favorites-block {
     border: solid 1px var(--color-primary-tint3);
@@ -262,12 +277,18 @@
     color: var(--color-secondary-tint1);
     margin-top: 1em;
     margin-bottom: 1em;
-
 }
 
- .tv-shows-favs{
+.tv-shows-favs{
     display: flex;
     flex-direction: row;
+}
+
+.movies-row {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
 }
 
 .series{
@@ -275,8 +296,27 @@
     flex-direction: column;
 }
 
-.movies-row {
-    margin-bottom: 1em;
+
+
+/* STYLING IMAGES */
+.movies-row img,
+.actor-crew-block3 img {
+    height: 200px;
+    width: 125px;
+}
+
+.movies-list-row,
+.movies-row,
+.actor-crew-row{
+    overflow: hidden;
+}
+
+
+
+/******************************/
+/* PART TWO :  ACTORS & CREW */
+/*****************************/
+.actor-crew-row{
     display: flex;
     flex-direction: row;
     gap: 2em;
@@ -289,26 +329,31 @@
     align-items:center;
 }
 
-.actor-crew-row{
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
+.titles-style {
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 0.75em;
+    color: #fff;
+    max-width: 100px;
 }
 
-
-.movies-row img,
-.actor-crew-block3 img {
-    height: 200px;
-    width: 125px;
-}
-
-
-
+/******************************/
+/* BLOCK 5 :  FRIENDS*/
+/*****************************/
+/* BASIC BLOCK FRIENDS */
 .friends-block {
     border: solid 1px var(--color-primary-tint3);
     background-color: var(--color-headerbackground);
     border-radius: 1em;
     width: 55rem;
+}
+
+.friends-block p{
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 0.3em;
 }
 
 .friends-block>div {
@@ -328,39 +373,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.friends-block .friends-list .friends {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1.5rem;
-    border: solid 1px var(--color-primary-tint3);
-    background-color: var(--color-secondarybackground);
-    border-radius: 1em;
-    width: 100%;
-    margin-bottom: 1.2rem;
-}
-
-.friends>div {
-    margin: 1rem;
-    display: flex;
-}
-
-.friends>div .friends-request {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-left: 1rem;
-    gap: 1rem;
-
-}
-
-.friends>div .friends-request .requests {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
 }
 
 .friends button {
@@ -383,14 +395,6 @@
     border-radius: 0.9rem;
 }
 
-.friends-block p{
-    font-family: 'Prompt';
-    font-weight: 300;
-    font-size: 1.5em;
-    color: #fff;
-    margin-bottom: 0.3em;
-}
-
 .friends p:nth-of-type(1) {
     font-family: 'Prompt';
     font-weight: 200;
@@ -398,11 +402,51 @@
     color: #fff;
 }
 
+
+
+
+/* FRIENDS REQUEST */
+.friends-block .friends-list .friends {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.5rem;
+    border: solid 1px var(--color-primary-tint3);
+    background-color: var(--color-secondarybackground);
+    border-radius: 1em;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+
+.friends>div {
+    margin: 1rem;
+    display: flex;
+}
+
+.friends>div .friends-request {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 1rem;
+    gap: 1rem;
+}
+
+.friends>div .friends-request .requests {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
 .not-yet-friends{
     display: flex;
     flex-direction: column;
 }
 
+
+
+/* FRIENDS */
 .already-friends{
     display: flex;
     flex-direction: row;
@@ -418,11 +462,9 @@
 
 @media (max-width: 700px) {
 
-
-    /* ******* */
-    /* BLOCK */
-    /* ******* */
-
+    /********** */
+    /* TOP BLOCK */
+    /********** */
 
     .top-block {
         flex-direction: column;
@@ -436,6 +478,9 @@
         width: 100%;
     }
 
+       /********** */
+    /* BOTTOM BLOCK */
+      /********** */
 
     .bottom-block {
         flex-direction: column;
@@ -448,6 +493,5 @@
     .friends-block {
         width: 100%;
     }
-
 
 }
