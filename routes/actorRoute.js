@@ -119,7 +119,9 @@ router.post('/add-friend-actorPage', async (req, res) => {
             );
             user.friendRequests = [];
         }
+        if(user.friends){
         const alreadyFriends = user.friends.includes(sessionUser.username);
+        }
         const alreadySent = user.friendRequests.includes(sessionUser.username);
 
         if (alreadySent || alreadyFriends) {
