@@ -26,8 +26,10 @@
           <!-- div 1 -->
           <div>
             <h1><%= person.name %></h1>
-            <a href="#">
-              <img src="/images/header-favorite.svg" />
+            <form action="/likeActors" method="POST">
+              <input type="image" src="images/header-favorite.svg" alt="I Like">
+              <input type="hidden" name="like_button" value="<%= person.id %>">
+            </form>
             </a>
           </div>
 
@@ -81,11 +83,12 @@
                       %>
                           <a href="/movie-page?id=<%= movie.id %>">
                               <div>
-                                  <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.name %>" class="actor-image">
+                                  <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.title %>" class="actor-image">
                                   <p><%= movie.title %></p>
                               </div>
                           </a>
                       <% }); %>
+
                   </div>
               </div>
           </div>
