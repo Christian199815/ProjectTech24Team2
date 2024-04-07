@@ -311,6 +311,7 @@
 .movies-row,
 .actor-crew-row{
     overflow: hidden;
+    overflow-x: scroll;
 }
 
 
