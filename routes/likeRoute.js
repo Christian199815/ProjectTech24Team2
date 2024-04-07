@@ -30,13 +30,11 @@ router.post("/likeMovies", requireSession, async (req, res) => {
         { _id: user._id },
         { $pull: { likedMovies: movieID } }
       );
-      console.log("film unliked");
     } else {
       const result = await users.updateOne(
         { _id: new ObjectId(user._id) },
         { $push: { likedMovies: movieID } }
       );
-      console.log("film liked");
     }
   } catch (error) {
     return res.render('pages/error', { error, user});
@@ -67,13 +65,11 @@ router.post("/likeSeries", requireSession, async (req, res) => {
         { _id: user._id },
         { $pull: { likedSeries: serieID } }
       );
-      console.log("serie unliked");
     } else {
       const result = await users.updateOne(
         { _id: new ObjectId(user._id) },
         { $push: { likedSeries: serieID } }
       );
-      console.log("serie liked");
     }
   } catch (error) {
     return res.render('pages/error', { error, user});
@@ -104,13 +100,11 @@ router.post("/likeActors", requireSession, async (req, res) => {
         { _id: user._id },
         { $pull: { likedActors: personID } }
       );
-      console.log("actor unliked");
     } else {
       const result = await users.updateOne(
         { _id: new ObjectId(user._id) },
         { $push: { likedActors: personID } }
       );
-      console.log("actor liked");
     }
   } catch (error) {
     return res.render('pages/error', { error, user});
