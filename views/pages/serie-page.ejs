@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Lounge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link href="/css/general.css" rel="stylesheet">
+    <link href="/css/serie-page.css" rel="stylesheet">
+</head>
+
+<body>
+      <!-- partial -->
+  <%- include('../partials/header.ejs') %>
+    
+    <main>
+        <div class="serie-banner">
+            <div class="serie-banner-inner">
+                <img src="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces<%= serie.backdrop_path %>"  alt="Image">
+    
+                <div class="serie-banner-content">
+                    <div>
+                        <h1><%= serie.name %></h1>
+                        <form action="/likeSeries" method="POST">
+                            <input class="likeButton" type="image" src="images/header-favorite.svg" alt="I Like">
+                            <input type="hidden" name="like_button" value="<%= serie.id %>"> 
+                        </form> 
+                    </div>
+                    <p><%= serie.overview %></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="serie-info">
+            <h2>Info</h2>
+            <div class="serie-info-inner">
+                <div>
+                    <div class="info-column info-column1">
+                        <div>
+                            <h3>Production company</h3>
+                                <% if (serie.production_companies) { %>
+                                    <div>
+                                        <% serie.production_companies.forEach(function(production_company) { %>
+                                            <% if (production_company.logo_path) { %>
+                                                <div>
+                                                    <img src="https://image.tmdb.org/t/p/h60<%= production_company.logo_path %>" alt="Image">
+                                                </div>
+                                            <% } %>
+                                            <% if (production_company !== serie.production_companies[serie.production_companies.length - 1]) { %> <% } %>
+                                        <% }); %>
+                                    </div>
+                                <% } %>
+
+                        </div>
+                        <div>
+                            <h3>Stream this movie on</h3>
+                            <div>
+                                <% serie.networks.forEach(function(network, index) { %>
+                                    <% if (network.logo_path) { %>
+                                        <div>
+                                            <img src="https://image.tmdb.org/t/p/h60<%= network.logo_path %>" height="30px" alt="Image">
+                                        </div>
+                                    <% } %>
+                                    <% if (index !== serie.networks.length - 1) { %> <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Tagline</h3>
+                            <p><%= serie.tagline %></p>
+                        </div>
+                    </div>
+                    <div class="info-column info-column2">
+                        <div>
+                            <h3>Air date</h3>
+                            <p><%= serie.first_air_date %></p>
+                        </div>
+                        <div>
+                            <h3>Seasons</h3>
+                            <p><%= serie.number_of_seasons %></p>
+                        </div>
+                        <div>
+                            <h3>Episodes</h3>
+                            <p><%= serie.number_of_episodes %></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="info-column info-column3">
+
+                        <div>
+                            <h3>Genre</h3>
+                            <div>
+                                <% serie.genres.forEach(function(genre) { %>
+                                    <div class="information-snippet">
+                                        <p><%= genre.name %></p>
+                                    </div>
+                                    <% if (genre !== serie.genres[serie.genres.length - 1]) { %> <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Rating</h3>
+                            <div class="information-snippet">
+                                <p>Rated: <%= serie.vote_average.toFixed(1) %>/10</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Original language</h3>
+                            <div>
+                                <div class="information-snippet">
+                                    <p><%= serie.original_language %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-column info-column4">
+                        <% let objectWithTrailerValue; %>
+                        <%for (const obj of trailer.results) { %>
+                          <%  for (const [key, value] of Object.entries(obj)) { %>
+                              <%    if (value === 'Trailer') { %>
+                                  <%      objectWithTrailerValue = obj; %>
+                                  <%       break; %>
+                                  <%      } else if (value === 'Teaser') { %>
+                                  <%      objectWithTrailerValue = obj; %>
+                                  <%       break; %>
+                                  <%    } %>
+                               <%    } %>
+                                  <%     if (objectWithTrailerValue) { %>
+                                      <%        break; %>
+                                      <%      } %>
+                                      <%    } %>
+                          
+                                      <%   if (objectWithTrailerValue) { %>
+                          <iframe width="350" height="196"  frameBorder="0" src="https://www.youtube.com/embed/<%= objectWithTrailerValue.key %>"></iframe>
+
+                          <%  } else { %>
+                              <%    console.log('No object with value "Trailer" found.'); %>
+                              <%   } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="series-cast">
+            <h2>Top Cast</h2>
+            <div class="cast-container">
+                <div>
+                <% cast.cast.slice(0, 10).forEach(function(cast) { %>
+                    <a href="/actors?id=<%= cast.id %>">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= cast.profile_path %>" height=100px alt="<%= cast.name %>" class="actor-image">
+                        <p><%= cast.name %> as <%= cast.character %></p>
+                    </a>
+                <% }); %>
+                </div>
+                <div class="shadow-left"></div>
+                <div class="shadow-right"></div>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <h2>Comments about <%= serie.name%></h2>
+            <div>
+              <h2><%= posts.length %></h2>
+              <div>
+                <img src="/images/filter.svg" />
+                <p>Sort by</p>
+              </div>
+            </div>
+            
+            <!-- comments writing form -->
+            <div class="write-comment">
+              <img src="<%= user.profilePhoto %>"/>
+                <form id="comment-form" action="/post-serie-thread" method="post">
+                  <div>
+                    <input
+                      type="text"
+                      id="comment"
+                      name="comment"
+                      placeholder="Add a comment"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <button type="reset">Cancel</button>
+                    <button type="submit">Comment</button>
+                  </div>
+                </form>
+            </div>
+    
+              <% if (posts && posts.length > 0) { %>
+                <ul class="comment-container-parent">
+                    <% posts.forEach(post => { %>
+                        <li class="comment-container">
+                          <img src="<%= post.pf %>">
+                          <div>
+                            <div>
+                              <h3><%= post.username %></h3>
+                              <p><%= post.datetime %></p>
+                            </div>
+                            <p><%= post.body %></p>
+                            <div>
+                              <div>
+                                <form action="/like-post" method="post">
+                                  <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
+                                  <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                  <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
+                                </form>
+                                <!-- <img src="/images/thumbsup.svg" /> -->
+                                <p><%= post.upvotes === 0 ? '' : post.upvotes %></p>
+                              </div>
+                              <div>
+                                <form action="/dislike-post" method="post">
+                                  <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
+                                  <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                  <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
+                                </form>
+                                <p><%= post.downvotes === 0 ? '' : post.downvotes %></p>
+                              </div>
+                            </div>
+                          </div>
+                          <form action="/add-friend-seriePage" method="post">
+                            <img src="/images/add-friend.svg">
+                            <input type="hidden" name="postUsername" value="<%= post.username%>">
+                            <input type="submit" value="Add <%= post.username %> to your friendlist">
+                          </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
+              
+    
+    </main>
+    <script src="/js/serie-page.js"></script>
+    <script src="/js/general.js"></script>
+</body>
+
+</html>

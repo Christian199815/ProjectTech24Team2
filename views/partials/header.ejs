@@ -1,0 +1,70 @@
+<header>
+
+    <a " href="/home">
+        <% if(user) { %>
+        <p><%= user.username%>'s Movie Lounge</p>
+        <% }  else { %>
+        <p>Movie Lounge</p>
+        <% } %>
+    </a>
+    <div class="hamburger">
+        <a id="hamburger-toggle" class="hamburger-toggle">
+            <span class="hamburger-toggle-bar hamburger-toggle-bar--top"></span>
+            <span class="hamburger-toggle-bar hamburger-toggle-bar--middle"></span>
+            <span class="hamburger-toggle-bar hamburger-toggle-bar--bottom"></span>
+        </a>
+    </div>
+    <nav>
+        <div class="nav-inner">
+            <div class="middle">
+                <ul>
+                    <li>
+                        <a href="/home">
+                            <p>Movies</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/home">
+                            <p>TV shows</p>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="devider"></div>
+                    </li>
+                    <li>
+                        <a href="/home">
+                            <p>Actors</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/home">
+                            <p>Directors</p>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="devider"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div>
+                    <a href="/profile"><img src="/images/header-notification.svg"></a>
+                    <a href="/profile"><img src="/images/header-favorite.svg"></a>
+
+                    <% if (user) { %>
+                    <% if (user.profilePhoto) { %>
+                        <a href="/profile"><img src="<%= user.profilePhoto %>" alt="Profile Picture" width="40px"></a>
+                      <% } else { %>
+                        <img src="images/header-profile.png">
+                      <% } %>
+                      <% } %>
+
+
+                </div>
+                <form action="/search" method="GET">
+                <input type="text" class="search-input" name="searchText" placeholder="Search...">
+            </form>
+            </div>
+        </div>
+    </nav>
+</header>

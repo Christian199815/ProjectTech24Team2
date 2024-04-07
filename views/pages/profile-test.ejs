@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="/trending">Terug</a>
+    <a href="/home">Terug</a>
 
-    <h1>Hoi <%= username %></h1>
+    <h1>Hoi <%= user.username %></h1>
 
 
 
     <h2>Liked Movies</h2>
     <ul>
+        <% if (likedMovies) { %>
+
         <% likedMovies.forEach(function(movie) { %>
             <% if (movie) { %>
                 <li>
@@ -26,11 +28,31 @@
                 </li>
             <% } %>
         <% }); %>
+        <% } %>
+    </ul>
+
+
+    <h2>Liked Series</h2>
+    <ul>
+        <% if (likedSeries) { %>
+        <% likedSeries.forEach(function(serie) { %>
+            <% if (serie) { %>
+                <li>
+                    <div>
+                        <h3><%= serie.name %></h3>
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= serie.poster_path %>" width=100px alt="Image">
+                        <a href="/serieTest?id=<%= serie.id %>">Bekijk details</a>
+                    </div>
+                </li>
+            <% } %>
+        <% }); %>
+        <% } %>
     </ul>
 
     <h2>Liked Actors</h2>
 
     <ul>
+        <% if (likedActors) { %>
         <% likedActors.forEach(function(actor) { %>
             <% if (actor) { %>
                 <li>
@@ -42,6 +64,7 @@
                 </li>
             <% } %>
         <% }); %>
+        <% } %>
     </ul>
 
 

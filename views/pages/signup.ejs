@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+
+    <link href="/css/general.css" rel="stylesheet" />
+    <link href="/css/signup.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <%- include ('../partials/header')  %>
+
+    <main>
+      <div class="signup-form">
+        <!-- ====== -->
+        <!-- STEP 1 -->
+        <!-- ====== -->
+
+        <div id="step-1" class="current-step">
+          <div class="signup-form-container">
+            <h1>Sign up for your account</h1>
+            <form action="/signup" method="POST">
+              <input
+                class="signup-google"
+                type="submit"
+                value="Sign in with Google"
+              />
+              <input
+                type="text"
+                id="first-name"
+                name="username"
+                placeholder="First name"
+                required
+              />
+
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="E-mail adress or phone number"
+                required
+              />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                required
+              />
+              <%if(errors[0] !== "none") { %>
+                <% if (!errors.isEmpty()) { %>
+                  <% errors.array().forEach(function(error) { %>
+                    <p style="color: white;"><%= error.msg %></p>
+                  <% }) %>
+                <% }  %>
+                <%}else { %>
+                  <p>Please use at least: 8 characters, 1 capitalised letter, 1 lowercased letter, 1 number and 1 symbol.</p>
+                <% } %>
+
+              <label for="birthdate">Date of birthdate</label>
+              <input
+                type="date"
+                id="birthdate"
+                name="DateOfBirth"
+                placeholder="birthdate"
+              />
+
+              <input
+                class="signup-account"
+                type="submit"
+                value="Next"
+                onclick="nextStep()"
+              />
+              <div class="line-regular"></div>
+
+              <div class="placement-signin">
+                <p>Already have an account</p>
+                <a href="/login">Sign in</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      <!-- ====== -->
+      <!-- STEP 2 -->
+      <!-- ====== -->
+
+      <div id="step-2" class="hidden">
+        <div class="signup-form-container">
+            <div class="line">
+                <div class="line-progress"></div>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div>
+            <div class="back-skip">
+                <a href="#" onclick="prevStep()">
+                    <img src="/images/header-arrow.svg">
+                    <p>Go back</p>
+                </a>
+                <a href="#" onclick="nextStep()">
+                    <p>Skip step</p>
+                    <img src="/images/header-arrow.svg">
+                </a>
+            </div>
+            <h1>Select genres you like</h1>
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/horror.svg">
+                            <img src="/images/horror-selected.svg" class="hidden">
+                        </div>
+                        <p>Horror</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/comedy.svg">
+                            <img src="/images/comedy-selected.svg" class="hidden">
+                        </div>
+                        <p>Comedy</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/action.svg">
+                            <img src="/images/action-selected.svg" class="hidden">
+                        </div>
+                        <p>Action</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/sci-fi.svg">
+                            <img src="/images/sci-fi-selected.svg" class="hidden">
+                        </div>
+                        <p>Sci-fi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/romance.svg">
+                            <img src="/images/romance-selected.svg" class="hidden">
+                        </div>
+                        <p>Romance</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/detective.svg">
+                            <img src="/images/detective-selected.svg" class="hidden">
+                        </div>
+                        <p>Detective</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/horror.svg">
+                            <img src="/images/horror-selected.svg" class="hidden">
+                        </div>
+                        <p>Horror</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/comedy.svg">
+                            <img src="/images/comedy-selected.svg" class="hidden">
+                        </div>
+                        <p>Comedy</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/action.svg">
+                            <img src="/images/action-selected.svg" class="hidden">
+                        </div>
+                        <p>Action</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src=/"images/sci-fi.svg">
+                            <img src="/images/sci-fi-selected.svg" class="hidden">
+                        </div>
+                        <p>Sci-fi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/romance.svg">
+                            <img src="/images/romance-selected.svg" class="hidden">
+                        </div>
+                        <p>Romance</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/detective.svg">
+                            <img src="/images/detective-selected.svg" class="hidden">
+                        </div>
+                        <p>Detective</p>
+                    </a>
+                </li>
+            </ul>
+            <button class="next-button" onclick="nextStep()">Next</button>
+        </div>
+    </div>
+
+
+    <!-- ====== -->
+    <!-- STEP 3 -->
+    <!-- ====== -->
+
+    <div id="step-3" class="hidden">
+        <div class="signup-form-container">
+            <div class="line">
+                <div class="line-progress"></div>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div>
+            <div class="back-skip">
+                <a href="#" onclick="prevStep()">
+                    <img src="/images/header-arrow.svg">
+                    <p>Go back</p>
+                </a>
+                <a href="#" onclick="nextStep()">
+                    <p>Skip step</p>
+                    <img src="/images/header-arrow.svg">
+                </a>
+            </div>
+            <h1>Select your ideal movie/show length</h1>
+
+            <h2>Movie length</h2>
+            <div class="wrapper" id="wrapper-1">
+                <div class="container">
+                    <div class="slider-track"></div>
+                    <input type="range" min="0" max="240" value="60" id="slider-1" class="slider">
+                    <input type="range" min="0" max="240" value="180" id="slider-2" class="slider">
+                    <p class="minimum-value min1">0 mins</p>
+                    <div class="values" id="value1"><span id="range1"></span></div>
+                    <div class="values" id="value2"><span id="range2"></span></div>
+                    <p class="maximum-value max1">4 hours+</p>
+                </div>
+            </div>
+
+            <div class="line-regular"></div>
+
+
+            <h2>TV show episode length</h2>
+            <div class="wrapper" id="wrapper-2">
+                <div class="container">
+                    <div class="slider-track slider-track-2"></div>
+                    <input type="range" min="0" max="60" value="15" id="slider-3" class="slider slider-3">
+                    <input type="range" min="0" max="60" value="30" id="slider-4" class="slider slider-4">
+                    <p class="minimum-value min2">0 mins</p> <!-- Updated minimum value -->
+                    <div class="values" id="value3"><span id="range3"></span></div>
+                    <div class="values" id="value4"><span id="range4"></span></div>
+                    <p class="maximum-value max2">60 mins</p> <!-- Updated maximum value -->
+                </div>
+            </div>
+
+            <h2>TV show runtime</h2>
+            <div class="wrapper" id="wrapper-3">
+                <div class="container">
+                    <div class="slider-track slider-track-3"></div>
+                    <input type="range" min="0" max="10" value="3" id="slider-5" class="slider slider-5">
+                    <input type="range" min="0" max="10" value="7" id="slider-6" class="slider slider-6">
+                    <p class="minimum-value min3">0 ssn</p>
+                    <div class="values" id="value5"><span id="range5"></span></div>
+                    <div class="values" id="value6"><span id="range6"></span></div>
+                    <p class="maximum-value max3">10+ ssn</p>
+                </div>
+            </div>
+
+            <button class="next-button" onclick="nextStep()">Next</button>
+        </div>
+    </div>
+
+
+    <!-- ====== -->
+    <!-- STEP 4 -->
+    <!-- ====== -->
+
+    <div id="step-4" class="hidden">
+        <div class="signup-form-container">
+            <div class="line">
+                <div class="line-progress"></div>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div>
+            <div class="back-skip">
+                <a href="#" onclick="prevStep()">
+                    <img src="/images/header-arrow.svg">
+                    <p>Go back</p>
+                </a>
+                <a href="#" onclick="nextStep()">
+                    <p>Skip step</p>
+                    <img src="/images/header-arrow.svg">
+                </a>
+            </div>
+            <h1>Select what languages you like to watch</h1>
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/english.png">
+                            <img src="/images/english.png" class="hidden">
+                        </div>
+                        <p>English</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/dutch.png">
+                            <img src="/images/dutch.png" class="hidden">
+                        </div>
+                        <p>Dutch</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/spanish.png">
+                            <img src="/images/spanish.png" class="hidden">
+                        </div>
+                        <p>Spanish</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/japanese.png">
+                            <img src="/images/japanese.png" class="hidden">
+                        </div>
+                        <p>Japanese</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleGenre(event)">
+                        <div class="genre-box">
+                            <img src="/images/korean.png">
+                            <img src="/images/korean.png" class="hidden">
+                        </div>
+                        <p>Korean</p>
+                    </a>
+                </li>
+            </ul>
+            <a class="next-button" href="/finishPrefs">Complete account creation</a>
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <footer>
+
+  </footer>
+  <script src="/js/slider.js"></script>
+  <script src="/js/general.js"></script>
+  <script src="/js/signup.js"></script>
+</body>
+</html>

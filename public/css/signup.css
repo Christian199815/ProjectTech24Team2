@@ -6,7 +6,7 @@
 /* STEP 1 */
 /* ****** */
 
-.signin-form {
+.signup-form {
     margin: 0;
 }
 
@@ -33,7 +33,7 @@
 }
 
 
-/* ---------------- EMAIL + PASSWORD ------------------- */
+/* ---------------- INPUT FIELDS ------------------- */
 
 #step-1 .signup-form-container form>input {
     background-color: var(--color-defaultbackground);
@@ -49,6 +49,22 @@
     color: var(--color-devider);
 }
 
+#step-1 .signup-form-container form>input:nth-of-type(4) {
+    margin-bottom: .7em;
+}
+
+#step-1 .signup-form-container form>p {
+    color: rgba(255, 255, 255, .7);
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-style: italic;
+    font-weight: 200;
+}
+
+#step-1 .signup-form-container form .line-regular {
+margin-bottom: 1.25em;
+}
+
 #step-1 .signup-form-container form>input:focus {
     color: #fff;
 }
@@ -56,12 +72,12 @@
 
 /* ---------------- REMEMBER ME + FORGOT PASSWORD ------------------- */
 
-#step-1 .signup-form-container .remember-forgot {
+.signin-form-container .remember-forgot {
     display: flex;
     justify-content: space-between;
 }
 
-#step-1 .signup-form-container .remember-forgot label {
+.signin-form-container .remember-forgot label {
     display: flex;
     gap: .5em;
     align-items: center;
@@ -72,7 +88,7 @@
     color: #fff;
 }
 
-#step-1 .signup-form-container .remember-forgot label input[type="checkbox"] {
+.signin-form-container .remember-forgot label input[type="checkbox"] {
     /* hiding the checkbox */
     margin: 0;
     display: block;
@@ -87,14 +103,14 @@
     cursor: pointer;
 }
 
-#step-1 .signup-form-container .remember-forgot label input[type="checkbox"]:checked {
+.signin-form-container .remember-forgot label input[type="checkbox"]:checked {
     background-image: url('/ProjectTech24Team2/images/checkmark.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 90%;
 }
 
-#step-1 .signup-form-container .remember-forgot label input[type="checkbox"]::before {
+.signin-form-container .remember-forgot label input[type="checkbox"]::before {
     content: "";
     display: inline-block;
     width: 0;
@@ -102,27 +118,13 @@
     visibility: hidden;
 }
 
-#step-1 .signup-form-container .remember-forgot a {
+.signin-form-container .remember-forgot a {
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 500;
     color: #fff;
 }
 
-
-/* ---------------- SUBMIT ------------------- */
-
-#step-1 .signup-form-container .signup-button {
-    background-color: var(--color-secondary-tint1);
-    border: none;
-    margin-top: 3em;
-    outline: none;
-
-    font-family: 'Prompt';
-    font-size: .8em;
-    font-weight: 400;
-    color: #fff;
-}
 
 
 /* ---------------- GOOGLE SUBMIT ------------------- */
@@ -136,7 +138,7 @@
     font-weight: 400;
     color: #fff;
 
-    background-image: url('/ProjectTech24Team2/images/google.svg');
+    background-image: url('/images/google.svg');
     background-repeat: no-repeat;
     background-position: 15px center;
     background-size: 20px;
@@ -161,6 +163,84 @@
     font-weight: 500;
     color: #fff;
 }
+
+#step-1 .signup-form-container .placement-signin p:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: 0.9em;
+    font-weight: 200;
+    color: #fff;
+}
+
+#step-1 .signup-form-container a:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #fff;
+}
+
+#step-1 .signup-form-container label:nth-of-type(1) {
+    font-family: 'Prompt';
+    font-size: 0.9em;
+    font-weight: 400;
+    color: var(--color-devider);
+    margin-top: 1rem;
+}
+
+/* -------------- BIRTHDATE ------*/
+#step-1 .signup-form-container .birthdate>* {
+    background-color: var(--color-defaultbackground);
+    border: solid 1px var(--color-primary-tint3);
+    padding: 1em 2em;
+    border-radius: .8em;
+    margin-bottom: 1.5em;
+    outline: none;
+    width: 100%;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: var(--color-devider);
+}
+
+#step-1 .signup-form-container .birthdate {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#step-1 .signup-form-container .birthdate input {
+    text-align: center;
+    color: #fff;
+}
+
+#step-1 .signup-form-container .birthdate input::placeholder {
+    text-align: center;
+    line-height: normal;
+}
+
+
+
+
+/* ---------------- NEXT ------------------- */
+
+#step-1 .signup-form-container .signup-account {
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    outline: none;
+
+    font-family: 'Prompt';
+    font-size: .8em;
+    font-weight: 400;
+    color: #fff;
+}
+
+/*---------------- SIGN IN BUTTON + P  PLACEMENT ----- */
+.placement-signin {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: .5em;
+}
+
 
 
 
@@ -196,7 +276,7 @@
 
 #step-2 .signup-form-container .line .line-progress {
     position: absolute;
-    width: 26%;
+    width: 34%;
     height: 2px;
     background-color: var(--color-secondary-tint1);
     border-radius: 4px;
@@ -274,7 +354,7 @@
     gap: .5em;
 }
 
-.genre-box {
+#step-2 .genre-box {
     background-color: var(--color-primary-tint1);
     box-shadow: 0 0 0 1px var(--color-primary-tint3);
     border-radius: 1em;
@@ -285,7 +365,7 @@
     align-items: center;
 }
 
-.genre-box.genre-selected {
+#step-2 .genre-box.genre-selected {
     background-color: var(--color-primary-tint1);
     box-shadow: 0 0 0 3px var(--color-secondary-tint1);
     border-radius: 1em;
@@ -296,7 +376,7 @@
     align-items: center;
 }
 
-.genre-box img {
+#step-2 .genre-box img {
     width: 50%;
     height: 50%;
 }
@@ -314,6 +394,463 @@
 #step-2 .signup-form-container .next-button {
     position: sticky;
     bottom: 2em;
+    cursor: pointer;
+
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    margin-top: 3em;
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+}
+
+
+
+/* ****** */
+/* STEP 3 */
+/* ****** */
+
+#step-3 .signup-form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 8em auto 3em;
+    width: 100%;
+    height: auto;
+    padding: 0 2em;
+}
+
+
+/* ---------------- PROGRESS BAR ------------------- */
+
+#step-3 .signup-form-container .line {
+    background-color: var(--color-primary-tint3);
+    height: 2px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5em;
+    position: relative;
+    margin: 0 0 3em 0;
+}
+
+#step-3 .signup-form-container .line .line-progress {
+    position: absolute;
+    width: 66%;
+    height: 2px;
+    background-color: var(--color-secondary-tint1);
+    border-radius: 4px;
+    margin-left: -.5em;
+    z-index: 1;
+}
+
+#step-3 .signup-form-container .line a {
+    height: 12px;
+    width: 12px;
+    transform: translateY(-43%);
+    border-radius: 9px;
+    background-color: var(--color-primary-tint3);
+}
+
+#step-3 .signup-form-container .line a:nth-of-type(1),
+#step-3 .signup-form-container .line a:nth-of-type(2),
+#step-3 .signup-form-container .line a:nth-of-type(3) {
+    background-color: var(--color-secondary-tint1);
+}
+
+
+/* ---------------- GO BACK & SKIP STEP ------------------- */
+
+#step-3 .signup-form-container .back-skip {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5em;
+}
+
+#step-3 .signup-form-container .back-skip a {
+    display: flex;
+    gap: .5em;
+}
+
+#step-3 .signup-form-container .back-skip a p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
+
+#step-3 .signup-form-container .back-skip a:nth-of-type(1) img {
+    display: block;
+    transform: rotate(90deg);
+}
+
+#step-3 .signup-form-container .back-skip a:nth-of-type(2) img {
+    display: block;
+    transform: rotate(-90deg);
+}
+
+
+/* ---------------- RANGE SLIDERS ------------------- */
+
+#step-3 .signup-form-container h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 2em;
+}
+
+#step-3 .signup-form-container h2 {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .9em;
+    color: #fff;
+    margin-right: auto;
+    padding-bottom: 1.5em;
+}
+
+#step-3 .signup-form-container .line-regular {
+    margin: .5em 0 3em;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    position: relative;
+    width: 70%;
+    height: 70px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.container .minimum-value,
+.container .maximum-value {
+    position: absolute;
+    bottom: -.75em;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
+
+.min1,
+.min2,
+.min3 {
+    left: -5.4em;
+}
+
+.max1,
+.max2,
+.max3 {
+    right: -5em;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.slider-track {
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+}
+
+.values {
+    position: absolute;
+    pointer-events: none;
+    top: 1.5em;
+    /* Adjust as needed */
+    transform: translateX(-50%);
+}
+
+.values span {
+    position: relative;
+    background-color: var(--color-secondary-tint1);
+    /* Value background color */
+    color: white;
+    /* Value text color */
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    white-space: nowrap;
+
+    font-family: 'Prompt';
+    font-weight: 300;
+    font-size: .6em;
+    color: #fff;
+}
+
+.values span:after {
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    border-bottom: 5px solid var(--color-secondary-tint1);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    left: 50%;
+    top: -4px;
+    transform: translateX(-50%);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 5px;
+}
+
+input[type="range"]::-moz-range-track {
+    -moz-appearance: none;
+    height: 5px;
+}
+
+input[type="range"]::-ms-track {
+    appearance: none;
+    height: 5px;
+}
+
+/* input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #ffffff;
+    border: 3px solid #3264fe;
+} */
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.2em;
+    width: 1.2em;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: -2px;
+    background-color: var(--color-secondary-tint1);
+    border: 2px solid #fff;
+    pointer-events: auto;
+}
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 1.2em;
+    width: 1.2em;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: -7px;
+    background-color: var(--color-secondary-tint1);
+    border: 2px solid #fff;
+    pointer-events: auto;
+}
+
+input[type="range"]::-ms-thumb {
+    appearance: none;
+    height: 1.2em;
+    width: 1.2em;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: -7px;
+    background-color: var(--color-secondary-tint1);
+    border: 2px solid #fff;
+    pointer-events: auto;
+}
+
+
+/* ---------------- NEXT BUTTON ------------------- */
+
+#step-3 .signup-form-container .next-button {
+    position: sticky;
+    bottom: 2em;
+    cursor: pointer;
+
+    background-color: var(--color-secondary-tint1);
+    border: none;
+    margin-top: 3em;
+    padding: 1em 2em;
+    border-radius: .8em;
+    outline: none;
+    width: 100%;
+
+    font-family: 'Prompt';
+    font-weight: 400;
+    color: #fff;
+}
+
+
+
+/* ****** */
+/* STEP 4 */
+/* ****** */
+
+#step-4 .signup-form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 8em auto 3em;
+    width: 100%;
+    height: auto;
+    padding: 0 2em;
+}
+
+
+/* ---------------- PROGRESS BAR ------------------- */
+
+#step-4 .signup-form-container .line {
+    background-color: var(--color-primary-tint3);
+    height: 2px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5em;
+    position: relative;
+    margin: 0 0 3em 0;
+}
+
+#step-4 .signup-form-container .line .line-progress {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-secondary-tint1);
+    border-radius: 4px;
+    margin-left: -.5em;
+    z-index: 1;
+}
+
+#step-4 .signup-form-container .line a {
+    height: 12px;
+    width: 12px;
+    transform: translateY(-43%);
+    border-radius: 50%;
+    background-color: var(--color-primary-tint3);
+    z-index: 3;
+}
+
+#step-4 .signup-form-container .line a:nth-of-type(1),
+#step-4 .signup-form-container .line a:nth-of-type(2),
+#step-4 .signup-form-container .line a:nth-of-type(3),
+#step-4 .signup-form-container .line a:nth-of-type(4) {
+    background-color: var(--color-secondary-tint1);
+}
+
+
+/* ---------------- GO BACK & SKIP STEP ------------------- */
+
+#step-4 .signup-form-container .back-skip {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5em;
+}
+
+#step-4 .signup-form-container .back-skip a {
+    display: flex;
+    gap: .5em;
+}
+
+#step-4 .signup-form-container .back-skip a p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
+
+#step-4 .signup-form-container .back-skip a:nth-of-type(1) img {
+    display: block;
+    transform: rotate(90deg);
+}
+
+#step-4 .signup-form-container .back-skip a:nth-of-type(2) img {
+    display: block;
+    transform: rotate(-90deg);
+}
+
+
+/* ---------------- LANGUAGES ------------------- */
+
+#step-4 .signup-form-container h1 {
+    font-family: 'Prompt';
+    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 2em;
+}
+
+#step-4 .signup-form-container ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#step-4 .signup-form-container ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+}
+
+#step-4 .genre-box {
+    background-color: var(--color-primary-tint1);
+    box-shadow: 0 0 0 1px var(--color-primary-tint3);
+    border-radius: 10px;
+    width: 4.5em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#step-4 .genre-box.genre-selected {
+    background-color: var(--color-primary-tint1);
+    box-shadow: 0 0 0 3px var(--color-secondary-tint1);
+    border-radius: 10px;
+    width: 4.5em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#step-4 .genre-box img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+#step-4 .signup-form-container>ul li a p {
+    font-family: 'Prompt';
+    font-weight: 400;
+    font-size: .8em;
+    color: #fff;
+}
+
+
+/* ---------------- NEXT BUTTON ------------------- */
+
+#step-4 .signup-form-container .next-button {
+    position: sticky;
+    bottom: 2em;
+    cursor: pointer;
 
     background-color: var(--color-secondary-tint1);
     border: none;
@@ -341,7 +878,7 @@
     /* ******* */
 
     .signup-form {
-        margin: 6em auto 3em;
+        margin: 3em auto;
         width: 35em;
         padding: 5em 3em;
         background-color: var(--color-secondarybackground);
@@ -424,9 +961,106 @@
     }
 
 
+
     /* ---------------- NEXT ------------------- */
 
     #step-2 .signup-form-container .next-button {
+        position: sticky;
+        bottom: 2em;
+
+        background-color: var(--color-secondary-tint1);
+        border: none;
+        margin-top: 3em;
+        padding: 1em 2em;
+        border-radius: .8em;
+        outline: none;
+        width: 100%;
+
+        font-family: 'Prompt';
+        font-weight: 400;
+        color: #fff;
+    }
+
+
+    /* ****** */
+    /* STEP 3 */
+    /* ****** */
+
+    #step-3 .signup-form-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 8em auto 3em;
+        width: 100%;
+        height: auto;
+        padding: 0 2em;
+    }
+
+    #step-3 .signup-form-container {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ---------------- GO BACK & SKIP STEP ------------------- */
+
+    #step-3 .signup-form-container .back-skip {
+        margin-bottom: 3em;
+    }
+
+
+    /* ---------------- NEXT ------------------- */
+
+    #step-3 .signup-form-container .next-button {
+        position: sticky;
+        bottom: 2em;
+
+        background-color: var(--color-secondary-tint1);
+        border: none;
+        margin-top: 3em;
+        padding: 1em 2em;
+        border-radius: .8em;
+        outline: none;
+        width: 100%;
+
+        font-family: 'Prompt';
+        font-weight: 400;
+        color: #fff;
+    }
+
+
+
+    /* ****** */
+    /* STEP 4 */
+    /* ****** */
+
+    #step-4 .signup-form-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 8em auto 3em;
+        width: 100%;
+        height: auto;
+        padding: 0 2em;
+    }
+
+    #step-4 .signup-form-container {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ---------------- GO BACK & SKIP STEP ------------------- */
+
+    #step-4 .signup-form-container .back-skip {
+        margin-bottom: 3em;
+    }
+
+
+
+    /* ---------------- NEXT ------------------- */
+
+    #step-4 .signup-form-container .next-button {
         position: sticky;
         bottom: 2em;
 
