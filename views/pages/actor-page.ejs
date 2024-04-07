@@ -21,8 +21,16 @@
     <%- include ('../partials/header')  %>
 
     <main>
-      <div class="actor-plus-news">
-        <div class="actor-name">
+      <div class="actor-container">
+        <div class="actor-left">
+            <img
+              src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= person.profile_path %>"
+              width="300px"
+              alt="Image"
+            />
+        </div>
+
+        <div class="actor-right">
           <!-- div 1 -->
           <div>
             <h1><%= person.name %></h1>
@@ -67,53 +75,36 @@
 
           <!-- div 3 -->
           <div>
-            <img
-              src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= person.profile_path %>"
-              width="300px"
-              alt="Image"
-            />
             <h2>Biography</h2>
             <p><%= person.biography %></p>
-
-            <h2>Known for</h2>
-            <div class="movie-info-inner">
-              <div>
-                  <div>
-                    <% 
-                    // Sorteer de films/series op basis van vote_count
-                    movieCrew.cast.sort(function(a, b) {
-                        return b.vote_count - a.vote_count;
-                    });
-                    
-                    // Toon alleen de top 10
-                    movieCrew.cast.slice(0, 10).forEach(function(movie) { 
-                    %>
-                        <a href="/<%= movie.media_type === 'movie' ? 'movie' : 'serie' %>-page?id=<%= movie.id %>">
-                            <div>
-                                <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.media_type === 'movie' ? movie.title : movie.name %>" class="actor-image">
-                                <p><%= movie.media_type === 'movie' ? movie.title : movie.name %></p>
-                            </div>
-                        </a>
-                    <% }); %>
-  
-                  </div>
-              </div>
-          </div>
-          
           </div>
         </div>
       </div>
 
-
-      <div class="comments">
-        <h2>Comments about <%= person.name%></h2>
-        <div>
-          <h2><%= posts.length %></h2>
+      <div class="known-for">
+        <h2>Known for</h2>
+        <div class="known-for-container">
           <div>
-            <img src="/images/filter.svg" />
-            <p>Sort by</p>
+            <% 
+            // Sorteer de films/series op basis van vote_count
+            movieCrew.cast.sort(function(a, b) {
+                return b.vote_count - a.vote_count;
+            });
+            
+            // Toon alleen de top 10
+            movieCrew.cast.slice(0, 10).forEach(function(movie) { 
+            %>
+            <a href="/<%= movie.media_type === 'movie' ? 'movie' : 'serie' %>-page?id=<%= movie.id %>">
+                <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2<%= movie.poster_path %>" width="100px" alt="<%= movie.media_type === 'movie' ? movie.title : movie.name %>" class="actor-image">
+                <p><%= movie.media_type === 'movie' ? movie.title : movie.name %></p>
+            </a>
+            <% }); %>
           </div>
+          <div class="shadow-left"></div>
+          <div class="shadow-right"></div>
         </div>
+      </div>
+
 
         <!-- comments writing form -->
         <div class="comments">
@@ -128,6 +119,8 @@
                   <p>Sort by</p>
               </div>
           </div>
+
+
           <div class="write-comment">
               <img src="<%= user.profilePhoto %>">
               <form id="comment-form" action="/post-actor-thread" method="post">
@@ -141,13 +134,10 @@
               </form>
           </div>
 
-
-       
-
           <% if (posts && posts.length> 0) { %>
             <ul class="comment-container-parent">
                 <% posts.forEach(post=> { %>
-                    <div class="comment-container">
+                    <li class="comment-container">
                         <img src='<%= post.pf %>'>
                         <div>
                             <div>
@@ -162,38 +152,35 @@
                                 <%= post.body %>
                             </p>
                             <div>
-                                <div>
-                                    <form action="/like-post" method="post">
-                                        <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
-                                        <input type="hidden" name="postUsername" value="<%= post.username %>">
-                                        <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
-                                    </form>
-                                    <p>
-                                        <%= post.upvotes===0 ? '' : post.upvotes %>
-                                    </p>
-                                </div>
-                                <div>
-                                    <form action="/dislike-post" method="post">
-                                        <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
-                                        <input type="hidden" name="postUsername" value="<%= post.username %>">
-                                        <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
-                                    </form>
-                                    <p>
-                                        <%= post.downvotes===0 ? '' : post.downvotes %>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="/add-friend-actorPage" method="post">
-                            <input type="hidden" name="postUsername" value="<%= post.username%>">
-                            <button type="submit">
-                                <img src="/images/add-friends.svg">
-                                <p>Add <%= post.username %>
+                              <div>
+                                <form action="/like-post" method="post">
+                                  <input type="hidden" name="curUpvotes" value="<%= post.upvotes %>">
+                                  <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                  <button type="submit"><img src="/images/thumbsup.svg" alt=""></button>
+                                </form>
+                                <p>
+                                  <%= post.upvotes===0 ? '' : post.upvotes %>
                                 </p>
-                            </button>
-                        </form>
-                    </div>
-                    </li>
+                              </div>
+                              <div>
+                                <form action="/dislike-post" method="post">
+                                    <input type="hidden" name="curDownvotes" value="<%= post.downvotes %>">
+                                    <input type="hidden" name="postUsername" value="<%= post.username %>">
+                                    <button type="submit"><img src="/images/thumbsdown.svg" alt=""></button>
+                                </form>
+                                <p>
+                                  <%= post.downvotes===0 ? '' : post.downvotes %>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                      
+                          <form action="/add-friend-moviePage" method="post">
+                            <img src="/images/add-friend.svg">
+                            <input type="hidden" name="postUsername" value="<%= post.username%>">
+                            <input type="submit" value="Add <%= post.username %> to your friendlist">
+                          </form>
+                      </li>
                     <% }) %>
             </ul>
             <% } else { %>

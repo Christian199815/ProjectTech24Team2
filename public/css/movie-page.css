@@ -441,29 +441,32 @@
 
 
 /* add friend */
-.comments .comment-container>button {
+.comments .comment-container>form {
     margin: 0 0 auto auto;
     display: flex;
     align-items: center;
-    gap: .6em;
+    gap: .4em;
     white-space: nowrap;
 
     background-color: var(--color-secondary-tint1);
     border: none;
-    padding: .7em 1.2em;
+    padding: .65em 1.2em;
     border-radius: 15px;
 }
 
-.comments .comment-container>button p{
+.comments .comment-container>form input {
+    background: none;
+    border: none;
+
     font-family: 'Prompt';
     font-size: .8em;
     font-weight: 400;
     color: #fff;
 }
 
-.comments .comment-container>button img{
-    height: 12px;
-    width: 12px;
+.comments .comment-container>form img {
+    height: 15px;
+    width: 15px;
 }
 
 
