@@ -134,7 +134,7 @@
                                       <%    } %>
                           
                                       <%   if (objectWithTrailerValue) { %>
-                          <iframe width="420" height="236"  frameBorder="0" src="https://www.youtube.com/embed/<%= objectWithTrailerValue.key %>"></iframe>
+                          <iframe width="350" height="196"  frameBorder="0" src="https://www.youtube.com/embed/<%= objectWithTrailerValue.key %>"></iframe>
                           
                           <%  } else { %>
                               <%    console.log('No object with value "Trailer" found.'); %>
@@ -144,19 +144,19 @@
             </div>
         </div>
 
-        <div class="movie-info-inner">
-            <div>
-                <h3>Top Cast</h3>
+        <div class="series-cast">
+            <h2>Top Cast</h2>
+            <div class="cast-container">
                 <div>
-                    <% cast.cast.slice(0, 10).forEach(function(cast) { %>
-                        <a href="/actors?id=<%= cast.id %>">
-                        <div>
-                            <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= cast.profile_path %>" height=100px alt="<%= cast.name %>" class="actor-image">
-                            <p><%= cast.name %> as <%= cast.character %></p>
-                        </div>
-                      </a>
-                    <% }); %>
+                <% cast.cast.slice(0, 10).forEach(function(cast) { %>
+                    <a href="/actors?id=<%= cast.id %>">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_bestv2<%= cast.profile_path %>" height=100px alt="<%= cast.name %>" class="actor-image">
+                        <p><%= cast.name %> as <%= cast.character %></p>
+                    </a>
+                <% }); %>
                 </div>
+                <div class="shadow-left"></div>
+                <div class="shadow-right"></div>
             </div>
         </div>
 
@@ -172,12 +172,9 @@
               </div>
             </div>
     
-            
-    
             <!-- comments writing form -->
             <div class="write-comment">
               <img src="<%= user.profilePhoto %>"/>
-              <div>
                 <form id="comment-form" action="/post-movie-thread" method="post">
                   <div>
                     <input
@@ -193,16 +190,10 @@
                     <button type="submit">Comment</button>
                   </div>
                 </form>
-              </div>
             </div>
     
-    
-           
-    
-            <div class="comment-container-parent">
-    
               <% if (posts && posts.length > 0) { %>
-                <ul>
+                <ul class="comment-container-parent">
                     <% posts.forEach(post => { %>
                         <li class="comment-container">
                           <img src="<%= post.pf %>">
@@ -246,11 +237,7 @@
             <% } else { %>
                 <p>No posts found.</p>
             <% } %>
-    
-          
-    
-            </div>
-          </div>
+        
     </main>
     <script src="/js/movie-page.js"></script>
     <script src="/js/general.js"></script>
