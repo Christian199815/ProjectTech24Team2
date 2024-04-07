@@ -10,7 +10,6 @@ const session = require('express-session');
 const validate = (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-        console.log(errors)
         return next();
     }
     const extractedErrors = errors.array().map(err => ({ [err.param]: err.msg }));
@@ -44,7 +43,7 @@ router.get('/signup', async (req, res) => {
     res.render('pages/signup', { errors: ['none'], user: req.session.user })
 })
 
-router.post('/signup',validate, userValidationRules, async (req, res) => {
+router.post('/signup', userValidationRules,validate, async (req, res) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -65,7 +64,7 @@ router.post('/signup',validate, userValidationRules, async (req, res) => {
         email: email,
         password: await bcrypt.hash(password, 10),
         isAdult: age >= 18 ? true : false,
-        profilePhoto: getRandomImg()
+        profilePhoto: getRandomImg(),
     }
     const result = await users.insertOne(newUser);
 })
