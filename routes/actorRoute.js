@@ -41,10 +41,18 @@ router.get('/actors', requireSession, async (req, res) => {
     person = await result.json();
     posts = await fetchPosts(threadDatabase, res);
 
-    const birthDate = new Date(person.birthday);
-    const ageDiffMilliseconds = Date.now() - birthDate.getTime();
-    const ageDate = new Date(ageDiffMilliseconds);
-    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    let age;
+
+  
+
+    if(!person.deathday){
+        const birthDate = new Date(person.birthday);
+        const ageDiffMilliseconds = Date.now() - birthDate.getTime();
+        const ageDate = new Date(ageDiffMilliseconds);
+        age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    } else {
+        age = 'dead';
+    }
 
     res.render('pages/actor-page', { person, age, posts, user, movieCrew });
 });

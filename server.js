@@ -7,7 +7,7 @@ const {client} = require('./js-modules/connect');
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true, limit: '50mb'}))
 
-//load in the separate files
+
 const logInRoute = require('./routes/logInRoute');
 const logOutRoute = require('./routes/logOutRoute');
 const signUpRoute = require('./routes/signUpRoute');
@@ -51,8 +51,6 @@ app.use(searchRoute);
 app.use(movieRoute);
 app.use(serieRoute);
 app.use(actorRoute);
-
-
 
 app.listen(process.env.PORT, () => {
     console.log(`Movie Lounge API listening on port ${process.env.PORT}`)

@@ -47,7 +47,11 @@
               <% } %>
             </div>
             <div class="information-snippet">
-              <p>Age: <span><%= age %></span></p>
+              <%  if(age === 'dead'){%>
+                <p>Deceased</p>
+                <% } else {%>
+                <p>Age: <span><%= age %></span></p>
+                <%  }%>
             </div>
             <div class="information-snippet">
               <% if(person.gender === 2){ %>
