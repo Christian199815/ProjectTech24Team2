@@ -96,6 +96,7 @@ body.scroll-lock {
     background-color: var(--color-secondary-tint1);
     padding: .25em .5em;
     border-radius: 5px;
+    width: fit-content;
 }
 
 .information-snippet p {
