@@ -17,6 +17,11 @@ let user = null;
 let sessionUser = null;
 let alreadyFriends = null;
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
 async function fetchPosts(db, res) {
     try {
@@ -76,8 +81,8 @@ router.post('/post-actor-thread', async (req, res) => {
         pf: profilePicture,
         body: comment,
         datetime: currDateTime,
-        upvotes: 100,
-        downvotes: 0,
+        upvotes: getRandomInt(1, 100),
+        downvotes: getRandomInt(1, 20),
     }
     const result = await currCollection.insertOne(newPost);
 
