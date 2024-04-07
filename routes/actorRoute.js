@@ -36,14 +36,15 @@ router.get('/actors', requireSession, async (req, res) => {
 
     const result = await fetch(`https://api.themoviedb.org/3/person/${actorID}`, options);
     const mCredits = await fetch(`https://api.themoviedb.org/3/person/${actorID}/combined_credits`, options);
-    const birthDate = new Date(person.birthday);
-    const ageDiffMilliseconds = Date.now() - birthDate.getTime();
-    const ageDate = new Date(ageDiffMilliseconds);
-    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
     movieCrew = await mCredits.json();
     person = await result.json();
     posts = await fetchPosts(threadDatabase, res);
+
+    const birthDate = new Date(person.birthday);
+    const ageDiffMilliseconds = Date.now() - birthDate.getTime();
+    const ageDate = new Date(ageDiffMilliseconds);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
     res.render('pages/actor-page', { person, age, posts, user, movieCrew });
 });

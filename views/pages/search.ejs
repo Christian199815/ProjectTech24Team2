@@ -26,31 +26,25 @@
 
 
                     <% searchResult.results.forEach(function(result) { %>
-                        <div>
-                            
+                        <% if (result.poster_path || result.profile_path) { %> <!-- Check of er een poster_path of profile_path beschikbaar is -->
                             <div>
-                                <img src="https://image.tmdb.org/t/p/w200<%= result.poster_path || result.profile_path %>"
-                                    alt="Image">
-                            </div>
-                            <div>
-                                <% if (result.media_type==='movie' ) { %>
-                                    <h2><a href="/movie-page?id=<%= result.id %>">
-                                            <%= result.title %>
-                                        </a></h2>
+                                <div>
+                                    <img src="https://image.tmdb.org/t/p/w200<%= result.poster_path || result.profile_path %>" alt="Image">
+                                </div>
+                                <div>
+                                    <% if (result.media_type==='movie' ) { %>
+                                        <h2><a href="/movie-page?id=<%= result.id %>"><%= result.title %></a></h2>
                                     <% } else if (result.media_type==='tv' ) { %>
-                                        <h2><a href="/serie-page?id=<%= result.id %>">
-                                                <%= result.name %>
-                                            </a></h2>
-                                        <% } else if (result.media_type==='person' ) { %>
-                                            <h2><a href="/actors?id=<%= result.id %>">
-                                                    <%= result.name %>
-                                                </a></h2>
-                                            <% } %>
+                                        <h2><a href="/serie-page?id=<%= result.id %>"><%= result.name %></a></h2>
+                                    <% } else if (result.media_type==='person' ) { %>
+                                        <h2><a href="/actors?id=<%= result.id %>"><%= result.name %></a></h2>
+                                    <% } %>
+                                </div>
+                                <!-- hardcoded elements for now -->
                             </div>
-                            <!-- hardcoded elements for now -->
-
-                        </div>
-                        <% }); %>
+                        <% } %>
+                    <% }); %>
+                    
 
 
 
