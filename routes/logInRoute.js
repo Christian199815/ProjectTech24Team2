@@ -9,7 +9,6 @@ const { client } = require('../js-modules/connect')
 
 router.get('/login', (req, res) => {
     const user = req.session.user;
-    // res.render('pages/actor-page-ThreadsTest', { person, age, posts, user });
     res.render('pages/signin', {errors: "none",user});
 })
 
@@ -36,11 +35,8 @@ router.post('/login', async (req, res) => {
 
     if (remember) {
         req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000;
-        console.log('long cookie');
     } else {
         req.session.cookie.maxAge = 30 * 60 * 1000;
-        console.log('short cookie');
-
     }
     res.redirect('/home');
 });

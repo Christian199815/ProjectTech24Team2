@@ -48,7 +48,6 @@ router.get('/profile', requireSession, async (req, res) => {
       const allUsers = await users.find().toArray();
       const usernamesToCheck = user.friendRequests;
       fetchedFRequests = allUsers.filter(obj => usernamesToCheck.includes(obj.username));
-      console.log(fetchedFRequests);
     }
 
     if (user.friends) {
