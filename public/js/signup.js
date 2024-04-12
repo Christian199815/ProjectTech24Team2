@@ -41,25 +41,6 @@ function prevStep() {
 }
 
 
-document.getElementById("day").addEventListener("input", function () {
-  this.value = this.value.replace(/\D/g, '');
-  if (this.value.length >= 2) {
-    document.getElementById("month").focus();
-  }
-});
-
-document.getElementById("month").addEventListener("input", function () {
-  this.value = this.value.replace(/\D/g, '');
-  if (this.value.length >= 2) {
-    document.getElementById("year").focus();
-  }
-});
-
-document.getElementById("year").addEventListener("input", function () {
-  this.value = this.value.replace(/\D/g, '');
-});
-
-
 
 
 
